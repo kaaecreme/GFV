@@ -2,7 +2,7 @@
 --	Conversion of stepperny.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Feb 10 13:42:00 2022
+--	Fri Feb 11 09:24:23 2022
 --
 
 USE cypress.cypress.all;

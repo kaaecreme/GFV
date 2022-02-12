@@ -18,7 +18,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="stepperny-000\stepperny\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="stepperny-000\stepperny\stepperny.cydwr">
 <ExpandedNodeIds>
 <v>stepperny-000</v>
 <v>stepperny-000\stepperny</v>
@@ -35,9 +35,10 @@
 <v>stepperny-000\stepperny\stepperny.cydwr\EEPROM</v>
 <v>stepperny-000\stepperny\Header Files</v>
 <v>stepperny-000\stepperny\Header Files\cyapicallbacks.h</v>
+<v>stepperny-000\stepperny\Header Files\functions.h</v>
 <v>stepperny-000\stepperny\Source Files</v>
+<v>stepperny-000\stepperny\Source Files\functions.c</v>
 <v>stepperny-000\stepperny\Source Files\main.c</v>
-<v>stepperny-000\stepperny\Generated_Source</v>
 <v>stepperny-000\stepperny\Generated_Source\PSoC5</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
@@ -56,15 +57,11 @@
 <v>stepperny-000\stepperny\stepperny.cydwr\EEPROM</v>
 <v>stepperny-000\stepperny\Header Files</v>
 <v>stepperny-000\stepperny\Header Files\cyapicallbacks.h</v>
+<v>stepperny-000\stepperny\Header Files\functions.h</v>
 <v>stepperny-000\stepperny\Source Files</v>
+<v>stepperny-000\stepperny\Source Files\functions.c</v>
 <v>stepperny-000\stepperny\Source Files\main.c</v>
 <v>stepperny-000\stepperny\Generated_Source</v>
-<v>stepperny-000\stepperny\Generated_Source\PSoC5</v>
-<v>stepperny-000\stepperny\Generated_Source\PSoC5\A1_Green</v>
-<v>stepperny-000\stepperny\Generated_Source\PSoC5\A2_Orange</v>
-<v>stepperny-000\stepperny\Generated_Source\PSoC5\B1_Purple</v>
-<v>stepperny-000\stepperny\Generated_Source\PSoC5\B2_White</v>
-<v>stepperny-000\stepperny\Generated_Source\PSoC5\cy_boot</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -104,6 +101,7 @@
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\functions.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_uart_rx.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
@@ -140,9 +138,15 @@
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\functions.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_uart_rx.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
 <v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_INT.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_IntClock.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_PM.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\stepperny.elf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -184,6 +188,9 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\main.c" />
+<name v=".\functions.h" />
+<name v=".\functions.c" />
+<name v=".\stepperny.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -191,7 +198,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="989, 495" SelectedTabbedMdiWindow="3fd204ef-3587-4cf3-838e-1cf2bab02918"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="304b2c96-c639-4cb3-96cf-ab86ab84214d" /><DocumentWindow Key="C:\Users\kaaen\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\main.c" Guid="3fd204ef-3587-4cf3-838e-1cf2bab02918" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="997, 598" SelectedTabbedMdiWindow="3fd204ef-3587-4cf3-838e-1cf2bab02918"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="304b2c96-c639-4cb3-96cf-ab86ab84214d" /><DocumentWindow Key="C:\Users\kaaen\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\main.c" Guid="3fd204ef-3587-4cf3-838e-1cf2bab02918" /><DocumentWindow Key="C:\Users\kaaen\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\functions.h" Guid="8e76d5fa-c24f-44b6-85b3-13d931824b90" /><DocumentWindow Key="C:\Users\kaaen\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\functions.c" Guid="690881e0-6a58-43e3-91da-fbbb9371118c" /><DocumentWindow Key="C:\Users\kaaen\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\stepperny.cydwr" Guid="527c20ed-280d-42a0-8346-429959f4cf41" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

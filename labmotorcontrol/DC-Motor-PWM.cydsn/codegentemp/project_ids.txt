@@ -1,0 +1,6 @@
+C:\Users\kaaen\Documents\GitHub\GFV\labmotorcontrol\DC-Motor-PWM.cydsn\DC-Motor-PWM.cyprj|f8f10976-56ef-4a76-8299-8ce15b0116fa
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|7c7390b8-54e5-43b1-a802-d11ce2c940ff
+C:\Users\kaaen\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|f72a1437-d0ff-451a-8a1c-3c42735ef683
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|0824790a-e2e2-4113-a819-239c35a2a4b9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f2b30c82-d9f7-4243-9e74-042a7c3b087a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|38741e1d-036c-4a82-be24-8b879629bb4d

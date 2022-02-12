@@ -1,0 +1,4666 @@
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"functions.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.getDirection,"ax",%progbits
+  20              		.align	2
+  21              		.global	getDirection
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	getDirection, %function
+  25              	getDirection:
+  26              	.LFB63:
+  27              		.file 1 "functions.c"
+   1:functions.c   **** #include "functions.h"
+   2:functions.c   **** 
+   3:functions.c   **** //Variables
+   4:functions.c   **** uint16_t speedDelay = 20; // Used to set Stepper motor speed (delay) 
+   5:functions.c   **** uint8_t state = 1; // Used to change switch between 1/A = Full, 2/S = Half, 3/D = Wave
+   6:functions.c   **** uint8_t direction = 0; // Used to save direction. 0 = Stopped, 1 = Forwards, 2 = Backwards
+   7:functions.c   **** 
+   8:functions.c   **** uint16_t getDirection(void) {
+  28              		.loc 1 8 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+   9:functions.c   ****     return direction;
+  10:functions.c   **** }
+  33              		.loc 1 10 0
+  34 0000 014B     		ldr	r3, .L2
+  35 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  36 0004 7047     		bx	lr
+  37              	.L3:
+  38 0006 00BF     		.align	2
+  39              	.L2:
+  40 0008 00000000 		.word	.LANCHOR0
+  41              		.cfi_endproc
+  42              	.LFE63:
+  43              		.size	getDirection, .-getDirection
+  44              		.section	.text.getState,"ax",%progbits
+  45              		.align	2
+  46              		.global	getState
+  47              		.thumb
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 2
+
+
+  48              		.thumb_func
+  49              		.type	getState, %function
+  50              	getState:
+  51              	.LFB64:
+  11:functions.c   **** 
+  12:functions.c   **** uint8_t getState(void) {
+  52              		.loc 1 12 0
+  53              		.cfi_startproc
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56              		@ link register save eliminated.
+  13:functions.c   ****     return state;    
+  14:functions.c   **** }
+  57              		.loc 1 14 0
+  58 0000 014B     		ldr	r3, .L5
+  59 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  60 0004 7047     		bx	lr
+  61              	.L6:
+  62 0006 00BF     		.align	2
+  63              	.L5:
+  64 0008 00000000 		.word	.LANCHOR1
+  65              		.cfi_endproc
+  66              	.LFE64:
+  67              		.size	getState, .-getState
+  68              		.section	.text.changeState,"ax",%progbits
+  69              		.align	2
+  70              		.global	changeState
+  71              		.thumb
+  72              		.thumb_func
+  73              		.type	changeState, %function
+  74              	changeState:
+  75              	.LFB66:
+  15:functions.c   **** 
+  16:functions.c   **** void run(char byte) {
+  17:functions.c   ****     switch(byte)
+  18:functions.c   ****     {
+  19:functions.c   ****         case 'q' :
+  20:functions.c   ****         {
+  21:functions.c   ****             decreaseSpeed();
+  22:functions.c   ****         }
+  23:functions.c   ****         break;
+  24:functions.c   ****         case 'w' :
+  25:functions.c   ****         {
+  26:functions.c   ****             increaseSpeed();
+  27:functions.c   ****         }
+  28:functions.c   ****         break;
+  29:functions.c   ****         
+  30:functions.c   ****         case 'e' :
+  31:functions.c   ****         {
+  32:functions.c   ****             runOnceForward();
+  33:functions.c   ****         }
+  34:functions.c   ****         break;
+  35:functions.c   ****         
+  36:functions.c   ****         case 'r' :
+  37:functions.c   ****         {
+  38:functions.c   ****             runOnceBackwards();
+  39:functions.c   ****         }
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 3
+
+
+  40:functions.c   ****         break;
+  41:functions.c   ****         
+  42:functions.c   ****         case '1' :
+  43:functions.c   ****         {
+  44:functions.c   ****             driveForwards();
+  45:functions.c   ****         }
+  46:functions.c   ****         break;
+  47:functions.c   ****         
+  48:functions.c   ****         case '2' :
+  49:functions.c   ****         {
+  50:functions.c   ****             driveBackwards();
+  51:functions.c   ****         }
+  52:functions.c   ****         break;
+  53:functions.c   ****         
+  54:functions.c   ****         case '0' :
+  55:functions.c   ****         {
+  56:functions.c   ****             stop();
+  57:functions.c   ****         }
+  58:functions.c   ****         break;
+  59:functions.c   ****         
+  60:functions.c   ****         // Change to full step
+  61:functions.c   ****         case 'a' :
+  62:functions.c   ****         {
+  63:functions.c   ****             changeState(1);
+  64:functions.c   ****         }
+  65:functions.c   ****         break;
+  66:functions.c   ****         
+  67:functions.c   ****         // Change to half step
+  68:functions.c   ****         case 's' :
+  69:functions.c   ****         {
+  70:functions.c   ****             changeState(2);
+  71:functions.c   ****         }
+  72:functions.c   ****         break;
+  73:functions.c   ****         
+  74:functions.c   ****         // Change to wave-drive
+  75:functions.c   ****         case 'd' :
+  76:functions.c   ****         {
+  77:functions.c   ****             changeState(3);
+  78:functions.c   ****         }
+  79:functions.c   ****         break;
+  80:functions.c   ****         default :
+  81:functions.c   ****         {
+  82:functions.c   ****             // nothing
+  83:functions.c   ****         }
+  84:functions.c   ****         break;
+  85:functions.c   ****     }
+  86:functions.c   **** }
+  87:functions.c   **** 
+  88:functions.c   **** void changeState(int stateNumb) {
+  76              		.loc 1 88 0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		@ link register save eliminated.
+  81              	.LVL0:
+  89:functions.c   ****     state = stateNumb;
+  82              		.loc 1 89 0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 4
+
+
+  83 0000 014B     		ldr	r3, .L8
+  84 0002 1870     		strb	r0, [r3]
+  85 0004 7047     		bx	lr
+  86              	.L9:
+  87 0006 00BF     		.align	2
+  88              	.L8:
+  89 0008 00000000 		.word	.LANCHOR1
+  90              		.cfi_endproc
+  91              	.LFE66:
+  92              		.size	changeState, .-changeState
+  93              		.section	.text.decreaseSpeed,"ax",%progbits
+  94              		.align	2
+  95              		.global	decreaseSpeed
+  96              		.thumb
+  97              		.thumb_func
+  98              		.type	decreaseSpeed, %function
+  99              	decreaseSpeed:
+ 100              	.LFB67:
+  90:functions.c   **** }
+  91:functions.c   **** 
+  92:functions.c   **** void decreaseSpeed()
+  93:functions.c   **** {
+ 101              		.loc 1 93 0
+ 102              		.cfi_startproc
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105 0000 08B5     		push	{r3, lr}
+ 106              		.cfi_def_cfa_offset 8
+ 107              		.cfi_offset 3, -8
+ 108              		.cfi_offset 14, -4
+  94:functions.c   ****     if(speedDelay < 100) {
+ 109              		.loc 1 94 0
+ 110 0002 064B     		ldr	r3, .L14
+ 111 0004 5B88     		ldrh	r3, [r3, #2]
+ 112 0006 632B     		cmp	r3, #99
+ 113 0008 03D8     		bhi	.L11
+  95:functions.c   ****         speedDelay += 2;   
+ 114              		.loc 1 95 0
+ 115 000a 0233     		adds	r3, r3, #2
+ 116 000c 034A     		ldr	r2, .L14
+ 117 000e 5380     		strh	r3, [r2, #2]	@ movhi
+ 118 0010 08BD     		pop	{r3, pc}
+ 119              	.L11:
+  96:functions.c   ****     } else {
+  97:functions.c   ****         UART_1_PutString("Motor cannot go slower\r\n");
+ 120              		.loc 1 97 0
+ 121 0012 0348     		ldr	r0, .L14+4
+ 122 0014 FFF7FEFF 		bl	UART_1_PutString
+ 123              	.LVL1:
+ 124 0018 08BD     		pop	{r3, pc}
+ 125              	.L15:
+ 126 001a 00BF     		.align	2
+ 127              	.L14:
+ 128 001c 00000000 		.word	.LANCHOR1
+ 129 0020 00000000 		.word	.LC0
+ 130              		.cfi_endproc
+ 131              	.LFE67:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 5
+
+
+ 132              		.size	decreaseSpeed, .-decreaseSpeed
+ 133              		.section	.text.increaseSpeed,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	increaseSpeed
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.type	increaseSpeed, %function
+ 139              	increaseSpeed:
+ 140              	.LFB68:
+  98:functions.c   ****     }
+  99:functions.c   **** }
+ 100:functions.c   **** 
+ 101:functions.c   **** void increaseSpeed()
+ 102:functions.c   **** {
+ 141              		.loc 1 102 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145 0000 08B5     		push	{r3, lr}
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 3, -8
+ 148              		.cfi_offset 14, -4
+ 103:functions.c   ****     if(speedDelay > 2) {
+ 149              		.loc 1 103 0
+ 150 0002 064B     		ldr	r3, .L20
+ 151 0004 5B88     		ldrh	r3, [r3, #2]
+ 152 0006 022B     		cmp	r3, #2
+ 153 0008 03D9     		bls	.L17
+ 104:functions.c   ****         speedDelay -= 2;   
+ 154              		.loc 1 104 0
+ 155 000a 023B     		subs	r3, r3, #2
+ 156 000c 034A     		ldr	r2, .L20
+ 157 000e 5380     		strh	r3, [r2, #2]	@ movhi
+ 158 0010 08BD     		pop	{r3, pc}
+ 159              	.L17:
+ 105:functions.c   ****     } else {
+ 106:functions.c   ****         UART_1_PutString("Motor cannot go faster\r\n");
+ 160              		.loc 1 106 0
+ 161 0012 0348     		ldr	r0, .L20+4
+ 162 0014 FFF7FEFF 		bl	UART_1_PutString
+ 163              	.LVL2:
+ 164 0018 08BD     		pop	{r3, pc}
+ 165              	.L21:
+ 166 001a 00BF     		.align	2
+ 167              	.L20:
+ 168 001c 00000000 		.word	.LANCHOR1
+ 169 0020 1C000000 		.word	.LC1
+ 170              		.cfi_endproc
+ 171              	.LFE68:
+ 172              		.size	increaseSpeed, .-increaseSpeed
+ 173              		.section	.text.driveForwards,"ax",%progbits
+ 174              		.align	2
+ 175              		.global	driveForwards
+ 176              		.thumb
+ 177              		.thumb_func
+ 178              		.type	driveForwards, %function
+ 179              	driveForwards:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 6
+
+
+ 180              	.LFB69:
+ 107:functions.c   ****     }
+ 108:functions.c   **** }
+ 109:functions.c   **** 
+ 110:functions.c   **** void driveForwards()
+ 111:functions.c   **** {
+ 181              		.loc 1 111 0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              		@ link register save eliminated.
+ 112:functions.c   ****     direction = 1;
+ 186              		.loc 1 112 0
+ 187 0000 0122     		movs	r2, #1
+ 188 0002 014B     		ldr	r3, .L23
+ 189 0004 1A70     		strb	r2, [r3]
+ 190 0006 7047     		bx	lr
+ 191              	.L24:
+ 192              		.align	2
+ 193              	.L23:
+ 194 0008 00000000 		.word	.LANCHOR0
+ 195              		.cfi_endproc
+ 196              	.LFE69:
+ 197              		.size	driveForwards, .-driveForwards
+ 198              		.section	.text.driveBackwards,"ax",%progbits
+ 199              		.align	2
+ 200              		.global	driveBackwards
+ 201              		.thumb
+ 202              		.thumb_func
+ 203              		.type	driveBackwards, %function
+ 204              	driveBackwards:
+ 205              	.LFB70:
+ 113:functions.c   **** }
+ 114:functions.c   **** 
+ 115:functions.c   **** void driveBackwards()
+ 116:functions.c   **** {
+ 206              		.loc 1 116 0
+ 207              		.cfi_startproc
+ 208              		@ args = 0, pretend = 0, frame = 0
+ 209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 210              		@ link register save eliminated.
+ 117:functions.c   ****     direction = 2;
+ 211              		.loc 1 117 0
+ 212 0000 0222     		movs	r2, #2
+ 213 0002 014B     		ldr	r3, .L26
+ 214 0004 1A70     		strb	r2, [r3]
+ 215 0006 7047     		bx	lr
+ 216              	.L27:
+ 217              		.align	2
+ 218              	.L26:
+ 219 0008 00000000 		.word	.LANCHOR0
+ 220              		.cfi_endproc
+ 221              	.LFE70:
+ 222              		.size	driveBackwards, .-driveBackwards
+ 223              		.section	.text.stop,"ax",%progbits
+ 224              		.align	2
+ 225              		.global	stop
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 7
+
+
+ 226              		.thumb
+ 227              		.thumb_func
+ 228              		.type	stop, %function
+ 229              	stop:
+ 230              	.LFB71:
+ 118:functions.c   **** }
+ 119:functions.c   **** 
+ 120:functions.c   **** void stop()
+ 121:functions.c   **** {
+ 231              		.loc 1 121 0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235 0000 10B5     		push	{r4, lr}
+ 236              		.cfi_def_cfa_offset 8
+ 237              		.cfi_offset 4, -8
+ 238              		.cfi_offset 14, -4
+ 122:functions.c   ****     direction = 0;
+ 239              		.loc 1 122 0
+ 240 0002 0024     		movs	r4, #0
+ 241 0004 074B     		ldr	r3, .L30
+ 242 0006 1C70     		strb	r4, [r3]
+ 123:functions.c   ****     A1_Green_Write(0);
+ 243              		.loc 1 123 0
+ 244 0008 2046     		mov	r0, r4
+ 245 000a FFF7FEFF 		bl	A1_Green_Write
+ 246              	.LVL3:
+ 124:functions.c   ****     A2_Orange_Write(0);
+ 247              		.loc 1 124 0
+ 248 000e 2046     		mov	r0, r4
+ 249 0010 FFF7FEFF 		bl	A2_Orange_Write
+ 250              	.LVL4:
+ 125:functions.c   ****     B1_Purple_Write(0);
+ 251              		.loc 1 125 0
+ 252 0014 2046     		mov	r0, r4
+ 253 0016 FFF7FEFF 		bl	B1_Purple_Write
+ 254              	.LVL5:
+ 126:functions.c   ****     B2_White_Write(0);
+ 255              		.loc 1 126 0
+ 256 001a 2046     		mov	r0, r4
+ 257 001c FFF7FEFF 		bl	B2_White_Write
+ 258              	.LVL6:
+ 259 0020 10BD     		pop	{r4, pc}
+ 260              	.L31:
+ 261 0022 00BF     		.align	2
+ 262              	.L30:
+ 263 0024 00000000 		.word	.LANCHOR0
+ 264              		.cfi_endproc
+ 265              	.LFE71:
+ 266              		.size	stop, .-stop
+ 267              		.section	.text.driveForwardsHalf,"ax",%progbits
+ 268              		.align	2
+ 269              		.global	driveForwardsHalf
+ 270              		.thumb
+ 271              		.thumb_func
+ 272              		.type	driveForwardsHalf, %function
+ 273              	driveForwardsHalf:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 8
+
+
+ 274              	.LFB72:
+ 127:functions.c   **** }
+ 128:functions.c   **** 
+ 129:functions.c   **** void driveForwardsHalf() {
+ 275              		.loc 1 129 0
+ 276              		.cfi_startproc
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 279 0000 10B5     		push	{r4, lr}
+ 280              		.cfi_def_cfa_offset 8
+ 281              		.cfi_offset 4, -8
+ 282              		.cfi_offset 14, -4
+ 130:functions.c   ****     A1_Green_Write(1);
+ 283              		.loc 1 130 0
+ 284 0002 0120     		movs	r0, #1
+ 285 0004 FFF7FEFF 		bl	A1_Green_Write
+ 286              	.LVL7:
+ 131:functions.c   ****     A2_Orange_Write(0);
+ 287              		.loc 1 131 0
+ 288 0008 0020     		movs	r0, #0
+ 289 000a FFF7FEFF 		bl	A2_Orange_Write
+ 290              	.LVL8:
+ 132:functions.c   ****     B1_Purple_Write(1);
+ 291              		.loc 1 132 0
+ 292 000e 0120     		movs	r0, #1
+ 293 0010 FFF7FEFF 		bl	B1_Purple_Write
+ 294              	.LVL9:
+ 133:functions.c   ****     B2_White_Write(0);
+ 295              		.loc 1 133 0
+ 296 0014 0020     		movs	r0, #0
+ 297 0016 FFF7FEFF 		bl	B2_White_Write
+ 298              	.LVL10:
+ 134:functions.c   ****     CyDelay(speedDelay);
+ 299              		.loc 1 134 0
+ 300 001a 374C     		ldr	r4, .L34
+ 301 001c 6088     		ldrh	r0, [r4, #2]
+ 302 001e FFF7FEFF 		bl	CyDelay
+ 303              	.LVL11:
+ 135:functions.c   ****                 
+ 136:functions.c   ****     A1_Green_Write(0);
+ 304              		.loc 1 136 0
+ 305 0022 0020     		movs	r0, #0
+ 306 0024 FFF7FEFF 		bl	A1_Green_Write
+ 307              	.LVL12:
+ 137:functions.c   ****     A2_Orange_Write(1);
+ 308              		.loc 1 137 0
+ 309 0028 0120     		movs	r0, #1
+ 310 002a FFF7FEFF 		bl	A2_Orange_Write
+ 311              	.LVL13:
+ 138:functions.c   ****     B1_Purple_Write(0);
+ 312              		.loc 1 138 0
+ 313 002e 0020     		movs	r0, #0
+ 314 0030 FFF7FEFF 		bl	B1_Purple_Write
+ 315              	.LVL14:
+ 139:functions.c   ****     B2_White_Write(0);
+ 316              		.loc 1 139 0
+ 317 0034 0020     		movs	r0, #0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 9
+
+
+ 318 0036 FFF7FEFF 		bl	B2_White_Write
+ 319              	.LVL15:
+ 140:functions.c   ****     CyDelay(speedDelay);
+ 320              		.loc 1 140 0
+ 321 003a 6088     		ldrh	r0, [r4, #2]
+ 322 003c FFF7FEFF 		bl	CyDelay
+ 323              	.LVL16:
+ 141:functions.c   ****                 
+ 142:functions.c   ****     A1_Green_Write(0);
+ 324              		.loc 1 142 0
+ 325 0040 0020     		movs	r0, #0
+ 326 0042 FFF7FEFF 		bl	A1_Green_Write
+ 327              	.LVL17:
+ 143:functions.c   ****     A2_Orange_Write(1);
+ 328              		.loc 1 143 0
+ 329 0046 0120     		movs	r0, #1
+ 330 0048 FFF7FEFF 		bl	A2_Orange_Write
+ 331              	.LVL18:
+ 144:functions.c   ****     B1_Purple_Write(1);
+ 332              		.loc 1 144 0
+ 333 004c 0120     		movs	r0, #1
+ 334 004e FFF7FEFF 		bl	B1_Purple_Write
+ 335              	.LVL19:
+ 145:functions.c   ****     B2_White_Write(0);
+ 336              		.loc 1 145 0
+ 337 0052 0020     		movs	r0, #0
+ 338 0054 FFF7FEFF 		bl	B2_White_Write
+ 339              	.LVL20:
+ 146:functions.c   ****     CyDelay(speedDelay);
+ 340              		.loc 1 146 0
+ 341 0058 6088     		ldrh	r0, [r4, #2]
+ 342 005a FFF7FEFF 		bl	CyDelay
+ 343              	.LVL21:
+ 147:functions.c   ****                 
+ 148:functions.c   ****     A1_Green_Write(0);
+ 344              		.loc 1 148 0
+ 345 005e 0020     		movs	r0, #0
+ 346 0060 FFF7FEFF 		bl	A1_Green_Write
+ 347              	.LVL22:
+ 149:functions.c   ****     A2_Orange_Write(1);
+ 348              		.loc 1 149 0
+ 349 0064 0120     		movs	r0, #1
+ 350 0066 FFF7FEFF 		bl	A2_Orange_Write
+ 351              	.LVL23:
+ 150:functions.c   ****     B1_Purple_Write(0);
+ 352              		.loc 1 150 0
+ 353 006a 0020     		movs	r0, #0
+ 354 006c FFF7FEFF 		bl	B1_Purple_Write
+ 355              	.LVL24:
+ 151:functions.c   ****     B2_White_Write(0); 
+ 356              		.loc 1 151 0
+ 357 0070 0020     		movs	r0, #0
+ 358 0072 FFF7FEFF 		bl	B2_White_Write
+ 359              	.LVL25:
+ 152:functions.c   ****     CyDelay(speedDelay); 
+ 360              		.loc 1 152 0
+ 361 0076 6088     		ldrh	r0, [r4, #2]
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 10
+
+
+ 362 0078 FFF7FEFF 		bl	CyDelay
+ 363              	.LVL26:
+ 153:functions.c   ****     
+ 154:functions.c   ****     A1_Green_Write(0);
+ 364              		.loc 1 154 0
+ 365 007c 0020     		movs	r0, #0
+ 366 007e FFF7FEFF 		bl	A1_Green_Write
+ 367              	.LVL27:
+ 155:functions.c   ****     A2_Orange_Write(1);
+ 368              		.loc 1 155 0
+ 369 0082 0120     		movs	r0, #1
+ 370 0084 FFF7FEFF 		bl	A2_Orange_Write
+ 371              	.LVL28:
+ 156:functions.c   ****     B1_Purple_Write(0);
+ 372              		.loc 1 156 0
+ 373 0088 0020     		movs	r0, #0
+ 374 008a FFF7FEFF 		bl	B1_Purple_Write
+ 375              	.LVL29:
+ 157:functions.c   ****     B2_White_Write(1); 
+ 376              		.loc 1 157 0
+ 377 008e 0120     		movs	r0, #1
+ 378 0090 FFF7FEFF 		bl	B2_White_Write
+ 379              	.LVL30:
+ 158:functions.c   ****     CyDelay(speedDelay); 
+ 380              		.loc 1 158 0
+ 381 0094 6088     		ldrh	r0, [r4, #2]
+ 382 0096 FFF7FEFF 		bl	CyDelay
+ 383              	.LVL31:
+ 159:functions.c   ****     
+ 160:functions.c   ****     A1_Green_Write(0);
+ 384              		.loc 1 160 0
+ 385 009a 0020     		movs	r0, #0
+ 386 009c FFF7FEFF 		bl	A1_Green_Write
+ 387              	.LVL32:
+ 161:functions.c   ****     A2_Orange_Write(0);
+ 388              		.loc 1 161 0
+ 389 00a0 0020     		movs	r0, #0
+ 390 00a2 FFF7FEFF 		bl	A2_Orange_Write
+ 391              	.LVL33:
+ 162:functions.c   ****     B1_Purple_Write(0);
+ 392              		.loc 1 162 0
+ 393 00a6 0020     		movs	r0, #0
+ 394 00a8 FFF7FEFF 		bl	B1_Purple_Write
+ 395              	.LVL34:
+ 163:functions.c   ****     B2_White_Write(1); 
+ 396              		.loc 1 163 0
+ 397 00ac 0120     		movs	r0, #1
+ 398 00ae FFF7FEFF 		bl	B2_White_Write
+ 399              	.LVL35:
+ 164:functions.c   ****     CyDelay(speedDelay);
+ 400              		.loc 1 164 0
+ 401 00b2 6088     		ldrh	r0, [r4, #2]
+ 402 00b4 FFF7FEFF 		bl	CyDelay
+ 403              	.LVL36:
+ 165:functions.c   ****     
+ 166:functions.c   ****     A1_Green_Write(1);
+ 404              		.loc 1 166 0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 11
+
+
+ 405 00b8 0120     		movs	r0, #1
+ 406 00ba FFF7FEFF 		bl	A1_Green_Write
+ 407              	.LVL37:
+ 167:functions.c   ****     A2_Orange_Write(0);
+ 408              		.loc 1 167 0
+ 409 00be 0020     		movs	r0, #0
+ 410 00c0 FFF7FEFF 		bl	A2_Orange_Write
+ 411              	.LVL38:
+ 168:functions.c   ****     B1_Purple_Write(0);
+ 412              		.loc 1 168 0
+ 413 00c4 0020     		movs	r0, #0
+ 414 00c6 FFF7FEFF 		bl	B1_Purple_Write
+ 415              	.LVL39:
+ 169:functions.c   ****     B2_White_Write(1); 
+ 416              		.loc 1 169 0
+ 417 00ca 0120     		movs	r0, #1
+ 418 00cc FFF7FEFF 		bl	B2_White_Write
+ 419              	.LVL40:
+ 170:functions.c   ****     CyDelay(speedDelay); 
+ 420              		.loc 1 170 0
+ 421 00d0 6088     		ldrh	r0, [r4, #2]
+ 422 00d2 FFF7FEFF 		bl	CyDelay
+ 423              	.LVL41:
+ 171:functions.c   ****     
+ 172:functions.c   ****     A1_Green_Write(1);
+ 424              		.loc 1 172 0
+ 425 00d6 0120     		movs	r0, #1
+ 426 00d8 FFF7FEFF 		bl	A1_Green_Write
+ 427              	.LVL42:
+ 173:functions.c   ****     A2_Orange_Write(0);
+ 428              		.loc 1 173 0
+ 429 00dc 0020     		movs	r0, #0
+ 430 00de FFF7FEFF 		bl	A2_Orange_Write
+ 431              	.LVL43:
+ 174:functions.c   ****     B1_Purple_Write(0);
+ 432              		.loc 1 174 0
+ 433 00e2 0020     		movs	r0, #0
+ 434 00e4 FFF7FEFF 		bl	B1_Purple_Write
+ 435              	.LVL44:
+ 175:functions.c   ****     B2_White_Write(0); 
+ 436              		.loc 1 175 0
+ 437 00e8 0020     		movs	r0, #0
+ 438 00ea FFF7FEFF 		bl	B2_White_Write
+ 439              	.LVL45:
+ 176:functions.c   ****     CyDelay(speedDelay);  
+ 440              		.loc 1 176 0
+ 441 00ee 6088     		ldrh	r0, [r4, #2]
+ 442 00f0 FFF7FEFF 		bl	CyDelay
+ 443              	.LVL46:
+ 444 00f4 10BD     		pop	{r4, pc}
+ 445              	.L35:
+ 446 00f6 00BF     		.align	2
+ 447              	.L34:
+ 448 00f8 00000000 		.word	.LANCHOR1
+ 449              		.cfi_endproc
+ 450              	.LFE72:
+ 451              		.size	driveForwardsHalf, .-driveForwardsHalf
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 12
+
+
+ 452              		.section	.text.driveForwardsFull,"ax",%progbits
+ 453              		.align	2
+ 454              		.global	driveForwardsFull
+ 455              		.thumb
+ 456              		.thumb_func
+ 457              		.type	driveForwardsFull, %function
+ 458              	driveForwardsFull:
+ 459              	.LFB73:
+ 177:functions.c   ****     
+ 178:functions.c   **** }
+ 179:functions.c   **** void driveForwardsFull() {
+ 460              		.loc 1 179 0
+ 461              		.cfi_startproc
+ 462              		@ args = 0, pretend = 0, frame = 0
+ 463              		@ frame_needed = 0, uses_anonymous_args = 0
+ 464 0000 10B5     		push	{r4, lr}
+ 465              		.cfi_def_cfa_offset 8
+ 466              		.cfi_offset 4, -8
+ 467              		.cfi_offset 14, -4
+ 180:functions.c   ****     A1_Green_Write(1);
+ 468              		.loc 1 180 0
+ 469 0002 0120     		movs	r0, #1
+ 470 0004 FFF7FEFF 		bl	A1_Green_Write
+ 471              	.LVL47:
+ 181:functions.c   ****     A2_Orange_Write(0);
+ 472              		.loc 1 181 0
+ 473 0008 0020     		movs	r0, #0
+ 474 000a FFF7FEFF 		bl	A2_Orange_Write
+ 475              	.LVL48:
+ 182:functions.c   ****     B1_Purple_Write(1);
+ 476              		.loc 1 182 0
+ 477 000e 0120     		movs	r0, #1
+ 478 0010 FFF7FEFF 		bl	B1_Purple_Write
+ 479              	.LVL49:
+ 183:functions.c   ****     B2_White_Write(0);
+ 480              		.loc 1 183 0
+ 481 0014 0020     		movs	r0, #0
+ 482 0016 FFF7FEFF 		bl	B2_White_Write
+ 483              	.LVL50:
+ 184:functions.c   ****     CyDelay(speedDelay);
+ 484              		.loc 1 184 0
+ 485 001a 194C     		ldr	r4, .L38
+ 486 001c 6088     		ldrh	r0, [r4, #2]
+ 487 001e FFF7FEFF 		bl	CyDelay
+ 488              	.LVL51:
+ 185:functions.c   ****     
+ 186:functions.c   ****     A1_Green_Write(0);
+ 489              		.loc 1 186 0
+ 490 0022 0020     		movs	r0, #0
+ 491 0024 FFF7FEFF 		bl	A1_Green_Write
+ 492              	.LVL52:
+ 187:functions.c   ****     A2_Orange_Write(1);
+ 493              		.loc 1 187 0
+ 494 0028 0120     		movs	r0, #1
+ 495 002a FFF7FEFF 		bl	A2_Orange_Write
+ 496              	.LVL53:
+ 188:functions.c   ****     B1_Purple_Write(1);
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 13
+
+
+ 497              		.loc 1 188 0
+ 498 002e 0120     		movs	r0, #1
+ 499 0030 FFF7FEFF 		bl	B1_Purple_Write
+ 500              	.LVL54:
+ 189:functions.c   ****     B2_White_Write(0);
+ 501              		.loc 1 189 0
+ 502 0034 0020     		movs	r0, #0
+ 503 0036 FFF7FEFF 		bl	B2_White_Write
+ 504              	.LVL55:
+ 190:functions.c   ****     CyDelay(speedDelay);
+ 505              		.loc 1 190 0
+ 506 003a 6088     		ldrh	r0, [r4, #2]
+ 507 003c FFF7FEFF 		bl	CyDelay
+ 508              	.LVL56:
+ 191:functions.c   ****     
+ 192:functions.c   ****     A1_Green_Write(0);
+ 509              		.loc 1 192 0
+ 510 0040 0020     		movs	r0, #0
+ 511 0042 FFF7FEFF 		bl	A1_Green_Write
+ 512              	.LVL57:
+ 193:functions.c   ****     A2_Orange_Write(1);
+ 513              		.loc 1 193 0
+ 514 0046 0120     		movs	r0, #1
+ 515 0048 FFF7FEFF 		bl	A2_Orange_Write
+ 516              	.LVL58:
+ 194:functions.c   ****     B1_Purple_Write(0);
+ 517              		.loc 1 194 0
+ 518 004c 0020     		movs	r0, #0
+ 519 004e FFF7FEFF 		bl	B1_Purple_Write
+ 520              	.LVL59:
+ 195:functions.c   ****     B2_White_Write(1);
+ 521              		.loc 1 195 0
+ 522 0052 0120     		movs	r0, #1
+ 523 0054 FFF7FEFF 		bl	B2_White_Write
+ 524              	.LVL60:
+ 196:functions.c   ****     CyDelay(speedDelay);
+ 525              		.loc 1 196 0
+ 526 0058 6088     		ldrh	r0, [r4, #2]
+ 527 005a FFF7FEFF 		bl	CyDelay
+ 528              	.LVL61:
+ 197:functions.c   ****     
+ 198:functions.c   ****     A1_Green_Write(1);
+ 529              		.loc 1 198 0
+ 530 005e 0120     		movs	r0, #1
+ 531 0060 FFF7FEFF 		bl	A1_Green_Write
+ 532              	.LVL62:
+ 199:functions.c   ****     A2_Orange_Write(0);
+ 533              		.loc 1 199 0
+ 534 0064 0020     		movs	r0, #0
+ 535 0066 FFF7FEFF 		bl	A2_Orange_Write
+ 536              	.LVL63:
+ 200:functions.c   ****     B1_Purple_Write(0);
+ 537              		.loc 1 200 0
+ 538 006a 0020     		movs	r0, #0
+ 539 006c FFF7FEFF 		bl	B1_Purple_Write
+ 540              	.LVL64:
+ 201:functions.c   ****     B2_White_Write(1);
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 14
+
+
+ 541              		.loc 1 201 0
+ 542 0070 0120     		movs	r0, #1
+ 543 0072 FFF7FEFF 		bl	B2_White_Write
+ 544              	.LVL65:
+ 202:functions.c   ****     CyDelay(speedDelay);
+ 545              		.loc 1 202 0
+ 546 0076 6088     		ldrh	r0, [r4, #2]
+ 547 0078 FFF7FEFF 		bl	CyDelay
+ 548              	.LVL66:
+ 549 007c 10BD     		pop	{r4, pc}
+ 550              	.L39:
+ 551 007e 00BF     		.align	2
+ 552              	.L38:
+ 553 0080 00000000 		.word	.LANCHOR1
+ 554              		.cfi_endproc
+ 555              	.LFE73:
+ 556              		.size	driveForwardsFull, .-driveForwardsFull
+ 557              		.section	.text.driveForwardsWave,"ax",%progbits
+ 558              		.align	2
+ 559              		.global	driveForwardsWave
+ 560              		.thumb
+ 561              		.thumb_func
+ 562              		.type	driveForwardsWave, %function
+ 563              	driveForwardsWave:
+ 564              	.LFB74:
+ 203:functions.c   **** 
+ 204:functions.c   **** }
+ 205:functions.c   **** void driveForwardsWave() {
+ 565              		.loc 1 205 0
+ 566              		.cfi_startproc
+ 567              		@ args = 0, pretend = 0, frame = 0
+ 568              		@ frame_needed = 0, uses_anonymous_args = 0
+ 569 0000 10B5     		push	{r4, lr}
+ 570              		.cfi_def_cfa_offset 8
+ 571              		.cfi_offset 4, -8
+ 572              		.cfi_offset 14, -4
+ 206:functions.c   ****     A1_Green_Write(1);
+ 573              		.loc 1 206 0
+ 574 0002 0120     		movs	r0, #1
+ 575 0004 FFF7FEFF 		bl	A1_Green_Write
+ 576              	.LVL67:
+ 207:functions.c   ****     A2_Orange_Write(0);
+ 577              		.loc 1 207 0
+ 578 0008 0020     		movs	r0, #0
+ 579 000a FFF7FEFF 		bl	A2_Orange_Write
+ 580              	.LVL68:
+ 208:functions.c   ****     B1_Purple_Write(0);
+ 581              		.loc 1 208 0
+ 582 000e 0020     		movs	r0, #0
+ 583 0010 FFF7FEFF 		bl	B1_Purple_Write
+ 584              	.LVL69:
+ 209:functions.c   ****     B2_White_Write(0);
+ 585              		.loc 1 209 0
+ 586 0014 0020     		movs	r0, #0
+ 587 0016 FFF7FEFF 		bl	B2_White_Write
+ 588              	.LVL70:
+ 210:functions.c   ****     CyDelay(speedDelay);
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 15
+
+
+ 589              		.loc 1 210 0
+ 590 001a 194C     		ldr	r4, .L42
+ 591 001c 6088     		ldrh	r0, [r4, #2]
+ 592 001e FFF7FEFF 		bl	CyDelay
+ 593              	.LVL71:
+ 211:functions.c   ****     
+ 212:functions.c   ****     A1_Green_Write(0);
+ 594              		.loc 1 212 0
+ 595 0022 0020     		movs	r0, #0
+ 596 0024 FFF7FEFF 		bl	A1_Green_Write
+ 597              	.LVL72:
+ 213:functions.c   ****     A2_Orange_Write(0);
+ 598              		.loc 1 213 0
+ 599 0028 0020     		movs	r0, #0
+ 600 002a FFF7FEFF 		bl	A2_Orange_Write
+ 601              	.LVL73:
+ 214:functions.c   ****     B1_Purple_Write(1);
+ 602              		.loc 1 214 0
+ 603 002e 0120     		movs	r0, #1
+ 604 0030 FFF7FEFF 		bl	B1_Purple_Write
+ 605              	.LVL74:
+ 215:functions.c   ****     B2_White_Write(0);
+ 606              		.loc 1 215 0
+ 607 0034 0020     		movs	r0, #0
+ 608 0036 FFF7FEFF 		bl	B2_White_Write
+ 609              	.LVL75:
+ 216:functions.c   ****     CyDelay(speedDelay);
+ 610              		.loc 1 216 0
+ 611 003a 6088     		ldrh	r0, [r4, #2]
+ 612 003c FFF7FEFF 		bl	CyDelay
+ 613              	.LVL76:
+ 217:functions.c   ****     
+ 218:functions.c   ****     A1_Green_Write(0);
+ 614              		.loc 1 218 0
+ 615 0040 0020     		movs	r0, #0
+ 616 0042 FFF7FEFF 		bl	A1_Green_Write
+ 617              	.LVL77:
+ 219:functions.c   ****     A2_Orange_Write(1);
+ 618              		.loc 1 219 0
+ 619 0046 0120     		movs	r0, #1
+ 620 0048 FFF7FEFF 		bl	A2_Orange_Write
+ 621              	.LVL78:
+ 220:functions.c   ****     B1_Purple_Write(0);
+ 622              		.loc 1 220 0
+ 623 004c 0020     		movs	r0, #0
+ 624 004e FFF7FEFF 		bl	B1_Purple_Write
+ 625              	.LVL79:
+ 221:functions.c   ****     B2_White_Write(0);
+ 626              		.loc 1 221 0
+ 627 0052 0020     		movs	r0, #0
+ 628 0054 FFF7FEFF 		bl	B2_White_Write
+ 629              	.LVL80:
+ 222:functions.c   ****     CyDelay(speedDelay);
+ 630              		.loc 1 222 0
+ 631 0058 6088     		ldrh	r0, [r4, #2]
+ 632 005a FFF7FEFF 		bl	CyDelay
+ 633              	.LVL81:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 16
+
+
+ 223:functions.c   ****     
+ 224:functions.c   ****     A1_Green_Write(0);
+ 634              		.loc 1 224 0
+ 635 005e 0020     		movs	r0, #0
+ 636 0060 FFF7FEFF 		bl	A1_Green_Write
+ 637              	.LVL82:
+ 225:functions.c   ****     A2_Orange_Write(0);
+ 638              		.loc 1 225 0
+ 639 0064 0020     		movs	r0, #0
+ 640 0066 FFF7FEFF 		bl	A2_Orange_Write
+ 641              	.LVL83:
+ 226:functions.c   ****     B1_Purple_Write(0);
+ 642              		.loc 1 226 0
+ 643 006a 0020     		movs	r0, #0
+ 644 006c FFF7FEFF 		bl	B1_Purple_Write
+ 645              	.LVL84:
+ 227:functions.c   ****     B2_White_Write(1);
+ 646              		.loc 1 227 0
+ 647 0070 0120     		movs	r0, #1
+ 648 0072 FFF7FEFF 		bl	B2_White_Write
+ 649              	.LVL85:
+ 228:functions.c   ****     CyDelay(speedDelay);
+ 650              		.loc 1 228 0
+ 651 0076 6088     		ldrh	r0, [r4, #2]
+ 652 0078 FFF7FEFF 		bl	CyDelay
+ 653              	.LVL86:
+ 654 007c 10BD     		pop	{r4, pc}
+ 655              	.L43:
+ 656 007e 00BF     		.align	2
+ 657              	.L42:
+ 658 0080 00000000 		.word	.LANCHOR1
+ 659              		.cfi_endproc
+ 660              	.LFE74:
+ 661              		.size	driveForwardsWave, .-driveForwardsWave
+ 662              		.section	.text.driveBackwardsHalf,"ax",%progbits
+ 663              		.align	2
+ 664              		.global	driveBackwardsHalf
+ 665              		.thumb
+ 666              		.thumb_func
+ 667              		.type	driveBackwardsHalf, %function
+ 668              	driveBackwardsHalf:
+ 669              	.LFB75:
+ 229:functions.c   **** }
+ 230:functions.c   **** 
+ 231:functions.c   **** void driveBackwardsHalf() {
+ 670              		.loc 1 231 0
+ 671              		.cfi_startproc
+ 672              		@ args = 0, pretend = 0, frame = 0
+ 673              		@ frame_needed = 0, uses_anonymous_args = 0
+ 674 0000 10B5     		push	{r4, lr}
+ 675              		.cfi_def_cfa_offset 8
+ 676              		.cfi_offset 4, -8
+ 677              		.cfi_offset 14, -4
+ 232:functions.c   ****     A1_Green_Write(1);
+ 678              		.loc 1 232 0
+ 679 0002 0120     		movs	r0, #1
+ 680 0004 FFF7FEFF 		bl	A1_Green_Write
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 17
+
+
+ 681              	.LVL87:
+ 233:functions.c   ****     A2_Orange_Write(0);
+ 682              		.loc 1 233 0
+ 683 0008 0020     		movs	r0, #0
+ 684 000a FFF7FEFF 		bl	A2_Orange_Write
+ 685              	.LVL88:
+ 234:functions.c   ****     B1_Purple_Write(0);
+ 686              		.loc 1 234 0
+ 687 000e 0020     		movs	r0, #0
+ 688 0010 FFF7FEFF 		bl	B1_Purple_Write
+ 689              	.LVL89:
+ 235:functions.c   ****     B2_White_Write(0); 
+ 690              		.loc 1 235 0
+ 691 0014 0020     		movs	r0, #0
+ 692 0016 FFF7FEFF 		bl	B2_White_Write
+ 693              	.LVL90:
+ 236:functions.c   ****     CyDelay(speedDelay);  
+ 694              		.loc 1 236 0
+ 695 001a 374C     		ldr	r4, .L46
+ 696 001c 6088     		ldrh	r0, [r4, #2]
+ 697 001e FFF7FEFF 		bl	CyDelay
+ 698              	.LVL91:
+ 237:functions.c   ****     
+ 238:functions.c   ****     A1_Green_Write(1);
+ 699              		.loc 1 238 0
+ 700 0022 0120     		movs	r0, #1
+ 701 0024 FFF7FEFF 		bl	A1_Green_Write
+ 702              	.LVL92:
+ 239:functions.c   ****     A2_Orange_Write(0);
+ 703              		.loc 1 239 0
+ 704 0028 0020     		movs	r0, #0
+ 705 002a FFF7FEFF 		bl	A2_Orange_Write
+ 706              	.LVL93:
+ 240:functions.c   ****     B1_Purple_Write(0);
+ 707              		.loc 1 240 0
+ 708 002e 0020     		movs	r0, #0
+ 709 0030 FFF7FEFF 		bl	B1_Purple_Write
+ 710              	.LVL94:
+ 241:functions.c   ****     B2_White_Write(1); 
+ 711              		.loc 1 241 0
+ 712 0034 0120     		movs	r0, #1
+ 713 0036 FFF7FEFF 		bl	B2_White_Write
+ 714              	.LVL95:
+ 242:functions.c   ****     CyDelay(speedDelay);
+ 715              		.loc 1 242 0
+ 716 003a 6088     		ldrh	r0, [r4, #2]
+ 717 003c FFF7FEFF 		bl	CyDelay
+ 718              	.LVL96:
+ 243:functions.c   ****     
+ 244:functions.c   ****     A1_Green_Write(0);
+ 719              		.loc 1 244 0
+ 720 0040 0020     		movs	r0, #0
+ 721 0042 FFF7FEFF 		bl	A1_Green_Write
+ 722              	.LVL97:
+ 245:functions.c   ****     A2_Orange_Write(0);
+ 723              		.loc 1 245 0
+ 724 0046 0020     		movs	r0, #0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 18
+
+
+ 725 0048 FFF7FEFF 		bl	A2_Orange_Write
+ 726              	.LVL98:
+ 246:functions.c   ****     B1_Purple_Write(0);
+ 727              		.loc 1 246 0
+ 728 004c 0020     		movs	r0, #0
+ 729 004e FFF7FEFF 		bl	B1_Purple_Write
+ 730              	.LVL99:
+ 247:functions.c   ****     B2_White_Write(1); 
+ 731              		.loc 1 247 0
+ 732 0052 0120     		movs	r0, #1
+ 733 0054 FFF7FEFF 		bl	B2_White_Write
+ 734              	.LVL100:
+ 248:functions.c   ****     CyDelay(speedDelay);
+ 735              		.loc 1 248 0
+ 736 0058 6088     		ldrh	r0, [r4, #2]
+ 737 005a FFF7FEFF 		bl	CyDelay
+ 738              	.LVL101:
+ 249:functions.c   ****     
+ 250:functions.c   ****     A1_Green_Write(0);
+ 739              		.loc 1 250 0
+ 740 005e 0020     		movs	r0, #0
+ 741 0060 FFF7FEFF 		bl	A1_Green_Write
+ 742              	.LVL102:
+ 251:functions.c   ****     A2_Orange_Write(1);
+ 743              		.loc 1 251 0
+ 744 0064 0120     		movs	r0, #1
+ 745 0066 FFF7FEFF 		bl	A2_Orange_Write
+ 746              	.LVL103:
+ 252:functions.c   ****     B1_Purple_Write(0);
+ 747              		.loc 1 252 0
+ 748 006a 0020     		movs	r0, #0
+ 749 006c FFF7FEFF 		bl	B1_Purple_Write
+ 750              	.LVL104:
+ 253:functions.c   ****     B2_White_Write(1); 
+ 751              		.loc 1 253 0
+ 752 0070 0120     		movs	r0, #1
+ 753 0072 FFF7FEFF 		bl	B2_White_Write
+ 754              	.LVL105:
+ 254:functions.c   ****     CyDelay(speedDelay); 
+ 755              		.loc 1 254 0
+ 756 0076 6088     		ldrh	r0, [r4, #2]
+ 757 0078 FFF7FEFF 		bl	CyDelay
+ 758              	.LVL106:
+ 255:functions.c   ****     
+ 256:functions.c   ****     A1_Green_Write(0);
+ 759              		.loc 1 256 0
+ 760 007c 0020     		movs	r0, #0
+ 761 007e FFF7FEFF 		bl	A1_Green_Write
+ 762              	.LVL107:
+ 257:functions.c   ****     A2_Orange_Write(1);
+ 763              		.loc 1 257 0
+ 764 0082 0120     		movs	r0, #1
+ 765 0084 FFF7FEFF 		bl	A2_Orange_Write
+ 766              	.LVL108:
+ 258:functions.c   ****     B1_Purple_Write(0);
+ 767              		.loc 1 258 0
+ 768 0088 0020     		movs	r0, #0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 19
+
+
+ 769 008a FFF7FEFF 		bl	B1_Purple_Write
+ 770              	.LVL109:
+ 259:functions.c   ****     B2_White_Write(0); 
+ 771              		.loc 1 259 0
+ 772 008e 0020     		movs	r0, #0
+ 773 0090 FFF7FEFF 		bl	B2_White_Write
+ 774              	.LVL110:
+ 260:functions.c   ****     CyDelay(speedDelay); 
+ 775              		.loc 1 260 0
+ 776 0094 6088     		ldrh	r0, [r4, #2]
+ 777 0096 FFF7FEFF 		bl	CyDelay
+ 778              	.LVL111:
+ 261:functions.c   ****     
+ 262:functions.c   ****     A1_Green_Write(0);
+ 779              		.loc 1 262 0
+ 780 009a 0020     		movs	r0, #0
+ 781 009c FFF7FEFF 		bl	A1_Green_Write
+ 782              	.LVL112:
+ 263:functions.c   ****     A2_Orange_Write(1);
+ 783              		.loc 1 263 0
+ 784 00a0 0120     		movs	r0, #1
+ 785 00a2 FFF7FEFF 		bl	A2_Orange_Write
+ 786              	.LVL113:
+ 264:functions.c   ****     B1_Purple_Write(1);
+ 787              		.loc 1 264 0
+ 788 00a6 0120     		movs	r0, #1
+ 789 00a8 FFF7FEFF 		bl	B1_Purple_Write
+ 790              	.LVL114:
+ 265:functions.c   ****     B2_White_Write(0);
+ 791              		.loc 1 265 0
+ 792 00ac 0020     		movs	r0, #0
+ 793 00ae FFF7FEFF 		bl	B2_White_Write
+ 794              	.LVL115:
+ 266:functions.c   ****     CyDelay(speedDelay);
+ 795              		.loc 1 266 0
+ 796 00b2 6088     		ldrh	r0, [r4, #2]
+ 797 00b4 FFF7FEFF 		bl	CyDelay
+ 798              	.LVL116:
+ 267:functions.c   ****     
+ 268:functions.c   ****     A1_Green_Write(0);
+ 799              		.loc 1 268 0
+ 800 00b8 0020     		movs	r0, #0
+ 801 00ba FFF7FEFF 		bl	A1_Green_Write
+ 802              	.LVL117:
+ 269:functions.c   ****     A2_Orange_Write(1);
+ 803              		.loc 1 269 0
+ 804 00be 0120     		movs	r0, #1
+ 805 00c0 FFF7FEFF 		bl	A2_Orange_Write
+ 806              	.LVL118:
+ 270:functions.c   ****     B1_Purple_Write(0);
+ 807              		.loc 1 270 0
+ 808 00c4 0020     		movs	r0, #0
+ 809 00c6 FFF7FEFF 		bl	B1_Purple_Write
+ 810              	.LVL119:
+ 271:functions.c   ****     B2_White_Write(0);
+ 811              		.loc 1 271 0
+ 812 00ca 0020     		movs	r0, #0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 20
+
+
+ 813 00cc FFF7FEFF 		bl	B2_White_Write
+ 814              	.LVL120:
+ 272:functions.c   ****     CyDelay(speedDelay);
+ 815              		.loc 1 272 0
+ 816 00d0 6088     		ldrh	r0, [r4, #2]
+ 817 00d2 FFF7FEFF 		bl	CyDelay
+ 818              	.LVL121:
+ 273:functions.c   ****     
+ 274:functions.c   ****     A1_Green_Write(1);
+ 819              		.loc 1 274 0
+ 820 00d6 0120     		movs	r0, #1
+ 821 00d8 FFF7FEFF 		bl	A1_Green_Write
+ 822              	.LVL122:
+ 275:functions.c   ****     A2_Orange_Write(0);
+ 823              		.loc 1 275 0
+ 824 00dc 0020     		movs	r0, #0
+ 825 00de FFF7FEFF 		bl	A2_Orange_Write
+ 826              	.LVL123:
+ 276:functions.c   ****     B1_Purple_Write(1);
+ 827              		.loc 1 276 0
+ 828 00e2 0120     		movs	r0, #1
+ 829 00e4 FFF7FEFF 		bl	B1_Purple_Write
+ 830              	.LVL124:
+ 277:functions.c   ****     B2_White_Write(0);
+ 831              		.loc 1 277 0
+ 832 00e8 0020     		movs	r0, #0
+ 833 00ea FFF7FEFF 		bl	B2_White_Write
+ 834              	.LVL125:
+ 278:functions.c   ****     CyDelay(speedDelay);
+ 835              		.loc 1 278 0
+ 836 00ee 6088     		ldrh	r0, [r4, #2]
+ 837 00f0 FFF7FEFF 		bl	CyDelay
+ 838              	.LVL126:
+ 839 00f4 10BD     		pop	{r4, pc}
+ 840              	.L47:
+ 841 00f6 00BF     		.align	2
+ 842              	.L46:
+ 843 00f8 00000000 		.word	.LANCHOR1
+ 844              		.cfi_endproc
+ 845              	.LFE75:
+ 846              		.size	driveBackwardsHalf, .-driveBackwardsHalf
+ 847              		.section	.text.driveBackwardsFull,"ax",%progbits
+ 848              		.align	2
+ 849              		.global	driveBackwardsFull
+ 850              		.thumb
+ 851              		.thumb_func
+ 852              		.type	driveBackwardsFull, %function
+ 853              	driveBackwardsFull:
+ 854              	.LFB76:
+ 279:functions.c   **** }
+ 280:functions.c   **** void driveBackwardsFull() {
+ 855              		.loc 1 280 0
+ 856              		.cfi_startproc
+ 857              		@ args = 0, pretend = 0, frame = 0
+ 858              		@ frame_needed = 0, uses_anonymous_args = 0
+ 859 0000 10B5     		push	{r4, lr}
+ 860              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 21
+
+
+ 861              		.cfi_offset 4, -8
+ 862              		.cfi_offset 14, -4
+ 281:functions.c   ****     A1_Green_Write(1);
+ 863              		.loc 1 281 0
+ 864 0002 0120     		movs	r0, #1
+ 865 0004 FFF7FEFF 		bl	A1_Green_Write
+ 866              	.LVL127:
+ 282:functions.c   ****     A2_Orange_Write(0);
+ 867              		.loc 1 282 0
+ 868 0008 0020     		movs	r0, #0
+ 869 000a FFF7FEFF 		bl	A2_Orange_Write
+ 870              	.LVL128:
+ 283:functions.c   ****     B1_Purple_Write(0);
+ 871              		.loc 1 283 0
+ 872 000e 0020     		movs	r0, #0
+ 873 0010 FFF7FEFF 		bl	B1_Purple_Write
+ 874              	.LVL129:
+ 284:functions.c   ****     B2_White_Write(1);
+ 875              		.loc 1 284 0
+ 876 0014 0120     		movs	r0, #1
+ 877 0016 FFF7FEFF 		bl	B2_White_Write
+ 878              	.LVL130:
+ 285:functions.c   ****     CyDelay(speedDelay);
+ 879              		.loc 1 285 0
+ 880 001a 194C     		ldr	r4, .L50
+ 881 001c 6088     		ldrh	r0, [r4, #2]
+ 882 001e FFF7FEFF 		bl	CyDelay
+ 883              	.LVL131:
+ 286:functions.c   ****     
+ 287:functions.c   ****     A1_Green_Write(0);
+ 884              		.loc 1 287 0
+ 885 0022 0020     		movs	r0, #0
+ 886 0024 FFF7FEFF 		bl	A1_Green_Write
+ 887              	.LVL132:
+ 288:functions.c   ****     A2_Orange_Write(1);
+ 888              		.loc 1 288 0
+ 889 0028 0120     		movs	r0, #1
+ 890 002a FFF7FEFF 		bl	A2_Orange_Write
+ 891              	.LVL133:
+ 289:functions.c   ****     B1_Purple_Write(0);
+ 892              		.loc 1 289 0
+ 893 002e 0020     		movs	r0, #0
+ 894 0030 FFF7FEFF 		bl	B1_Purple_Write
+ 895              	.LVL134:
+ 290:functions.c   ****     B2_White_Write(1);
+ 896              		.loc 1 290 0
+ 897 0034 0120     		movs	r0, #1
+ 898 0036 FFF7FEFF 		bl	B2_White_Write
+ 899              	.LVL135:
+ 291:functions.c   ****     CyDelay(speedDelay);
+ 900              		.loc 1 291 0
+ 901 003a 6088     		ldrh	r0, [r4, #2]
+ 902 003c FFF7FEFF 		bl	CyDelay
+ 903              	.LVL136:
+ 292:functions.c   ****     
+ 293:functions.c   ****     A1_Green_Write(0);
+ 904              		.loc 1 293 0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 22
+
+
+ 905 0040 0020     		movs	r0, #0
+ 906 0042 FFF7FEFF 		bl	A1_Green_Write
+ 907              	.LVL137:
+ 294:functions.c   ****     A2_Orange_Write(1);
+ 908              		.loc 1 294 0
+ 909 0046 0120     		movs	r0, #1
+ 910 0048 FFF7FEFF 		bl	A2_Orange_Write
+ 911              	.LVL138:
+ 295:functions.c   ****     B1_Purple_Write(1);
+ 912              		.loc 1 295 0
+ 913 004c 0120     		movs	r0, #1
+ 914 004e FFF7FEFF 		bl	B1_Purple_Write
+ 915              	.LVL139:
+ 296:functions.c   ****     B2_White_Write(0);
+ 916              		.loc 1 296 0
+ 917 0052 0020     		movs	r0, #0
+ 918 0054 FFF7FEFF 		bl	B2_White_Write
+ 919              	.LVL140:
+ 297:functions.c   ****     CyDelay(speedDelay);
+ 920              		.loc 1 297 0
+ 921 0058 6088     		ldrh	r0, [r4, #2]
+ 922 005a FFF7FEFF 		bl	CyDelay
+ 923              	.LVL141:
+ 298:functions.c   ****     
+ 299:functions.c   ****     A1_Green_Write(1);
+ 924              		.loc 1 299 0
+ 925 005e 0120     		movs	r0, #1
+ 926 0060 FFF7FEFF 		bl	A1_Green_Write
+ 927              	.LVL142:
+ 300:functions.c   ****     A2_Orange_Write(0);
+ 928              		.loc 1 300 0
+ 929 0064 0020     		movs	r0, #0
+ 930 0066 FFF7FEFF 		bl	A2_Orange_Write
+ 931              	.LVL143:
+ 301:functions.c   ****     B1_Purple_Write(1);
+ 932              		.loc 1 301 0
+ 933 006a 0120     		movs	r0, #1
+ 934 006c FFF7FEFF 		bl	B1_Purple_Write
+ 935              	.LVL144:
+ 302:functions.c   ****     B2_White_Write(0);
+ 936              		.loc 1 302 0
+ 937 0070 0020     		movs	r0, #0
+ 938 0072 FFF7FEFF 		bl	B2_White_Write
+ 939              	.LVL145:
+ 303:functions.c   ****     CyDelay(speedDelay);
+ 940              		.loc 1 303 0
+ 941 0076 6088     		ldrh	r0, [r4, #2]
+ 942 0078 FFF7FEFF 		bl	CyDelay
+ 943              	.LVL146:
+ 944 007c 10BD     		pop	{r4, pc}
+ 945              	.L51:
+ 946 007e 00BF     		.align	2
+ 947              	.L50:
+ 948 0080 00000000 		.word	.LANCHOR1
+ 949              		.cfi_endproc
+ 950              	.LFE76:
+ 951              		.size	driveBackwardsFull, .-driveBackwardsFull
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 23
+
+
+ 952              		.section	.text.driveBackwardsWave,"ax",%progbits
+ 953              		.align	2
+ 954              		.global	driveBackwardsWave
+ 955              		.thumb
+ 956              		.thumb_func
+ 957              		.type	driveBackwardsWave, %function
+ 958              	driveBackwardsWave:
+ 959              	.LFB77:
+ 304:functions.c   ****    
+ 305:functions.c   **** }
+ 306:functions.c   **** void driveBackwardsWave() {
+ 960              		.loc 1 306 0
+ 961              		.cfi_startproc
+ 962              		@ args = 0, pretend = 0, frame = 0
+ 963              		@ frame_needed = 0, uses_anonymous_args = 0
+ 964 0000 10B5     		push	{r4, lr}
+ 965              		.cfi_def_cfa_offset 8
+ 966              		.cfi_offset 4, -8
+ 967              		.cfi_offset 14, -4
+ 307:functions.c   **** 
+ 308:functions.c   ****     A1_Green_Write(0);
+ 968              		.loc 1 308 0
+ 969 0002 0020     		movs	r0, #0
+ 970 0004 FFF7FEFF 		bl	A1_Green_Write
+ 971              	.LVL147:
+ 309:functions.c   ****     A2_Orange_Write(0);
+ 972              		.loc 1 309 0
+ 973 0008 0020     		movs	r0, #0
+ 974 000a FFF7FEFF 		bl	A2_Orange_Write
+ 975              	.LVL148:
+ 310:functions.c   ****     B1_Purple_Write(0);
+ 976              		.loc 1 310 0
+ 977 000e 0020     		movs	r0, #0
+ 978 0010 FFF7FEFF 		bl	B1_Purple_Write
+ 979              	.LVL149:
+ 311:functions.c   ****     B2_White_Write(1);
+ 980              		.loc 1 311 0
+ 981 0014 0120     		movs	r0, #1
+ 982 0016 FFF7FEFF 		bl	B2_White_Write
+ 983              	.LVL150:
+ 312:functions.c   ****     CyDelay(speedDelay);
+ 984              		.loc 1 312 0
+ 985 001a 194C     		ldr	r4, .L54
+ 986 001c 6088     		ldrh	r0, [r4, #2]
+ 987 001e FFF7FEFF 		bl	CyDelay
+ 988              	.LVL151:
+ 313:functions.c   ****      
+ 314:functions.c   ****     A1_Green_Write(0);
+ 989              		.loc 1 314 0
+ 990 0022 0020     		movs	r0, #0
+ 991 0024 FFF7FEFF 		bl	A1_Green_Write
+ 992              	.LVL152:
+ 315:functions.c   ****     A2_Orange_Write(1);
+ 993              		.loc 1 315 0
+ 994 0028 0120     		movs	r0, #1
+ 995 002a FFF7FEFF 		bl	A2_Orange_Write
+ 996              	.LVL153:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 24
+
+
+ 316:functions.c   ****     B1_Purple_Write(0);
+ 997              		.loc 1 316 0
+ 998 002e 0020     		movs	r0, #0
+ 999 0030 FFF7FEFF 		bl	B1_Purple_Write
+ 1000              	.LVL154:
+ 317:functions.c   ****     B2_White_Write(0);
+ 1001              		.loc 1 317 0
+ 1002 0034 0020     		movs	r0, #0
+ 1003 0036 FFF7FEFF 		bl	B2_White_Write
+ 1004              	.LVL155:
+ 318:functions.c   ****     CyDelay(speedDelay);
+ 1005              		.loc 1 318 0
+ 1006 003a 6088     		ldrh	r0, [r4, #2]
+ 1007 003c FFF7FEFF 		bl	CyDelay
+ 1008              	.LVL156:
+ 319:functions.c   **** 
+ 320:functions.c   ****     A1_Green_Write(0);
+ 1009              		.loc 1 320 0
+ 1010 0040 0020     		movs	r0, #0
+ 1011 0042 FFF7FEFF 		bl	A1_Green_Write
+ 1012              	.LVL157:
+ 321:functions.c   ****     A2_Orange_Write(0);
+ 1013              		.loc 1 321 0
+ 1014 0046 0020     		movs	r0, #0
+ 1015 0048 FFF7FEFF 		bl	A2_Orange_Write
+ 1016              	.LVL158:
+ 322:functions.c   ****     B1_Purple_Write(1);
+ 1017              		.loc 1 322 0
+ 1018 004c 0120     		movs	r0, #1
+ 1019 004e FFF7FEFF 		bl	B1_Purple_Write
+ 1020              	.LVL159:
+ 323:functions.c   ****     B2_White_Write(0);
+ 1021              		.loc 1 323 0
+ 1022 0052 0020     		movs	r0, #0
+ 1023 0054 FFF7FEFF 		bl	B2_White_Write
+ 1024              	.LVL160:
+ 324:functions.c   ****     CyDelay(speedDelay);
+ 1025              		.loc 1 324 0
+ 1026 0058 6088     		ldrh	r0, [r4, #2]
+ 1027 005a FFF7FEFF 		bl	CyDelay
+ 1028              	.LVL161:
+ 325:functions.c   ****     
+ 326:functions.c   ****     A1_Green_Write(1);
+ 1029              		.loc 1 326 0
+ 1030 005e 0120     		movs	r0, #1
+ 1031 0060 FFF7FEFF 		bl	A1_Green_Write
+ 1032              	.LVL162:
+ 327:functions.c   ****     A2_Orange_Write(0);
+ 1033              		.loc 1 327 0
+ 1034 0064 0020     		movs	r0, #0
+ 1035 0066 FFF7FEFF 		bl	A2_Orange_Write
+ 1036              	.LVL163:
+ 328:functions.c   ****     B1_Purple_Write(0);
+ 1037              		.loc 1 328 0
+ 1038 006a 0020     		movs	r0, #0
+ 1039 006c FFF7FEFF 		bl	B1_Purple_Write
+ 1040              	.LVL164:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 25
+
+
+ 329:functions.c   ****     B2_White_Write(0);
+ 1041              		.loc 1 329 0
+ 1042 0070 0020     		movs	r0, #0
+ 1043 0072 FFF7FEFF 		bl	B2_White_Write
+ 1044              	.LVL165:
+ 330:functions.c   ****     CyDelay(speedDelay);
+ 1045              		.loc 1 330 0
+ 1046 0076 6088     		ldrh	r0, [r4, #2]
+ 1047 0078 FFF7FEFF 		bl	CyDelay
+ 1048              	.LVL166:
+ 1049 007c 10BD     		pop	{r4, pc}
+ 1050              	.L55:
+ 1051 007e 00BF     		.align	2
+ 1052              	.L54:
+ 1053 0080 00000000 		.word	.LANCHOR1
+ 1054              		.cfi_endproc
+ 1055              	.LFE77:
+ 1056              		.size	driveBackwardsWave, .-driveBackwardsWave
+ 1057              		.section	.text.runOnceForward,"ax",%progbits
+ 1058              		.align	2
+ 1059              		.global	runOnceForward
+ 1060              		.thumb
+ 1061              		.thumb_func
+ 1062              		.type	runOnceForward, %function
+ 1063              	runOnceForward:
+ 1064              	.LFB78:
+ 331:functions.c   **** 
+ 332:functions.c   **** }
+ 333:functions.c   **** 
+ 334:functions.c   **** void runOnceForward() {
+ 1065              		.loc 1 334 0
+ 1066              		.cfi_startproc
+ 1067              		@ args = 0, pretend = 0, frame = 0
+ 1068              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1069 0000 10B5     		push	{r4, lr}
+ 1070              		.cfi_def_cfa_offset 8
+ 1071              		.cfi_offset 4, -8
+ 1072              		.cfi_offset 14, -4
+ 1073              	.LVL167:
+ 1074              	.LBB2:
+ 335:functions.c   ****     
+ 336:functions.c   ****     for (uint32_t i = 0; i < 12; i++){
+ 1075              		.loc 1 336 0
+ 1076 0002 0024     		movs	r4, #0
+ 1077 0004 10E0     		b	.L57
+ 1078              	.LVL168:
+ 1079              	.L62:
+ 337:functions.c   ****         switch(state) {
+ 1080              		.loc 1 337 0
+ 1081 0006 0B4B     		ldr	r3, .L64
+ 1082 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1083 000a 022B     		cmp	r3, #2
+ 1084 000c 06D0     		beq	.L59
+ 1085 000e 032B     		cmp	r3, #3
+ 1086 0010 07D0     		beq	.L60
+ 1087 0012 012B     		cmp	r3, #1
+ 1088 0014 07D1     		bne	.L58
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 26
+
+
+ 338:functions.c   ****             
+ 339:functions.c   ****             // Full step
+ 340:functions.c   ****             case 1 : 
+ 341:functions.c   ****             {
+ 342:functions.c   ****                 driveForwardsFull(); 
+ 1089              		.loc 1 342 0
+ 1090 0016 FFF7FEFF 		bl	driveForwardsFull
+ 1091              	.LVL169:
+ 343:functions.c   ****             }
+ 344:functions.c   ****             break;
+ 1092              		.loc 1 344 0
+ 1093 001a 04E0     		b	.L58
+ 1094              	.L59:
+ 345:functions.c   ****             
+ 346:functions.c   ****             // Half step
+ 347:functions.c   ****             case 2 : 
+ 348:functions.c   ****             {
+ 349:functions.c   ****                 driveForwardsHalf();
+ 1095              		.loc 1 349 0
+ 1096 001c FFF7FEFF 		bl	driveForwardsHalf
+ 1097              	.LVL170:
+ 350:functions.c   ****             }
+ 351:functions.c   ****             break;
+ 1098              		.loc 1 351 0
+ 1099 0020 01E0     		b	.L58
+ 1100              	.L60:
+ 352:functions.c   ****             
+ 353:functions.c   ****             // Wave step
+ 354:functions.c   ****             case 3 : 
+ 355:functions.c   ****             {
+ 356:functions.c   ****                 driveForwardsWave();
+ 1101              		.loc 1 356 0
+ 1102 0022 FFF7FEFF 		bl	driveForwardsWave
+ 1103              	.LVL171:
+ 1104              	.L58:
+ 336:functions.c   ****         switch(state) {
+ 1105              		.loc 1 336 0 discriminator 2
+ 1106 0026 0134     		adds	r4, r4, #1
+ 1107              	.LVL172:
+ 1108              	.L57:
+ 336:functions.c   ****         switch(state) {
+ 1109              		.loc 1 336 0 is_stmt 0 discriminator 1
+ 1110 0028 0B2C     		cmp	r4, #11
+ 1111 002a ECD9     		bls	.L62
+ 1112              	.LBE2:
+ 357:functions.c   ****             }
+ 358:functions.c   ****             break;
+ 359:functions.c   ****             
+ 360:functions.c   ****             default : 
+ 361:functions.c   ****             {
+ 362:functions.c   ****                 //Nothing
+ 363:functions.c   ****             }
+ 364:functions.c   ****             break;
+ 365:functions.c   ****         }     
+ 366:functions.c   ****     }
+ 367:functions.c   ****     
+ 368:functions.c   ****     
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 27
+
+
+ 369:functions.c   ****     direction = 0; // Stop
+ 1113              		.loc 1 369 0 is_stmt 1
+ 1114 002c 0022     		movs	r2, #0
+ 1115 002e 024B     		ldr	r3, .L64+4
+ 1116 0030 1A70     		strb	r2, [r3]
+ 1117 0032 10BD     		pop	{r4, pc}
+ 1118              	.LVL173:
+ 1119              	.L65:
+ 1120              		.align	2
+ 1121              	.L64:
+ 1122 0034 00000000 		.word	.LANCHOR1
+ 1123 0038 00000000 		.word	.LANCHOR0
+ 1124              		.cfi_endproc
+ 1125              	.LFE78:
+ 1126              		.size	runOnceForward, .-runOnceForward
+ 1127              		.section	.text.runOnceBackwards,"ax",%progbits
+ 1128              		.align	2
+ 1129              		.global	runOnceBackwards
+ 1130              		.thumb
+ 1131              		.thumb_func
+ 1132              		.type	runOnceBackwards, %function
+ 1133              	runOnceBackwards:
+ 1134              	.LFB79:
+ 370:functions.c   **** }
+ 371:functions.c   **** void runOnceBackwards() {
+ 1135              		.loc 1 371 0
+ 1136              		.cfi_startproc
+ 1137              		@ args = 0, pretend = 0, frame = 0
+ 1138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1139 0000 10B5     		push	{r4, lr}
+ 1140              		.cfi_def_cfa_offset 8
+ 1141              		.cfi_offset 4, -8
+ 1142              		.cfi_offset 14, -4
+ 1143              	.LVL174:
+ 1144              	.LBB3:
+ 372:functions.c   ****     
+ 373:functions.c   ****     for (uint32_t i = 0; i < 12; i++){
+ 1145              		.loc 1 373 0
+ 1146 0002 0024     		movs	r4, #0
+ 1147 0004 10E0     		b	.L67
+ 1148              	.LVL175:
+ 1149              	.L72:
+ 374:functions.c   ****         switch(state) {
+ 1150              		.loc 1 374 0
+ 1151 0006 0B4B     		ldr	r3, .L74
+ 1152 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1153 000a 022B     		cmp	r3, #2
+ 1154 000c 06D0     		beq	.L69
+ 1155 000e 032B     		cmp	r3, #3
+ 1156 0010 07D0     		beq	.L70
+ 1157 0012 012B     		cmp	r3, #1
+ 1158 0014 07D1     		bne	.L68
+ 375:functions.c   ****             // Full step
+ 376:functions.c   ****             case 1 : 
+ 377:functions.c   ****             {
+ 378:functions.c   ****                 driveBackwardsFull(); 
+ 1159              		.loc 1 378 0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 28
+
+
+ 1160 0016 FFF7FEFF 		bl	driveBackwardsFull
+ 1161              	.LVL176:
+ 379:functions.c   ****             }
+ 380:functions.c   ****             break;
+ 1162              		.loc 1 380 0
+ 1163 001a 04E0     		b	.L68
+ 1164              	.L69:
+ 381:functions.c   ****             
+ 382:functions.c   ****             // Half step
+ 383:functions.c   ****             case 2 : 
+ 384:functions.c   ****             {
+ 385:functions.c   ****                 driveBackwardsHalf();
+ 1165              		.loc 1 385 0
+ 1166 001c FFF7FEFF 		bl	driveBackwardsHalf
+ 1167              	.LVL177:
+ 386:functions.c   ****             }
+ 387:functions.c   ****             break;
+ 1168              		.loc 1 387 0
+ 1169 0020 01E0     		b	.L68
+ 1170              	.L70:
+ 388:functions.c   ****             
+ 389:functions.c   ****             // Wave step
+ 390:functions.c   ****             case 3 : 
+ 391:functions.c   ****             {
+ 392:functions.c   ****                 driveBackwardsWave();
+ 1171              		.loc 1 392 0
+ 1172 0022 FFF7FEFF 		bl	driveBackwardsWave
+ 1173              	.LVL178:
+ 1174              	.L68:
+ 373:functions.c   ****         switch(state) {
+ 1175              		.loc 1 373 0 discriminator 2
+ 1176 0026 0134     		adds	r4, r4, #1
+ 1177              	.LVL179:
+ 1178              	.L67:
+ 373:functions.c   ****         switch(state) {
+ 1179              		.loc 1 373 0 is_stmt 0 discriminator 1
+ 1180 0028 0B2C     		cmp	r4, #11
+ 1181 002a ECD9     		bls	.L72
+ 1182              	.LBE3:
+ 393:functions.c   ****             }
+ 394:functions.c   ****             break;
+ 395:functions.c   ****             
+ 396:functions.c   ****             default : 
+ 397:functions.c   ****             {
+ 398:functions.c   ****                 //Nothing
+ 399:functions.c   ****             }
+ 400:functions.c   ****             break;
+ 401:functions.c   ****         }     
+ 402:functions.c   ****     }
+ 403:functions.c   ****     direction = 0; // Stop    
+ 1183              		.loc 1 403 0 is_stmt 1
+ 1184 002c 0022     		movs	r2, #0
+ 1185 002e 024B     		ldr	r3, .L74+4
+ 1186 0030 1A70     		strb	r2, [r3]
+ 1187 0032 10BD     		pop	{r4, pc}
+ 1188              	.LVL180:
+ 1189              	.L75:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 29
+
+
+ 1190              		.align	2
+ 1191              	.L74:
+ 1192 0034 00000000 		.word	.LANCHOR1
+ 1193 0038 00000000 		.word	.LANCHOR0
+ 1194              		.cfi_endproc
+ 1195              	.LFE79:
+ 1196              		.size	runOnceBackwards, .-runOnceBackwards
+ 1197              		.section	.text.run,"ax",%progbits
+ 1198              		.align	2
+ 1199              		.global	run
+ 1200              		.thumb
+ 1201              		.thumb_func
+ 1202              		.type	run, %function
+ 1203              	run:
+ 1204              	.LFB65:
+  16:functions.c   ****     switch(byte)
+ 1205              		.loc 1 16 0
+ 1206              		.cfi_startproc
+ 1207              		@ args = 0, pretend = 0, frame = 0
+ 1208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1209              	.LVL181:
+ 1210 0000 08B5     		push	{r3, lr}
+ 1211              		.cfi_def_cfa_offset 8
+ 1212              		.cfi_offset 3, -8
+ 1213              		.cfi_offset 14, -4
+  17:functions.c   ****     {
+ 1214              		.loc 1 17 0
+ 1215 0002 3038     		subs	r0, r0, #48
+ 1216              	.LVL182:
+ 1217 0004 4728     		cmp	r0, #71
+ 1218 0006 45D8     		bhi	.L76
+ 1219 0008 DFE800F0 		tbb	[pc, r0]
+ 1220              	.L79:
+ 1221 000c 36       		.byte	(.L78-.L79)/2
+ 1222 000d 30       		.byte	(.L80-.L79)/2
+ 1223 000e 33       		.byte	(.L81-.L79)/2
+ 1224 000f 44       		.byte	(.L76-.L79)/2
+ 1225 0010 44       		.byte	(.L76-.L79)/2
+ 1226 0011 44       		.byte	(.L76-.L79)/2
+ 1227 0012 44       		.byte	(.L76-.L79)/2
+ 1228 0013 44       		.byte	(.L76-.L79)/2
+ 1229 0014 44       		.byte	(.L76-.L79)/2
+ 1230 0015 44       		.byte	(.L76-.L79)/2
+ 1231 0016 44       		.byte	(.L76-.L79)/2
+ 1232 0017 44       		.byte	(.L76-.L79)/2
+ 1233 0018 44       		.byte	(.L76-.L79)/2
+ 1234 0019 44       		.byte	(.L76-.L79)/2
+ 1235 001a 44       		.byte	(.L76-.L79)/2
+ 1236 001b 44       		.byte	(.L76-.L79)/2
+ 1237 001c 44       		.byte	(.L76-.L79)/2
+ 1238 001d 44       		.byte	(.L76-.L79)/2
+ 1239 001e 44       		.byte	(.L76-.L79)/2
+ 1240 001f 44       		.byte	(.L76-.L79)/2
+ 1241 0020 44       		.byte	(.L76-.L79)/2
+ 1242 0021 44       		.byte	(.L76-.L79)/2
+ 1243 0022 44       		.byte	(.L76-.L79)/2
+ 1244 0023 44       		.byte	(.L76-.L79)/2
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 30
+
+
+ 1245 0024 44       		.byte	(.L76-.L79)/2
+ 1246 0025 44       		.byte	(.L76-.L79)/2
+ 1247 0026 44       		.byte	(.L76-.L79)/2
+ 1248 0027 44       		.byte	(.L76-.L79)/2
+ 1249 0028 44       		.byte	(.L76-.L79)/2
+ 1250 0029 44       		.byte	(.L76-.L79)/2
+ 1251 002a 44       		.byte	(.L76-.L79)/2
+ 1252 002b 44       		.byte	(.L76-.L79)/2
+ 1253 002c 44       		.byte	(.L76-.L79)/2
+ 1254 002d 44       		.byte	(.L76-.L79)/2
+ 1255 002e 44       		.byte	(.L76-.L79)/2
+ 1256 002f 44       		.byte	(.L76-.L79)/2
+ 1257 0030 44       		.byte	(.L76-.L79)/2
+ 1258 0031 44       		.byte	(.L76-.L79)/2
+ 1259 0032 44       		.byte	(.L76-.L79)/2
+ 1260 0033 44       		.byte	(.L76-.L79)/2
+ 1261 0034 44       		.byte	(.L76-.L79)/2
+ 1262 0035 44       		.byte	(.L76-.L79)/2
+ 1263 0036 44       		.byte	(.L76-.L79)/2
+ 1264 0037 44       		.byte	(.L76-.L79)/2
+ 1265 0038 44       		.byte	(.L76-.L79)/2
+ 1266 0039 44       		.byte	(.L76-.L79)/2
+ 1267 003a 44       		.byte	(.L76-.L79)/2
+ 1268 003b 44       		.byte	(.L76-.L79)/2
+ 1269 003c 44       		.byte	(.L76-.L79)/2
+ 1270 003d 39       		.byte	(.L82-.L79)/2
+ 1271 003e 44       		.byte	(.L76-.L79)/2
+ 1272 003f 44       		.byte	(.L76-.L79)/2
+ 1273 0040 41       		.byte	(.L83-.L79)/2
+ 1274 0041 2A       		.byte	(.L84-.L79)/2
+ 1275 0042 44       		.byte	(.L76-.L79)/2
+ 1276 0043 44       		.byte	(.L76-.L79)/2
+ 1277 0044 44       		.byte	(.L76-.L79)/2
+ 1278 0045 44       		.byte	(.L76-.L79)/2
+ 1279 0046 44       		.byte	(.L76-.L79)/2
+ 1280 0047 44       		.byte	(.L76-.L79)/2
+ 1281 0048 44       		.byte	(.L76-.L79)/2
+ 1282 0049 44       		.byte	(.L76-.L79)/2
+ 1283 004a 44       		.byte	(.L76-.L79)/2
+ 1284 004b 44       		.byte	(.L76-.L79)/2
+ 1285 004c 44       		.byte	(.L76-.L79)/2
+ 1286 004d 24       		.byte	(.L85-.L79)/2
+ 1287 004e 2D       		.byte	(.L86-.L79)/2
+ 1288 004f 3D       		.byte	(.L87-.L79)/2
+ 1289 0050 44       		.byte	(.L76-.L79)/2
+ 1290 0051 44       		.byte	(.L76-.L79)/2
+ 1291 0052 44       		.byte	(.L76-.L79)/2
+ 1292 0053 27       		.byte	(.L88-.L79)/2
+ 1293              		.p2align 1
+ 1294              	.L85:
+  21:functions.c   ****         }
+ 1295              		.loc 1 21 0
+ 1296 0054 FFF7FEFF 		bl	decreaseSpeed
+ 1297              	.LVL183:
+  23:functions.c   ****         case 'w' :
+ 1298              		.loc 1 23 0
+ 1299 0058 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 31
+
+
+ 1300              	.L88:
+  26:functions.c   ****         }
+ 1301              		.loc 1 26 0
+ 1302 005a FFF7FEFF 		bl	increaseSpeed
+ 1303              	.LVL184:
+  28:functions.c   ****         
+ 1304              		.loc 1 28 0
+ 1305 005e 08BD     		pop	{r3, pc}
+ 1306              	.L84:
+  32:functions.c   ****         }
+ 1307              		.loc 1 32 0
+ 1308 0060 FFF7FEFF 		bl	runOnceForward
+ 1309              	.LVL185:
+  34:functions.c   ****         
+ 1310              		.loc 1 34 0
+ 1311 0064 08BD     		pop	{r3, pc}
+ 1312              	.L86:
+  38:functions.c   ****         }
+ 1313              		.loc 1 38 0
+ 1314 0066 FFF7FEFF 		bl	runOnceBackwards
+ 1315              	.LVL186:
+  40:functions.c   ****         
+ 1316              		.loc 1 40 0
+ 1317 006a 08BD     		pop	{r3, pc}
+ 1318              	.L80:
+  44:functions.c   ****         }
+ 1319              		.loc 1 44 0
+ 1320 006c FFF7FEFF 		bl	driveForwards
+ 1321              	.LVL187:
+  46:functions.c   ****         
+ 1322              		.loc 1 46 0
+ 1323 0070 08BD     		pop	{r3, pc}
+ 1324              	.L81:
+  50:functions.c   ****         }
+ 1325              		.loc 1 50 0
+ 1326 0072 FFF7FEFF 		bl	driveBackwards
+ 1327              	.LVL188:
+  52:functions.c   ****         
+ 1328              		.loc 1 52 0
+ 1329 0076 08BD     		pop	{r3, pc}
+ 1330              	.L78:
+  56:functions.c   ****         }
+ 1331              		.loc 1 56 0
+ 1332 0078 FFF7FEFF 		bl	stop
+ 1333              	.LVL189:
+  58:functions.c   ****         
+ 1334              		.loc 1 58 0
+ 1335 007c 08BD     		pop	{r3, pc}
+ 1336              	.L82:
+  63:functions.c   ****         }
+ 1337              		.loc 1 63 0
+ 1338 007e 0120     		movs	r0, #1
+ 1339 0080 FFF7FEFF 		bl	changeState
+ 1340              	.LVL190:
+  65:functions.c   ****         
+ 1341              		.loc 1 65 0
+ 1342 0084 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 32
+
+
+ 1343              	.L87:
+  70:functions.c   ****         }
+ 1344              		.loc 1 70 0
+ 1345 0086 0220     		movs	r0, #2
+ 1346 0088 FFF7FEFF 		bl	changeState
+ 1347              	.LVL191:
+  72:functions.c   ****         
+ 1348              		.loc 1 72 0
+ 1349 008c 08BD     		pop	{r3, pc}
+ 1350              	.L83:
+  77:functions.c   ****         }
+ 1351              		.loc 1 77 0
+ 1352 008e 0320     		movs	r0, #3
+ 1353 0090 FFF7FEFF 		bl	changeState
+ 1354              	.LVL192:
+ 1355              	.L76:
+ 1356 0094 08BD     		pop	{r3, pc}
+ 1357              		.cfi_endproc
+ 1358              	.LFE65:
+ 1359              		.size	run, .-run
+ 1360              		.global	direction
+ 1361              		.global	state
+ 1362              		.global	speedDelay
+ 1363 0096 00BF     		.data
+ 1364              		.align	1
+ 1365              		.set	.LANCHOR1,. + 0
+ 1366              		.type	state, %object
+ 1367              		.size	state, 1
+ 1368              	state:
+ 1369 0000 01       		.byte	1
+ 1370 0001 00       		.space	1
+ 1371              		.type	speedDelay, %object
+ 1372              		.size	speedDelay, 2
+ 1373              	speedDelay:
+ 1374 0002 1400     		.short	20
+ 1375              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 1376              		.align	2
+ 1377              	.LC0:
+ 1378 0000 4D6F746F 		.ascii	"Motor cannot go slower\015\012\000"
+ 1378      72206361 
+ 1378      6E6E6F74 
+ 1378      20676F20 
+ 1378      736C6F77 
+ 1379 0019 000000   		.space	3
+ 1380              	.LC1:
+ 1381 001c 4D6F746F 		.ascii	"Motor cannot go faster\015\012\000"
+ 1381      72206361 
+ 1381      6E6E6F74 
+ 1381      20676F20 
+ 1381      66617374 
+ 1382              		.bss
+ 1383              		.set	.LANCHOR0,. + 0
+ 1384              		.type	direction, %object
+ 1385              		.size	direction, 1
+ 1386              	direction:
+ 1387 0000 00       		.space	1
+ 1388              		.text
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 33
+
+
+ 1389              	.Letext0:
+ 1390              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1391              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 1392              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 1393              		.file 5 "Generated_Source\\PSoC5/UART_1.h"
+ 1394              		.file 6 "Generated_Source\\PSoC5/A1_Green.h"
+ 1395              		.file 7 "Generated_Source\\PSoC5/A2_Orange.h"
+ 1396              		.file 8 "Generated_Source\\PSoC5/B1_Purple.h"
+ 1397              		.file 9 "Generated_Source\\PSoC5/B2_White.h"
+ 1398              		.file 10 "Generated_Source\\PSoC5/CyLib.h"
+ 1399              		.section	.debug_info,"",%progbits
+ 1400              	.Ldebug_info0:
+ 1401 0000 DF0E0000 		.4byte	0xedf
+ 1402 0004 0400     		.2byte	0x4
+ 1403 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1404 000a 04       		.byte	0x4
+ 1405 000b 01       		.uleb128 0x1
+ 1406 000c BF000000 		.4byte	.LASF50
+ 1407 0010 0C       		.byte	0xc
+ 1408 0011 65000000 		.4byte	.LASF51
+ 1409 0015 D3010000 		.4byte	.LASF52
+ 1410 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1411 001d 00000000 		.4byte	0
+ 1412 0021 00000000 		.4byte	.Ldebug_line0
+ 1413 0025 02       		.uleb128 0x2
+ 1414 0026 01       		.byte	0x1
+ 1415 0027 06       		.byte	0x6
+ 1416 0028 1B030000 		.4byte	.LASF0
+ 1417 002c 03       		.uleb128 0x3
+ 1418 002d 0F000000 		.4byte	.LASF3
+ 1419 0031 02       		.byte	0x2
+ 1420 0032 1D       		.byte	0x1d
+ 1421 0033 37000000 		.4byte	0x37
+ 1422 0037 02       		.uleb128 0x2
+ 1423 0038 01       		.byte	0x1
+ 1424 0039 08       		.byte	0x8
+ 1425 003a B1000000 		.4byte	.LASF1
+ 1426 003e 02       		.uleb128 0x2
+ 1427 003f 02       		.byte	0x2
+ 1428 0040 05       		.byte	0x5
+ 1429 0041 DF020000 		.4byte	.LASF2
+ 1430 0045 03       		.uleb128 0x3
+ 1431 0046 84010000 		.4byte	.LASF4
+ 1432 004a 02       		.byte	0x2
+ 1433 004b 2B       		.byte	0x2b
+ 1434 004c 50000000 		.4byte	0x50
+ 1435 0050 02       		.uleb128 0x2
+ 1436 0051 02       		.byte	0x2
+ 1437 0052 07       		.byte	0x7
+ 1438 0053 5F010000 		.4byte	.LASF5
+ 1439 0057 03       		.uleb128 0x3
+ 1440 0058 31000000 		.4byte	.LASF6
+ 1441 005c 02       		.byte	0x2
+ 1442 005d 3F       		.byte	0x3f
+ 1443 005e 62000000 		.4byte	0x62
+ 1444 0062 02       		.uleb128 0x2
+ 1445 0063 04       		.byte	0x4
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 34
+
+
+ 1446 0064 05       		.byte	0x5
+ 1447 0065 FB020000 		.4byte	.LASF7
+ 1448 0069 03       		.uleb128 0x3
+ 1449 006a A5010000 		.4byte	.LASF8
+ 1450 006e 02       		.byte	0x2
+ 1451 006f 41       		.byte	0x41
+ 1452 0070 74000000 		.4byte	0x74
+ 1453 0074 02       		.uleb128 0x2
+ 1454 0075 04       		.byte	0x4
+ 1455 0076 07       		.byte	0x7
+ 1456 0077 4D010000 		.4byte	.LASF9
+ 1457 007b 02       		.uleb128 0x2
+ 1458 007c 08       		.byte	0x8
+ 1459 007d 05       		.byte	0x5
+ 1460 007e A6020000 		.4byte	.LASF10
+ 1461 0082 02       		.uleb128 0x2
+ 1462 0083 08       		.byte	0x8
+ 1463 0084 07       		.byte	0x7
+ 1464 0085 3C020000 		.4byte	.LASF11
+ 1465 0089 04       		.uleb128 0x4
+ 1466 008a 04       		.byte	0x4
+ 1467 008b 05       		.byte	0x5
+ 1468 008c 696E7400 		.ascii	"int\000"
+ 1469 0090 02       		.uleb128 0x2
+ 1470 0091 04       		.byte	0x4
+ 1471 0092 07       		.byte	0x7
+ 1472 0093 17020000 		.4byte	.LASF12
+ 1473 0097 03       		.uleb128 0x3
+ 1474 0098 53020000 		.4byte	.LASF13
+ 1475 009c 03       		.byte	0x3
+ 1476 009d 18       		.byte	0x18
+ 1477 009e 2C000000 		.4byte	0x2c
+ 1478 00a2 03       		.uleb128 0x3
+ 1479 00a3 E9020000 		.4byte	.LASF14
+ 1480 00a7 03       		.byte	0x3
+ 1481 00a8 24       		.byte	0x24
+ 1482 00a9 45000000 		.4byte	0x45
+ 1483 00ad 03       		.uleb128 0x3
+ 1484 00ae 93000000 		.4byte	.LASF15
+ 1485 00b2 03       		.byte	0x3
+ 1486 00b3 2C       		.byte	0x2c
+ 1487 00b4 57000000 		.4byte	0x57
+ 1488 00b8 03       		.uleb128 0x3
+ 1489 00b9 F2020000 		.4byte	.LASF16
+ 1490 00bd 03       		.byte	0x3
+ 1491 00be 30       		.byte	0x30
+ 1492 00bf 69000000 		.4byte	0x69
+ 1493 00c3 02       		.uleb128 0x2
+ 1494 00c4 04       		.byte	0x4
+ 1495 00c5 04       		.byte	0x4
+ 1496 00c6 9B000000 		.4byte	.LASF17
+ 1497 00ca 02       		.uleb128 0x2
+ 1498 00cb 08       		.byte	0x8
+ 1499 00cc 04       		.byte	0x4
+ 1500 00cd 8F010000 		.4byte	.LASF18
+ 1501 00d1 02       		.uleb128 0x2
+ 1502 00d2 01       		.byte	0x1
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 35
+
+
+ 1503 00d3 08       		.byte	0x8
+ 1504 00d4 BD020000 		.4byte	.LASF19
+ 1505 00d8 02       		.uleb128 0x2
+ 1506 00d9 08       		.byte	0x8
+ 1507 00da 04       		.byte	0x4
+ 1508 00db 0F030000 		.4byte	.LASF20
+ 1509 00df 02       		.uleb128 0x2
+ 1510 00e0 04       		.byte	0x4
+ 1511 00e1 07       		.byte	0x7
+ 1512 00e2 B4020000 		.4byte	.LASF21
+ 1513 00e6 05       		.uleb128 0x5
+ 1514 00e7 99020000 		.4byte	.LASF22
+ 1515 00eb 01       		.byte	0x1
+ 1516 00ec 08       		.byte	0x8
+ 1517 00ed A2000000 		.4byte	0xa2
+ 1518 00f1 00000000 		.4byte	.LFB63
+ 1519 00f5 0C000000 		.4byte	.LFE63-.LFB63
+ 1520 00f9 01       		.uleb128 0x1
+ 1521 00fa 9C       		.byte	0x9c
+ 1522 00fb 05       		.uleb128 0x5
+ 1523 00fc 5C000000 		.4byte	.LASF23
+ 1524 0100 01       		.byte	0x1
+ 1525 0101 0C       		.byte	0xc
+ 1526 0102 97000000 		.4byte	0x97
+ 1527 0106 00000000 		.4byte	.LFB64
+ 1528 010a 0C000000 		.4byte	.LFE64-.LFB64
+ 1529 010e 01       		.uleb128 0x1
+ 1530 010f 9C       		.byte	0x9c
+ 1531 0110 06       		.uleb128 0x6
+ 1532 0111 5B020000 		.4byte	.LASF24
+ 1533 0115 01       		.byte	0x1
+ 1534 0116 58       		.byte	0x58
+ 1535 0117 00000000 		.4byte	.LFB66
+ 1536 011b 0C000000 		.4byte	.LFE66-.LFB66
+ 1537 011f 01       		.uleb128 0x1
+ 1538 0120 9C       		.byte	0x9c
+ 1539 0121 33010000 		.4byte	0x133
+ 1540 0125 07       		.uleb128 0x7
+ 1541 0126 32020000 		.4byte	.LASF38
+ 1542 012a 01       		.byte	0x1
+ 1543 012b 58       		.byte	0x58
+ 1544 012c 89000000 		.4byte	0x89
+ 1545 0130 01       		.uleb128 0x1
+ 1546 0131 50       		.byte	0x50
+ 1547 0132 00       		.byte	0
+ 1548 0133 06       		.uleb128 0x6
+ 1549 0134 C2020000 		.4byte	.LASF25
+ 1550 0138 01       		.byte	0x1
+ 1551 0139 5C       		.byte	0x5c
+ 1552 013a 00000000 		.4byte	.LFB67
+ 1553 013e 24000000 		.4byte	.LFE67-.LFB67
+ 1554 0142 01       		.uleb128 0x1
+ 1555 0143 9C       		.byte	0x9c
+ 1556 0144 5C010000 		.4byte	0x15c
+ 1557 0148 08       		.uleb128 0x8
+ 1558 0149 18000000 		.4byte	.LVL1
+ 1559 014d A00E0000 		.4byte	0xea0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 36
+
+
+ 1560 0151 09       		.uleb128 0x9
+ 1561 0152 01       		.uleb128 0x1
+ 1562 0153 50       		.byte	0x50
+ 1563 0154 05       		.uleb128 0x5
+ 1564 0155 03       		.byte	0x3
+ 1565 0156 00000000 		.4byte	.LC0
+ 1566 015a 00       		.byte	0
+ 1567 015b 00       		.byte	0
+ 1568 015c 06       		.uleb128 0x6
+ 1569 015d 4E000000 		.4byte	.LASF26
+ 1570 0161 01       		.byte	0x1
+ 1571 0162 65       		.byte	0x65
+ 1572 0163 00000000 		.4byte	.LFB68
+ 1573 0167 24000000 		.4byte	.LFE68-.LFB68
+ 1574 016b 01       		.uleb128 0x1
+ 1575 016c 9C       		.byte	0x9c
+ 1576 016d 85010000 		.4byte	0x185
+ 1577 0171 08       		.uleb128 0x8
+ 1578 0172 18000000 		.4byte	.LVL2
+ 1579 0176 A00E0000 		.4byte	0xea0
+ 1580 017a 09       		.uleb128 0x9
+ 1581 017b 01       		.uleb128 0x1
+ 1582 017c 50       		.byte	0x50
+ 1583 017d 05       		.uleb128 0x5
+ 1584 017e 03       		.byte	0x3
+ 1585 017f 1C000000 		.4byte	.LC1
+ 1586 0183 00       		.byte	0
+ 1587 0184 00       		.byte	0
+ 1588 0185 0A       		.uleb128 0xa
+ 1589 0186 24020000 		.4byte	.LASF27
+ 1590 018a 01       		.byte	0x1
+ 1591 018b 6E       		.byte	0x6e
+ 1592 018c 00000000 		.4byte	.LFB69
+ 1593 0190 0C000000 		.4byte	.LFE69-.LFB69
+ 1594 0194 01       		.uleb128 0x1
+ 1595 0195 9C       		.byte	0x9c
+ 1596 0196 0A       		.uleb128 0xa
+ 1597 0197 8A020000 		.4byte	.LASF28
+ 1598 019b 01       		.byte	0x1
+ 1599 019c 73       		.byte	0x73
+ 1600 019d 00000000 		.4byte	.LFB70
+ 1601 01a1 0C000000 		.4byte	.LFE70-.LFB70
+ 1602 01a5 01       		.uleb128 0x1
+ 1603 01a6 9C       		.byte	0x9c
+ 1604 01a7 06       		.uleb128 0x6
+ 1605 01a8 72010000 		.4byte	.LASF29
+ 1606 01ac 01       		.byte	0x1
+ 1607 01ad 78       		.byte	0x78
+ 1608 01ae 00000000 		.4byte	.LFB71
+ 1609 01b2 28000000 		.4byte	.LFE71-.LFB71
+ 1610 01b6 01       		.uleb128 0x1
+ 1611 01b7 9C       		.byte	0x9c
+ 1612 01b8 09020000 		.4byte	0x209
+ 1613 01bc 0B       		.uleb128 0xb
+ 1614 01bd 0E000000 		.4byte	.LVL3
+ 1615 01c1 AB0E0000 		.4byte	0xeab
+ 1616 01c5 D0010000 		.4byte	0x1d0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 37
+
+
+ 1617 01c9 09       		.uleb128 0x9
+ 1618 01ca 01       		.uleb128 0x1
+ 1619 01cb 50       		.byte	0x50
+ 1620 01cc 02       		.uleb128 0x2
+ 1621 01cd 74       		.byte	0x74
+ 1622 01ce 00       		.sleb128 0
+ 1623 01cf 00       		.byte	0
+ 1624 01d0 0B       		.uleb128 0xb
+ 1625 01d1 14000000 		.4byte	.LVL4
+ 1626 01d5 B60E0000 		.4byte	0xeb6
+ 1627 01d9 E4010000 		.4byte	0x1e4
+ 1628 01dd 09       		.uleb128 0x9
+ 1629 01de 01       		.uleb128 0x1
+ 1630 01df 50       		.byte	0x50
+ 1631 01e0 02       		.uleb128 0x2
+ 1632 01e1 74       		.byte	0x74
+ 1633 01e2 00       		.sleb128 0
+ 1634 01e3 00       		.byte	0
+ 1635 01e4 0B       		.uleb128 0xb
+ 1636 01e5 1A000000 		.4byte	.LVL5
+ 1637 01e9 C10E0000 		.4byte	0xec1
+ 1638 01ed F8010000 		.4byte	0x1f8
+ 1639 01f1 09       		.uleb128 0x9
+ 1640 01f2 01       		.uleb128 0x1
+ 1641 01f3 50       		.byte	0x50
+ 1642 01f4 02       		.uleb128 0x2
+ 1643 01f5 74       		.byte	0x74
+ 1644 01f6 00       		.sleb128 0
+ 1645 01f7 00       		.byte	0
+ 1646 01f8 08       		.uleb128 0x8
+ 1647 01f9 20000000 		.4byte	.LVL6
+ 1648 01fd CC0E0000 		.4byte	0xecc
+ 1649 0201 09       		.uleb128 0x9
+ 1650 0202 01       		.uleb128 0x1
+ 1651 0203 50       		.byte	0x50
+ 1652 0204 02       		.uleb128 0x2
+ 1653 0205 74       		.byte	0x74
+ 1654 0206 00       		.sleb128 0
+ 1655 0207 00       		.byte	0
+ 1656 0208 00       		.byte	0
+ 1657 0209 06       		.uleb128 0x6
+ 1658 020a B0010000 		.4byte	.LASF30
+ 1659 020e 01       		.byte	0x1
+ 1660 020f 81       		.byte	0x81
+ 1661 0210 00000000 		.4byte	.LFB72
+ 1662 0214 FC000000 		.4byte	.LFE72-.LFB72
+ 1663 0218 01       		.uleb128 0x1
+ 1664 0219 9C       		.byte	0x9c
+ 1665 021a C7040000 		.4byte	0x4c7
+ 1666 021e 0B       		.uleb128 0xb
+ 1667 021f 08000000 		.4byte	.LVL7
+ 1668 0223 AB0E0000 		.4byte	0xeab
+ 1669 0227 31020000 		.4byte	0x231
+ 1670 022b 09       		.uleb128 0x9
+ 1671 022c 01       		.uleb128 0x1
+ 1672 022d 50       		.byte	0x50
+ 1673 022e 01       		.uleb128 0x1
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 38
+
+
+ 1674 022f 31       		.byte	0x31
+ 1675 0230 00       		.byte	0
+ 1676 0231 0B       		.uleb128 0xb
+ 1677 0232 0E000000 		.4byte	.LVL8
+ 1678 0236 B60E0000 		.4byte	0xeb6
+ 1679 023a 44020000 		.4byte	0x244
+ 1680 023e 09       		.uleb128 0x9
+ 1681 023f 01       		.uleb128 0x1
+ 1682 0240 50       		.byte	0x50
+ 1683 0241 01       		.uleb128 0x1
+ 1684 0242 30       		.byte	0x30
+ 1685 0243 00       		.byte	0
+ 1686 0244 0B       		.uleb128 0xb
+ 1687 0245 14000000 		.4byte	.LVL9
+ 1688 0249 C10E0000 		.4byte	0xec1
+ 1689 024d 57020000 		.4byte	0x257
+ 1690 0251 09       		.uleb128 0x9
+ 1691 0252 01       		.uleb128 0x1
+ 1692 0253 50       		.byte	0x50
+ 1693 0254 01       		.uleb128 0x1
+ 1694 0255 31       		.byte	0x31
+ 1695 0256 00       		.byte	0
+ 1696 0257 0B       		.uleb128 0xb
+ 1697 0258 1A000000 		.4byte	.LVL10
+ 1698 025c CC0E0000 		.4byte	0xecc
+ 1699 0260 6A020000 		.4byte	0x26a
+ 1700 0264 09       		.uleb128 0x9
+ 1701 0265 01       		.uleb128 0x1
+ 1702 0266 50       		.byte	0x50
+ 1703 0267 01       		.uleb128 0x1
+ 1704 0268 30       		.byte	0x30
+ 1705 0269 00       		.byte	0
+ 1706 026a 0C       		.uleb128 0xc
+ 1707 026b 22000000 		.4byte	.LVL11
+ 1708 026f D70E0000 		.4byte	0xed7
+ 1709 0273 0B       		.uleb128 0xb
+ 1710 0274 28000000 		.4byte	.LVL12
+ 1711 0278 AB0E0000 		.4byte	0xeab
+ 1712 027c 86020000 		.4byte	0x286
+ 1713 0280 09       		.uleb128 0x9
+ 1714 0281 01       		.uleb128 0x1
+ 1715 0282 50       		.byte	0x50
+ 1716 0283 01       		.uleb128 0x1
+ 1717 0284 30       		.byte	0x30
+ 1718 0285 00       		.byte	0
+ 1719 0286 0B       		.uleb128 0xb
+ 1720 0287 2E000000 		.4byte	.LVL13
+ 1721 028b B60E0000 		.4byte	0xeb6
+ 1722 028f 99020000 		.4byte	0x299
+ 1723 0293 09       		.uleb128 0x9
+ 1724 0294 01       		.uleb128 0x1
+ 1725 0295 50       		.byte	0x50
+ 1726 0296 01       		.uleb128 0x1
+ 1727 0297 31       		.byte	0x31
+ 1728 0298 00       		.byte	0
+ 1729 0299 0B       		.uleb128 0xb
+ 1730 029a 34000000 		.4byte	.LVL14
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 39
+
+
+ 1731 029e C10E0000 		.4byte	0xec1
+ 1732 02a2 AC020000 		.4byte	0x2ac
+ 1733 02a6 09       		.uleb128 0x9
+ 1734 02a7 01       		.uleb128 0x1
+ 1735 02a8 50       		.byte	0x50
+ 1736 02a9 01       		.uleb128 0x1
+ 1737 02aa 30       		.byte	0x30
+ 1738 02ab 00       		.byte	0
+ 1739 02ac 0B       		.uleb128 0xb
+ 1740 02ad 3A000000 		.4byte	.LVL15
+ 1741 02b1 CC0E0000 		.4byte	0xecc
+ 1742 02b5 BF020000 		.4byte	0x2bf
+ 1743 02b9 09       		.uleb128 0x9
+ 1744 02ba 01       		.uleb128 0x1
+ 1745 02bb 50       		.byte	0x50
+ 1746 02bc 01       		.uleb128 0x1
+ 1747 02bd 30       		.byte	0x30
+ 1748 02be 00       		.byte	0
+ 1749 02bf 0C       		.uleb128 0xc
+ 1750 02c0 40000000 		.4byte	.LVL16
+ 1751 02c4 D70E0000 		.4byte	0xed7
+ 1752 02c8 0B       		.uleb128 0xb
+ 1753 02c9 46000000 		.4byte	.LVL17
+ 1754 02cd AB0E0000 		.4byte	0xeab
+ 1755 02d1 DB020000 		.4byte	0x2db
+ 1756 02d5 09       		.uleb128 0x9
+ 1757 02d6 01       		.uleb128 0x1
+ 1758 02d7 50       		.byte	0x50
+ 1759 02d8 01       		.uleb128 0x1
+ 1760 02d9 30       		.byte	0x30
+ 1761 02da 00       		.byte	0
+ 1762 02db 0B       		.uleb128 0xb
+ 1763 02dc 4C000000 		.4byte	.LVL18
+ 1764 02e0 B60E0000 		.4byte	0xeb6
+ 1765 02e4 EE020000 		.4byte	0x2ee
+ 1766 02e8 09       		.uleb128 0x9
+ 1767 02e9 01       		.uleb128 0x1
+ 1768 02ea 50       		.byte	0x50
+ 1769 02eb 01       		.uleb128 0x1
+ 1770 02ec 31       		.byte	0x31
+ 1771 02ed 00       		.byte	0
+ 1772 02ee 0B       		.uleb128 0xb
+ 1773 02ef 52000000 		.4byte	.LVL19
+ 1774 02f3 C10E0000 		.4byte	0xec1
+ 1775 02f7 01030000 		.4byte	0x301
+ 1776 02fb 09       		.uleb128 0x9
+ 1777 02fc 01       		.uleb128 0x1
+ 1778 02fd 50       		.byte	0x50
+ 1779 02fe 01       		.uleb128 0x1
+ 1780 02ff 31       		.byte	0x31
+ 1781 0300 00       		.byte	0
+ 1782 0301 0B       		.uleb128 0xb
+ 1783 0302 58000000 		.4byte	.LVL20
+ 1784 0306 CC0E0000 		.4byte	0xecc
+ 1785 030a 14030000 		.4byte	0x314
+ 1786 030e 09       		.uleb128 0x9
+ 1787 030f 01       		.uleb128 0x1
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 40
+
+
+ 1788 0310 50       		.byte	0x50
+ 1789 0311 01       		.uleb128 0x1
+ 1790 0312 30       		.byte	0x30
+ 1791 0313 00       		.byte	0
+ 1792 0314 0C       		.uleb128 0xc
+ 1793 0315 5E000000 		.4byte	.LVL21
+ 1794 0319 D70E0000 		.4byte	0xed7
+ 1795 031d 0B       		.uleb128 0xb
+ 1796 031e 64000000 		.4byte	.LVL22
+ 1797 0322 AB0E0000 		.4byte	0xeab
+ 1798 0326 30030000 		.4byte	0x330
+ 1799 032a 09       		.uleb128 0x9
+ 1800 032b 01       		.uleb128 0x1
+ 1801 032c 50       		.byte	0x50
+ 1802 032d 01       		.uleb128 0x1
+ 1803 032e 30       		.byte	0x30
+ 1804 032f 00       		.byte	0
+ 1805 0330 0B       		.uleb128 0xb
+ 1806 0331 6A000000 		.4byte	.LVL23
+ 1807 0335 B60E0000 		.4byte	0xeb6
+ 1808 0339 43030000 		.4byte	0x343
+ 1809 033d 09       		.uleb128 0x9
+ 1810 033e 01       		.uleb128 0x1
+ 1811 033f 50       		.byte	0x50
+ 1812 0340 01       		.uleb128 0x1
+ 1813 0341 31       		.byte	0x31
+ 1814 0342 00       		.byte	0
+ 1815 0343 0B       		.uleb128 0xb
+ 1816 0344 70000000 		.4byte	.LVL24
+ 1817 0348 C10E0000 		.4byte	0xec1
+ 1818 034c 56030000 		.4byte	0x356
+ 1819 0350 09       		.uleb128 0x9
+ 1820 0351 01       		.uleb128 0x1
+ 1821 0352 50       		.byte	0x50
+ 1822 0353 01       		.uleb128 0x1
+ 1823 0354 30       		.byte	0x30
+ 1824 0355 00       		.byte	0
+ 1825 0356 0B       		.uleb128 0xb
+ 1826 0357 76000000 		.4byte	.LVL25
+ 1827 035b CC0E0000 		.4byte	0xecc
+ 1828 035f 69030000 		.4byte	0x369
+ 1829 0363 09       		.uleb128 0x9
+ 1830 0364 01       		.uleb128 0x1
+ 1831 0365 50       		.byte	0x50
+ 1832 0366 01       		.uleb128 0x1
+ 1833 0367 30       		.byte	0x30
+ 1834 0368 00       		.byte	0
+ 1835 0369 0C       		.uleb128 0xc
+ 1836 036a 7C000000 		.4byte	.LVL26
+ 1837 036e D70E0000 		.4byte	0xed7
+ 1838 0372 0B       		.uleb128 0xb
+ 1839 0373 82000000 		.4byte	.LVL27
+ 1840 0377 AB0E0000 		.4byte	0xeab
+ 1841 037b 85030000 		.4byte	0x385
+ 1842 037f 09       		.uleb128 0x9
+ 1843 0380 01       		.uleb128 0x1
+ 1844 0381 50       		.byte	0x50
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 41
+
+
+ 1845 0382 01       		.uleb128 0x1
+ 1846 0383 30       		.byte	0x30
+ 1847 0384 00       		.byte	0
+ 1848 0385 0B       		.uleb128 0xb
+ 1849 0386 88000000 		.4byte	.LVL28
+ 1850 038a B60E0000 		.4byte	0xeb6
+ 1851 038e 98030000 		.4byte	0x398
+ 1852 0392 09       		.uleb128 0x9
+ 1853 0393 01       		.uleb128 0x1
+ 1854 0394 50       		.byte	0x50
+ 1855 0395 01       		.uleb128 0x1
+ 1856 0396 31       		.byte	0x31
+ 1857 0397 00       		.byte	0
+ 1858 0398 0B       		.uleb128 0xb
+ 1859 0399 8E000000 		.4byte	.LVL29
+ 1860 039d C10E0000 		.4byte	0xec1
+ 1861 03a1 AB030000 		.4byte	0x3ab
+ 1862 03a5 09       		.uleb128 0x9
+ 1863 03a6 01       		.uleb128 0x1
+ 1864 03a7 50       		.byte	0x50
+ 1865 03a8 01       		.uleb128 0x1
+ 1866 03a9 30       		.byte	0x30
+ 1867 03aa 00       		.byte	0
+ 1868 03ab 0B       		.uleb128 0xb
+ 1869 03ac 94000000 		.4byte	.LVL30
+ 1870 03b0 CC0E0000 		.4byte	0xecc
+ 1871 03b4 BE030000 		.4byte	0x3be
+ 1872 03b8 09       		.uleb128 0x9
+ 1873 03b9 01       		.uleb128 0x1
+ 1874 03ba 50       		.byte	0x50
+ 1875 03bb 01       		.uleb128 0x1
+ 1876 03bc 31       		.byte	0x31
+ 1877 03bd 00       		.byte	0
+ 1878 03be 0C       		.uleb128 0xc
+ 1879 03bf 9A000000 		.4byte	.LVL31
+ 1880 03c3 D70E0000 		.4byte	0xed7
+ 1881 03c7 0B       		.uleb128 0xb
+ 1882 03c8 A0000000 		.4byte	.LVL32
+ 1883 03cc AB0E0000 		.4byte	0xeab
+ 1884 03d0 DA030000 		.4byte	0x3da
+ 1885 03d4 09       		.uleb128 0x9
+ 1886 03d5 01       		.uleb128 0x1
+ 1887 03d6 50       		.byte	0x50
+ 1888 03d7 01       		.uleb128 0x1
+ 1889 03d8 30       		.byte	0x30
+ 1890 03d9 00       		.byte	0
+ 1891 03da 0B       		.uleb128 0xb
+ 1892 03db A6000000 		.4byte	.LVL33
+ 1893 03df B60E0000 		.4byte	0xeb6
+ 1894 03e3 ED030000 		.4byte	0x3ed
+ 1895 03e7 09       		.uleb128 0x9
+ 1896 03e8 01       		.uleb128 0x1
+ 1897 03e9 50       		.byte	0x50
+ 1898 03ea 01       		.uleb128 0x1
+ 1899 03eb 30       		.byte	0x30
+ 1900 03ec 00       		.byte	0
+ 1901 03ed 0B       		.uleb128 0xb
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 42
+
+
+ 1902 03ee AC000000 		.4byte	.LVL34
+ 1903 03f2 C10E0000 		.4byte	0xec1
+ 1904 03f6 00040000 		.4byte	0x400
+ 1905 03fa 09       		.uleb128 0x9
+ 1906 03fb 01       		.uleb128 0x1
+ 1907 03fc 50       		.byte	0x50
+ 1908 03fd 01       		.uleb128 0x1
+ 1909 03fe 30       		.byte	0x30
+ 1910 03ff 00       		.byte	0
+ 1911 0400 0B       		.uleb128 0xb
+ 1912 0401 B2000000 		.4byte	.LVL35
+ 1913 0405 CC0E0000 		.4byte	0xecc
+ 1914 0409 13040000 		.4byte	0x413
+ 1915 040d 09       		.uleb128 0x9
+ 1916 040e 01       		.uleb128 0x1
+ 1917 040f 50       		.byte	0x50
+ 1918 0410 01       		.uleb128 0x1
+ 1919 0411 31       		.byte	0x31
+ 1920 0412 00       		.byte	0
+ 1921 0413 0C       		.uleb128 0xc
+ 1922 0414 B8000000 		.4byte	.LVL36
+ 1923 0418 D70E0000 		.4byte	0xed7
+ 1924 041c 0B       		.uleb128 0xb
+ 1925 041d BE000000 		.4byte	.LVL37
+ 1926 0421 AB0E0000 		.4byte	0xeab
+ 1927 0425 2F040000 		.4byte	0x42f
+ 1928 0429 09       		.uleb128 0x9
+ 1929 042a 01       		.uleb128 0x1
+ 1930 042b 50       		.byte	0x50
+ 1931 042c 01       		.uleb128 0x1
+ 1932 042d 31       		.byte	0x31
+ 1933 042e 00       		.byte	0
+ 1934 042f 0B       		.uleb128 0xb
+ 1935 0430 C4000000 		.4byte	.LVL38
+ 1936 0434 B60E0000 		.4byte	0xeb6
+ 1937 0438 42040000 		.4byte	0x442
+ 1938 043c 09       		.uleb128 0x9
+ 1939 043d 01       		.uleb128 0x1
+ 1940 043e 50       		.byte	0x50
+ 1941 043f 01       		.uleb128 0x1
+ 1942 0440 30       		.byte	0x30
+ 1943 0441 00       		.byte	0
+ 1944 0442 0B       		.uleb128 0xb
+ 1945 0443 CA000000 		.4byte	.LVL39
+ 1946 0447 C10E0000 		.4byte	0xec1
+ 1947 044b 55040000 		.4byte	0x455
+ 1948 044f 09       		.uleb128 0x9
+ 1949 0450 01       		.uleb128 0x1
+ 1950 0451 50       		.byte	0x50
+ 1951 0452 01       		.uleb128 0x1
+ 1952 0453 30       		.byte	0x30
+ 1953 0454 00       		.byte	0
+ 1954 0455 0B       		.uleb128 0xb
+ 1955 0456 D0000000 		.4byte	.LVL40
+ 1956 045a CC0E0000 		.4byte	0xecc
+ 1957 045e 68040000 		.4byte	0x468
+ 1958 0462 09       		.uleb128 0x9
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 43
+
+
+ 1959 0463 01       		.uleb128 0x1
+ 1960 0464 50       		.byte	0x50
+ 1961 0465 01       		.uleb128 0x1
+ 1962 0466 31       		.byte	0x31
+ 1963 0467 00       		.byte	0
+ 1964 0468 0C       		.uleb128 0xc
+ 1965 0469 D6000000 		.4byte	.LVL41
+ 1966 046d D70E0000 		.4byte	0xed7
+ 1967 0471 0B       		.uleb128 0xb
+ 1968 0472 DC000000 		.4byte	.LVL42
+ 1969 0476 AB0E0000 		.4byte	0xeab
+ 1970 047a 84040000 		.4byte	0x484
+ 1971 047e 09       		.uleb128 0x9
+ 1972 047f 01       		.uleb128 0x1
+ 1973 0480 50       		.byte	0x50
+ 1974 0481 01       		.uleb128 0x1
+ 1975 0482 31       		.byte	0x31
+ 1976 0483 00       		.byte	0
+ 1977 0484 0B       		.uleb128 0xb
+ 1978 0485 E2000000 		.4byte	.LVL43
+ 1979 0489 B60E0000 		.4byte	0xeb6
+ 1980 048d 97040000 		.4byte	0x497
+ 1981 0491 09       		.uleb128 0x9
+ 1982 0492 01       		.uleb128 0x1
+ 1983 0493 50       		.byte	0x50
+ 1984 0494 01       		.uleb128 0x1
+ 1985 0495 30       		.byte	0x30
+ 1986 0496 00       		.byte	0
+ 1987 0497 0B       		.uleb128 0xb
+ 1988 0498 E8000000 		.4byte	.LVL44
+ 1989 049c C10E0000 		.4byte	0xec1
+ 1990 04a0 AA040000 		.4byte	0x4aa
+ 1991 04a4 09       		.uleb128 0x9
+ 1992 04a5 01       		.uleb128 0x1
+ 1993 04a6 50       		.byte	0x50
+ 1994 04a7 01       		.uleb128 0x1
+ 1995 04a8 30       		.byte	0x30
+ 1996 04a9 00       		.byte	0
+ 1997 04aa 0B       		.uleb128 0xb
+ 1998 04ab EE000000 		.4byte	.LVL45
+ 1999 04af CC0E0000 		.4byte	0xecc
+ 2000 04b3 BD040000 		.4byte	0x4bd
+ 2001 04b7 09       		.uleb128 0x9
+ 2002 04b8 01       		.uleb128 0x1
+ 2003 04b9 50       		.byte	0x50
+ 2004 04ba 01       		.uleb128 0x1
+ 2005 04bb 30       		.byte	0x30
+ 2006 04bc 00       		.byte	0
+ 2007 04bd 0C       		.uleb128 0xc
+ 2008 04be F4000000 		.4byte	.LVL46
+ 2009 04c2 D70E0000 		.4byte	0xed7
+ 2010 04c6 00       		.byte	0
+ 2011 04c7 06       		.uleb128 0x6
+ 2012 04c8 19000000 		.4byte	.LASF31
+ 2013 04cc 01       		.byte	0x1
+ 2014 04cd B3       		.byte	0xb3
+ 2015 04ce 00000000 		.4byte	.LFB73
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 44
+
+
+ 2016 04d2 84000000 		.4byte	.LFE73-.LFB73
+ 2017 04d6 01       		.uleb128 0x1
+ 2018 04d7 9C       		.byte	0x9c
+ 2019 04d8 31060000 		.4byte	0x631
+ 2020 04dc 0B       		.uleb128 0xb
+ 2021 04dd 08000000 		.4byte	.LVL47
+ 2022 04e1 AB0E0000 		.4byte	0xeab
+ 2023 04e5 EF040000 		.4byte	0x4ef
+ 2024 04e9 09       		.uleb128 0x9
+ 2025 04ea 01       		.uleb128 0x1
+ 2026 04eb 50       		.byte	0x50
+ 2027 04ec 01       		.uleb128 0x1
+ 2028 04ed 31       		.byte	0x31
+ 2029 04ee 00       		.byte	0
+ 2030 04ef 0B       		.uleb128 0xb
+ 2031 04f0 0E000000 		.4byte	.LVL48
+ 2032 04f4 B60E0000 		.4byte	0xeb6
+ 2033 04f8 02050000 		.4byte	0x502
+ 2034 04fc 09       		.uleb128 0x9
+ 2035 04fd 01       		.uleb128 0x1
+ 2036 04fe 50       		.byte	0x50
+ 2037 04ff 01       		.uleb128 0x1
+ 2038 0500 30       		.byte	0x30
+ 2039 0501 00       		.byte	0
+ 2040 0502 0B       		.uleb128 0xb
+ 2041 0503 14000000 		.4byte	.LVL49
+ 2042 0507 C10E0000 		.4byte	0xec1
+ 2043 050b 15050000 		.4byte	0x515
+ 2044 050f 09       		.uleb128 0x9
+ 2045 0510 01       		.uleb128 0x1
+ 2046 0511 50       		.byte	0x50
+ 2047 0512 01       		.uleb128 0x1
+ 2048 0513 31       		.byte	0x31
+ 2049 0514 00       		.byte	0
+ 2050 0515 0B       		.uleb128 0xb
+ 2051 0516 1A000000 		.4byte	.LVL50
+ 2052 051a CC0E0000 		.4byte	0xecc
+ 2053 051e 28050000 		.4byte	0x528
+ 2054 0522 09       		.uleb128 0x9
+ 2055 0523 01       		.uleb128 0x1
+ 2056 0524 50       		.byte	0x50
+ 2057 0525 01       		.uleb128 0x1
+ 2058 0526 30       		.byte	0x30
+ 2059 0527 00       		.byte	0
+ 2060 0528 0C       		.uleb128 0xc
+ 2061 0529 22000000 		.4byte	.LVL51
+ 2062 052d D70E0000 		.4byte	0xed7
+ 2063 0531 0B       		.uleb128 0xb
+ 2064 0532 28000000 		.4byte	.LVL52
+ 2065 0536 AB0E0000 		.4byte	0xeab
+ 2066 053a 44050000 		.4byte	0x544
+ 2067 053e 09       		.uleb128 0x9
+ 2068 053f 01       		.uleb128 0x1
+ 2069 0540 50       		.byte	0x50
+ 2070 0541 01       		.uleb128 0x1
+ 2071 0542 30       		.byte	0x30
+ 2072 0543 00       		.byte	0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 45
+
+
+ 2073 0544 0B       		.uleb128 0xb
+ 2074 0545 2E000000 		.4byte	.LVL53
+ 2075 0549 B60E0000 		.4byte	0xeb6
+ 2076 054d 57050000 		.4byte	0x557
+ 2077 0551 09       		.uleb128 0x9
+ 2078 0552 01       		.uleb128 0x1
+ 2079 0553 50       		.byte	0x50
+ 2080 0554 01       		.uleb128 0x1
+ 2081 0555 31       		.byte	0x31
+ 2082 0556 00       		.byte	0
+ 2083 0557 0B       		.uleb128 0xb
+ 2084 0558 34000000 		.4byte	.LVL54
+ 2085 055c C10E0000 		.4byte	0xec1
+ 2086 0560 6A050000 		.4byte	0x56a
+ 2087 0564 09       		.uleb128 0x9
+ 2088 0565 01       		.uleb128 0x1
+ 2089 0566 50       		.byte	0x50
+ 2090 0567 01       		.uleb128 0x1
+ 2091 0568 31       		.byte	0x31
+ 2092 0569 00       		.byte	0
+ 2093 056a 0B       		.uleb128 0xb
+ 2094 056b 3A000000 		.4byte	.LVL55
+ 2095 056f CC0E0000 		.4byte	0xecc
+ 2096 0573 7D050000 		.4byte	0x57d
+ 2097 0577 09       		.uleb128 0x9
+ 2098 0578 01       		.uleb128 0x1
+ 2099 0579 50       		.byte	0x50
+ 2100 057a 01       		.uleb128 0x1
+ 2101 057b 30       		.byte	0x30
+ 2102 057c 00       		.byte	0
+ 2103 057d 0C       		.uleb128 0xc
+ 2104 057e 40000000 		.4byte	.LVL56
+ 2105 0582 D70E0000 		.4byte	0xed7
+ 2106 0586 0B       		.uleb128 0xb
+ 2107 0587 46000000 		.4byte	.LVL57
+ 2108 058b AB0E0000 		.4byte	0xeab
+ 2109 058f 99050000 		.4byte	0x599
+ 2110 0593 09       		.uleb128 0x9
+ 2111 0594 01       		.uleb128 0x1
+ 2112 0595 50       		.byte	0x50
+ 2113 0596 01       		.uleb128 0x1
+ 2114 0597 30       		.byte	0x30
+ 2115 0598 00       		.byte	0
+ 2116 0599 0B       		.uleb128 0xb
+ 2117 059a 4C000000 		.4byte	.LVL58
+ 2118 059e B60E0000 		.4byte	0xeb6
+ 2119 05a2 AC050000 		.4byte	0x5ac
+ 2120 05a6 09       		.uleb128 0x9
+ 2121 05a7 01       		.uleb128 0x1
+ 2122 05a8 50       		.byte	0x50
+ 2123 05a9 01       		.uleb128 0x1
+ 2124 05aa 31       		.byte	0x31
+ 2125 05ab 00       		.byte	0
+ 2126 05ac 0B       		.uleb128 0xb
+ 2127 05ad 52000000 		.4byte	.LVL59
+ 2128 05b1 C10E0000 		.4byte	0xec1
+ 2129 05b5 BF050000 		.4byte	0x5bf
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 46
+
+
+ 2130 05b9 09       		.uleb128 0x9
+ 2131 05ba 01       		.uleb128 0x1
+ 2132 05bb 50       		.byte	0x50
+ 2133 05bc 01       		.uleb128 0x1
+ 2134 05bd 30       		.byte	0x30
+ 2135 05be 00       		.byte	0
+ 2136 05bf 0B       		.uleb128 0xb
+ 2137 05c0 58000000 		.4byte	.LVL60
+ 2138 05c4 CC0E0000 		.4byte	0xecc
+ 2139 05c8 D2050000 		.4byte	0x5d2
+ 2140 05cc 09       		.uleb128 0x9
+ 2141 05cd 01       		.uleb128 0x1
+ 2142 05ce 50       		.byte	0x50
+ 2143 05cf 01       		.uleb128 0x1
+ 2144 05d0 31       		.byte	0x31
+ 2145 05d1 00       		.byte	0
+ 2146 05d2 0C       		.uleb128 0xc
+ 2147 05d3 5E000000 		.4byte	.LVL61
+ 2148 05d7 D70E0000 		.4byte	0xed7
+ 2149 05db 0B       		.uleb128 0xb
+ 2150 05dc 64000000 		.4byte	.LVL62
+ 2151 05e0 AB0E0000 		.4byte	0xeab
+ 2152 05e4 EE050000 		.4byte	0x5ee
+ 2153 05e8 09       		.uleb128 0x9
+ 2154 05e9 01       		.uleb128 0x1
+ 2155 05ea 50       		.byte	0x50
+ 2156 05eb 01       		.uleb128 0x1
+ 2157 05ec 31       		.byte	0x31
+ 2158 05ed 00       		.byte	0
+ 2159 05ee 0B       		.uleb128 0xb
+ 2160 05ef 6A000000 		.4byte	.LVL63
+ 2161 05f3 B60E0000 		.4byte	0xeb6
+ 2162 05f7 01060000 		.4byte	0x601
+ 2163 05fb 09       		.uleb128 0x9
+ 2164 05fc 01       		.uleb128 0x1
+ 2165 05fd 50       		.byte	0x50
+ 2166 05fe 01       		.uleb128 0x1
+ 2167 05ff 30       		.byte	0x30
+ 2168 0600 00       		.byte	0
+ 2169 0601 0B       		.uleb128 0xb
+ 2170 0602 70000000 		.4byte	.LVL64
+ 2171 0606 C10E0000 		.4byte	0xec1
+ 2172 060a 14060000 		.4byte	0x614
+ 2173 060e 09       		.uleb128 0x9
+ 2174 060f 01       		.uleb128 0x1
+ 2175 0610 50       		.byte	0x50
+ 2176 0611 01       		.uleb128 0x1
+ 2177 0612 30       		.byte	0x30
+ 2178 0613 00       		.byte	0
+ 2179 0614 0B       		.uleb128 0xb
+ 2180 0615 76000000 		.4byte	.LVL65
+ 2181 0619 CC0E0000 		.4byte	0xecc
+ 2182 061d 27060000 		.4byte	0x627
+ 2183 0621 09       		.uleb128 0x9
+ 2184 0622 01       		.uleb128 0x1
+ 2185 0623 50       		.byte	0x50
+ 2186 0624 01       		.uleb128 0x1
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 47
+
+
+ 2187 0625 31       		.byte	0x31
+ 2188 0626 00       		.byte	0
+ 2189 0627 0C       		.uleb128 0xc
+ 2190 0628 7C000000 		.4byte	.LVL66
+ 2191 062c D70E0000 		.4byte	0xed7
+ 2192 0630 00       		.byte	0
+ 2193 0631 06       		.uleb128 0x6
+ 2194 0632 38030000 		.4byte	.LASF32
+ 2195 0636 01       		.byte	0x1
+ 2196 0637 CD       		.byte	0xcd
+ 2197 0638 00000000 		.4byte	.LFB74
+ 2198 063c 84000000 		.4byte	.LFE74-.LFB74
+ 2199 0640 01       		.uleb128 0x1
+ 2200 0641 9C       		.byte	0x9c
+ 2201 0642 9B070000 		.4byte	0x79b
+ 2202 0646 0B       		.uleb128 0xb
+ 2203 0647 08000000 		.4byte	.LVL67
+ 2204 064b AB0E0000 		.4byte	0xeab
+ 2205 064f 59060000 		.4byte	0x659
+ 2206 0653 09       		.uleb128 0x9
+ 2207 0654 01       		.uleb128 0x1
+ 2208 0655 50       		.byte	0x50
+ 2209 0656 01       		.uleb128 0x1
+ 2210 0657 31       		.byte	0x31
+ 2211 0658 00       		.byte	0
+ 2212 0659 0B       		.uleb128 0xb
+ 2213 065a 0E000000 		.4byte	.LVL68
+ 2214 065e B60E0000 		.4byte	0xeb6
+ 2215 0662 6C060000 		.4byte	0x66c
+ 2216 0666 09       		.uleb128 0x9
+ 2217 0667 01       		.uleb128 0x1
+ 2218 0668 50       		.byte	0x50
+ 2219 0669 01       		.uleb128 0x1
+ 2220 066a 30       		.byte	0x30
+ 2221 066b 00       		.byte	0
+ 2222 066c 0B       		.uleb128 0xb
+ 2223 066d 14000000 		.4byte	.LVL69
+ 2224 0671 C10E0000 		.4byte	0xec1
+ 2225 0675 7F060000 		.4byte	0x67f
+ 2226 0679 09       		.uleb128 0x9
+ 2227 067a 01       		.uleb128 0x1
+ 2228 067b 50       		.byte	0x50
+ 2229 067c 01       		.uleb128 0x1
+ 2230 067d 30       		.byte	0x30
+ 2231 067e 00       		.byte	0
+ 2232 067f 0B       		.uleb128 0xb
+ 2233 0680 1A000000 		.4byte	.LVL70
+ 2234 0684 CC0E0000 		.4byte	0xecc
+ 2235 0688 92060000 		.4byte	0x692
+ 2236 068c 09       		.uleb128 0x9
+ 2237 068d 01       		.uleb128 0x1
+ 2238 068e 50       		.byte	0x50
+ 2239 068f 01       		.uleb128 0x1
+ 2240 0690 30       		.byte	0x30
+ 2241 0691 00       		.byte	0
+ 2242 0692 0C       		.uleb128 0xc
+ 2243 0693 22000000 		.4byte	.LVL71
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 48
+
+
+ 2244 0697 D70E0000 		.4byte	0xed7
+ 2245 069b 0B       		.uleb128 0xb
+ 2246 069c 28000000 		.4byte	.LVL72
+ 2247 06a0 AB0E0000 		.4byte	0xeab
+ 2248 06a4 AE060000 		.4byte	0x6ae
+ 2249 06a8 09       		.uleb128 0x9
+ 2250 06a9 01       		.uleb128 0x1
+ 2251 06aa 50       		.byte	0x50
+ 2252 06ab 01       		.uleb128 0x1
+ 2253 06ac 30       		.byte	0x30
+ 2254 06ad 00       		.byte	0
+ 2255 06ae 0B       		.uleb128 0xb
+ 2256 06af 2E000000 		.4byte	.LVL73
+ 2257 06b3 B60E0000 		.4byte	0xeb6
+ 2258 06b7 C1060000 		.4byte	0x6c1
+ 2259 06bb 09       		.uleb128 0x9
+ 2260 06bc 01       		.uleb128 0x1
+ 2261 06bd 50       		.byte	0x50
+ 2262 06be 01       		.uleb128 0x1
+ 2263 06bf 30       		.byte	0x30
+ 2264 06c0 00       		.byte	0
+ 2265 06c1 0B       		.uleb128 0xb
+ 2266 06c2 34000000 		.4byte	.LVL74
+ 2267 06c6 C10E0000 		.4byte	0xec1
+ 2268 06ca D4060000 		.4byte	0x6d4
+ 2269 06ce 09       		.uleb128 0x9
+ 2270 06cf 01       		.uleb128 0x1
+ 2271 06d0 50       		.byte	0x50
+ 2272 06d1 01       		.uleb128 0x1
+ 2273 06d2 31       		.byte	0x31
+ 2274 06d3 00       		.byte	0
+ 2275 06d4 0B       		.uleb128 0xb
+ 2276 06d5 3A000000 		.4byte	.LVL75
+ 2277 06d9 CC0E0000 		.4byte	0xecc
+ 2278 06dd E7060000 		.4byte	0x6e7
+ 2279 06e1 09       		.uleb128 0x9
+ 2280 06e2 01       		.uleb128 0x1
+ 2281 06e3 50       		.byte	0x50
+ 2282 06e4 01       		.uleb128 0x1
+ 2283 06e5 30       		.byte	0x30
+ 2284 06e6 00       		.byte	0
+ 2285 06e7 0C       		.uleb128 0xc
+ 2286 06e8 40000000 		.4byte	.LVL76
+ 2287 06ec D70E0000 		.4byte	0xed7
+ 2288 06f0 0B       		.uleb128 0xb
+ 2289 06f1 46000000 		.4byte	.LVL77
+ 2290 06f5 AB0E0000 		.4byte	0xeab
+ 2291 06f9 03070000 		.4byte	0x703
+ 2292 06fd 09       		.uleb128 0x9
+ 2293 06fe 01       		.uleb128 0x1
+ 2294 06ff 50       		.byte	0x50
+ 2295 0700 01       		.uleb128 0x1
+ 2296 0701 30       		.byte	0x30
+ 2297 0702 00       		.byte	0
+ 2298 0703 0B       		.uleb128 0xb
+ 2299 0704 4C000000 		.4byte	.LVL78
+ 2300 0708 B60E0000 		.4byte	0xeb6
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 49
+
+
+ 2301 070c 16070000 		.4byte	0x716
+ 2302 0710 09       		.uleb128 0x9
+ 2303 0711 01       		.uleb128 0x1
+ 2304 0712 50       		.byte	0x50
+ 2305 0713 01       		.uleb128 0x1
+ 2306 0714 31       		.byte	0x31
+ 2307 0715 00       		.byte	0
+ 2308 0716 0B       		.uleb128 0xb
+ 2309 0717 52000000 		.4byte	.LVL79
+ 2310 071b C10E0000 		.4byte	0xec1
+ 2311 071f 29070000 		.4byte	0x729
+ 2312 0723 09       		.uleb128 0x9
+ 2313 0724 01       		.uleb128 0x1
+ 2314 0725 50       		.byte	0x50
+ 2315 0726 01       		.uleb128 0x1
+ 2316 0727 30       		.byte	0x30
+ 2317 0728 00       		.byte	0
+ 2318 0729 0B       		.uleb128 0xb
+ 2319 072a 58000000 		.4byte	.LVL80
+ 2320 072e CC0E0000 		.4byte	0xecc
+ 2321 0732 3C070000 		.4byte	0x73c
+ 2322 0736 09       		.uleb128 0x9
+ 2323 0737 01       		.uleb128 0x1
+ 2324 0738 50       		.byte	0x50
+ 2325 0739 01       		.uleb128 0x1
+ 2326 073a 30       		.byte	0x30
+ 2327 073b 00       		.byte	0
+ 2328 073c 0C       		.uleb128 0xc
+ 2329 073d 5E000000 		.4byte	.LVL81
+ 2330 0741 D70E0000 		.4byte	0xed7
+ 2331 0745 0B       		.uleb128 0xb
+ 2332 0746 64000000 		.4byte	.LVL82
+ 2333 074a AB0E0000 		.4byte	0xeab
+ 2334 074e 58070000 		.4byte	0x758
+ 2335 0752 09       		.uleb128 0x9
+ 2336 0753 01       		.uleb128 0x1
+ 2337 0754 50       		.byte	0x50
+ 2338 0755 01       		.uleb128 0x1
+ 2339 0756 30       		.byte	0x30
+ 2340 0757 00       		.byte	0
+ 2341 0758 0B       		.uleb128 0xb
+ 2342 0759 6A000000 		.4byte	.LVL83
+ 2343 075d B60E0000 		.4byte	0xeb6
+ 2344 0761 6B070000 		.4byte	0x76b
+ 2345 0765 09       		.uleb128 0x9
+ 2346 0766 01       		.uleb128 0x1
+ 2347 0767 50       		.byte	0x50
+ 2348 0768 01       		.uleb128 0x1
+ 2349 0769 30       		.byte	0x30
+ 2350 076a 00       		.byte	0
+ 2351 076b 0B       		.uleb128 0xb
+ 2352 076c 70000000 		.4byte	.LVL84
+ 2353 0770 C10E0000 		.4byte	0xec1
+ 2354 0774 7E070000 		.4byte	0x77e
+ 2355 0778 09       		.uleb128 0x9
+ 2356 0779 01       		.uleb128 0x1
+ 2357 077a 50       		.byte	0x50
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 50
+
+
+ 2358 077b 01       		.uleb128 0x1
+ 2359 077c 30       		.byte	0x30
+ 2360 077d 00       		.byte	0
+ 2361 077e 0B       		.uleb128 0xb
+ 2362 077f 76000000 		.4byte	.LVL85
+ 2363 0783 CC0E0000 		.4byte	0xecc
+ 2364 0787 91070000 		.4byte	0x791
+ 2365 078b 09       		.uleb128 0x9
+ 2366 078c 01       		.uleb128 0x1
+ 2367 078d 50       		.byte	0x50
+ 2368 078e 01       		.uleb128 0x1
+ 2369 078f 31       		.byte	0x31
+ 2370 0790 00       		.byte	0
+ 2371 0791 0C       		.uleb128 0xc
+ 2372 0792 7C000000 		.4byte	.LVL86
+ 2373 0796 D70E0000 		.4byte	0xed7
+ 2374 079a 00       		.byte	0
+ 2375 079b 06       		.uleb128 0x6
+ 2376 079c 67020000 		.4byte	.LASF33
+ 2377 07a0 01       		.byte	0x1
+ 2378 07a1 E7       		.byte	0xe7
+ 2379 07a2 00000000 		.4byte	.LFB75
+ 2380 07a6 FC000000 		.4byte	.LFE75-.LFB75
+ 2381 07aa 01       		.uleb128 0x1
+ 2382 07ab 9C       		.byte	0x9c
+ 2383 07ac 590A0000 		.4byte	0xa59
+ 2384 07b0 0B       		.uleb128 0xb
+ 2385 07b1 08000000 		.4byte	.LVL87
+ 2386 07b5 AB0E0000 		.4byte	0xeab
+ 2387 07b9 C3070000 		.4byte	0x7c3
+ 2388 07bd 09       		.uleb128 0x9
+ 2389 07be 01       		.uleb128 0x1
+ 2390 07bf 50       		.byte	0x50
+ 2391 07c0 01       		.uleb128 0x1
+ 2392 07c1 31       		.byte	0x31
+ 2393 07c2 00       		.byte	0
+ 2394 07c3 0B       		.uleb128 0xb
+ 2395 07c4 0E000000 		.4byte	.LVL88
+ 2396 07c8 B60E0000 		.4byte	0xeb6
+ 2397 07cc D6070000 		.4byte	0x7d6
+ 2398 07d0 09       		.uleb128 0x9
+ 2399 07d1 01       		.uleb128 0x1
+ 2400 07d2 50       		.byte	0x50
+ 2401 07d3 01       		.uleb128 0x1
+ 2402 07d4 30       		.byte	0x30
+ 2403 07d5 00       		.byte	0
+ 2404 07d6 0B       		.uleb128 0xb
+ 2405 07d7 14000000 		.4byte	.LVL89
+ 2406 07db C10E0000 		.4byte	0xec1
+ 2407 07df E9070000 		.4byte	0x7e9
+ 2408 07e3 09       		.uleb128 0x9
+ 2409 07e4 01       		.uleb128 0x1
+ 2410 07e5 50       		.byte	0x50
+ 2411 07e6 01       		.uleb128 0x1
+ 2412 07e7 30       		.byte	0x30
+ 2413 07e8 00       		.byte	0
+ 2414 07e9 0B       		.uleb128 0xb
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 51
+
+
+ 2415 07ea 1A000000 		.4byte	.LVL90
+ 2416 07ee CC0E0000 		.4byte	0xecc
+ 2417 07f2 FC070000 		.4byte	0x7fc
+ 2418 07f6 09       		.uleb128 0x9
+ 2419 07f7 01       		.uleb128 0x1
+ 2420 07f8 50       		.byte	0x50
+ 2421 07f9 01       		.uleb128 0x1
+ 2422 07fa 30       		.byte	0x30
+ 2423 07fb 00       		.byte	0
+ 2424 07fc 0C       		.uleb128 0xc
+ 2425 07fd 22000000 		.4byte	.LVL91
+ 2426 0801 D70E0000 		.4byte	0xed7
+ 2427 0805 0B       		.uleb128 0xb
+ 2428 0806 28000000 		.4byte	.LVL92
+ 2429 080a AB0E0000 		.4byte	0xeab
+ 2430 080e 18080000 		.4byte	0x818
+ 2431 0812 09       		.uleb128 0x9
+ 2432 0813 01       		.uleb128 0x1
+ 2433 0814 50       		.byte	0x50
+ 2434 0815 01       		.uleb128 0x1
+ 2435 0816 31       		.byte	0x31
+ 2436 0817 00       		.byte	0
+ 2437 0818 0B       		.uleb128 0xb
+ 2438 0819 2E000000 		.4byte	.LVL93
+ 2439 081d B60E0000 		.4byte	0xeb6
+ 2440 0821 2B080000 		.4byte	0x82b
+ 2441 0825 09       		.uleb128 0x9
+ 2442 0826 01       		.uleb128 0x1
+ 2443 0827 50       		.byte	0x50
+ 2444 0828 01       		.uleb128 0x1
+ 2445 0829 30       		.byte	0x30
+ 2446 082a 00       		.byte	0
+ 2447 082b 0B       		.uleb128 0xb
+ 2448 082c 34000000 		.4byte	.LVL94
+ 2449 0830 C10E0000 		.4byte	0xec1
+ 2450 0834 3E080000 		.4byte	0x83e
+ 2451 0838 09       		.uleb128 0x9
+ 2452 0839 01       		.uleb128 0x1
+ 2453 083a 50       		.byte	0x50
+ 2454 083b 01       		.uleb128 0x1
+ 2455 083c 30       		.byte	0x30
+ 2456 083d 00       		.byte	0
+ 2457 083e 0B       		.uleb128 0xb
+ 2458 083f 3A000000 		.4byte	.LVL95
+ 2459 0843 CC0E0000 		.4byte	0xecc
+ 2460 0847 51080000 		.4byte	0x851
+ 2461 084b 09       		.uleb128 0x9
+ 2462 084c 01       		.uleb128 0x1
+ 2463 084d 50       		.byte	0x50
+ 2464 084e 01       		.uleb128 0x1
+ 2465 084f 31       		.byte	0x31
+ 2466 0850 00       		.byte	0
+ 2467 0851 0C       		.uleb128 0xc
+ 2468 0852 40000000 		.4byte	.LVL96
+ 2469 0856 D70E0000 		.4byte	0xed7
+ 2470 085a 0B       		.uleb128 0xb
+ 2471 085b 46000000 		.4byte	.LVL97
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 52
+
+
+ 2472 085f AB0E0000 		.4byte	0xeab
+ 2473 0863 6D080000 		.4byte	0x86d
+ 2474 0867 09       		.uleb128 0x9
+ 2475 0868 01       		.uleb128 0x1
+ 2476 0869 50       		.byte	0x50
+ 2477 086a 01       		.uleb128 0x1
+ 2478 086b 30       		.byte	0x30
+ 2479 086c 00       		.byte	0
+ 2480 086d 0B       		.uleb128 0xb
+ 2481 086e 4C000000 		.4byte	.LVL98
+ 2482 0872 B60E0000 		.4byte	0xeb6
+ 2483 0876 80080000 		.4byte	0x880
+ 2484 087a 09       		.uleb128 0x9
+ 2485 087b 01       		.uleb128 0x1
+ 2486 087c 50       		.byte	0x50
+ 2487 087d 01       		.uleb128 0x1
+ 2488 087e 30       		.byte	0x30
+ 2489 087f 00       		.byte	0
+ 2490 0880 0B       		.uleb128 0xb
+ 2491 0881 52000000 		.4byte	.LVL99
+ 2492 0885 C10E0000 		.4byte	0xec1
+ 2493 0889 93080000 		.4byte	0x893
+ 2494 088d 09       		.uleb128 0x9
+ 2495 088e 01       		.uleb128 0x1
+ 2496 088f 50       		.byte	0x50
+ 2497 0890 01       		.uleb128 0x1
+ 2498 0891 30       		.byte	0x30
+ 2499 0892 00       		.byte	0
+ 2500 0893 0B       		.uleb128 0xb
+ 2501 0894 58000000 		.4byte	.LVL100
+ 2502 0898 CC0E0000 		.4byte	0xecc
+ 2503 089c A6080000 		.4byte	0x8a6
+ 2504 08a0 09       		.uleb128 0x9
+ 2505 08a1 01       		.uleb128 0x1
+ 2506 08a2 50       		.byte	0x50
+ 2507 08a3 01       		.uleb128 0x1
+ 2508 08a4 31       		.byte	0x31
+ 2509 08a5 00       		.byte	0
+ 2510 08a6 0C       		.uleb128 0xc
+ 2511 08a7 5E000000 		.4byte	.LVL101
+ 2512 08ab D70E0000 		.4byte	0xed7
+ 2513 08af 0B       		.uleb128 0xb
+ 2514 08b0 64000000 		.4byte	.LVL102
+ 2515 08b4 AB0E0000 		.4byte	0xeab
+ 2516 08b8 C2080000 		.4byte	0x8c2
+ 2517 08bc 09       		.uleb128 0x9
+ 2518 08bd 01       		.uleb128 0x1
+ 2519 08be 50       		.byte	0x50
+ 2520 08bf 01       		.uleb128 0x1
+ 2521 08c0 30       		.byte	0x30
+ 2522 08c1 00       		.byte	0
+ 2523 08c2 0B       		.uleb128 0xb
+ 2524 08c3 6A000000 		.4byte	.LVL103
+ 2525 08c7 B60E0000 		.4byte	0xeb6
+ 2526 08cb D5080000 		.4byte	0x8d5
+ 2527 08cf 09       		.uleb128 0x9
+ 2528 08d0 01       		.uleb128 0x1
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 53
+
+
+ 2529 08d1 50       		.byte	0x50
+ 2530 08d2 01       		.uleb128 0x1
+ 2531 08d3 31       		.byte	0x31
+ 2532 08d4 00       		.byte	0
+ 2533 08d5 0B       		.uleb128 0xb
+ 2534 08d6 70000000 		.4byte	.LVL104
+ 2535 08da C10E0000 		.4byte	0xec1
+ 2536 08de E8080000 		.4byte	0x8e8
+ 2537 08e2 09       		.uleb128 0x9
+ 2538 08e3 01       		.uleb128 0x1
+ 2539 08e4 50       		.byte	0x50
+ 2540 08e5 01       		.uleb128 0x1
+ 2541 08e6 30       		.byte	0x30
+ 2542 08e7 00       		.byte	0
+ 2543 08e8 0B       		.uleb128 0xb
+ 2544 08e9 76000000 		.4byte	.LVL105
+ 2545 08ed CC0E0000 		.4byte	0xecc
+ 2546 08f1 FB080000 		.4byte	0x8fb
+ 2547 08f5 09       		.uleb128 0x9
+ 2548 08f6 01       		.uleb128 0x1
+ 2549 08f7 50       		.byte	0x50
+ 2550 08f8 01       		.uleb128 0x1
+ 2551 08f9 31       		.byte	0x31
+ 2552 08fa 00       		.byte	0
+ 2553 08fb 0C       		.uleb128 0xc
+ 2554 08fc 7C000000 		.4byte	.LVL106
+ 2555 0900 D70E0000 		.4byte	0xed7
+ 2556 0904 0B       		.uleb128 0xb
+ 2557 0905 82000000 		.4byte	.LVL107
+ 2558 0909 AB0E0000 		.4byte	0xeab
+ 2559 090d 17090000 		.4byte	0x917
+ 2560 0911 09       		.uleb128 0x9
+ 2561 0912 01       		.uleb128 0x1
+ 2562 0913 50       		.byte	0x50
+ 2563 0914 01       		.uleb128 0x1
+ 2564 0915 30       		.byte	0x30
+ 2565 0916 00       		.byte	0
+ 2566 0917 0B       		.uleb128 0xb
+ 2567 0918 88000000 		.4byte	.LVL108
+ 2568 091c B60E0000 		.4byte	0xeb6
+ 2569 0920 2A090000 		.4byte	0x92a
+ 2570 0924 09       		.uleb128 0x9
+ 2571 0925 01       		.uleb128 0x1
+ 2572 0926 50       		.byte	0x50
+ 2573 0927 01       		.uleb128 0x1
+ 2574 0928 31       		.byte	0x31
+ 2575 0929 00       		.byte	0
+ 2576 092a 0B       		.uleb128 0xb
+ 2577 092b 8E000000 		.4byte	.LVL109
+ 2578 092f C10E0000 		.4byte	0xec1
+ 2579 0933 3D090000 		.4byte	0x93d
+ 2580 0937 09       		.uleb128 0x9
+ 2581 0938 01       		.uleb128 0x1
+ 2582 0939 50       		.byte	0x50
+ 2583 093a 01       		.uleb128 0x1
+ 2584 093b 30       		.byte	0x30
+ 2585 093c 00       		.byte	0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 54
+
+
+ 2586 093d 0B       		.uleb128 0xb
+ 2587 093e 94000000 		.4byte	.LVL110
+ 2588 0942 CC0E0000 		.4byte	0xecc
+ 2589 0946 50090000 		.4byte	0x950
+ 2590 094a 09       		.uleb128 0x9
+ 2591 094b 01       		.uleb128 0x1
+ 2592 094c 50       		.byte	0x50
+ 2593 094d 01       		.uleb128 0x1
+ 2594 094e 30       		.byte	0x30
+ 2595 094f 00       		.byte	0
+ 2596 0950 0C       		.uleb128 0xc
+ 2597 0951 9A000000 		.4byte	.LVL111
+ 2598 0955 D70E0000 		.4byte	0xed7
+ 2599 0959 0B       		.uleb128 0xb
+ 2600 095a A0000000 		.4byte	.LVL112
+ 2601 095e AB0E0000 		.4byte	0xeab
+ 2602 0962 6C090000 		.4byte	0x96c
+ 2603 0966 09       		.uleb128 0x9
+ 2604 0967 01       		.uleb128 0x1
+ 2605 0968 50       		.byte	0x50
+ 2606 0969 01       		.uleb128 0x1
+ 2607 096a 30       		.byte	0x30
+ 2608 096b 00       		.byte	0
+ 2609 096c 0B       		.uleb128 0xb
+ 2610 096d A6000000 		.4byte	.LVL113
+ 2611 0971 B60E0000 		.4byte	0xeb6
+ 2612 0975 7F090000 		.4byte	0x97f
+ 2613 0979 09       		.uleb128 0x9
+ 2614 097a 01       		.uleb128 0x1
+ 2615 097b 50       		.byte	0x50
+ 2616 097c 01       		.uleb128 0x1
+ 2617 097d 31       		.byte	0x31
+ 2618 097e 00       		.byte	0
+ 2619 097f 0B       		.uleb128 0xb
+ 2620 0980 AC000000 		.4byte	.LVL114
+ 2621 0984 C10E0000 		.4byte	0xec1
+ 2622 0988 92090000 		.4byte	0x992
+ 2623 098c 09       		.uleb128 0x9
+ 2624 098d 01       		.uleb128 0x1
+ 2625 098e 50       		.byte	0x50
+ 2626 098f 01       		.uleb128 0x1
+ 2627 0990 31       		.byte	0x31
+ 2628 0991 00       		.byte	0
+ 2629 0992 0B       		.uleb128 0xb
+ 2630 0993 B2000000 		.4byte	.LVL115
+ 2631 0997 CC0E0000 		.4byte	0xecc
+ 2632 099b A5090000 		.4byte	0x9a5
+ 2633 099f 09       		.uleb128 0x9
+ 2634 09a0 01       		.uleb128 0x1
+ 2635 09a1 50       		.byte	0x50
+ 2636 09a2 01       		.uleb128 0x1
+ 2637 09a3 30       		.byte	0x30
+ 2638 09a4 00       		.byte	0
+ 2639 09a5 0C       		.uleb128 0xc
+ 2640 09a6 B8000000 		.4byte	.LVL116
+ 2641 09aa D70E0000 		.4byte	0xed7
+ 2642 09ae 0B       		.uleb128 0xb
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 55
+
+
+ 2643 09af BE000000 		.4byte	.LVL117
+ 2644 09b3 AB0E0000 		.4byte	0xeab
+ 2645 09b7 C1090000 		.4byte	0x9c1
+ 2646 09bb 09       		.uleb128 0x9
+ 2647 09bc 01       		.uleb128 0x1
+ 2648 09bd 50       		.byte	0x50
+ 2649 09be 01       		.uleb128 0x1
+ 2650 09bf 30       		.byte	0x30
+ 2651 09c0 00       		.byte	0
+ 2652 09c1 0B       		.uleb128 0xb
+ 2653 09c2 C4000000 		.4byte	.LVL118
+ 2654 09c6 B60E0000 		.4byte	0xeb6
+ 2655 09ca D4090000 		.4byte	0x9d4
+ 2656 09ce 09       		.uleb128 0x9
+ 2657 09cf 01       		.uleb128 0x1
+ 2658 09d0 50       		.byte	0x50
+ 2659 09d1 01       		.uleb128 0x1
+ 2660 09d2 31       		.byte	0x31
+ 2661 09d3 00       		.byte	0
+ 2662 09d4 0B       		.uleb128 0xb
+ 2663 09d5 CA000000 		.4byte	.LVL119
+ 2664 09d9 C10E0000 		.4byte	0xec1
+ 2665 09dd E7090000 		.4byte	0x9e7
+ 2666 09e1 09       		.uleb128 0x9
+ 2667 09e2 01       		.uleb128 0x1
+ 2668 09e3 50       		.byte	0x50
+ 2669 09e4 01       		.uleb128 0x1
+ 2670 09e5 30       		.byte	0x30
+ 2671 09e6 00       		.byte	0
+ 2672 09e7 0B       		.uleb128 0xb
+ 2673 09e8 D0000000 		.4byte	.LVL120
+ 2674 09ec CC0E0000 		.4byte	0xecc
+ 2675 09f0 FA090000 		.4byte	0x9fa
+ 2676 09f4 09       		.uleb128 0x9
+ 2677 09f5 01       		.uleb128 0x1
+ 2678 09f6 50       		.byte	0x50
+ 2679 09f7 01       		.uleb128 0x1
+ 2680 09f8 30       		.byte	0x30
+ 2681 09f9 00       		.byte	0
+ 2682 09fa 0C       		.uleb128 0xc
+ 2683 09fb D6000000 		.4byte	.LVL121
+ 2684 09ff D70E0000 		.4byte	0xed7
+ 2685 0a03 0B       		.uleb128 0xb
+ 2686 0a04 DC000000 		.4byte	.LVL122
+ 2687 0a08 AB0E0000 		.4byte	0xeab
+ 2688 0a0c 160A0000 		.4byte	0xa16
+ 2689 0a10 09       		.uleb128 0x9
+ 2690 0a11 01       		.uleb128 0x1
+ 2691 0a12 50       		.byte	0x50
+ 2692 0a13 01       		.uleb128 0x1
+ 2693 0a14 31       		.byte	0x31
+ 2694 0a15 00       		.byte	0
+ 2695 0a16 0B       		.uleb128 0xb
+ 2696 0a17 E2000000 		.4byte	.LVL123
+ 2697 0a1b B60E0000 		.4byte	0xeb6
+ 2698 0a1f 290A0000 		.4byte	0xa29
+ 2699 0a23 09       		.uleb128 0x9
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 56
+
+
+ 2700 0a24 01       		.uleb128 0x1
+ 2701 0a25 50       		.byte	0x50
+ 2702 0a26 01       		.uleb128 0x1
+ 2703 0a27 30       		.byte	0x30
+ 2704 0a28 00       		.byte	0
+ 2705 0a29 0B       		.uleb128 0xb
+ 2706 0a2a E8000000 		.4byte	.LVL124
+ 2707 0a2e C10E0000 		.4byte	0xec1
+ 2708 0a32 3C0A0000 		.4byte	0xa3c
+ 2709 0a36 09       		.uleb128 0x9
+ 2710 0a37 01       		.uleb128 0x1
+ 2711 0a38 50       		.byte	0x50
+ 2712 0a39 01       		.uleb128 0x1
+ 2713 0a3a 31       		.byte	0x31
+ 2714 0a3b 00       		.byte	0
+ 2715 0a3c 0B       		.uleb128 0xb
+ 2716 0a3d EE000000 		.4byte	.LVL125
+ 2717 0a41 CC0E0000 		.4byte	0xecc
+ 2718 0a45 4F0A0000 		.4byte	0xa4f
+ 2719 0a49 09       		.uleb128 0x9
+ 2720 0a4a 01       		.uleb128 0x1
+ 2721 0a4b 50       		.byte	0x50
+ 2722 0a4c 01       		.uleb128 0x1
+ 2723 0a4d 30       		.byte	0x30
+ 2724 0a4e 00       		.byte	0
+ 2725 0a4f 0C       		.uleb128 0xc
+ 2726 0a50 F4000000 		.4byte	.LVL126
+ 2727 0a54 D70E0000 		.4byte	0xed7
+ 2728 0a58 00       		.byte	0
+ 2729 0a59 0D       		.uleb128 0xd
+ 2730 0a5a 80000000 		.4byte	.LASF34
+ 2731 0a5e 01       		.byte	0x1
+ 2732 0a5f 1801     		.2byte	0x118
+ 2733 0a61 00000000 		.4byte	.LFB76
+ 2734 0a65 84000000 		.4byte	.LFE76-.LFB76
+ 2735 0a69 01       		.uleb128 0x1
+ 2736 0a6a 9C       		.byte	0x9c
+ 2737 0a6b C40B0000 		.4byte	0xbc4
+ 2738 0a6f 0B       		.uleb128 0xb
+ 2739 0a70 08000000 		.4byte	.LVL127
+ 2740 0a74 AB0E0000 		.4byte	0xeab
+ 2741 0a78 820A0000 		.4byte	0xa82
+ 2742 0a7c 09       		.uleb128 0x9
+ 2743 0a7d 01       		.uleb128 0x1
+ 2744 0a7e 50       		.byte	0x50
+ 2745 0a7f 01       		.uleb128 0x1
+ 2746 0a80 31       		.byte	0x31
+ 2747 0a81 00       		.byte	0
+ 2748 0a82 0B       		.uleb128 0xb
+ 2749 0a83 0E000000 		.4byte	.LVL128
+ 2750 0a87 B60E0000 		.4byte	0xeb6
+ 2751 0a8b 950A0000 		.4byte	0xa95
+ 2752 0a8f 09       		.uleb128 0x9
+ 2753 0a90 01       		.uleb128 0x1
+ 2754 0a91 50       		.byte	0x50
+ 2755 0a92 01       		.uleb128 0x1
+ 2756 0a93 30       		.byte	0x30
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 57
+
+
+ 2757 0a94 00       		.byte	0
+ 2758 0a95 0B       		.uleb128 0xb
+ 2759 0a96 14000000 		.4byte	.LVL129
+ 2760 0a9a C10E0000 		.4byte	0xec1
+ 2761 0a9e A80A0000 		.4byte	0xaa8
+ 2762 0aa2 09       		.uleb128 0x9
+ 2763 0aa3 01       		.uleb128 0x1
+ 2764 0aa4 50       		.byte	0x50
+ 2765 0aa5 01       		.uleb128 0x1
+ 2766 0aa6 30       		.byte	0x30
+ 2767 0aa7 00       		.byte	0
+ 2768 0aa8 0B       		.uleb128 0xb
+ 2769 0aa9 1A000000 		.4byte	.LVL130
+ 2770 0aad CC0E0000 		.4byte	0xecc
+ 2771 0ab1 BB0A0000 		.4byte	0xabb
+ 2772 0ab5 09       		.uleb128 0x9
+ 2773 0ab6 01       		.uleb128 0x1
+ 2774 0ab7 50       		.byte	0x50
+ 2775 0ab8 01       		.uleb128 0x1
+ 2776 0ab9 31       		.byte	0x31
+ 2777 0aba 00       		.byte	0
+ 2778 0abb 0C       		.uleb128 0xc
+ 2779 0abc 22000000 		.4byte	.LVL131
+ 2780 0ac0 D70E0000 		.4byte	0xed7
+ 2781 0ac4 0B       		.uleb128 0xb
+ 2782 0ac5 28000000 		.4byte	.LVL132
+ 2783 0ac9 AB0E0000 		.4byte	0xeab
+ 2784 0acd D70A0000 		.4byte	0xad7
+ 2785 0ad1 09       		.uleb128 0x9
+ 2786 0ad2 01       		.uleb128 0x1
+ 2787 0ad3 50       		.byte	0x50
+ 2788 0ad4 01       		.uleb128 0x1
+ 2789 0ad5 30       		.byte	0x30
+ 2790 0ad6 00       		.byte	0
+ 2791 0ad7 0B       		.uleb128 0xb
+ 2792 0ad8 2E000000 		.4byte	.LVL133
+ 2793 0adc B60E0000 		.4byte	0xeb6
+ 2794 0ae0 EA0A0000 		.4byte	0xaea
+ 2795 0ae4 09       		.uleb128 0x9
+ 2796 0ae5 01       		.uleb128 0x1
+ 2797 0ae6 50       		.byte	0x50
+ 2798 0ae7 01       		.uleb128 0x1
+ 2799 0ae8 31       		.byte	0x31
+ 2800 0ae9 00       		.byte	0
+ 2801 0aea 0B       		.uleb128 0xb
+ 2802 0aeb 34000000 		.4byte	.LVL134
+ 2803 0aef C10E0000 		.4byte	0xec1
+ 2804 0af3 FD0A0000 		.4byte	0xafd
+ 2805 0af7 09       		.uleb128 0x9
+ 2806 0af8 01       		.uleb128 0x1
+ 2807 0af9 50       		.byte	0x50
+ 2808 0afa 01       		.uleb128 0x1
+ 2809 0afb 30       		.byte	0x30
+ 2810 0afc 00       		.byte	0
+ 2811 0afd 0B       		.uleb128 0xb
+ 2812 0afe 3A000000 		.4byte	.LVL135
+ 2813 0b02 CC0E0000 		.4byte	0xecc
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 58
+
+
+ 2814 0b06 100B0000 		.4byte	0xb10
+ 2815 0b0a 09       		.uleb128 0x9
+ 2816 0b0b 01       		.uleb128 0x1
+ 2817 0b0c 50       		.byte	0x50
+ 2818 0b0d 01       		.uleb128 0x1
+ 2819 0b0e 31       		.byte	0x31
+ 2820 0b0f 00       		.byte	0
+ 2821 0b10 0C       		.uleb128 0xc
+ 2822 0b11 40000000 		.4byte	.LVL136
+ 2823 0b15 D70E0000 		.4byte	0xed7
+ 2824 0b19 0B       		.uleb128 0xb
+ 2825 0b1a 46000000 		.4byte	.LVL137
+ 2826 0b1e AB0E0000 		.4byte	0xeab
+ 2827 0b22 2C0B0000 		.4byte	0xb2c
+ 2828 0b26 09       		.uleb128 0x9
+ 2829 0b27 01       		.uleb128 0x1
+ 2830 0b28 50       		.byte	0x50
+ 2831 0b29 01       		.uleb128 0x1
+ 2832 0b2a 30       		.byte	0x30
+ 2833 0b2b 00       		.byte	0
+ 2834 0b2c 0B       		.uleb128 0xb
+ 2835 0b2d 4C000000 		.4byte	.LVL138
+ 2836 0b31 B60E0000 		.4byte	0xeb6
+ 2837 0b35 3F0B0000 		.4byte	0xb3f
+ 2838 0b39 09       		.uleb128 0x9
+ 2839 0b3a 01       		.uleb128 0x1
+ 2840 0b3b 50       		.byte	0x50
+ 2841 0b3c 01       		.uleb128 0x1
+ 2842 0b3d 31       		.byte	0x31
+ 2843 0b3e 00       		.byte	0
+ 2844 0b3f 0B       		.uleb128 0xb
+ 2845 0b40 52000000 		.4byte	.LVL139
+ 2846 0b44 C10E0000 		.4byte	0xec1
+ 2847 0b48 520B0000 		.4byte	0xb52
+ 2848 0b4c 09       		.uleb128 0x9
+ 2849 0b4d 01       		.uleb128 0x1
+ 2850 0b4e 50       		.byte	0x50
+ 2851 0b4f 01       		.uleb128 0x1
+ 2852 0b50 31       		.byte	0x31
+ 2853 0b51 00       		.byte	0
+ 2854 0b52 0B       		.uleb128 0xb
+ 2855 0b53 58000000 		.4byte	.LVL140
+ 2856 0b57 CC0E0000 		.4byte	0xecc
+ 2857 0b5b 650B0000 		.4byte	0xb65
+ 2858 0b5f 09       		.uleb128 0x9
+ 2859 0b60 01       		.uleb128 0x1
+ 2860 0b61 50       		.byte	0x50
+ 2861 0b62 01       		.uleb128 0x1
+ 2862 0b63 30       		.byte	0x30
+ 2863 0b64 00       		.byte	0
+ 2864 0b65 0C       		.uleb128 0xc
+ 2865 0b66 5E000000 		.4byte	.LVL141
+ 2866 0b6a D70E0000 		.4byte	0xed7
+ 2867 0b6e 0B       		.uleb128 0xb
+ 2868 0b6f 64000000 		.4byte	.LVL142
+ 2869 0b73 AB0E0000 		.4byte	0xeab
+ 2870 0b77 810B0000 		.4byte	0xb81
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 59
+
+
+ 2871 0b7b 09       		.uleb128 0x9
+ 2872 0b7c 01       		.uleb128 0x1
+ 2873 0b7d 50       		.byte	0x50
+ 2874 0b7e 01       		.uleb128 0x1
+ 2875 0b7f 31       		.byte	0x31
+ 2876 0b80 00       		.byte	0
+ 2877 0b81 0B       		.uleb128 0xb
+ 2878 0b82 6A000000 		.4byte	.LVL143
+ 2879 0b86 B60E0000 		.4byte	0xeb6
+ 2880 0b8a 940B0000 		.4byte	0xb94
+ 2881 0b8e 09       		.uleb128 0x9
+ 2882 0b8f 01       		.uleb128 0x1
+ 2883 0b90 50       		.byte	0x50
+ 2884 0b91 01       		.uleb128 0x1
+ 2885 0b92 30       		.byte	0x30
+ 2886 0b93 00       		.byte	0
+ 2887 0b94 0B       		.uleb128 0xb
+ 2888 0b95 70000000 		.4byte	.LVL144
+ 2889 0b99 C10E0000 		.4byte	0xec1
+ 2890 0b9d A70B0000 		.4byte	0xba7
+ 2891 0ba1 09       		.uleb128 0x9
+ 2892 0ba2 01       		.uleb128 0x1
+ 2893 0ba3 50       		.byte	0x50
+ 2894 0ba4 01       		.uleb128 0x1
+ 2895 0ba5 31       		.byte	0x31
+ 2896 0ba6 00       		.byte	0
+ 2897 0ba7 0B       		.uleb128 0xb
+ 2898 0ba8 76000000 		.4byte	.LVL145
+ 2899 0bac CC0E0000 		.4byte	0xecc
+ 2900 0bb0 BA0B0000 		.4byte	0xbba
+ 2901 0bb4 09       		.uleb128 0x9
+ 2902 0bb5 01       		.uleb128 0x1
+ 2903 0bb6 50       		.byte	0x50
+ 2904 0bb7 01       		.uleb128 0x1
+ 2905 0bb8 30       		.byte	0x30
+ 2906 0bb9 00       		.byte	0
+ 2907 0bba 0C       		.uleb128 0xc
+ 2908 0bbb 7C000000 		.4byte	.LVL146
+ 2909 0bbf D70E0000 		.4byte	0xed7
+ 2910 0bc3 00       		.byte	0
+ 2911 0bc4 0D       		.uleb128 0xd
+ 2912 0bc5 3B000000 		.4byte	.LASF35
+ 2913 0bc9 01       		.byte	0x1
+ 2914 0bca 3201     		.2byte	0x132
+ 2915 0bcc 00000000 		.4byte	.LFB77
+ 2916 0bd0 84000000 		.4byte	.LFE77-.LFB77
+ 2917 0bd4 01       		.uleb128 0x1
+ 2918 0bd5 9C       		.byte	0x9c
+ 2919 0bd6 2F0D0000 		.4byte	0xd2f
+ 2920 0bda 0B       		.uleb128 0xb
+ 2921 0bdb 08000000 		.4byte	.LVL147
+ 2922 0bdf AB0E0000 		.4byte	0xeab
+ 2923 0be3 ED0B0000 		.4byte	0xbed
+ 2924 0be7 09       		.uleb128 0x9
+ 2925 0be8 01       		.uleb128 0x1
+ 2926 0be9 50       		.byte	0x50
+ 2927 0bea 01       		.uleb128 0x1
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 60
+
+
+ 2928 0beb 30       		.byte	0x30
+ 2929 0bec 00       		.byte	0
+ 2930 0bed 0B       		.uleb128 0xb
+ 2931 0bee 0E000000 		.4byte	.LVL148
+ 2932 0bf2 B60E0000 		.4byte	0xeb6
+ 2933 0bf6 000C0000 		.4byte	0xc00
+ 2934 0bfa 09       		.uleb128 0x9
+ 2935 0bfb 01       		.uleb128 0x1
+ 2936 0bfc 50       		.byte	0x50
+ 2937 0bfd 01       		.uleb128 0x1
+ 2938 0bfe 30       		.byte	0x30
+ 2939 0bff 00       		.byte	0
+ 2940 0c00 0B       		.uleb128 0xb
+ 2941 0c01 14000000 		.4byte	.LVL149
+ 2942 0c05 C10E0000 		.4byte	0xec1
+ 2943 0c09 130C0000 		.4byte	0xc13
+ 2944 0c0d 09       		.uleb128 0x9
+ 2945 0c0e 01       		.uleb128 0x1
+ 2946 0c0f 50       		.byte	0x50
+ 2947 0c10 01       		.uleb128 0x1
+ 2948 0c11 30       		.byte	0x30
+ 2949 0c12 00       		.byte	0
+ 2950 0c13 0B       		.uleb128 0xb
+ 2951 0c14 1A000000 		.4byte	.LVL150
+ 2952 0c18 CC0E0000 		.4byte	0xecc
+ 2953 0c1c 260C0000 		.4byte	0xc26
+ 2954 0c20 09       		.uleb128 0x9
+ 2955 0c21 01       		.uleb128 0x1
+ 2956 0c22 50       		.byte	0x50
+ 2957 0c23 01       		.uleb128 0x1
+ 2958 0c24 31       		.byte	0x31
+ 2959 0c25 00       		.byte	0
+ 2960 0c26 0C       		.uleb128 0xc
+ 2961 0c27 22000000 		.4byte	.LVL151
+ 2962 0c2b D70E0000 		.4byte	0xed7
+ 2963 0c2f 0B       		.uleb128 0xb
+ 2964 0c30 28000000 		.4byte	.LVL152
+ 2965 0c34 AB0E0000 		.4byte	0xeab
+ 2966 0c38 420C0000 		.4byte	0xc42
+ 2967 0c3c 09       		.uleb128 0x9
+ 2968 0c3d 01       		.uleb128 0x1
+ 2969 0c3e 50       		.byte	0x50
+ 2970 0c3f 01       		.uleb128 0x1
+ 2971 0c40 30       		.byte	0x30
+ 2972 0c41 00       		.byte	0
+ 2973 0c42 0B       		.uleb128 0xb
+ 2974 0c43 2E000000 		.4byte	.LVL153
+ 2975 0c47 B60E0000 		.4byte	0xeb6
+ 2976 0c4b 550C0000 		.4byte	0xc55
+ 2977 0c4f 09       		.uleb128 0x9
+ 2978 0c50 01       		.uleb128 0x1
+ 2979 0c51 50       		.byte	0x50
+ 2980 0c52 01       		.uleb128 0x1
+ 2981 0c53 31       		.byte	0x31
+ 2982 0c54 00       		.byte	0
+ 2983 0c55 0B       		.uleb128 0xb
+ 2984 0c56 34000000 		.4byte	.LVL154
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 61
+
+
+ 2985 0c5a C10E0000 		.4byte	0xec1
+ 2986 0c5e 680C0000 		.4byte	0xc68
+ 2987 0c62 09       		.uleb128 0x9
+ 2988 0c63 01       		.uleb128 0x1
+ 2989 0c64 50       		.byte	0x50
+ 2990 0c65 01       		.uleb128 0x1
+ 2991 0c66 30       		.byte	0x30
+ 2992 0c67 00       		.byte	0
+ 2993 0c68 0B       		.uleb128 0xb
+ 2994 0c69 3A000000 		.4byte	.LVL155
+ 2995 0c6d CC0E0000 		.4byte	0xecc
+ 2996 0c71 7B0C0000 		.4byte	0xc7b
+ 2997 0c75 09       		.uleb128 0x9
+ 2998 0c76 01       		.uleb128 0x1
+ 2999 0c77 50       		.byte	0x50
+ 3000 0c78 01       		.uleb128 0x1
+ 3001 0c79 30       		.byte	0x30
+ 3002 0c7a 00       		.byte	0
+ 3003 0c7b 0C       		.uleb128 0xc
+ 3004 0c7c 40000000 		.4byte	.LVL156
+ 3005 0c80 D70E0000 		.4byte	0xed7
+ 3006 0c84 0B       		.uleb128 0xb
+ 3007 0c85 46000000 		.4byte	.LVL157
+ 3008 0c89 AB0E0000 		.4byte	0xeab
+ 3009 0c8d 970C0000 		.4byte	0xc97
+ 3010 0c91 09       		.uleb128 0x9
+ 3011 0c92 01       		.uleb128 0x1
+ 3012 0c93 50       		.byte	0x50
+ 3013 0c94 01       		.uleb128 0x1
+ 3014 0c95 30       		.byte	0x30
+ 3015 0c96 00       		.byte	0
+ 3016 0c97 0B       		.uleb128 0xb
+ 3017 0c98 4C000000 		.4byte	.LVL158
+ 3018 0c9c B60E0000 		.4byte	0xeb6
+ 3019 0ca0 AA0C0000 		.4byte	0xcaa
+ 3020 0ca4 09       		.uleb128 0x9
+ 3021 0ca5 01       		.uleb128 0x1
+ 3022 0ca6 50       		.byte	0x50
+ 3023 0ca7 01       		.uleb128 0x1
+ 3024 0ca8 30       		.byte	0x30
+ 3025 0ca9 00       		.byte	0
+ 3026 0caa 0B       		.uleb128 0xb
+ 3027 0cab 52000000 		.4byte	.LVL159
+ 3028 0caf C10E0000 		.4byte	0xec1
+ 3029 0cb3 BD0C0000 		.4byte	0xcbd
+ 3030 0cb7 09       		.uleb128 0x9
+ 3031 0cb8 01       		.uleb128 0x1
+ 3032 0cb9 50       		.byte	0x50
+ 3033 0cba 01       		.uleb128 0x1
+ 3034 0cbb 31       		.byte	0x31
+ 3035 0cbc 00       		.byte	0
+ 3036 0cbd 0B       		.uleb128 0xb
+ 3037 0cbe 58000000 		.4byte	.LVL160
+ 3038 0cc2 CC0E0000 		.4byte	0xecc
+ 3039 0cc6 D00C0000 		.4byte	0xcd0
+ 3040 0cca 09       		.uleb128 0x9
+ 3041 0ccb 01       		.uleb128 0x1
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 62
+
+
+ 3042 0ccc 50       		.byte	0x50
+ 3043 0ccd 01       		.uleb128 0x1
+ 3044 0cce 30       		.byte	0x30
+ 3045 0ccf 00       		.byte	0
+ 3046 0cd0 0C       		.uleb128 0xc
+ 3047 0cd1 5E000000 		.4byte	.LVL161
+ 3048 0cd5 D70E0000 		.4byte	0xed7
+ 3049 0cd9 0B       		.uleb128 0xb
+ 3050 0cda 64000000 		.4byte	.LVL162
+ 3051 0cde AB0E0000 		.4byte	0xeab
+ 3052 0ce2 EC0C0000 		.4byte	0xcec
+ 3053 0ce6 09       		.uleb128 0x9
+ 3054 0ce7 01       		.uleb128 0x1
+ 3055 0ce8 50       		.byte	0x50
+ 3056 0ce9 01       		.uleb128 0x1
+ 3057 0cea 31       		.byte	0x31
+ 3058 0ceb 00       		.byte	0
+ 3059 0cec 0B       		.uleb128 0xb
+ 3060 0ced 6A000000 		.4byte	.LVL163
+ 3061 0cf1 B60E0000 		.4byte	0xeb6
+ 3062 0cf5 FF0C0000 		.4byte	0xcff
+ 3063 0cf9 09       		.uleb128 0x9
+ 3064 0cfa 01       		.uleb128 0x1
+ 3065 0cfb 50       		.byte	0x50
+ 3066 0cfc 01       		.uleb128 0x1
+ 3067 0cfd 30       		.byte	0x30
+ 3068 0cfe 00       		.byte	0
+ 3069 0cff 0B       		.uleb128 0xb
+ 3070 0d00 70000000 		.4byte	.LVL164
+ 3071 0d04 C10E0000 		.4byte	0xec1
+ 3072 0d08 120D0000 		.4byte	0xd12
+ 3073 0d0c 09       		.uleb128 0x9
+ 3074 0d0d 01       		.uleb128 0x1
+ 3075 0d0e 50       		.byte	0x50
+ 3076 0d0f 01       		.uleb128 0x1
+ 3077 0d10 30       		.byte	0x30
+ 3078 0d11 00       		.byte	0
+ 3079 0d12 0B       		.uleb128 0xb
+ 3080 0d13 76000000 		.4byte	.LVL165
+ 3081 0d17 CC0E0000 		.4byte	0xecc
+ 3082 0d1b 250D0000 		.4byte	0xd25
+ 3083 0d1f 09       		.uleb128 0x9
+ 3084 0d20 01       		.uleb128 0x1
+ 3085 0d21 50       		.byte	0x50
+ 3086 0d22 01       		.uleb128 0x1
+ 3087 0d23 30       		.byte	0x30
+ 3088 0d24 00       		.byte	0
+ 3089 0d25 0C       		.uleb128 0xc
+ 3090 0d26 7C000000 		.4byte	.LVL166
+ 3091 0d2a D70E0000 		.4byte	0xed7
+ 3092 0d2e 00       		.byte	0
+ 3093 0d2f 0D       		.uleb128 0xd
+ 3094 0d30 D0020000 		.4byte	.LASF36
+ 3095 0d34 01       		.byte	0x1
+ 3096 0d35 4E01     		.2byte	0x14e
+ 3097 0d37 00000000 		.4byte	.LFB78
+ 3098 0d3b 3C000000 		.4byte	.LFE78-.LFB78
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 63
+
+
+ 3099 0d3f 01       		.uleb128 0x1
+ 3100 0d40 9C       		.byte	0x9c
+ 3101 0d41 790D0000 		.4byte	0xd79
+ 3102 0d45 0E       		.uleb128 0xe
+ 3103 0d46 02000000 		.4byte	.LBB2
+ 3104 0d4a 2A000000 		.4byte	.LBE2-.LBB2
+ 3105 0d4e 0F       		.uleb128 0xf
+ 3106 0d4f 6900     		.ascii	"i\000"
+ 3107 0d51 01       		.byte	0x1
+ 3108 0d52 5001     		.2byte	0x150
+ 3109 0d54 B8000000 		.4byte	0xb8
+ 3110 0d58 00000000 		.4byte	.LLST0
+ 3111 0d5c 0C       		.uleb128 0xc
+ 3112 0d5d 1A000000 		.4byte	.LVL169
+ 3113 0d61 C7040000 		.4byte	0x4c7
+ 3114 0d65 0C       		.uleb128 0xc
+ 3115 0d66 20000000 		.4byte	.LVL170
+ 3116 0d6a 09020000 		.4byte	0x209
+ 3117 0d6e 0C       		.uleb128 0xc
+ 3118 0d6f 26000000 		.4byte	.LVL171
+ 3119 0d73 31060000 		.4byte	0x631
+ 3120 0d77 00       		.byte	0
+ 3121 0d78 00       		.byte	0
+ 3122 0d79 0D       		.uleb128 0xd
+ 3123 0d7a C2010000 		.4byte	.LASF37
+ 3124 0d7e 01       		.byte	0x1
+ 3125 0d7f 7301     		.2byte	0x173
+ 3126 0d81 00000000 		.4byte	.LFB79
+ 3127 0d85 3C000000 		.4byte	.LFE79-.LFB79
+ 3128 0d89 01       		.uleb128 0x1
+ 3129 0d8a 9C       		.byte	0x9c
+ 3130 0d8b C30D0000 		.4byte	0xdc3
+ 3131 0d8f 0E       		.uleb128 0xe
+ 3132 0d90 02000000 		.4byte	.LBB3
+ 3133 0d94 2A000000 		.4byte	.LBE3-.LBB3
+ 3134 0d98 0F       		.uleb128 0xf
+ 3135 0d99 6900     		.ascii	"i\000"
+ 3136 0d9b 01       		.byte	0x1
+ 3137 0d9c 7501     		.2byte	0x175
+ 3138 0d9e B8000000 		.4byte	0xb8
+ 3139 0da2 1F000000 		.4byte	.LLST1
+ 3140 0da6 0C       		.uleb128 0xc
+ 3141 0da7 1A000000 		.4byte	.LVL176
+ 3142 0dab 590A0000 		.4byte	0xa59
+ 3143 0daf 0C       		.uleb128 0xc
+ 3144 0db0 20000000 		.4byte	.LVL177
+ 3145 0db4 9B070000 		.4byte	0x79b
+ 3146 0db8 0C       		.uleb128 0xc
+ 3147 0db9 26000000 		.4byte	.LVL178
+ 3148 0dbd C40B0000 		.4byte	0xbc4
+ 3149 0dc1 00       		.byte	0
+ 3150 0dc2 00       		.byte	0
+ 3151 0dc3 10       		.uleb128 0x10
+ 3152 0dc4 72756E00 		.ascii	"run\000"
+ 3153 0dc8 01       		.byte	0x1
+ 3154 0dc9 10       		.byte	0x10
+ 3155 0dca 00000000 		.4byte	.LFB65
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 64
+
+
+ 3156 0dce 96000000 		.4byte	.LFE65-.LFB65
+ 3157 0dd2 01       		.uleb128 0x1
+ 3158 0dd3 9C       		.byte	0x9c
+ 3159 0dd4 5C0E0000 		.4byte	0xe5c
+ 3160 0dd8 11       		.uleb128 0x11
+ 3161 0dd9 71000000 		.4byte	.LASF39
+ 3162 0ddd 01       		.byte	0x1
+ 3163 0dde 10       		.byte	0x10
+ 3164 0ddf D1000000 		.4byte	0xd1
+ 3165 0de3 3E000000 		.4byte	.LLST2
+ 3166 0de7 0C       		.uleb128 0xc
+ 3167 0de8 58000000 		.4byte	.LVL183
+ 3168 0dec 33010000 		.4byte	0x133
+ 3169 0df0 0C       		.uleb128 0xc
+ 3170 0df1 5E000000 		.4byte	.LVL184
+ 3171 0df5 5C010000 		.4byte	0x15c
+ 3172 0df9 0C       		.uleb128 0xc
+ 3173 0dfa 64000000 		.4byte	.LVL185
+ 3174 0dfe 2F0D0000 		.4byte	0xd2f
+ 3175 0e02 0C       		.uleb128 0xc
+ 3176 0e03 6A000000 		.4byte	.LVL186
+ 3177 0e07 790D0000 		.4byte	0xd79
+ 3178 0e0b 0C       		.uleb128 0xc
+ 3179 0e0c 70000000 		.4byte	.LVL187
+ 3180 0e10 85010000 		.4byte	0x185
+ 3181 0e14 0C       		.uleb128 0xc
+ 3182 0e15 76000000 		.4byte	.LVL188
+ 3183 0e19 96010000 		.4byte	0x196
+ 3184 0e1d 0C       		.uleb128 0xc
+ 3185 0e1e 7C000000 		.4byte	.LVL189
+ 3186 0e22 A7010000 		.4byte	0x1a7
+ 3187 0e26 0B       		.uleb128 0xb
+ 3188 0e27 84000000 		.4byte	.LVL190
+ 3189 0e2b 10010000 		.4byte	0x110
+ 3190 0e2f 390E0000 		.4byte	0xe39
+ 3191 0e33 09       		.uleb128 0x9
+ 3192 0e34 01       		.uleb128 0x1
+ 3193 0e35 50       		.byte	0x50
+ 3194 0e36 01       		.uleb128 0x1
+ 3195 0e37 31       		.byte	0x31
+ 3196 0e38 00       		.byte	0
+ 3197 0e39 0B       		.uleb128 0xb
+ 3198 0e3a 8C000000 		.4byte	.LVL191
+ 3199 0e3e 10010000 		.4byte	0x110
+ 3200 0e42 4C0E0000 		.4byte	0xe4c
+ 3201 0e46 09       		.uleb128 0x9
+ 3202 0e47 01       		.uleb128 0x1
+ 3203 0e48 50       		.byte	0x50
+ 3204 0e49 01       		.uleb128 0x1
+ 3205 0e4a 32       		.byte	0x32
+ 3206 0e4b 00       		.byte	0
+ 3207 0e4c 08       		.uleb128 0x8
+ 3208 0e4d 94000000 		.4byte	.LVL192
+ 3209 0e51 10010000 		.4byte	0x110
+ 3210 0e55 09       		.uleb128 0x9
+ 3211 0e56 01       		.uleb128 0x1
+ 3212 0e57 50       		.byte	0x50
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 65
+
+
+ 3213 0e58 01       		.uleb128 0x1
+ 3214 0e59 33       		.byte	0x33
+ 3215 0e5a 00       		.byte	0
+ 3216 0e5b 00       		.byte	0
+ 3217 0e5c 12       		.uleb128 0x12
+ 3218 0e5d 77010000 		.4byte	.LASF40
+ 3219 0e61 04       		.byte	0x4
+ 3220 0e62 9606     		.2byte	0x696
+ 3221 0e64 680E0000 		.4byte	0xe68
+ 3222 0e68 13       		.uleb128 0x13
+ 3223 0e69 AD000000 		.4byte	0xad
+ 3224 0e6d 14       		.uleb128 0x14
+ 3225 0e6e 04030000 		.4byte	.LASF41
+ 3226 0e72 01       		.byte	0x1
+ 3227 0e73 04       		.byte	0x4
+ 3228 0e74 A2000000 		.4byte	0xa2
+ 3229 0e78 05       		.uleb128 0x5
+ 3230 0e79 03       		.byte	0x3
+ 3231 0e7a 00000000 		.4byte	speedDelay
+ 3232 0e7e 14       		.uleb128 0x14
+ 3233 0e7f 2B000000 		.4byte	.LASF42
+ 3234 0e83 01       		.byte	0x1
+ 3235 0e84 05       		.byte	0x5
+ 3236 0e85 97000000 		.4byte	0x97
+ 3237 0e89 05       		.uleb128 0x5
+ 3238 0e8a 03       		.byte	0x3
+ 3239 0e8b 00000000 		.4byte	state
+ 3240 0e8f 14       		.uleb128 0x14
+ 3241 0e90 76000000 		.4byte	.LASF43
+ 3242 0e94 01       		.byte	0x1
+ 3243 0e95 06       		.byte	0x6
+ 3244 0e96 97000000 		.4byte	0x97
+ 3245 0e9a 05       		.uleb128 0x5
+ 3246 0e9b 03       		.byte	0x3
+ 3247 0e9c 00000000 		.4byte	direction
+ 3248 0ea0 15       		.uleb128 0x15
+ 3249 0ea1 27030000 		.4byte	.LASF44
+ 3250 0ea5 27030000 		.4byte	.LASF44
+ 3251 0ea9 05       		.byte	0x5
+ 3252 0eaa 8B       		.byte	0x8b
+ 3253 0eab 15       		.uleb128 0x15
+ 3254 0eac 00000000 		.4byte	.LASF45
+ 3255 0eb0 00000000 		.4byte	.LASF45
+ 3256 0eb4 06       		.byte	0x6
+ 3257 0eb5 26       		.byte	0x26
+ 3258 0eb6 15       		.uleb128 0x15
+ 3259 0eb7 A1000000 		.4byte	.LASF46
+ 3260 0ebb A1000000 		.4byte	.LASF46
+ 3261 0ebf 07       		.byte	0x7
+ 3262 0ec0 26       		.byte	0x26
+ 3263 0ec1 15       		.uleb128 0x15
+ 3264 0ec2 7A020000 		.4byte	.LASF47
+ 3265 0ec6 7A020000 		.4byte	.LASF47
+ 3266 0eca 08       		.byte	0x8
+ 3267 0ecb 26       		.byte	0x26
+ 3268 0ecc 15       		.uleb128 0x15
+ 3269 0ecd 96010000 		.4byte	.LASF48
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 66
+
+
+ 3270 0ed1 96010000 		.4byte	.LASF48
+ 3271 0ed5 09       		.byte	0x9
+ 3272 0ed6 26       		.byte	0x26
+ 3273 0ed7 15       		.uleb128 0x15
+ 3274 0ed8 4A030000 		.4byte	.LASF49
+ 3275 0edc 4A030000 		.4byte	.LASF49
+ 3276 0ee0 0A       		.byte	0xa
+ 3277 0ee1 76       		.byte	0x76
+ 3278 0ee2 00       		.byte	0
+ 3279              		.section	.debug_abbrev,"",%progbits
+ 3280              	.Ldebug_abbrev0:
+ 3281 0000 01       		.uleb128 0x1
+ 3282 0001 11       		.uleb128 0x11
+ 3283 0002 01       		.byte	0x1
+ 3284 0003 25       		.uleb128 0x25
+ 3285 0004 0E       		.uleb128 0xe
+ 3286 0005 13       		.uleb128 0x13
+ 3287 0006 0B       		.uleb128 0xb
+ 3288 0007 03       		.uleb128 0x3
+ 3289 0008 0E       		.uleb128 0xe
+ 3290 0009 1B       		.uleb128 0x1b
+ 3291 000a 0E       		.uleb128 0xe
+ 3292 000b 55       		.uleb128 0x55
+ 3293 000c 17       		.uleb128 0x17
+ 3294 000d 11       		.uleb128 0x11
+ 3295 000e 01       		.uleb128 0x1
+ 3296 000f 10       		.uleb128 0x10
+ 3297 0010 17       		.uleb128 0x17
+ 3298 0011 00       		.byte	0
+ 3299 0012 00       		.byte	0
+ 3300 0013 02       		.uleb128 0x2
+ 3301 0014 24       		.uleb128 0x24
+ 3302 0015 00       		.byte	0
+ 3303 0016 0B       		.uleb128 0xb
+ 3304 0017 0B       		.uleb128 0xb
+ 3305 0018 3E       		.uleb128 0x3e
+ 3306 0019 0B       		.uleb128 0xb
+ 3307 001a 03       		.uleb128 0x3
+ 3308 001b 0E       		.uleb128 0xe
+ 3309 001c 00       		.byte	0
+ 3310 001d 00       		.byte	0
+ 3311 001e 03       		.uleb128 0x3
+ 3312 001f 16       		.uleb128 0x16
+ 3313 0020 00       		.byte	0
+ 3314 0021 03       		.uleb128 0x3
+ 3315 0022 0E       		.uleb128 0xe
+ 3316 0023 3A       		.uleb128 0x3a
+ 3317 0024 0B       		.uleb128 0xb
+ 3318 0025 3B       		.uleb128 0x3b
+ 3319 0026 0B       		.uleb128 0xb
+ 3320 0027 49       		.uleb128 0x49
+ 3321 0028 13       		.uleb128 0x13
+ 3322 0029 00       		.byte	0
+ 3323 002a 00       		.byte	0
+ 3324 002b 04       		.uleb128 0x4
+ 3325 002c 24       		.uleb128 0x24
+ 3326 002d 00       		.byte	0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 67
+
+
+ 3327 002e 0B       		.uleb128 0xb
+ 3328 002f 0B       		.uleb128 0xb
+ 3329 0030 3E       		.uleb128 0x3e
+ 3330 0031 0B       		.uleb128 0xb
+ 3331 0032 03       		.uleb128 0x3
+ 3332 0033 08       		.uleb128 0x8
+ 3333 0034 00       		.byte	0
+ 3334 0035 00       		.byte	0
+ 3335 0036 05       		.uleb128 0x5
+ 3336 0037 2E       		.uleb128 0x2e
+ 3337 0038 00       		.byte	0
+ 3338 0039 3F       		.uleb128 0x3f
+ 3339 003a 19       		.uleb128 0x19
+ 3340 003b 03       		.uleb128 0x3
+ 3341 003c 0E       		.uleb128 0xe
+ 3342 003d 3A       		.uleb128 0x3a
+ 3343 003e 0B       		.uleb128 0xb
+ 3344 003f 3B       		.uleb128 0x3b
+ 3345 0040 0B       		.uleb128 0xb
+ 3346 0041 27       		.uleb128 0x27
+ 3347 0042 19       		.uleb128 0x19
+ 3348 0043 49       		.uleb128 0x49
+ 3349 0044 13       		.uleb128 0x13
+ 3350 0045 11       		.uleb128 0x11
+ 3351 0046 01       		.uleb128 0x1
+ 3352 0047 12       		.uleb128 0x12
+ 3353 0048 06       		.uleb128 0x6
+ 3354 0049 40       		.uleb128 0x40
+ 3355 004a 18       		.uleb128 0x18
+ 3356 004b 9742     		.uleb128 0x2117
+ 3357 004d 19       		.uleb128 0x19
+ 3358 004e 00       		.byte	0
+ 3359 004f 00       		.byte	0
+ 3360 0050 06       		.uleb128 0x6
+ 3361 0051 2E       		.uleb128 0x2e
+ 3362 0052 01       		.byte	0x1
+ 3363 0053 3F       		.uleb128 0x3f
+ 3364 0054 19       		.uleb128 0x19
+ 3365 0055 03       		.uleb128 0x3
+ 3366 0056 0E       		.uleb128 0xe
+ 3367 0057 3A       		.uleb128 0x3a
+ 3368 0058 0B       		.uleb128 0xb
+ 3369 0059 3B       		.uleb128 0x3b
+ 3370 005a 0B       		.uleb128 0xb
+ 3371 005b 27       		.uleb128 0x27
+ 3372 005c 19       		.uleb128 0x19
+ 3373 005d 11       		.uleb128 0x11
+ 3374 005e 01       		.uleb128 0x1
+ 3375 005f 12       		.uleb128 0x12
+ 3376 0060 06       		.uleb128 0x6
+ 3377 0061 40       		.uleb128 0x40
+ 3378 0062 18       		.uleb128 0x18
+ 3379 0063 9742     		.uleb128 0x2117
+ 3380 0065 19       		.uleb128 0x19
+ 3381 0066 01       		.uleb128 0x1
+ 3382 0067 13       		.uleb128 0x13
+ 3383 0068 00       		.byte	0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 68
+
+
+ 3384 0069 00       		.byte	0
+ 3385 006a 07       		.uleb128 0x7
+ 3386 006b 05       		.uleb128 0x5
+ 3387 006c 00       		.byte	0
+ 3388 006d 03       		.uleb128 0x3
+ 3389 006e 0E       		.uleb128 0xe
+ 3390 006f 3A       		.uleb128 0x3a
+ 3391 0070 0B       		.uleb128 0xb
+ 3392 0071 3B       		.uleb128 0x3b
+ 3393 0072 0B       		.uleb128 0xb
+ 3394 0073 49       		.uleb128 0x49
+ 3395 0074 13       		.uleb128 0x13
+ 3396 0075 02       		.uleb128 0x2
+ 3397 0076 18       		.uleb128 0x18
+ 3398 0077 00       		.byte	0
+ 3399 0078 00       		.byte	0
+ 3400 0079 08       		.uleb128 0x8
+ 3401 007a 898201   		.uleb128 0x4109
+ 3402 007d 01       		.byte	0x1
+ 3403 007e 11       		.uleb128 0x11
+ 3404 007f 01       		.uleb128 0x1
+ 3405 0080 31       		.uleb128 0x31
+ 3406 0081 13       		.uleb128 0x13
+ 3407 0082 00       		.byte	0
+ 3408 0083 00       		.byte	0
+ 3409 0084 09       		.uleb128 0x9
+ 3410 0085 8A8201   		.uleb128 0x410a
+ 3411 0088 00       		.byte	0
+ 3412 0089 02       		.uleb128 0x2
+ 3413 008a 18       		.uleb128 0x18
+ 3414 008b 9142     		.uleb128 0x2111
+ 3415 008d 18       		.uleb128 0x18
+ 3416 008e 00       		.byte	0
+ 3417 008f 00       		.byte	0
+ 3418 0090 0A       		.uleb128 0xa
+ 3419 0091 2E       		.uleb128 0x2e
+ 3420 0092 00       		.byte	0
+ 3421 0093 3F       		.uleb128 0x3f
+ 3422 0094 19       		.uleb128 0x19
+ 3423 0095 03       		.uleb128 0x3
+ 3424 0096 0E       		.uleb128 0xe
+ 3425 0097 3A       		.uleb128 0x3a
+ 3426 0098 0B       		.uleb128 0xb
+ 3427 0099 3B       		.uleb128 0x3b
+ 3428 009a 0B       		.uleb128 0xb
+ 3429 009b 27       		.uleb128 0x27
+ 3430 009c 19       		.uleb128 0x19
+ 3431 009d 11       		.uleb128 0x11
+ 3432 009e 01       		.uleb128 0x1
+ 3433 009f 12       		.uleb128 0x12
+ 3434 00a0 06       		.uleb128 0x6
+ 3435 00a1 40       		.uleb128 0x40
+ 3436 00a2 18       		.uleb128 0x18
+ 3437 00a3 9742     		.uleb128 0x2117
+ 3438 00a5 19       		.uleb128 0x19
+ 3439 00a6 00       		.byte	0
+ 3440 00a7 00       		.byte	0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 69
+
+
+ 3441 00a8 0B       		.uleb128 0xb
+ 3442 00a9 898201   		.uleb128 0x4109
+ 3443 00ac 01       		.byte	0x1
+ 3444 00ad 11       		.uleb128 0x11
+ 3445 00ae 01       		.uleb128 0x1
+ 3446 00af 31       		.uleb128 0x31
+ 3447 00b0 13       		.uleb128 0x13
+ 3448 00b1 01       		.uleb128 0x1
+ 3449 00b2 13       		.uleb128 0x13
+ 3450 00b3 00       		.byte	0
+ 3451 00b4 00       		.byte	0
+ 3452 00b5 0C       		.uleb128 0xc
+ 3453 00b6 898201   		.uleb128 0x4109
+ 3454 00b9 00       		.byte	0
+ 3455 00ba 11       		.uleb128 0x11
+ 3456 00bb 01       		.uleb128 0x1
+ 3457 00bc 31       		.uleb128 0x31
+ 3458 00bd 13       		.uleb128 0x13
+ 3459 00be 00       		.byte	0
+ 3460 00bf 00       		.byte	0
+ 3461 00c0 0D       		.uleb128 0xd
+ 3462 00c1 2E       		.uleb128 0x2e
+ 3463 00c2 01       		.byte	0x1
+ 3464 00c3 3F       		.uleb128 0x3f
+ 3465 00c4 19       		.uleb128 0x19
+ 3466 00c5 03       		.uleb128 0x3
+ 3467 00c6 0E       		.uleb128 0xe
+ 3468 00c7 3A       		.uleb128 0x3a
+ 3469 00c8 0B       		.uleb128 0xb
+ 3470 00c9 3B       		.uleb128 0x3b
+ 3471 00ca 05       		.uleb128 0x5
+ 3472 00cb 27       		.uleb128 0x27
+ 3473 00cc 19       		.uleb128 0x19
+ 3474 00cd 11       		.uleb128 0x11
+ 3475 00ce 01       		.uleb128 0x1
+ 3476 00cf 12       		.uleb128 0x12
+ 3477 00d0 06       		.uleb128 0x6
+ 3478 00d1 40       		.uleb128 0x40
+ 3479 00d2 18       		.uleb128 0x18
+ 3480 00d3 9742     		.uleb128 0x2117
+ 3481 00d5 19       		.uleb128 0x19
+ 3482 00d6 01       		.uleb128 0x1
+ 3483 00d7 13       		.uleb128 0x13
+ 3484 00d8 00       		.byte	0
+ 3485 00d9 00       		.byte	0
+ 3486 00da 0E       		.uleb128 0xe
+ 3487 00db 0B       		.uleb128 0xb
+ 3488 00dc 01       		.byte	0x1
+ 3489 00dd 11       		.uleb128 0x11
+ 3490 00de 01       		.uleb128 0x1
+ 3491 00df 12       		.uleb128 0x12
+ 3492 00e0 06       		.uleb128 0x6
+ 3493 00e1 00       		.byte	0
+ 3494 00e2 00       		.byte	0
+ 3495 00e3 0F       		.uleb128 0xf
+ 3496 00e4 34       		.uleb128 0x34
+ 3497 00e5 00       		.byte	0
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 70
+
+
+ 3498 00e6 03       		.uleb128 0x3
+ 3499 00e7 08       		.uleb128 0x8
+ 3500 00e8 3A       		.uleb128 0x3a
+ 3501 00e9 0B       		.uleb128 0xb
+ 3502 00ea 3B       		.uleb128 0x3b
+ 3503 00eb 05       		.uleb128 0x5
+ 3504 00ec 49       		.uleb128 0x49
+ 3505 00ed 13       		.uleb128 0x13
+ 3506 00ee 02       		.uleb128 0x2
+ 3507 00ef 17       		.uleb128 0x17
+ 3508 00f0 00       		.byte	0
+ 3509 00f1 00       		.byte	0
+ 3510 00f2 10       		.uleb128 0x10
+ 3511 00f3 2E       		.uleb128 0x2e
+ 3512 00f4 01       		.byte	0x1
+ 3513 00f5 3F       		.uleb128 0x3f
+ 3514 00f6 19       		.uleb128 0x19
+ 3515 00f7 03       		.uleb128 0x3
+ 3516 00f8 08       		.uleb128 0x8
+ 3517 00f9 3A       		.uleb128 0x3a
+ 3518 00fa 0B       		.uleb128 0xb
+ 3519 00fb 3B       		.uleb128 0x3b
+ 3520 00fc 0B       		.uleb128 0xb
+ 3521 00fd 27       		.uleb128 0x27
+ 3522 00fe 19       		.uleb128 0x19
+ 3523 00ff 11       		.uleb128 0x11
+ 3524 0100 01       		.uleb128 0x1
+ 3525 0101 12       		.uleb128 0x12
+ 3526 0102 06       		.uleb128 0x6
+ 3527 0103 40       		.uleb128 0x40
+ 3528 0104 18       		.uleb128 0x18
+ 3529 0105 9742     		.uleb128 0x2117
+ 3530 0107 19       		.uleb128 0x19
+ 3531 0108 01       		.uleb128 0x1
+ 3532 0109 13       		.uleb128 0x13
+ 3533 010a 00       		.byte	0
+ 3534 010b 00       		.byte	0
+ 3535 010c 11       		.uleb128 0x11
+ 3536 010d 05       		.uleb128 0x5
+ 3537 010e 00       		.byte	0
+ 3538 010f 03       		.uleb128 0x3
+ 3539 0110 0E       		.uleb128 0xe
+ 3540 0111 3A       		.uleb128 0x3a
+ 3541 0112 0B       		.uleb128 0xb
+ 3542 0113 3B       		.uleb128 0x3b
+ 3543 0114 0B       		.uleb128 0xb
+ 3544 0115 49       		.uleb128 0x49
+ 3545 0116 13       		.uleb128 0x13
+ 3546 0117 02       		.uleb128 0x2
+ 3547 0118 17       		.uleb128 0x17
+ 3548 0119 00       		.byte	0
+ 3549 011a 00       		.byte	0
+ 3550 011b 12       		.uleb128 0x12
+ 3551 011c 34       		.uleb128 0x34
+ 3552 011d 00       		.byte	0
+ 3553 011e 03       		.uleb128 0x3
+ 3554 011f 0E       		.uleb128 0xe
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 71
+
+
+ 3555 0120 3A       		.uleb128 0x3a
+ 3556 0121 0B       		.uleb128 0xb
+ 3557 0122 3B       		.uleb128 0x3b
+ 3558 0123 05       		.uleb128 0x5
+ 3559 0124 49       		.uleb128 0x49
+ 3560 0125 13       		.uleb128 0x13
+ 3561 0126 3F       		.uleb128 0x3f
+ 3562 0127 19       		.uleb128 0x19
+ 3563 0128 3C       		.uleb128 0x3c
+ 3564 0129 19       		.uleb128 0x19
+ 3565 012a 00       		.byte	0
+ 3566 012b 00       		.byte	0
+ 3567 012c 13       		.uleb128 0x13
+ 3568 012d 35       		.uleb128 0x35
+ 3569 012e 00       		.byte	0
+ 3570 012f 49       		.uleb128 0x49
+ 3571 0130 13       		.uleb128 0x13
+ 3572 0131 00       		.byte	0
+ 3573 0132 00       		.byte	0
+ 3574 0133 14       		.uleb128 0x14
+ 3575 0134 34       		.uleb128 0x34
+ 3576 0135 00       		.byte	0
+ 3577 0136 03       		.uleb128 0x3
+ 3578 0137 0E       		.uleb128 0xe
+ 3579 0138 3A       		.uleb128 0x3a
+ 3580 0139 0B       		.uleb128 0xb
+ 3581 013a 3B       		.uleb128 0x3b
+ 3582 013b 0B       		.uleb128 0xb
+ 3583 013c 49       		.uleb128 0x49
+ 3584 013d 13       		.uleb128 0x13
+ 3585 013e 3F       		.uleb128 0x3f
+ 3586 013f 19       		.uleb128 0x19
+ 3587 0140 02       		.uleb128 0x2
+ 3588 0141 18       		.uleb128 0x18
+ 3589 0142 00       		.byte	0
+ 3590 0143 00       		.byte	0
+ 3591 0144 15       		.uleb128 0x15
+ 3592 0145 2E       		.uleb128 0x2e
+ 3593 0146 00       		.byte	0
+ 3594 0147 3F       		.uleb128 0x3f
+ 3595 0148 19       		.uleb128 0x19
+ 3596 0149 3C       		.uleb128 0x3c
+ 3597 014a 19       		.uleb128 0x19
+ 3598 014b 6E       		.uleb128 0x6e
+ 3599 014c 0E       		.uleb128 0xe
+ 3600 014d 03       		.uleb128 0x3
+ 3601 014e 0E       		.uleb128 0xe
+ 3602 014f 3A       		.uleb128 0x3a
+ 3603 0150 0B       		.uleb128 0xb
+ 3604 0151 3B       		.uleb128 0x3b
+ 3605 0152 0B       		.uleb128 0xb
+ 3606 0153 00       		.byte	0
+ 3607 0154 00       		.byte	0
+ 3608 0155 00       		.byte	0
+ 3609              		.section	.debug_loc,"",%progbits
+ 3610              	.Ldebug_loc0:
+ 3611              	.LLST0:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 72
+
+
+ 3612 0000 02000000 		.4byte	.LVL167
+ 3613 0004 06000000 		.4byte	.LVL168
+ 3614 0008 0200     		.2byte	0x2
+ 3615 000a 30       		.byte	0x30
+ 3616 000b 9F       		.byte	0x9f
+ 3617 000c 06000000 		.4byte	.LVL168
+ 3618 0010 34000000 		.4byte	.LVL173
+ 3619 0014 0100     		.2byte	0x1
+ 3620 0016 54       		.byte	0x54
+ 3621 0017 00000000 		.4byte	0
+ 3622 001b 00000000 		.4byte	0
+ 3623              	.LLST1:
+ 3624 001f 02000000 		.4byte	.LVL174
+ 3625 0023 06000000 		.4byte	.LVL175
+ 3626 0027 0200     		.2byte	0x2
+ 3627 0029 30       		.byte	0x30
+ 3628 002a 9F       		.byte	0x9f
+ 3629 002b 06000000 		.4byte	.LVL175
+ 3630 002f 34000000 		.4byte	.LVL180
+ 3631 0033 0100     		.2byte	0x1
+ 3632 0035 54       		.byte	0x54
+ 3633 0036 00000000 		.4byte	0
+ 3634 003a 00000000 		.4byte	0
+ 3635              	.LLST2:
+ 3636 003e 00000000 		.4byte	.LVL181
+ 3637 0042 04000000 		.4byte	.LVL182
+ 3638 0046 0100     		.2byte	0x1
+ 3639 0048 50       		.byte	0x50
+ 3640 0049 04000000 		.4byte	.LVL182
+ 3641 004d 96000000 		.4byte	.LFE65
+ 3642 0051 0400     		.2byte	0x4
+ 3643 0053 F3       		.byte	0xf3
+ 3644 0054 01       		.uleb128 0x1
+ 3645 0055 50       		.byte	0x50
+ 3646 0056 9F       		.byte	0x9f
+ 3647 0057 00000000 		.4byte	0
+ 3648 005b 00000000 		.4byte	0
+ 3649              		.section	.debug_aranges,"",%progbits
+ 3650 0000 9C000000 		.4byte	0x9c
+ 3651 0004 0200     		.2byte	0x2
+ 3652 0006 00000000 		.4byte	.Ldebug_info0
+ 3653 000a 04       		.byte	0x4
+ 3654 000b 00       		.byte	0
+ 3655 000c 0000     		.2byte	0
+ 3656 000e 0000     		.2byte	0
+ 3657 0010 00000000 		.4byte	.LFB63
+ 3658 0014 0C000000 		.4byte	.LFE63-.LFB63
+ 3659 0018 00000000 		.4byte	.LFB64
+ 3660 001c 0C000000 		.4byte	.LFE64-.LFB64
+ 3661 0020 00000000 		.4byte	.LFB66
+ 3662 0024 0C000000 		.4byte	.LFE66-.LFB66
+ 3663 0028 00000000 		.4byte	.LFB67
+ 3664 002c 24000000 		.4byte	.LFE67-.LFB67
+ 3665 0030 00000000 		.4byte	.LFB68
+ 3666 0034 24000000 		.4byte	.LFE68-.LFB68
+ 3667 0038 00000000 		.4byte	.LFB69
+ 3668 003c 0C000000 		.4byte	.LFE69-.LFB69
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 73
+
+
+ 3669 0040 00000000 		.4byte	.LFB70
+ 3670 0044 0C000000 		.4byte	.LFE70-.LFB70
+ 3671 0048 00000000 		.4byte	.LFB71
+ 3672 004c 28000000 		.4byte	.LFE71-.LFB71
+ 3673 0050 00000000 		.4byte	.LFB72
+ 3674 0054 FC000000 		.4byte	.LFE72-.LFB72
+ 3675 0058 00000000 		.4byte	.LFB73
+ 3676 005c 84000000 		.4byte	.LFE73-.LFB73
+ 3677 0060 00000000 		.4byte	.LFB74
+ 3678 0064 84000000 		.4byte	.LFE74-.LFB74
+ 3679 0068 00000000 		.4byte	.LFB75
+ 3680 006c FC000000 		.4byte	.LFE75-.LFB75
+ 3681 0070 00000000 		.4byte	.LFB76
+ 3682 0074 84000000 		.4byte	.LFE76-.LFB76
+ 3683 0078 00000000 		.4byte	.LFB77
+ 3684 007c 84000000 		.4byte	.LFE77-.LFB77
+ 3685 0080 00000000 		.4byte	.LFB78
+ 3686 0084 3C000000 		.4byte	.LFE78-.LFB78
+ 3687 0088 00000000 		.4byte	.LFB79
+ 3688 008c 3C000000 		.4byte	.LFE79-.LFB79
+ 3689 0090 00000000 		.4byte	.LFB65
+ 3690 0094 96000000 		.4byte	.LFE65-.LFB65
+ 3691 0098 00000000 		.4byte	0
+ 3692 009c 00000000 		.4byte	0
+ 3693              		.section	.debug_ranges,"",%progbits
+ 3694              	.Ldebug_ranges0:
+ 3695 0000 00000000 		.4byte	.LFB63
+ 3696 0004 0C000000 		.4byte	.LFE63
+ 3697 0008 00000000 		.4byte	.LFB64
+ 3698 000c 0C000000 		.4byte	.LFE64
+ 3699 0010 00000000 		.4byte	.LFB66
+ 3700 0014 0C000000 		.4byte	.LFE66
+ 3701 0018 00000000 		.4byte	.LFB67
+ 3702 001c 24000000 		.4byte	.LFE67
+ 3703 0020 00000000 		.4byte	.LFB68
+ 3704 0024 24000000 		.4byte	.LFE68
+ 3705 0028 00000000 		.4byte	.LFB69
+ 3706 002c 0C000000 		.4byte	.LFE69
+ 3707 0030 00000000 		.4byte	.LFB70
+ 3708 0034 0C000000 		.4byte	.LFE70
+ 3709 0038 00000000 		.4byte	.LFB71
+ 3710 003c 28000000 		.4byte	.LFE71
+ 3711 0040 00000000 		.4byte	.LFB72
+ 3712 0044 FC000000 		.4byte	.LFE72
+ 3713 0048 00000000 		.4byte	.LFB73
+ 3714 004c 84000000 		.4byte	.LFE73
+ 3715 0050 00000000 		.4byte	.LFB74
+ 3716 0054 84000000 		.4byte	.LFE74
+ 3717 0058 00000000 		.4byte	.LFB75
+ 3718 005c FC000000 		.4byte	.LFE75
+ 3719 0060 00000000 		.4byte	.LFB76
+ 3720 0064 84000000 		.4byte	.LFE76
+ 3721 0068 00000000 		.4byte	.LFB77
+ 3722 006c 84000000 		.4byte	.LFE77
+ 3723 0070 00000000 		.4byte	.LFB78
+ 3724 0074 3C000000 		.4byte	.LFE78
+ 3725 0078 00000000 		.4byte	.LFB79
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 74
+
+
+ 3726 007c 3C000000 		.4byte	.LFE79
+ 3727 0080 00000000 		.4byte	.LFB65
+ 3728 0084 96000000 		.4byte	.LFE65
+ 3729 0088 00000000 		.4byte	0
+ 3730 008c 00000000 		.4byte	0
+ 3731              		.section	.debug_line,"",%progbits
+ 3732              	.Ldebug_line0:
+ 3733 0000 9C030000 		.section	.debug_str,"MS",%progbits,1
+ 3733      02009501 
+ 3733      00000201 
+ 3733      FB0E0D00 
+ 3733      01010101 
+ 3734              	.LASF45:
+ 3735 0000 41315F47 		.ascii	"A1_Green_Write\000"
+ 3735      7265656E 
+ 3735      5F577269 
+ 3735      746500
+ 3736              	.LASF3:
+ 3737 000f 5F5F7569 		.ascii	"__uint8_t\000"
+ 3737      6E74385F 
+ 3737      7400
+ 3738              	.LASF31:
+ 3739 0019 64726976 		.ascii	"driveForwardsFull\000"
+ 3739      65466F72 
+ 3739      77617264 
+ 3739      7346756C 
+ 3739      6C00
+ 3740              	.LASF42:
+ 3741 002b 73746174 		.ascii	"state\000"
+ 3741      6500
+ 3742              	.LASF6:
+ 3743 0031 5F5F696E 		.ascii	"__int32_t\000"
+ 3743      7433325F 
+ 3743      7400
+ 3744              	.LASF35:
+ 3745 003b 64726976 		.ascii	"driveBackwardsWave\000"
+ 3745      65426163 
+ 3745      6B776172 
+ 3745      64735761 
+ 3745      766500
+ 3746              	.LASF26:
+ 3747 004e 696E6372 		.ascii	"increaseSpeed\000"
+ 3747      65617365 
+ 3747      53706565 
+ 3747      6400
+ 3748              	.LASF23:
+ 3749 005c 67657453 		.ascii	"getState\000"
+ 3749      74617465 
+ 3749      00
+ 3750              	.LASF51:
+ 3751 0065 66756E63 		.ascii	"functions.c\000"
+ 3751      74696F6E 
+ 3751      732E6300 
+ 3752              	.LASF39:
+ 3753 0071 62797465 		.ascii	"byte\000"
+ 3753      00
+ 3754              	.LASF43:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 75
+
+
+ 3755 0076 64697265 		.ascii	"direction\000"
+ 3755      6374696F 
+ 3755      6E00
+ 3756              	.LASF34:
+ 3757 0080 64726976 		.ascii	"driveBackwardsFull\000"
+ 3757      65426163 
+ 3757      6B776172 
+ 3757      64734675 
+ 3757      6C6C00
+ 3758              	.LASF15:
+ 3759 0093 696E7433 		.ascii	"int32_t\000"
+ 3759      325F7400 
+ 3760              	.LASF17:
+ 3761 009b 666C6F61 		.ascii	"float\000"
+ 3761      7400
+ 3762              	.LASF46:
+ 3763 00a1 41325F4F 		.ascii	"A2_Orange_Write\000"
+ 3763      72616E67 
+ 3763      655F5772 
+ 3763      69746500 
+ 3764              	.LASF1:
+ 3765 00b1 756E7369 		.ascii	"unsigned char\000"
+ 3765      676E6564 
+ 3765      20636861 
+ 3765      7200
+ 3766              	.LASF50:
+ 3767 00bf 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 3767      43313120 
+ 3767      352E342E 
+ 3767      31203230 
+ 3767      31363036 
+ 3768 00f2 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 3768      20726576 
+ 3768      6973696F 
+ 3768      6E203233 
+ 3768      37373135 
+ 3769 0125 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 3769      66756E63 
+ 3769      74696F6E 
+ 3769      2D736563 
+ 3769      74696F6E 
+ 3770              	.LASF9:
+ 3771 014d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3771      20756E73 
+ 3771      69676E65 
+ 3771      6420696E 
+ 3771      7400
+ 3772              	.LASF5:
+ 3773 015f 73686F72 		.ascii	"short unsigned int\000"
+ 3773      7420756E 
+ 3773      7369676E 
+ 3773      65642069 
+ 3773      6E7400
+ 3774              	.LASF29:
+ 3775 0172 73746F70 		.ascii	"stop\000"
+ 3775      00
+ 3776              	.LASF40:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 76
+
+
+ 3777 0177 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3777      52784275 
+ 3777      66666572 
+ 3777      00
+ 3778              	.LASF4:
+ 3779 0184 5F5F7569 		.ascii	"__uint16_t\000"
+ 3779      6E743136 
+ 3779      5F7400
+ 3780              	.LASF18:
+ 3781 018f 646F7562 		.ascii	"double\000"
+ 3781      6C6500
+ 3782              	.LASF48:
+ 3783 0196 42325F57 		.ascii	"B2_White_Write\000"
+ 3783      68697465 
+ 3783      5F577269 
+ 3783      746500
+ 3784              	.LASF8:
+ 3785 01a5 5F5F7569 		.ascii	"__uint32_t\000"
+ 3785      6E743332 
+ 3785      5F7400
+ 3786              	.LASF30:
+ 3787 01b0 64726976 		.ascii	"driveForwardsHalf\000"
+ 3787      65466F72 
+ 3787      77617264 
+ 3787      7348616C 
+ 3787      6600
+ 3788              	.LASF37:
+ 3789 01c2 72756E4F 		.ascii	"runOnceBackwards\000"
+ 3789      6E636542 
+ 3789      61636B77 
+ 3789      61726473 
+ 3789      00
+ 3790              	.LASF52:
+ 3791 01d3 433A5C55 		.ascii	"C:\\Users\\kaaen\\Documents\\GitHub\\GFV\\labmotorc"
+ 3791      73657273 
+ 3791      5C6B6161 
+ 3791      656E5C44 
+ 3791      6F63756D 
+ 3792 0200 6F6E7472 		.ascii	"ontrol\\stepperny.cydsn\000"
+ 3792      6F6C5C73 
+ 3792      74657070 
+ 3792      65726E79 
+ 3792      2E637964 
+ 3793              	.LASF12:
+ 3794 0217 756E7369 		.ascii	"unsigned int\000"
+ 3794      676E6564 
+ 3794      20696E74 
+ 3794      00
+ 3795              	.LASF27:
+ 3796 0224 64726976 		.ascii	"driveForwards\000"
+ 3796      65466F72 
+ 3796      77617264 
+ 3796      7300
+ 3797              	.LASF38:
+ 3798 0232 73746174 		.ascii	"stateNumb\000"
+ 3798      654E756D 
+ 3798      6200
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 77
+
+
+ 3799              	.LASF11:
+ 3800 023c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3800      206C6F6E 
+ 3800      6720756E 
+ 3800      7369676E 
+ 3800      65642069 
+ 3801              	.LASF13:
+ 3802 0253 75696E74 		.ascii	"uint8_t\000"
+ 3802      385F7400 
+ 3803              	.LASF24:
+ 3804 025b 6368616E 		.ascii	"changeState\000"
+ 3804      67655374 
+ 3804      61746500 
+ 3805              	.LASF33:
+ 3806 0267 64726976 		.ascii	"driveBackwardsHalf\000"
+ 3806      65426163 
+ 3806      6B776172 
+ 3806      64734861 
+ 3806      6C6600
+ 3807              	.LASF47:
+ 3808 027a 42315F50 		.ascii	"B1_Purple_Write\000"
+ 3808      7572706C 
+ 3808      655F5772 
+ 3808      69746500 
+ 3809              	.LASF28:
+ 3810 028a 64726976 		.ascii	"driveBackwards\000"
+ 3810      65426163 
+ 3810      6B776172 
+ 3810      647300
+ 3811              	.LASF22:
+ 3812 0299 67657444 		.ascii	"getDirection\000"
+ 3812      69726563 
+ 3812      74696F6E 
+ 3812      00
+ 3813              	.LASF10:
+ 3814 02a6 6C6F6E67 		.ascii	"long long int\000"
+ 3814      206C6F6E 
+ 3814      6720696E 
+ 3814      7400
+ 3815              	.LASF21:
+ 3816 02b4 73697A65 		.ascii	"sizetype\000"
+ 3816      74797065 
+ 3816      00
+ 3817              	.LASF19:
+ 3818 02bd 63686172 		.ascii	"char\000"
+ 3818      00
+ 3819              	.LASF25:
+ 3820 02c2 64656372 		.ascii	"decreaseSpeed\000"
+ 3820      65617365 
+ 3820      53706565 
+ 3820      6400
+ 3821              	.LASF36:
+ 3822 02d0 72756E4F 		.ascii	"runOnceForward\000"
+ 3822      6E636546 
+ 3822      6F727761 
+ 3822      726400
+ 3823              	.LASF2:
+ARM GAS  C:\Users\kaaen\AppData\Local\Temp\ccw3mBXt.s 			page 78
+
+
+ 3824 02df 73686F72 		.ascii	"short int\000"
+ 3824      7420696E 
+ 3824      7400
+ 3825              	.LASF14:
+ 3826 02e9 75696E74 		.ascii	"uint16_t\000"
+ 3826      31365F74 
+ 3826      00
+ 3827              	.LASF16:
+ 3828 02f2 75696E74 		.ascii	"uint32_t\000"
+ 3828      33325F74 
+ 3828      00
+ 3829              	.LASF7:
+ 3830 02fb 6C6F6E67 		.ascii	"long int\000"
+ 3830      20696E74 
+ 3830      00
+ 3831              	.LASF41:
+ 3832 0304 73706565 		.ascii	"speedDelay\000"
+ 3832      6444656C 
+ 3832      617900
+ 3833              	.LASF20:
+ 3834 030f 6C6F6E67 		.ascii	"long double\000"
+ 3834      20646F75 
+ 3834      626C6500 
+ 3835              	.LASF0:
+ 3836 031b 7369676E 		.ascii	"signed char\000"
+ 3836      65642063 
+ 3836      68617200 
+ 3837              	.LASF44:
+ 3838 0327 55415254 		.ascii	"UART_1_PutString\000"
+ 3838      5F315F50 
+ 3838      75745374 
+ 3838      72696E67 
+ 3838      00
+ 3839              	.LASF32:
+ 3840 0338 64726976 		.ascii	"driveForwardsWave\000"
+ 3840      65466F72 
+ 3840      77617264 
+ 3840      73576176 
+ 3840      6500
+ 3841              	.LASF49:
+ 3842 034a 43794465 		.ascii	"CyDelay\000"
+ 3842      6C617900 
+ 3843              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
