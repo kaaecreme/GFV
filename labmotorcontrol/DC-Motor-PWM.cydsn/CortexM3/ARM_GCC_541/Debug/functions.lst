@@ -1,0 +1,1120 @@
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"functions.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.decreaseSpeed,"ax",%progbits
+  20              		.align	2
+  21              		.global	decreaseSpeed
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	decreaseSpeed, %function
+  25              	decreaseSpeed:
+  26              	.LFB0:
+  27              		.file 1 "functions.c"
+   1:functions.c   **** #include "functions.h"
+   2:functions.c   **** #include <stdint.h>
+   3:functions.c   **** 
+   4:functions.c   **** uint8_t CURR_PWM = 0; // Gemmer PWM signalets værdi for at holde styr på dens nuværende værdi
+   5:functions.c   **** uint8_t MAX_PWM = 100; // Sætter en øvre begrænsning på PWM signalet
+   6:functions.c   **** uint8_t MIN_PWM = 0; // Sætter en nedre begrænsning på PWM signalet
+   7:functions.c   **** 
+   8:functions.c   **** void decreaseSpeed()
+   9:functions.c   **** {
+  28              		.loc 1 9 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  10:functions.c   ****     UART_1_PutString("Decreasing speed\r\n");
+  36              		.loc 1 10 0
+  37 0002 0748     		ldr	r0, .L4
+  38 0004 FFF7FEFF 		bl	UART_1_PutString
+  39              	.LVL0:
+  11:functions.c   ****     
+  12:functions.c   ****     if (CURR_PWM > MIN_PWM)
+  40              		.loc 1 12 0
+  41 0008 064B     		ldr	r3, .L4+4
+  42 000a 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  43 000c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  44 000e 9842     		cmp	r0, r3
+  45 0010 05D9     		bls	.L1
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 2
+
+
+  46              	.LBB2:
+  13:functions.c   ****     {
+  14:functions.c   ****         CURR_PWM -= 10; // Duty cyclen falder
+  47              		.loc 1 14 0
+  48 0012 0A38     		subs	r0, r0, #10
+  49 0014 C0B2     		uxtb	r0, r0
+  50 0016 034B     		ldr	r3, .L4+4
+  51 0018 1870     		strb	r0, [r3]
+  15:functions.c   ****         PWM_1_WriteCompare(CURR_PWM); // Sender værdien ud
+  52              		.loc 1 15 0
+  53 001a FFF7FEFF 		bl	PWM_1_WriteCompare
+  54              	.LVL1:
+  55              	.L1:
+  56 001e 08BD     		pop	{r3, pc}
+  57              	.L5:
+  58              		.align	2
+  59              	.L4:
+  60 0020 00000000 		.word	.LC0
+  61 0024 00000000 		.word	.LANCHOR0
+  62              	.LBE2:
+  63              		.cfi_endproc
+  64              	.LFE0:
+  65              		.size	decreaseSpeed, .-decreaseSpeed
+  66              		.section	.text.increaseSpeed,"ax",%progbits
+  67              		.align	2
+  68              		.global	increaseSpeed
+  69              		.thumb
+  70              		.thumb_func
+  71              		.type	increaseSpeed, %function
+  72              	increaseSpeed:
+  73              	.LFB1:
+  16:functions.c   ****     }
+  17:functions.c   **** }
+  18:functions.c   **** 
+  19:functions.c   **** void increaseSpeed()
+  20:functions.c   **** {
+  74              		.loc 1 20 0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0000 08B5     		push	{r3, lr}
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 3, -8
+  81              		.cfi_offset 14, -4
+  21:functions.c   ****     UART_1_PutString("Increasing speed\r\n");   
+  82              		.loc 1 21 0
+  83 0002 0848     		ldr	r0, .L9
+  84 0004 FFF7FEFF 		bl	UART_1_PutString
+  85              	.LVL2:
+  22:functions.c   **** 
+  23:functions.c   ****     if (CURR_PWM < MAX_PWM)
+  86              		.loc 1 23 0
+  87 0008 074B     		ldr	r3, .L9+4
+  88 000a 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  89 000c 074B     		ldr	r3, .L9+8
+  90 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  91 0010 9842     		cmp	r0, r3
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 3
+
+
+  92 0012 05D2     		bcs	.L6
+  93              	.LBB3:
+  24:functions.c   ****     {
+  25:functions.c   ****         CURR_PWM += 10; // Duty cyclen stiger
+  94              		.loc 1 25 0
+  95 0014 0A30     		adds	r0, r0, #10
+  96 0016 C0B2     		uxtb	r0, r0
+  97 0018 034B     		ldr	r3, .L9+4
+  98 001a 1870     		strb	r0, [r3]
+  26:functions.c   ****         PWM_1_WriteCompare(CURR_PWM); // Sender værdien ud
+  99              		.loc 1 26 0
+ 100 001c FFF7FEFF 		bl	PWM_1_WriteCompare
+ 101              	.LVL3:
+ 102              	.L6:
+ 103 0020 08BD     		pop	{r3, pc}
+ 104              	.L10:
+ 105 0022 00BF     		.align	2
+ 106              	.L9:
+ 107 0024 14000000 		.word	.LC1
+ 108 0028 00000000 		.word	.LANCHOR0
+ 109 002c 00000000 		.word	.LANCHOR1
+ 110              	.LBE3:
+ 111              		.cfi_endproc
+ 112              	.LFE1:
+ 113              		.size	increaseSpeed, .-increaseSpeed
+ 114              		.section	.text.driveForwards,"ax",%progbits
+ 115              		.align	2
+ 116              		.global	driveForwards
+ 117              		.thumb
+ 118              		.thumb_func
+ 119              		.type	driveForwards, %function
+ 120              	driveForwards:
+ 121              	.LFB2:
+  27:functions.c   ****     }
+  28:functions.c   **** }
+  29:functions.c   **** 
+  30:functions.c   **** void driveForwards()
+  31:functions.c   **** {
+ 122              		.loc 1 31 0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126 0000 08B5     		push	{r3, lr}
+ 127              		.cfi_def_cfa_offset 8
+ 128              		.cfi_offset 3, -8
+ 129              		.cfi_offset 14, -4
+  32:functions.c   ****     UART_1_PutString("Set direction: forwards\r\n");
+ 130              		.loc 1 32 0
+ 131 0002 0548     		ldr	r0, .L13
+ 132 0004 FFF7FEFF 		bl	UART_1_PutString
+ 133              	.LVL4:
+  33:functions.c   ****     Pin1_Write(1); // Skriver til Pin1
+ 134              		.loc 1 33 0
+ 135 0008 0120     		movs	r0, #1
+ 136 000a FFF7FEFF 		bl	Pin1_Write
+ 137              	.LVL5:
+  34:functions.c   ****     Pin2_Write(0); // Skriver til Pin2
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 4
+
+
+ 138              		.loc 1 34 0
+ 139 000e 0020     		movs	r0, #0
+ 140 0010 FFF7FEFF 		bl	Pin2_Write
+ 141              	.LVL6:
+ 142 0014 08BD     		pop	{r3, pc}
+ 143              	.L14:
+ 144 0016 00BF     		.align	2
+ 145              	.L13:
+ 146 0018 28000000 		.word	.LC2
+ 147              		.cfi_endproc
+ 148              	.LFE2:
+ 149              		.size	driveForwards, .-driveForwards
+ 150              		.section	.text.driveBackwards,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	driveBackwards
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.type	driveBackwards, %function
+ 156              	driveBackwards:
+ 157              	.LFB3:
+  35:functions.c   **** }
+  36:functions.c   **** 
+  37:functions.c   **** void driveBackwards()
+  38:functions.c   **** {
+ 158              		.loc 1 38 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162 0000 08B5     		push	{r3, lr}
+ 163              		.cfi_def_cfa_offset 8
+ 164              		.cfi_offset 3, -8
+ 165              		.cfi_offset 14, -4
+  39:functions.c   ****     UART_1_PutString("Set direction: backwards\r\n");
+ 166              		.loc 1 39 0
+ 167 0002 0548     		ldr	r0, .L17
+ 168 0004 FFF7FEFF 		bl	UART_1_PutString
+ 169              	.LVL7:
+  40:functions.c   ****     Pin1_Write(0); // Skriver til Pin1 
+ 170              		.loc 1 40 0
+ 171 0008 0020     		movs	r0, #0
+ 172 000a FFF7FEFF 		bl	Pin1_Write
+ 173              	.LVL8:
+  41:functions.c   ****     Pin2_Write(1); // Skriver til Pin2
+ 174              		.loc 1 41 0
+ 175 000e 0120     		movs	r0, #1
+ 176 0010 FFF7FEFF 		bl	Pin2_Write
+ 177              	.LVL9:
+ 178 0014 08BD     		pop	{r3, pc}
+ 179              	.L18:
+ 180 0016 00BF     		.align	2
+ 181              	.L17:
+ 182 0018 44000000 		.word	.LC3
+ 183              		.cfi_endproc
+ 184              	.LFE3:
+ 185              		.size	driveBackwards, .-driveBackwards
+ 186              		.section	.text.stop,"ax",%progbits
+ 187              		.align	2
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 5
+
+
+ 188              		.global	stop
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.type	stop, %function
+ 192              	stop:
+ 193              	.LFB4:
+  42:functions.c   **** }
+  43:functions.c   **** 
+  44:functions.c   **** void stop()
+  45:functions.c   **** {
+ 194              		.loc 1 45 0
+ 195              		.cfi_startproc
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198 0000 08B5     		push	{r3, lr}
+ 199              		.cfi_def_cfa_offset 8
+ 200              		.cfi_offset 3, -8
+ 201              		.cfi_offset 14, -4
+  46:functions.c   ****     UART_1_PutString("Stop\r\n");
+ 202              		.loc 1 46 0
+ 203 0002 0448     		ldr	r0, .L21
+ 204 0004 FFF7FEFF 		bl	UART_1_PutString
+ 205              	.LVL10:
+  47:functions.c   ****     CURR_PWM = 0;
+ 206              		.loc 1 47 0
+ 207 0008 0020     		movs	r0, #0
+ 208 000a 034B     		ldr	r3, .L21+4
+ 209 000c 1870     		strb	r0, [r3]
+  48:functions.c   ****     PWM_1_WriteCompare(CURR_PWM); // Når duty cyclen bliver 0, så stopper motoren
+ 210              		.loc 1 48 0
+ 211 000e FFF7FEFF 		bl	PWM_1_WriteCompare
+ 212              	.LVL11:
+ 213 0012 08BD     		pop	{r3, pc}
+ 214              	.L22:
+ 215              		.align	2
+ 216              	.L21:
+ 217 0014 60000000 		.word	.LC4
+ 218 0018 00000000 		.word	.LANCHOR0
+ 219              		.cfi_endproc
+ 220              	.LFE4:
+ 221              		.size	stop, .-stop
+ 222              		.global	MIN_PWM
+ 223              		.global	MAX_PWM
+ 224              		.global	CURR_PWM
+ 225              		.data
+ 226              		.set	.LANCHOR1,. + 0
+ 227              		.type	MAX_PWM, %object
+ 228              		.size	MAX_PWM, 1
+ 229              	MAX_PWM:
+ 230 0000 64       		.byte	100
+ 231              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 232              		.align	2
+ 233              	.LC0:
+ 234 0000 44656372 		.ascii	"Decreasing speed\015\012\000"
+ 234      65617369 
+ 234      6E672073 
+ 234      70656564 
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 6
+
+
+ 234      0D0A00
+ 235 0013 00       		.space	1
+ 236              	.LC1:
+ 237 0014 496E6372 		.ascii	"Increasing speed\015\012\000"
+ 237      65617369 
+ 237      6E672073 
+ 237      70656564 
+ 237      0D0A00
+ 238 0027 00       		.space	1
+ 239              	.LC2:
+ 240 0028 53657420 		.ascii	"Set direction: forwards\015\012\000"
+ 240      64697265 
+ 240      6374696F 
+ 240      6E3A2066 
+ 240      6F727761 
+ 241 0042 0000     		.space	2
+ 242              	.LC3:
+ 243 0044 53657420 		.ascii	"Set direction: backwards\015\012\000"
+ 243      64697265 
+ 243      6374696F 
+ 243      6E3A2062 
+ 243      61636B77 
+ 244 005f 00       		.space	1
+ 245              	.LC4:
+ 246 0060 53746F70 		.ascii	"Stop\015\012\000"
+ 246      0D0A00
+ 247              		.bss
+ 248              		.set	.LANCHOR0,. + 0
+ 249              		.type	CURR_PWM, %object
+ 250              		.size	CURR_PWM, 1
+ 251              	CURR_PWM:
+ 252 0000 00       		.space	1
+ 253              		.type	MIN_PWM, %object
+ 254              		.size	MIN_PWM, 1
+ 255              	MIN_PWM:
+ 256 0001 00       		.space	1
+ 257              		.text
+ 258              	.Letext0:
+ 259              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 260              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 261              		.section	.debug_info,"",%progbits
+ 262              	.Ldebug_info0:
+ 263 0000 03030000 		.4byte	0x303
+ 264 0004 0400     		.2byte	0x4
+ 265 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 266 000a 04       		.byte	0x4
+ 267 000b 01       		.uleb128 0x1
+ 268 000c 7A000000 		.4byte	.LASF23
+ 269 0010 0C       		.byte	0xc
+ 270 0011 18000000 		.4byte	.LASF24
+ 271 0015 24000000 		.4byte	.LASF25
+ 272 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 273 001d 00000000 		.4byte	0
+ 274 0021 00000000 		.4byte	.Ldebug_line0
+ 275 0025 02       		.uleb128 0x2
+ 276 0026 01       		.byte	0x1
+ 277 0027 06       		.byte	0x6
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 7
+
+
+ 278 0028 EC010000 		.4byte	.LASF0
+ 279 002c 03       		.uleb128 0x3
+ 280 002d 00000000 		.4byte	.LASF9
+ 281 0031 02       		.byte	0x2
+ 282 0032 1D       		.byte	0x1d
+ 283 0033 37000000 		.4byte	0x37
+ 284 0037 02       		.uleb128 0x2
+ 285 0038 01       		.byte	0x1
+ 286 0039 08       		.byte	0x8
+ 287 003a 6C000000 		.4byte	.LASF1
+ 288 003e 02       		.uleb128 0x2
+ 289 003f 02       		.byte	0x2
+ 290 0040 05       		.byte	0x5
+ 291 0041 D9010000 		.4byte	.LASF2
+ 292 0045 02       		.uleb128 0x2
+ 293 0046 02       		.byte	0x2
+ 294 0047 07       		.byte	0x7
+ 295 0048 1A010000 		.4byte	.LASF3
+ 296 004c 02       		.uleb128 0x2
+ 297 004d 04       		.byte	0x4
+ 298 004e 05       		.byte	0x5
+ 299 004f E3010000 		.4byte	.LASF4
+ 300 0053 02       		.uleb128 0x2
+ 301 0054 04       		.byte	0x4
+ 302 0055 07       		.byte	0x7
+ 303 0056 08010000 		.4byte	.LASF5
+ 304 005a 02       		.uleb128 0x2
+ 305 005b 08       		.byte	0x8
+ 306 005c 05       		.byte	0x5
+ 307 005d B4010000 		.4byte	.LASF6
+ 308 0061 02       		.uleb128 0x2
+ 309 0062 08       		.byte	0x8
+ 310 0063 07       		.byte	0x7
+ 311 0064 68010000 		.4byte	.LASF7
+ 312 0068 04       		.uleb128 0x4
+ 313 0069 04       		.byte	0x4
+ 314 006a 05       		.byte	0x5
+ 315 006b 696E7400 		.ascii	"int\000"
+ 316 006f 02       		.uleb128 0x2
+ 317 0070 04       		.byte	0x4
+ 318 0071 07       		.byte	0x7
+ 319 0072 4D010000 		.4byte	.LASF8
+ 320 0076 03       		.uleb128 0x3
+ 321 0077 7F010000 		.4byte	.LASF10
+ 322 007b 03       		.byte	0x3
+ 323 007c 18       		.byte	0x18
+ 324 007d 2C000000 		.4byte	0x2c
+ 325 0081 05       		.uleb128 0x5
+ 326 0082 C2010000 		.4byte	.LASF13
+ 327 0086 01       		.byte	0x1
+ 328 0087 08       		.byte	0x8
+ 329 0088 00000000 		.4byte	.LFB0
+ 330 008c 28000000 		.4byte	.LFE0-.LFB0
+ 331 0090 01       		.uleb128 0x1
+ 332 0091 9C       		.byte	0x9c
+ 333 0092 E3000000 		.4byte	0xe3
+ 334 0096 06       		.uleb128 0x6
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 8
+
+
+ 335 0097 F8010000 		.4byte	.LASF11
+ 336 009b 01       		.byte	0x1
+ 337 009c 0A       		.byte	0xa
+ 338 009d 68000000 		.4byte	0x68
+ 339 00a1 A7000000 		.4byte	0xa7
+ 340 00a5 07       		.uleb128 0x7
+ 341 00a6 00       		.byte	0
+ 342 00a7 08       		.uleb128 0x8
+ 343 00a8 12000000 		.4byte	.LBB2
+ 344 00ac 16000000 		.4byte	.LBE2-.LBB2
+ 345 00b0 CF000000 		.4byte	0xcf
+ 346 00b4 06       		.uleb128 0x6
+ 347 00b5 A1010000 		.4byte	.LASF12
+ 348 00b9 01       		.byte	0x1
+ 349 00ba 0F       		.byte	0xf
+ 350 00bb 68000000 		.4byte	0x68
+ 351 00bf C5000000 		.4byte	0xc5
+ 352 00c3 07       		.uleb128 0x7
+ 353 00c4 00       		.byte	0
+ 354 00c5 09       		.uleb128 0x9
+ 355 00c6 1E000000 		.4byte	.LVL1
+ 356 00ca DA020000 		.4byte	0x2da
+ 357 00ce 00       		.byte	0
+ 358 00cf 0A       		.uleb128 0xa
+ 359 00d0 08000000 		.4byte	.LVL0
+ 360 00d4 E5020000 		.4byte	0x2e5
+ 361 00d8 0B       		.uleb128 0xb
+ 362 00d9 01       		.uleb128 0x1
+ 363 00da 50       		.byte	0x50
+ 364 00db 05       		.uleb128 0x5
+ 365 00dc 03       		.byte	0x3
+ 366 00dd 00000000 		.4byte	.LC0
+ 367 00e1 00       		.byte	0
+ 368 00e2 00       		.byte	0
+ 369 00e3 05       		.uleb128 0x5
+ 370 00e4 0A000000 		.4byte	.LASF14
+ 371 00e8 01       		.byte	0x1
+ 372 00e9 13       		.byte	0x13
+ 373 00ea 00000000 		.4byte	.LFB1
+ 374 00ee 30000000 		.4byte	.LFE1-.LFB1
+ 375 00f2 01       		.uleb128 0x1
+ 376 00f3 9C       		.byte	0x9c
+ 377 00f4 45010000 		.4byte	0x145
+ 378 00f8 06       		.uleb128 0x6
+ 379 00f9 F8010000 		.4byte	.LASF11
+ 380 00fd 01       		.byte	0x1
+ 381 00fe 0A       		.byte	0xa
+ 382 00ff 68000000 		.4byte	0x68
+ 383 0103 09010000 		.4byte	0x109
+ 384 0107 07       		.uleb128 0x7
+ 385 0108 00       		.byte	0
+ 386 0109 08       		.uleb128 0x8
+ 387 010a 14000000 		.4byte	.LBB3
+ 388 010e 1C000000 		.4byte	.LBE3-.LBB3
+ 389 0112 31010000 		.4byte	0x131
+ 390 0116 06       		.uleb128 0x6
+ 391 0117 A1010000 		.4byte	.LASF12
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 9
+
+
+ 392 011b 01       		.byte	0x1
+ 393 011c 0F       		.byte	0xf
+ 394 011d 68000000 		.4byte	0x68
+ 395 0121 27010000 		.4byte	0x127
+ 396 0125 07       		.uleb128 0x7
+ 397 0126 00       		.byte	0
+ 398 0127 09       		.uleb128 0x9
+ 399 0128 20000000 		.4byte	.LVL3
+ 400 012c DA020000 		.4byte	0x2da
+ 401 0130 00       		.byte	0
+ 402 0131 0A       		.uleb128 0xa
+ 403 0132 08000000 		.4byte	.LVL2
+ 404 0136 E5020000 		.4byte	0x2e5
+ 405 013a 0B       		.uleb128 0xb
+ 406 013b 01       		.uleb128 0x1
+ 407 013c 50       		.byte	0x50
+ 408 013d 05       		.uleb128 0x5
+ 409 013e 03       		.byte	0x3
+ 410 013f 14000000 		.4byte	.LC1
+ 411 0143 00       		.byte	0
+ 412 0144 00       		.byte	0
+ 413 0145 05       		.uleb128 0x5
+ 414 0146 5A010000 		.4byte	.LASF15
+ 415 014a 01       		.byte	0x1
+ 416 014b 1E       		.byte	0x1e
+ 417 014c 00000000 		.4byte	.LFB2
+ 418 0150 1C000000 		.4byte	.LFE2-.LFB2
+ 419 0154 01       		.uleb128 0x1
+ 420 0155 9C       		.byte	0x9c
+ 421 0156 C7010000 		.4byte	0x1c7
+ 422 015a 06       		.uleb128 0x6
+ 423 015b F8010000 		.4byte	.LASF11
+ 424 015f 01       		.byte	0x1
+ 425 0160 0A       		.byte	0xa
+ 426 0161 68000000 		.4byte	0x68
+ 427 0165 6B010000 		.4byte	0x16b
+ 428 0169 07       		.uleb128 0x7
+ 429 016a 00       		.byte	0
+ 430 016b 06       		.uleb128 0x6
+ 431 016c 42010000 		.4byte	.LASF16
+ 432 0170 01       		.byte	0x1
+ 433 0171 21       		.byte	0x21
+ 434 0172 68000000 		.4byte	0x68
+ 435 0176 7C010000 		.4byte	0x17c
+ 436 017a 07       		.uleb128 0x7
+ 437 017b 00       		.byte	0
+ 438 017c 06       		.uleb128 0x6
+ 439 017d 87010000 		.4byte	.LASF17
+ 440 0181 01       		.byte	0x1
+ 441 0182 22       		.byte	0x22
+ 442 0183 68000000 		.4byte	0x68
+ 443 0187 8D010000 		.4byte	0x18d
+ 444 018b 07       		.uleb128 0x7
+ 445 018c 00       		.byte	0
+ 446 018d 0C       		.uleb128 0xc
+ 447 018e 08000000 		.4byte	.LVL4
+ 448 0192 E5020000 		.4byte	0x2e5
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 10
+
+
+ 449 0196 A4010000 		.4byte	0x1a4
+ 450 019a 0B       		.uleb128 0xb
+ 451 019b 01       		.uleb128 0x1
+ 452 019c 50       		.byte	0x50
+ 453 019d 05       		.uleb128 0x5
+ 454 019e 03       		.byte	0x3
+ 455 019f 28000000 		.4byte	.LC2
+ 456 01a3 00       		.byte	0
+ 457 01a4 0C       		.uleb128 0xc
+ 458 01a5 0E000000 		.4byte	.LVL5
+ 459 01a9 F0020000 		.4byte	0x2f0
+ 460 01ad B7010000 		.4byte	0x1b7
+ 461 01b1 0B       		.uleb128 0xb
+ 462 01b2 01       		.uleb128 0x1
+ 463 01b3 50       		.byte	0x50
+ 464 01b4 01       		.uleb128 0x1
+ 465 01b5 31       		.byte	0x31
+ 466 01b6 00       		.byte	0
+ 467 01b7 0A       		.uleb128 0xa
+ 468 01b8 14000000 		.4byte	.LVL6
+ 469 01bc FB020000 		.4byte	0x2fb
+ 470 01c0 0B       		.uleb128 0xb
+ 471 01c1 01       		.uleb128 0x1
+ 472 01c2 50       		.byte	0x50
+ 473 01c3 01       		.uleb128 0x1
+ 474 01c4 30       		.byte	0x30
+ 475 01c5 00       		.byte	0
+ 476 01c6 00       		.byte	0
+ 477 01c7 05       		.uleb128 0x5
+ 478 01c8 92010000 		.4byte	.LASF18
+ 479 01cc 01       		.byte	0x1
+ 480 01cd 25       		.byte	0x25
+ 481 01ce 00000000 		.4byte	.LFB3
+ 482 01d2 1C000000 		.4byte	.LFE3-.LFB3
+ 483 01d6 01       		.uleb128 0x1
+ 484 01d7 9C       		.byte	0x9c
+ 485 01d8 49020000 		.4byte	0x249
+ 486 01dc 06       		.uleb128 0x6
+ 487 01dd F8010000 		.4byte	.LASF11
+ 488 01e1 01       		.byte	0x1
+ 489 01e2 0A       		.byte	0xa
+ 490 01e3 68000000 		.4byte	0x68
+ 491 01e7 ED010000 		.4byte	0x1ed
+ 492 01eb 07       		.uleb128 0x7
+ 493 01ec 00       		.byte	0
+ 494 01ed 06       		.uleb128 0x6
+ 495 01ee 42010000 		.4byte	.LASF16
+ 496 01f2 01       		.byte	0x1
+ 497 01f3 21       		.byte	0x21
+ 498 01f4 68000000 		.4byte	0x68
+ 499 01f8 FE010000 		.4byte	0x1fe
+ 500 01fc 07       		.uleb128 0x7
+ 501 01fd 00       		.byte	0
+ 502 01fe 06       		.uleb128 0x6
+ 503 01ff 87010000 		.4byte	.LASF17
+ 504 0203 01       		.byte	0x1
+ 505 0204 22       		.byte	0x22
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 11
+
+
+ 506 0205 68000000 		.4byte	0x68
+ 507 0209 0F020000 		.4byte	0x20f
+ 508 020d 07       		.uleb128 0x7
+ 509 020e 00       		.byte	0
+ 510 020f 0C       		.uleb128 0xc
+ 511 0210 08000000 		.4byte	.LVL7
+ 512 0214 E5020000 		.4byte	0x2e5
+ 513 0218 26020000 		.4byte	0x226
+ 514 021c 0B       		.uleb128 0xb
+ 515 021d 01       		.uleb128 0x1
+ 516 021e 50       		.byte	0x50
+ 517 021f 05       		.uleb128 0x5
+ 518 0220 03       		.byte	0x3
+ 519 0221 44000000 		.4byte	.LC3
+ 520 0225 00       		.byte	0
+ 521 0226 0C       		.uleb128 0xc
+ 522 0227 0E000000 		.4byte	.LVL8
+ 523 022b F0020000 		.4byte	0x2f0
+ 524 022f 39020000 		.4byte	0x239
+ 525 0233 0B       		.uleb128 0xb
+ 526 0234 01       		.uleb128 0x1
+ 527 0235 50       		.byte	0x50
+ 528 0236 01       		.uleb128 0x1
+ 529 0237 30       		.byte	0x30
+ 530 0238 00       		.byte	0
+ 531 0239 0A       		.uleb128 0xa
+ 532 023a 14000000 		.4byte	.LVL9
+ 533 023e FB020000 		.4byte	0x2fb
+ 534 0242 0B       		.uleb128 0xb
+ 535 0243 01       		.uleb128 0x1
+ 536 0244 50       		.byte	0x50
+ 537 0245 01       		.uleb128 0x1
+ 538 0246 31       		.byte	0x31
+ 539 0247 00       		.byte	0
+ 540 0248 00       		.byte	0
+ 541 0249 05       		.uleb128 0x5
+ 542 024a 2D010000 		.4byte	.LASF19
+ 543 024e 01       		.byte	0x1
+ 544 024f 2C       		.byte	0x2c
+ 545 0250 00000000 		.4byte	.LFB4
+ 546 0254 1C000000 		.4byte	.LFE4-.LFB4
+ 547 0258 01       		.uleb128 0x1
+ 548 0259 9C       		.byte	0x9c
+ 549 025a A7020000 		.4byte	0x2a7
+ 550 025e 06       		.uleb128 0x6
+ 551 025f F8010000 		.4byte	.LASF11
+ 552 0263 01       		.byte	0x1
+ 553 0264 0A       		.byte	0xa
+ 554 0265 68000000 		.4byte	0x68
+ 555 0269 6F020000 		.4byte	0x26f
+ 556 026d 07       		.uleb128 0x7
+ 557 026e 00       		.byte	0
+ 558 026f 06       		.uleb128 0x6
+ 559 0270 A1010000 		.4byte	.LASF12
+ 560 0274 01       		.byte	0x1
+ 561 0275 0F       		.byte	0xf
+ 562 0276 68000000 		.4byte	0x68
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 12
+
+
+ 563 027a 80020000 		.4byte	0x280
+ 564 027e 07       		.uleb128 0x7
+ 565 027f 00       		.byte	0
+ 566 0280 0C       		.uleb128 0xc
+ 567 0281 08000000 		.4byte	.LVL10
+ 568 0285 E5020000 		.4byte	0x2e5
+ 569 0289 97020000 		.4byte	0x297
+ 570 028d 0B       		.uleb128 0xb
+ 571 028e 01       		.uleb128 0x1
+ 572 028f 50       		.byte	0x50
+ 573 0290 05       		.uleb128 0x5
+ 574 0291 03       		.byte	0x3
+ 575 0292 60000000 		.4byte	.LC4
+ 576 0296 00       		.byte	0
+ 577 0297 0A       		.uleb128 0xa
+ 578 0298 12000000 		.4byte	.LVL11
+ 579 029c DA020000 		.4byte	0x2da
+ 580 02a0 0B       		.uleb128 0xb
+ 581 02a1 01       		.uleb128 0x1
+ 582 02a2 50       		.byte	0x50
+ 583 02a3 01       		.uleb128 0x1
+ 584 02a4 30       		.byte	0x30
+ 585 02a5 00       		.byte	0
+ 586 02a6 00       		.byte	0
+ 587 02a7 0D       		.uleb128 0xd
+ 588 02a8 D0010000 		.4byte	.LASF20
+ 589 02ac 01       		.byte	0x1
+ 590 02ad 04       		.byte	0x4
+ 591 02ae 76000000 		.4byte	0x76
+ 592 02b2 05       		.uleb128 0x5
+ 593 02b3 03       		.byte	0x3
+ 594 02b4 00000000 		.4byte	CURR_PWM
+ 595 02b8 0D       		.uleb128 0xd
+ 596 02b9 32010000 		.4byte	.LASF21
+ 597 02bd 01       		.byte	0x1
+ 598 02be 05       		.byte	0x5
+ 599 02bf 76000000 		.4byte	0x76
+ 600 02c3 05       		.uleb128 0x5
+ 601 02c4 03       		.byte	0x3
+ 602 02c5 00000000 		.4byte	MAX_PWM
+ 603 02c9 0D       		.uleb128 0xd
+ 604 02ca 3A010000 		.4byte	.LASF22
+ 605 02ce 01       		.byte	0x1
+ 606 02cf 06       		.byte	0x6
+ 607 02d0 76000000 		.4byte	0x76
+ 608 02d4 05       		.uleb128 0x5
+ 609 02d5 03       		.byte	0x3
+ 610 02d6 00000000 		.4byte	MIN_PWM
+ 611 02da 0E       		.uleb128 0xe
+ 612 02db A1010000 		.4byte	.LASF12
+ 613 02df A1010000 		.4byte	.LASF12
+ 614 02e3 01       		.byte	0x1
+ 615 02e4 0F       		.byte	0xf
+ 616 02e5 0E       		.uleb128 0xe
+ 617 02e6 F8010000 		.4byte	.LASF11
+ 618 02ea F8010000 		.4byte	.LASF11
+ 619 02ee 01       		.byte	0x1
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 13
+
+
+ 620 02ef 0A       		.byte	0xa
+ 621 02f0 0E       		.uleb128 0xe
+ 622 02f1 42010000 		.4byte	.LASF16
+ 623 02f5 42010000 		.4byte	.LASF16
+ 624 02f9 01       		.byte	0x1
+ 625 02fa 21       		.byte	0x21
+ 626 02fb 0E       		.uleb128 0xe
+ 627 02fc 87010000 		.4byte	.LASF17
+ 628 0300 87010000 		.4byte	.LASF17
+ 629 0304 01       		.byte	0x1
+ 630 0305 22       		.byte	0x22
+ 631 0306 00       		.byte	0
+ 632              		.section	.debug_abbrev,"",%progbits
+ 633              	.Ldebug_abbrev0:
+ 634 0000 01       		.uleb128 0x1
+ 635 0001 11       		.uleb128 0x11
+ 636 0002 01       		.byte	0x1
+ 637 0003 25       		.uleb128 0x25
+ 638 0004 0E       		.uleb128 0xe
+ 639 0005 13       		.uleb128 0x13
+ 640 0006 0B       		.uleb128 0xb
+ 641 0007 03       		.uleb128 0x3
+ 642 0008 0E       		.uleb128 0xe
+ 643 0009 1B       		.uleb128 0x1b
+ 644 000a 0E       		.uleb128 0xe
+ 645 000b 55       		.uleb128 0x55
+ 646 000c 17       		.uleb128 0x17
+ 647 000d 11       		.uleb128 0x11
+ 648 000e 01       		.uleb128 0x1
+ 649 000f 10       		.uleb128 0x10
+ 650 0010 17       		.uleb128 0x17
+ 651 0011 00       		.byte	0
+ 652 0012 00       		.byte	0
+ 653 0013 02       		.uleb128 0x2
+ 654 0014 24       		.uleb128 0x24
+ 655 0015 00       		.byte	0
+ 656 0016 0B       		.uleb128 0xb
+ 657 0017 0B       		.uleb128 0xb
+ 658 0018 3E       		.uleb128 0x3e
+ 659 0019 0B       		.uleb128 0xb
+ 660 001a 03       		.uleb128 0x3
+ 661 001b 0E       		.uleb128 0xe
+ 662 001c 00       		.byte	0
+ 663 001d 00       		.byte	0
+ 664 001e 03       		.uleb128 0x3
+ 665 001f 16       		.uleb128 0x16
+ 666 0020 00       		.byte	0
+ 667 0021 03       		.uleb128 0x3
+ 668 0022 0E       		.uleb128 0xe
+ 669 0023 3A       		.uleb128 0x3a
+ 670 0024 0B       		.uleb128 0xb
+ 671 0025 3B       		.uleb128 0x3b
+ 672 0026 0B       		.uleb128 0xb
+ 673 0027 49       		.uleb128 0x49
+ 674 0028 13       		.uleb128 0x13
+ 675 0029 00       		.byte	0
+ 676 002a 00       		.byte	0
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 14
+
+
+ 677 002b 04       		.uleb128 0x4
+ 678 002c 24       		.uleb128 0x24
+ 679 002d 00       		.byte	0
+ 680 002e 0B       		.uleb128 0xb
+ 681 002f 0B       		.uleb128 0xb
+ 682 0030 3E       		.uleb128 0x3e
+ 683 0031 0B       		.uleb128 0xb
+ 684 0032 03       		.uleb128 0x3
+ 685 0033 08       		.uleb128 0x8
+ 686 0034 00       		.byte	0
+ 687 0035 00       		.byte	0
+ 688 0036 05       		.uleb128 0x5
+ 689 0037 2E       		.uleb128 0x2e
+ 690 0038 01       		.byte	0x1
+ 691 0039 3F       		.uleb128 0x3f
+ 692 003a 19       		.uleb128 0x19
+ 693 003b 03       		.uleb128 0x3
+ 694 003c 0E       		.uleb128 0xe
+ 695 003d 3A       		.uleb128 0x3a
+ 696 003e 0B       		.uleb128 0xb
+ 697 003f 3B       		.uleb128 0x3b
+ 698 0040 0B       		.uleb128 0xb
+ 699 0041 27       		.uleb128 0x27
+ 700 0042 19       		.uleb128 0x19
+ 701 0043 11       		.uleb128 0x11
+ 702 0044 01       		.uleb128 0x1
+ 703 0045 12       		.uleb128 0x12
+ 704 0046 06       		.uleb128 0x6
+ 705 0047 40       		.uleb128 0x40
+ 706 0048 18       		.uleb128 0x18
+ 707 0049 9742     		.uleb128 0x2117
+ 708 004b 19       		.uleb128 0x19
+ 709 004c 01       		.uleb128 0x1
+ 710 004d 13       		.uleb128 0x13
+ 711 004e 00       		.byte	0
+ 712 004f 00       		.byte	0
+ 713 0050 06       		.uleb128 0x6
+ 714 0051 2E       		.uleb128 0x2e
+ 715 0052 01       		.byte	0x1
+ 716 0053 3F       		.uleb128 0x3f
+ 717 0054 19       		.uleb128 0x19
+ 718 0055 03       		.uleb128 0x3
+ 719 0056 0E       		.uleb128 0xe
+ 720 0057 3A       		.uleb128 0x3a
+ 721 0058 0B       		.uleb128 0xb
+ 722 0059 3B       		.uleb128 0x3b
+ 723 005a 0B       		.uleb128 0xb
+ 724 005b 49       		.uleb128 0x49
+ 725 005c 13       		.uleb128 0x13
+ 726 005d 3C       		.uleb128 0x3c
+ 727 005e 19       		.uleb128 0x19
+ 728 005f 01       		.uleb128 0x1
+ 729 0060 13       		.uleb128 0x13
+ 730 0061 00       		.byte	0
+ 731 0062 00       		.byte	0
+ 732 0063 07       		.uleb128 0x7
+ 733 0064 18       		.uleb128 0x18
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 15
+
+
+ 734 0065 00       		.byte	0
+ 735 0066 00       		.byte	0
+ 736 0067 00       		.byte	0
+ 737 0068 08       		.uleb128 0x8
+ 738 0069 0B       		.uleb128 0xb
+ 739 006a 01       		.byte	0x1
+ 740 006b 11       		.uleb128 0x11
+ 741 006c 01       		.uleb128 0x1
+ 742 006d 12       		.uleb128 0x12
+ 743 006e 06       		.uleb128 0x6
+ 744 006f 01       		.uleb128 0x1
+ 745 0070 13       		.uleb128 0x13
+ 746 0071 00       		.byte	0
+ 747 0072 00       		.byte	0
+ 748 0073 09       		.uleb128 0x9
+ 749 0074 898201   		.uleb128 0x4109
+ 750 0077 00       		.byte	0
+ 751 0078 11       		.uleb128 0x11
+ 752 0079 01       		.uleb128 0x1
+ 753 007a 31       		.uleb128 0x31
+ 754 007b 13       		.uleb128 0x13
+ 755 007c 00       		.byte	0
+ 756 007d 00       		.byte	0
+ 757 007e 0A       		.uleb128 0xa
+ 758 007f 898201   		.uleb128 0x4109
+ 759 0082 01       		.byte	0x1
+ 760 0083 11       		.uleb128 0x11
+ 761 0084 01       		.uleb128 0x1
+ 762 0085 31       		.uleb128 0x31
+ 763 0086 13       		.uleb128 0x13
+ 764 0087 00       		.byte	0
+ 765 0088 00       		.byte	0
+ 766 0089 0B       		.uleb128 0xb
+ 767 008a 8A8201   		.uleb128 0x410a
+ 768 008d 00       		.byte	0
+ 769 008e 02       		.uleb128 0x2
+ 770 008f 18       		.uleb128 0x18
+ 771 0090 9142     		.uleb128 0x2111
+ 772 0092 18       		.uleb128 0x18
+ 773 0093 00       		.byte	0
+ 774 0094 00       		.byte	0
+ 775 0095 0C       		.uleb128 0xc
+ 776 0096 898201   		.uleb128 0x4109
+ 777 0099 01       		.byte	0x1
+ 778 009a 11       		.uleb128 0x11
+ 779 009b 01       		.uleb128 0x1
+ 780 009c 31       		.uleb128 0x31
+ 781 009d 13       		.uleb128 0x13
+ 782 009e 01       		.uleb128 0x1
+ 783 009f 13       		.uleb128 0x13
+ 784 00a0 00       		.byte	0
+ 785 00a1 00       		.byte	0
+ 786 00a2 0D       		.uleb128 0xd
+ 787 00a3 34       		.uleb128 0x34
+ 788 00a4 00       		.byte	0
+ 789 00a5 03       		.uleb128 0x3
+ 790 00a6 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 16
+
+
+ 791 00a7 3A       		.uleb128 0x3a
+ 792 00a8 0B       		.uleb128 0xb
+ 793 00a9 3B       		.uleb128 0x3b
+ 794 00aa 0B       		.uleb128 0xb
+ 795 00ab 49       		.uleb128 0x49
+ 796 00ac 13       		.uleb128 0x13
+ 797 00ad 3F       		.uleb128 0x3f
+ 798 00ae 19       		.uleb128 0x19
+ 799 00af 02       		.uleb128 0x2
+ 800 00b0 18       		.uleb128 0x18
+ 801 00b1 00       		.byte	0
+ 802 00b2 00       		.byte	0
+ 803 00b3 0E       		.uleb128 0xe
+ 804 00b4 2E       		.uleb128 0x2e
+ 805 00b5 00       		.byte	0
+ 806 00b6 3F       		.uleb128 0x3f
+ 807 00b7 19       		.uleb128 0x19
+ 808 00b8 3C       		.uleb128 0x3c
+ 809 00b9 19       		.uleb128 0x19
+ 810 00ba 6E       		.uleb128 0x6e
+ 811 00bb 0E       		.uleb128 0xe
+ 812 00bc 03       		.uleb128 0x3
+ 813 00bd 0E       		.uleb128 0xe
+ 814 00be 3A       		.uleb128 0x3a
+ 815 00bf 0B       		.uleb128 0xb
+ 816 00c0 3B       		.uleb128 0x3b
+ 817 00c1 0B       		.uleb128 0xb
+ 818 00c2 00       		.byte	0
+ 819 00c3 00       		.byte	0
+ 820 00c4 00       		.byte	0
+ 821              		.section	.debug_aranges,"",%progbits
+ 822 0000 3C000000 		.4byte	0x3c
+ 823 0004 0200     		.2byte	0x2
+ 824 0006 00000000 		.4byte	.Ldebug_info0
+ 825 000a 04       		.byte	0x4
+ 826 000b 00       		.byte	0
+ 827 000c 0000     		.2byte	0
+ 828 000e 0000     		.2byte	0
+ 829 0010 00000000 		.4byte	.LFB0
+ 830 0014 28000000 		.4byte	.LFE0-.LFB0
+ 831 0018 00000000 		.4byte	.LFB1
+ 832 001c 30000000 		.4byte	.LFE1-.LFB1
+ 833 0020 00000000 		.4byte	.LFB2
+ 834 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 835 0028 00000000 		.4byte	.LFB3
+ 836 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 837 0030 00000000 		.4byte	.LFB4
+ 838 0034 1C000000 		.4byte	.LFE4-.LFB4
+ 839 0038 00000000 		.4byte	0
+ 840 003c 00000000 		.4byte	0
+ 841              		.section	.debug_ranges,"",%progbits
+ 842              	.Ldebug_ranges0:
+ 843 0000 00000000 		.4byte	.LFB0
+ 844 0004 28000000 		.4byte	.LFE0
+ 845 0008 00000000 		.4byte	.LFB1
+ 846 000c 30000000 		.4byte	.LFE1
+ 847 0010 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 17
+
+
+ 848 0014 1C000000 		.4byte	.LFE2
+ 849 0018 00000000 		.4byte	.LFB3
+ 850 001c 1C000000 		.4byte	.LFE3
+ 851 0020 00000000 		.4byte	.LFB4
+ 852 0024 1C000000 		.4byte	.LFE4
+ 853 0028 00000000 		.4byte	0
+ 854 002c 00000000 		.4byte	0
+ 855              		.section	.debug_line,"",%progbits
+ 856              	.Ldebug_line0:
+ 857 0000 7F010000 		.section	.debug_str,"MS",%progbits,1
+ 857      02001F01 
+ 857      00000201 
+ 857      FB0E0D00 
+ 857      01010101 
+ 858              	.LASF9:
+ 859 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 859      6E74385F 
+ 859      7400
+ 860              	.LASF14:
+ 861 000a 696E6372 		.ascii	"increaseSpeed\000"
+ 861      65617365 
+ 861      53706565 
+ 861      6400
+ 862              	.LASF24:
+ 863 0018 66756E63 		.ascii	"functions.c\000"
+ 863      74696F6E 
+ 863      732E6300 
+ 864              	.LASF25:
+ 865 0024 433A5C55 		.ascii	"C:\\Users\\Thomas\\Documents\\GitHub\\GFV\\labmotor"
+ 865      73657273 
+ 865      5C54686F 
+ 865      6D61735C 
+ 865      446F6375 
+ 866 0051 636F6E74 		.ascii	"control\\DC-Motor-PWM.cydsn\000"
+ 866      726F6C5C 
+ 866      44432D4D 
+ 866      6F746F72 
+ 866      2D50574D 
+ 867              	.LASF1:
+ 868 006c 756E7369 		.ascii	"unsigned char\000"
+ 868      676E6564 
+ 868      20636861 
+ 868      7200
+ 869              	.LASF23:
+ 870 007a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 870      43313120 
+ 870      352E342E 
+ 870      31203230 
+ 870      31363036 
+ 871 00ad 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 871      20726576 
+ 871      6973696F 
+ 871      6E203233 
+ 871      37373135 
+ 872 00e0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 872      66756E63 
+ 872      74696F6E 
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 18
+
+
+ 872      2D736563 
+ 872      74696F6E 
+ 873              	.LASF5:
+ 874 0108 6C6F6E67 		.ascii	"long unsigned int\000"
+ 874      20756E73 
+ 874      69676E65 
+ 874      6420696E 
+ 874      7400
+ 875              	.LASF3:
+ 876 011a 73686F72 		.ascii	"short unsigned int\000"
+ 876      7420756E 
+ 876      7369676E 
+ 876      65642069 
+ 876      6E7400
+ 877              	.LASF19:
+ 878 012d 73746F70 		.ascii	"stop\000"
+ 878      00
+ 879              	.LASF21:
+ 880 0132 4D41585F 		.ascii	"MAX_PWM\000"
+ 880      50574D00 
+ 881              	.LASF22:
+ 882 013a 4D494E5F 		.ascii	"MIN_PWM\000"
+ 882      50574D00 
+ 883              	.LASF16:
+ 884 0142 50696E31 		.ascii	"Pin1_Write\000"
+ 884      5F577269 
+ 884      746500
+ 885              	.LASF8:
+ 886 014d 756E7369 		.ascii	"unsigned int\000"
+ 886      676E6564 
+ 886      20696E74 
+ 886      00
+ 887              	.LASF15:
+ 888 015a 64726976 		.ascii	"driveForwards\000"
+ 888      65466F72 
+ 888      77617264 
+ 888      7300
+ 889              	.LASF7:
+ 890 0168 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 890      206C6F6E 
+ 890      6720756E 
+ 890      7369676E 
+ 890      65642069 
+ 891              	.LASF10:
+ 892 017f 75696E74 		.ascii	"uint8_t\000"
+ 892      385F7400 
+ 893              	.LASF17:
+ 894 0187 50696E32 		.ascii	"Pin2_Write\000"
+ 894      5F577269 
+ 894      746500
+ 895              	.LASF18:
+ 896 0192 64726976 		.ascii	"driveBackwards\000"
+ 896      65426163 
+ 896      6B776172 
+ 896      647300
+ 897              	.LASF12:
+ 898 01a1 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccCPT3ui.s 			page 19
+
+
+ 898      315F5772 
+ 898      69746543 
+ 898      6F6D7061 
+ 898      726500
+ 899              	.LASF6:
+ 900 01b4 6C6F6E67 		.ascii	"long long int\000"
+ 900      206C6F6E 
+ 900      6720696E 
+ 900      7400
+ 901              	.LASF13:
+ 902 01c2 64656372 		.ascii	"decreaseSpeed\000"
+ 902      65617365 
+ 902      53706565 
+ 902      6400
+ 903              	.LASF20:
+ 904 01d0 43555252 		.ascii	"CURR_PWM\000"
+ 904      5F50574D 
+ 904      00
+ 905              	.LASF2:
+ 906 01d9 73686F72 		.ascii	"short int\000"
+ 906      7420696E 
+ 906      7400
+ 907              	.LASF4:
+ 908 01e3 6C6F6E67 		.ascii	"long int\000"
+ 908      20696E74 
+ 908      00
+ 909              	.LASF0:
+ 910 01ec 7369676E 		.ascii	"signed char\000"
+ 910      65642063 
+ 910      68617200 
+ 911              	.LASF11:
+ 912 01f8 55415254 		.ascii	"UART_1_PutString\000"
+ 912      5F315F50 
+ 912      75745374 
+ 912      72696E67 
+ 912      00
+ 913              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

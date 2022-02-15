@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2022-02-11T09:55:50Z")
+ (DATE "2022-02-15T13:27:03Z")
  (DESIGN "DC-Motor-PWM")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
