@@ -1,9 +1,9 @@
 #include "functions.h"
 
 //Variables
-uint16_t speedDelay = 20; // Used to set Stepper motor speed (delay) 
-uint8_t state = 1; // Used to change switch between 1/A = Full, 2/S = Half, 3/D = Wave
-uint8_t direction = 0; // Used to save direction. 0 = Stopped, 1 = Forwards, 2 = Backwards
+uint16_t speedDelay = 20; // Sætter hastigheden på stepper motoren (Ved at lave et delay) 
+uint8_t state = 1; // Skifter tilstanden brugt af stepper motoren. 1/A = Full, 2/S = Half, 3/D = Wave
+uint8_t direction = 0; // Gemmer den nuværende retning. 0 = Stoppet, 1 = Fremad, 2 = Baglæns
 
 uint16_t getDirection(void) {
     return direction;
@@ -18,60 +18,60 @@ void run(char byte) {
     {
         case 'q' :
         {
-            decreaseSpeed();
+            decreaseSpeed(); // Sænker farten
         }
         break;
         case 'w' :
         {
-            increaseSpeed();
+            increaseSpeed(); // Hæver farten
         }
         break;
         
         case 'e' :
         {
-            runOnceForward();
+            runOnceForward(); // En enkelt rotation
         }
         break;
         
         case 'r' :
         {
-            runOnceBackwards();
+            runOnceBackwards(); // En enkelt baglæns rotation
         }
         break;
         
         case '1' :
         {
-            driveForwards();
+            driveForwards(); // Kontinuerligt fremad kørsel
         }
         break;
         
         case '2' :
         {
-            driveBackwards();
+            driveBackwards(); // Kontinuerligt baglæns kørsel
         }
         break;
         
         case '0' :
         {
-            stop();
+            stop(); // Stopper motoren
         }
         break;
         
-        // Change to full step
+        // Ændrer til full step
         case 'a' :
         {
             changeState(1);
         }
         break;
         
-        // Change to half step
+        // Ændrer til half step
         case 's' :
         {
             changeState(2);
         }
         break;
         
-        // Change to wave-drive
+        // Ændrer til wave-drive
         case 'd' :
         {
             changeState(3);
@@ -79,12 +79,13 @@ void run(char byte) {
         break;
         default :
         {
-            // nothing
+            // Nothing
         }
         break;
     }
 }
 
+// Ændrer stepper motorens tilstand
 void changeState(int stateNumb) {
     state = stateNumb;
 }

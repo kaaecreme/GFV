@@ -36,7 +36,7 @@ int main(void)
     {
         switch(getDirection()) {
             
-            // Forwards
+            // Fremad
             case 1 :
             {
                 switch(getState()) {
@@ -71,7 +71,7 @@ int main(void)
             }
             break;
             
-            // Backwards
+            // Baglæns
             case 2 :
             {
                 switch(getState()) {

@@ -2,8 +2,8 @@
 #include <stdint.h>
 #include "project.h"
 
-uint16_t getDirection(void);
-uint8_t getState(void);
+uint16_t getDirection(void); // Bruges til at sende den nuværende retning
+uint8_t getState(void); // Finder den nuværende tilstand (Frem / tilbage)
 
 void changeState(int);
 
