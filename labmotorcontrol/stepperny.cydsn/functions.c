@@ -1,9 +1,15 @@
 #include "functions.h"
 
 //Variables
+<<<<<<< HEAD
 uint16_t speedDelay = 20; // S�tter hastigheden p� stepper motoren (Ved at lave et delay) 
 uint8_t state = 1; // Skifter tilstanden brugt af stepper motoren. 1/A = Full, 2/S = Half, 3/D = Wave
 uint8_t direction = 0; // Gemmer den nuv�rende retning. 0 = Stoppet, 1 = Fremad, 2 = Bagl�ns
+=======
+uint16_t speedDelay = 20; // Sætter Stepper Motorens hastighed med et delay 
+uint8_t state = 1; // Skifter kørsels-type. Følgende notation: 1/A = Full, 2/S = Half, 3/D = Wave
+uint8_t direction = 0; // Gemmer den nuværende kørselsretning. 0 = Stoppet, 1 = Fremad, 2 = Baglæns
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
 
 uint16_t getDirection(void) {
     return direction;
@@ -13,6 +19,8 @@ uint8_t getState(void) {
     return state;    
 }
 
+// Funktionen bliver kaldt fra main filen idet UARTen modtager et tegn.
+// Her finder den ud af hvilken funktion der, baseret på det modtagne, skal kaldes.
 void run(char byte) {
     switch(byte)
     {
@@ -57,21 +65,33 @@ void run(char byte) {
         }
         break;
         
+<<<<<<< HEAD
         // �ndrer til full step
+=======
+        // Skifter kørsels-type til full step
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
         case 'a' :
         {
             changeState(1);
         }
         break;
         
+<<<<<<< HEAD
         // �ndrer til half step
+=======
+       // Skifter kørsels-type til half step
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
         case 's' :
         {
             changeState(2);
         }
         break;
         
+<<<<<<< HEAD
         // �ndrer til wave-drive
+=======
+        // Skifter kørsels-type til wave-drive
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
         case 'd' :
         {
             changeState(3);
@@ -85,14 +105,18 @@ void run(char byte) {
     }
 }
 
+<<<<<<< HEAD
 // �ndrer stepper motorens tilstand
+=======
+// Gemmer den nuværende kørsels-type 
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
 void changeState(int stateNumb) {
     state = stateNumb;
 }
 
 void decreaseSpeed()
 {
-    if(speedDelay < 100) {
+    if(speedDelay < 100) { // Sikrer, at delayet på motorens hastighed ikke bliver for lavt
         speedDelay += 2;   
     } else {
         UART_1_PutString("Motor cannot go slower\r\n");
@@ -101,7 +125,7 @@ void decreaseSpeed()
 
 void increaseSpeed()
 {
-    if(speedDelay > 2) {
+    if(speedDelay > 2) { // Sikrer, at delayet på motorens hastighed ikke bliver for høj
         speedDelay -= 2;   
     } else {
         UART_1_PutString("Motor cannot go faster\r\n");
@@ -118,6 +142,7 @@ void driveBackwards()
     direction = 2;
 }
 
+// Alle de nedenstående sekvenser er fundet i databladet på step moteren 
 void stop()
 {
     direction = 0;
@@ -334,7 +359,7 @@ void driveBackwardsWave() {
 
 void runOnceForward() {
     
-    for (uint32_t i = 0; i < 12; i++){
+    for (uint32_t i = 0; i < 12; i++){ // Se udregning af antal gentagelser i journalen
         switch(state) {
             
             // Full step
@@ -371,7 +396,7 @@ void runOnceForward() {
 }
 void runOnceBackwards() {
     
-    for (uint32_t i = 0; i < 12; i++){
+    for (uint32_t i = 0; i < 12; i++){ // Se udregning af antal gentagelser i journalen
         switch(state) {
             // Full step
             case 1 : 

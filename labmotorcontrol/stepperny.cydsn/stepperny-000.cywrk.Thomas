@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="stepperny-000\stepperny\Header Files\functions.h">
+<ExpandedNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\TopDesign</v>
+<v>stepperny-000\stepperny\stepperny.cydwr</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Pins</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Analog</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Clocks</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Interrupts</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\DMA</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\System</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Directives</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Flash Security</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\EEPROM</v>
+<v>stepperny-000\stepperny\Header Files</v>
+<v>stepperny-000\stepperny\Header Files\cyapicallbacks.h</v>
+<v>stepperny-000\stepperny\Header Files\functions.h</v>
+<v>stepperny-000\stepperny\Source Files</v>
+<v>stepperny-000\stepperny\Source Files\functions.c</v>
+<v>stepperny-000\stepperny\Source Files\main.c</v>
+<v>stepperny-000\stepperny\Generated_Source</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\TopDesign</v>
+<v>stepperny-000\stepperny\stepperny.cydwr</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Pins</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Analog</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Clocks</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Interrupts</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\DMA</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\System</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Directives</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\Flash Security</v>
+<v>stepperny-000\stepperny\stepperny.cydwr\EEPROM</v>
+<v>stepperny-000\stepperny\Header Files</v>
+<v>stepperny-000\stepperny\Header Files\cyapicallbacks.h</v>
+<v>stepperny-000\stepperny\Header Files\functions.h</v>
+<v>stepperny-000\stepperny\Source Files</v>
+<v>stepperny-000\stepperny\Source Files\functions.c</v>
+<v>stepperny-000\stepperny\Source Files\main.c</v>
+<v>stepperny-000\stepperny\Generated_Source</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\A1_Green</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\A2_Orange</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\B1_Purple</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\B2_White</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cy_boot</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\isr_uart_rx</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\UART_1</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\UART_1_IntClock</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydevice.h</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cyfitter.h</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>stepperny-000\stepperny\Generated_Source\PSoC5\cyfitterrv.inc</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\TopDesign</v>
+<v>stepperny-000\stepperny\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\TopDesign</v>
+<v>stepperny-000\stepperny\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\CortexM3</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\A1_Green.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\A2_Orange.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\B1_Purple.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\B2_White.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\functions.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_uart_rx.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_INT.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_IntClock.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_PM.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\stepperny.elf</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\stepperny.hex</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\stepperny.map</v>
+<v>stepperny-000\stepperny\stepperny.gpdsc</v>
+<v>stepperny-000\stepperny\stepperny.rpt</v>
+<v>stepperny-000\stepperny\stepperny_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\CortexM3</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\A1_Green.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\A2_Orange.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\B1_Purple.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\B2_White.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\functions.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_uart_rx.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_INT.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_IntClock.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_PM.lst</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\stepperny.elf</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\stepperny.hex</v>
+<v>stepperny-000\stepperny\CortexM3\ARM_GCC_541\Debug\stepperny.map</v>
+<v>stepperny-000\stepperny\stepperny.gpdsc</v>
+<v>stepperny-000\stepperny\stepperny.rpt</v>
+<v>stepperny-000\stepperny\stepperny_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\PSoC 5LP Architecture TRM</v>
+<v>stepperny-000\stepperny\CY8C58LP Family Datasheet</v>
+<v>stepperny-000\stepperny\System Reference Guides</v>
+<v>stepperny-000\stepperny\System Reference Guides\cy_boot_v5_50</v>
+<v>stepperny-000\stepperny\cy_isr_v1_70.pdf</v>
+<v>stepperny-000\stepperny\cy_pins_v2_20</v>
+<v>stepperny-000\stepperny\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>stepperny-000\stepperny\UART_v2_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>stepperny-000</v>
+<v>stepperny-000\stepperny</v>
+<v>stepperny-000\stepperny\PSoC 5LP Architecture TRM</v>
+<v>stepperny-000\stepperny\CY8C58LP Family Datasheet</v>
+<v>stepperny-000\stepperny\System Reference Guides</v>
+<v>stepperny-000\stepperny\System Reference Guides\cy_boot_v5_50</v>
+<v>stepperny-000\stepperny\cy_isr_v1_70.pdf</v>
+<v>stepperny-000\stepperny\cy_pins_v2_20</v>
+<v>stepperny-000\stepperny\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>stepperny-000\stepperny\UART_v2_50.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\stepperny.cydwr" />
+<name v=".\main.c" />
+<name v=".\functions.c" />
+<name v=".\functions.h" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1405, 557" SelectedTabbedMdiWindow="416d65b9-c15a-45ac-b285-dfac1022aec5"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="baebc331-3e41-42d4-a85c-df6d962dcca4" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\stepperny.cydwr" Guid="59a6e79e-a722-4ac2-8fbf-d7c8d2855fd7" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\main.c" Guid="f868202b-836a-478d-a11e-00c7991df7ce" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\functions.c" Guid="ce1682b5-3c05-46a2-b649-d9d4e4f180a3" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\labmotorcontrol\stepperny.cydsn\functions.h" Guid="416d65b9-c15a-45ac-b285-dfac1022aec5" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

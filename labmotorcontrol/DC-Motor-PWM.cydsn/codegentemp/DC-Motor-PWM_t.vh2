@@ -1,5 +1,5 @@
--- Project:   C:\Users\kaaen\Documents\GitHub\GFV\labmotorcontrol\DC-Motor-PWM.cydsn\DC-Motor-PWM.cyprj
--- Generated: 02/11/2022 10:55:50
+-- Project:   C:\Users\Thomas\Documents\GitHub\GFV\labmotorcontrol\DC-Motor-PWM.cydsn\DC-Motor-PWM.cyprj
+-- Generated: 02/15/2022 14:27:03
 -- PSoC Creator  4.4
 
 ENTITY \DC-Motor-PWM\ IS

@@ -5,19 +5,12 @@ void handleByteReceived(uint8_t byteReceived);
 
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+    CyGlobalIntEnable; // Tænder for globale interrupts
+ 
     isr_uart_rx_StartEx(ISR_UART_rx_handler);
-    UART_1_Start();
-    
-    // White = 1
-    // Blue = 2
-    // Red = 3
-    // Yellow = 4
-    // Black = 5
-    // Brown = 6
-    
+    UART_1_Start(); // Starter UARTen
+ 
+    // Printer de forskellige muligheder i terminalen
     UART_1_PutString("ServoMotor application started\r\n");
     UART_1_PutString("0: Stop\r\n");
     UART_1_PutString("1: Drive forwards\r\n");
@@ -34,6 +27,8 @@ int main(void)
 
     for(;;)
     {
+        // Første switch finder ud af hvilken retning der skal køres
+        // Anden switch finder ud af hvilken slags kørsel der skal laves (Full, Half eller Wave)
         switch(getDirection()) {
             
             // Fremad
@@ -71,7 +66,11 @@ int main(void)
             }
             break;
             
+<<<<<<< HEAD
             // Bagl�ns
+=======
+            // Bagud
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
             case 2 :
             {
                 switch(getState()) {
@@ -109,6 +108,7 @@ int main(void)
             
             default : 
             {
+                // Nothing
             }
             break;
         }
@@ -123,7 +123,7 @@ CY_ISR(ISR_UART_rx_handler)
         uint8_t byteReceived = UART_1_ReadRxData();
         UART_1_WriteTxData(byteReceived); // echo back
         
-        handleByteReceived(byteReceived);
+        handleByteReceived(byteReceived); // Sender svaret videre
         
         bytesToRead--;
     }
@@ -131,5 +131,5 @@ CY_ISR(ISR_UART_rx_handler)
 
 void handleByteReceived(uint8_t byteReceived)
 {
-    run(byteReceived);
+    run(byteReceived); // Kalder den respektive funktion ud fra hvad der er blevet sendt i UARTen
 }
