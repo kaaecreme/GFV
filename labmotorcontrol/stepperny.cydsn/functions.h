@@ -2,8 +2,13 @@
 #include <stdint.h>
 #include "project.h"
 
+<<<<<<< HEAD
+uint16_t getDirection(void); // Bruges til at sende den nuv�rende retning
+uint8_t getState(void); // Finder den nuv�rende tilstand (Frem / tilbage)
+=======
 uint16_t getDirection(void); // Returnerer den nuværende rotationsretning
 uint8_t getState(void); // Returnerer den nuværende kørselsretning
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
 
 void changeState(int); // Gemmer en modtaget kørsels-retning
 

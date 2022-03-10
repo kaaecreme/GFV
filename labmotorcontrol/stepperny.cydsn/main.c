@@ -66,7 +66,11 @@ int main(void)
             }
             break;
             
+<<<<<<< HEAD
+            // Baglæns
+=======
             // Bagud
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
             case 2 :
             {
                 switch(getState()) {

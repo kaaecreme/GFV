@@ -1,9 +1,15 @@
 #include "functions.h"
 
 //Variables
+<<<<<<< HEAD
+uint16_t speedDelay = 20; // Sætter hastigheden på stepper motoren (Ved at lave et delay) 
+uint8_t state = 1; // Skifter tilstanden brugt af stepper motoren. 1/A = Full, 2/S = Half, 3/D = Wave
+uint8_t direction = 0; // Gemmer den nuværende retning. 0 = Stoppet, 1 = Fremad, 2 = Baglæns
+=======
 uint16_t speedDelay = 20; // SÃ¦tter Stepper Motorens hastighed med et delay 
 uint8_t state = 1; // Skifter kÃ¸rsels-type. FÃ¸lgende notation: 1/A = Full, 2/S = Half, 3/D = Wave
 uint8_t direction = 0; // Gemmer den nuvÃ¦rende kÃ¸rselsretning. 0 = Stoppet, 1 = Fremad, 2 = BaglÃ¦ns
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
 
 uint16_t getDirection(void) {
     return direction;
@@ -20,60 +26,72 @@ void run(char byte) {
     {
         case 'q' :
         {
-            decreaseSpeed();
+            decreaseSpeed(); // Sænker farten
         }
         break;
         case 'w' :
         {
-            increaseSpeed();
+            increaseSpeed(); // Hæver farten
         }
         break;
         
         case 'e' :
         {
-            runOnceForward();
+            runOnceForward(); // En enkelt rotation
         }
         break;
         
         case 'r' :
         {
-            runOnceBackwards();
+            runOnceBackwards(); // En enkelt baglæns rotation
         }
         break;
         
         case '1' :
         {
-            driveForwards();
+            driveForwards(); // Kontinuerligt fremad kørsel
         }
         break;
         
         case '2' :
         {
-            driveBackwards();
+            driveBackwards(); // Kontinuerligt baglæns kørsel
         }
         break;
         
         case '0' :
         {
-            stop();
+            stop(); // Stopper motoren
         }
         break;
         
+<<<<<<< HEAD
+        // Ændrer til full step
+=======
         // Skifter kÃ¸rsels-type til full step
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
         case 'a' :
         {
             changeState(1);
         }
         break;
         
+<<<<<<< HEAD
+        // Ændrer til half step
+=======
        // Skifter kÃ¸rsels-type til half step
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
         case 's' :
         {
             changeState(2);
         }
         break;
         
+<<<<<<< HEAD
+        // Ændrer til wave-drive
+=======
         // Skifter kÃ¸rsels-type til wave-drive
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
         case 'd' :
         {
             changeState(3);
@@ -81,13 +99,17 @@ void run(char byte) {
         break;
         default :
         {
-            // nothing
+            // Nothing
         }
         break;
     }
 }
 
+<<<<<<< HEAD
+// Ændrer stepper motorens tilstand
+=======
 // Gemmer den nuvÃ¦rende kÃ¸rsels-type 
+>>>>>>> 7732126a72d51834f12cb5dd2bb041f56f542d8e
 void changeState(int stateNumb) {
     state = stateNumb;
 }
