@@ -1,0 +1,29 @@
+--------------- Build Started: 03/04/2022 10:43:47 Project: Exercise_2, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/Functions.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c Functions.c -o .\CortexM3\ARM_GCC_541\Debug\Functions.o
+Functions.c: In function 'writeTempToUART':
+Functions.c:50:5: warning: implicit declaration of function 'snprintf' [-Wimplicit-function-declaration]
+     snprintf(outputBuffer, sizeof(outputBuffer), "\r\n\nTemp: %f \r\n\n", temp);
+     ^
+Functions.c:50:5: warning: incompatible implicit declaration of built-in function 'snprintf'
+Functions.c:50:5: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+Functions.c: In function 'writeTempToUART1':
+Functions.c:59:5: warning: incompatible implicit declaration of built-in function 'snprintf'
+     snprintf(outputBuffer, sizeof(outputBuffer), "Bin: %d \r\n", bin);
+     ^
+Functions.c:59:5: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+Functions.c: In function 'calculateTemp':
+Functions.c:21:10: warning: 'temp1' is used uninitialized in this function [-Wuninitialized]
+     most = temp1>>7;
+          ^
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\Exercise_2.a .\CortexM3\ARM_GCC_541\Debug\SDA_1.o .\CortexM3\ARM_GCC_541\Debug\SCL_1.o .\CortexM3\ARM_GCC_541\Debug\Clock_1.o .\CortexM3\ARM_GCC_541\Debug\RST_1.o .\CortexM3\ARM_GCC_541\Debug\UART_1.o .\CortexM3\ARM_GCC_541\Debug\UART_1_PM.o .\CortexM3\ARM_GCC_541\Debug\UART_1_INT.o .\CortexM3\ARM_GCC_541\Debug\UART_1_BOOT.o .\CortexM3\ARM_GCC_541\Debug\Pin_BI_SCL.o .\CortexM3\ARM_GCC_541\Debug\Pin_BI_SDA.o .\CortexM3\ARM_GCC_541\Debug\UART_1_IntClock.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\I2C_master.o .\CortexM3\ARM_GCC_541\Debug\I2C_master_BOOT.o .\CortexM3\ARM_GCC_541\Debug\I2C_master_INT.o .\CortexM3\ARM_GCC_541\Debug\I2C_master_PM.o .\CortexM3\ARM_GCC_541\Debug\I2C_master_SLAVE.o .\CortexM3\ARM_GCC_541\Debug\I2C_master_MASTER.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\Exercise_2.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\mariu\Documents\PSoC Creator\Exercises\Journal 2\Journal2\Exercise_2.cydsn\CortexM3\ARM_GCC_541\Debug\Exercise_2.elf" .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\Functions.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\Exercise_2.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/Exercise_2.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -u _printf_float -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C "C:\Users\mariu\Documents\PSoC Creator\Exercises\Journal 2\Journal2\Exercise_2.cydsn\CortexM3\ARM_GCC_541\Debug\Exercise_2.elf" --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+No ELF section .cychecksum found, creating one
+Application checksum calculated and stored in ELF section .cychecksum
+Checksum calculated and stored in ELF section .cymeta
+cyelftool.exe -S "C:\Users\mariu\Documents\PSoC Creator\Exercises\Journal 2\Journal2\Exercise_2.cydsn\CortexM3\ARM_GCC_541\Debug\Exercise_2.elf"
+Flash used: 15540 of 262144 bytes (5,9 %).
+SRAM used: 3001 of 65536 bytes (4,6 %). Stack: 2048 bytes. Heap: 512 bytes.
+--------------- Build Succeeded: 03/04/2022 10:43:49 ---------------
