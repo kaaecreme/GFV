@@ -1,0 +1,761 @@
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"functions.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.handleByteReceived,"ax",%progbits
+  20              		.align	2
+  21              		.global	handleByteReceived
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	handleByteReceived, %function
+  25              	handleByteReceived:
+  26              	.LFB63:
+  27              		.file 1 "functions.c"
+   1:functions.c   **** #include "functions.h"
+   2:functions.c   **** 
+   3:functions.c   **** uint8_t onData = 0x45; // Nu skal LED tænde
+   4:functions.c   **** uint8_t offData = 0x12; // Nu skal LED slukke
+   5:functions.c   **** uint8_t emptyData = 0x00; // Send ingenting 
+   6:functions.c   **** 
+   7:functions.c   **** void handleByteReceived(uint8_t byteReceived) // Håndterer hvert tryk på tastatur igennem UART
+   8:functions.c   **** {
+  28              		.loc 1 8 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 08B5     		push	{r3, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+   9:functions.c   ****     switch(byteReceived)
+  37              		.loc 1 9 0
+  38 0002 3128     		cmp	r0, #49
+  39 0004 02D0     		beq	.L3
+  40 0006 3228     		cmp	r0, #50
+  41 0008 0AD0     		beq	.L4
+  42 000a 08BD     		pop	{r3, pc}
+  43              	.L3:
+  10:functions.c   ****     {
+  11:functions.c   ****         case '1' : // Tænd LED
+  12:functions.c   ****         {
+  13:functions.c   ****             UART_1_PutString("Turning LED on\r\n");
+  44              		.loc 1 13 0
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 2
+
+
+  45 000c 0948     		ldr	r0, .L6
+  46              	.LVL1:
+  47 000e FFF7FEFF 		bl	UART_1_PutString
+  48              	.LVL2:
+  14:functions.c   ****             SPIM_1_WriteTxData(onData); // Send onData til Slaven
+  49              		.loc 1 14 0
+  50 0012 094B     		ldr	r3, .L6+4
+  51 0014 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  52 0016 FFF7FEFF 		bl	SPIM_1_WriteTxData
+  53              	.LVL3:
+  15:functions.c   ****             SPIM_1_ReadRxData();
+  54              		.loc 1 15 0
+  55 001a FFF7FEFF 		bl	SPIM_1_ReadRxData
+  56              	.LVL4:
+  16:functions.c   ****         }
+  17:functions.c   ****         break;
+  57              		.loc 1 17 0
+  58 001e 08BD     		pop	{r3, pc}
+  59              	.LVL5:
+  60              	.L4:
+  18:functions.c   ****         case '2' : // Sluk LED
+  19:functions.c   ****         {
+  20:functions.c   ****             UART_1_PutString("Turning LED off\r\n");
+  61              		.loc 1 20 0
+  62 0020 0648     		ldr	r0, .L6+8
+  63              	.LVL6:
+  64 0022 FFF7FEFF 		bl	UART_1_PutString
+  65              	.LVL7:
+  21:functions.c   ****             SPIM_1_WriteTxData(offData); // Send offData til Slaven
+  66              		.loc 1 21 0
+  67 0026 044B     		ldr	r3, .L6+4
+  68 0028 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+  69 002a FFF7FEFF 		bl	SPIM_1_WriteTxData
+  70              	.LVL8:
+  22:functions.c   ****             SPIM_1_ReadRxData();
+  71              		.loc 1 22 0
+  72 002e FFF7FEFF 		bl	SPIM_1_ReadRxData
+  73              	.LVL9:
+  74 0032 08BD     		pop	{r3, pc}
+  75              	.L7:
+  76              		.align	2
+  77              	.L6:
+  78 0034 00000000 		.word	.LC0
+  79 0038 00000000 		.word	.LANCHOR0
+  80 003c 14000000 		.word	.LC1
+  81              		.cfi_endproc
+  82              	.LFE63:
+  83              		.size	handleByteReceived, .-handleByteReceived
+  84              		.global	emptyData
+  85              		.global	offData
+  86              		.global	onData
+  87              		.data
+  88              		.set	.LANCHOR0,. + 0
+  89              		.type	onData, %object
+  90              		.size	onData, 1
+  91              	onData:
+  92 0000 45       		.byte	69
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 3
+
+
+  93              		.type	offData, %object
+  94              		.size	offData, 1
+  95              	offData:
+  96 0001 12       		.byte	18
+  97              		.section	.rodata.str1.4,"aMS",%progbits,1
+  98              		.align	2
+  99              	.LC0:
+ 100 0000 5475726E 		.ascii	"Turning LED on\015\012\000"
+ 100      696E6720 
+ 100      4C454420 
+ 100      6F6E0D0A 
+ 100      00
+ 101 0011 000000   		.space	3
+ 102              	.LC1:
+ 103 0014 5475726E 		.ascii	"Turning LED off\015\012\000"
+ 103      696E6720 
+ 103      4C454420 
+ 103      6F66660D 
+ 103      0A00
+ 104              		.bss
+ 105              		.type	emptyData, %object
+ 106              		.size	emptyData, 1
+ 107              	emptyData:
+ 108 0000 00       		.space	1
+ 109              		.text
+ 110              	.Letext0:
+ 111              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 112              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 113              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 114              		.file 5 "Generated_Source\\PSoC5/UART_1.h"
+ 115              		.file 6 "Generated_Source\\PSoC5/SPIM_1.h"
+ 116              		.section	.debug_info,"",%progbits
+ 117              	.Ldebug_info0:
+ 118 0000 93010000 		.4byte	0x193
+ 119 0004 0400     		.2byte	0x4
+ 120 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 121 000a 04       		.byte	0x4
+ 122 000b 01       		.uleb128 0x1
+ 123 000c 4F000000 		.4byte	.LASF25
+ 124 0010 0C       		.byte	0xc
+ 125 0011 2F000000 		.4byte	.LASF26
+ 126 0015 6B010000 		.4byte	.LASF27
+ 127 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 128 001d 00000000 		.4byte	0
+ 129 0021 00000000 		.4byte	.Ldebug_line0
+ 130 0025 02       		.uleb128 0x2
+ 131 0026 01       		.byte	0x1
+ 132 0027 06       		.byte	0x6
+ 133 0028 D9010000 		.4byte	.LASF0
+ 134 002c 03       		.uleb128 0x3
+ 135 002d 00000000 		.4byte	.LASF4
+ 136 0031 02       		.byte	0x2
+ 137 0032 1D       		.byte	0x1d
+ 138 0033 37000000 		.4byte	0x37
+ 139 0037 02       		.uleb128 0x2
+ 140 0038 01       		.byte	0x1
+ 141 0039 08       		.byte	0x8
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 4
+
+
+ 142 003a 41000000 		.4byte	.LASF1
+ 143 003e 02       		.uleb128 0x2
+ 144 003f 02       		.byte	0x2
+ 145 0040 05       		.byte	0x5
+ 146 0041 BA010000 		.4byte	.LASF2
+ 147 0045 02       		.uleb128 0x2
+ 148 0046 02       		.byte	0x2
+ 149 0047 07       		.byte	0x7
+ 150 0048 1C000000 		.4byte	.LASF3
+ 151 004c 03       		.uleb128 0x3
+ 152 004d 12000000 		.4byte	.LASF5
+ 153 0051 02       		.byte	0x2
+ 154 0052 3F       		.byte	0x3f
+ 155 0053 57000000 		.4byte	0x57
+ 156 0057 02       		.uleb128 0x2
+ 157 0058 04       		.byte	0x4
+ 158 0059 05       		.byte	0x5
+ 159 005a C4010000 		.4byte	.LASF6
+ 160 005e 02       		.uleb128 0x2
+ 161 005f 04       		.byte	0x4
+ 162 0060 07       		.byte	0x7
+ 163 0061 E7000000 		.4byte	.LASF7
+ 164 0065 02       		.uleb128 0x2
+ 165 0066 08       		.byte	0x8
+ 166 0067 05       		.byte	0x5
+ 167 0068 5D010000 		.4byte	.LASF8
+ 168 006c 02       		.uleb128 0x2
+ 169 006d 08       		.byte	0x8
+ 170 006e 07       		.byte	0x7
+ 171 006f 2D010000 		.4byte	.LASF9
+ 172 0073 04       		.uleb128 0x4
+ 173 0074 04       		.byte	0x4
+ 174 0075 05       		.byte	0x5
+ 175 0076 696E7400 		.ascii	"int\000"
+ 176 007a 02       		.uleb128 0x2
+ 177 007b 04       		.byte	0x4
+ 178 007c 07       		.byte	0x7
+ 179 007d 20010000 		.4byte	.LASF10
+ 180 0081 03       		.uleb128 0x3
+ 181 0082 44010000 		.4byte	.LASF11
+ 182 0086 03       		.byte	0x3
+ 183 0087 18       		.byte	0x18
+ 184 0088 2C000000 		.4byte	0x2c
+ 185 008c 03       		.uleb128 0x3
+ 186 008d 4C010000 		.4byte	.LASF12
+ 187 0091 03       		.byte	0x3
+ 188 0092 2C       		.byte	0x2c
+ 189 0093 4C000000 		.4byte	0x4c
+ 190 0097 02       		.uleb128 0x2
+ 191 0098 04       		.byte	0x4
+ 192 0099 04       		.byte	0x4
+ 193 009a 3B000000 		.4byte	.LASF13
+ 194 009e 02       		.uleb128 0x2
+ 195 009f 08       		.byte	0x8
+ 196 00a0 04       		.byte	0x4
+ 197 00a1 19010000 		.4byte	.LASF14
+ 198 00a5 02       		.uleb128 0x2
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 5
+
+
+ 199 00a6 01       		.byte	0x1
+ 200 00a7 08       		.byte	0x8
+ 201 00a8 A3010000 		.4byte	.LASF15
+ 202 00ac 02       		.uleb128 0x2
+ 203 00ad 08       		.byte	0x8
+ 204 00ae 04       		.byte	0x4
+ 205 00af CD010000 		.4byte	.LASF16
+ 206 00b3 02       		.uleb128 0x2
+ 207 00b4 04       		.byte	0x4
+ 208 00b5 07       		.byte	0x7
+ 209 00b6 54010000 		.4byte	.LASF17
+ 210 00ba 05       		.uleb128 0x5
+ 211 00bb F9000000 		.4byte	.LASF28
+ 212 00bf 01       		.byte	0x1
+ 213 00c0 07       		.byte	0x7
+ 214 00c1 00000000 		.4byte	.LFB63
+ 215 00c5 40000000 		.4byte	.LFE63-.LFB63
+ 216 00c9 01       		.uleb128 0x1
+ 217 00ca 9C       		.byte	0x9c
+ 218 00cb 31010000 		.4byte	0x131
+ 219 00cf 06       		.uleb128 0x6
+ 220 00d0 09020000 		.4byte	.LASF29
+ 221 00d4 01       		.byte	0x1
+ 222 00d5 07       		.byte	0x7
+ 223 00d6 81000000 		.4byte	0x81
+ 224 00da 00000000 		.4byte	.LLST0
+ 225 00de 07       		.uleb128 0x7
+ 226 00df 12000000 		.4byte	.LVL2
+ 227 00e3 75010000 		.4byte	0x175
+ 228 00e7 F5000000 		.4byte	0xf5
+ 229 00eb 08       		.uleb128 0x8
+ 230 00ec 01       		.uleb128 0x1
+ 231 00ed 50       		.byte	0x50
+ 232 00ee 05       		.uleb128 0x5
+ 233 00ef 03       		.byte	0x3
+ 234 00f0 00000000 		.4byte	.LC0
+ 235 00f4 00       		.byte	0
+ 236 00f5 09       		.uleb128 0x9
+ 237 00f6 1A000000 		.4byte	.LVL3
+ 238 00fa 80010000 		.4byte	0x180
+ 239 00fe 09       		.uleb128 0x9
+ 240 00ff 1E000000 		.4byte	.LVL4
+ 241 0103 8B010000 		.4byte	0x18b
+ 242 0107 07       		.uleb128 0x7
+ 243 0108 26000000 		.4byte	.LVL7
+ 244 010c 75010000 		.4byte	0x175
+ 245 0110 1E010000 		.4byte	0x11e
+ 246 0114 08       		.uleb128 0x8
+ 247 0115 01       		.uleb128 0x1
+ 248 0116 50       		.byte	0x50
+ 249 0117 05       		.uleb128 0x5
+ 250 0118 03       		.byte	0x3
+ 251 0119 14000000 		.4byte	.LC1
+ 252 011d 00       		.byte	0
+ 253 011e 09       		.uleb128 0x9
+ 254 011f 2E000000 		.4byte	.LVL8
+ 255 0123 80010000 		.4byte	0x180
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 6
+
+
+ 256 0127 09       		.uleb128 0x9
+ 257 0128 32000000 		.4byte	.LVL9
+ 258 012c 8B010000 		.4byte	0x18b
+ 259 0130 00       		.byte	0
+ 260 0131 0A       		.uleb128 0xa
+ 261 0132 0C010000 		.4byte	.LASF18
+ 262 0136 04       		.byte	0x4
+ 263 0137 1207     		.2byte	0x712
+ 264 0139 3D010000 		.4byte	0x13d
+ 265 013d 0B       		.uleb128 0xb
+ 266 013e 8C000000 		.4byte	0x8c
+ 267 0142 0C       		.uleb128 0xc
+ 268 0143 DD000000 		.4byte	.LASF19
+ 269 0147 01       		.byte	0x1
+ 270 0148 05       		.byte	0x5
+ 271 0149 81000000 		.4byte	0x81
+ 272 014d 05       		.uleb128 0x5
+ 273 014e 03       		.byte	0x3
+ 274 014f 00000000 		.4byte	emptyData
+ 275 0153 0C       		.uleb128 0xc
+ 276 0154 16020000 		.4byte	.LASF20
+ 277 0158 01       		.byte	0x1
+ 278 0159 03       		.byte	0x3
+ 279 015a 81000000 		.4byte	0x81
+ 280 015e 05       		.uleb128 0x5
+ 281 015f 03       		.byte	0x3
+ 282 0160 00000000 		.4byte	onData
+ 283 0164 0C       		.uleb128 0xc
+ 284 0165 0A000000 		.4byte	.LASF21
+ 285 0169 01       		.byte	0x1
+ 286 016a 04       		.byte	0x4
+ 287 016b 81000000 		.4byte	0x81
+ 288 016f 05       		.uleb128 0x5
+ 289 0170 03       		.byte	0x3
+ 290 0171 00000000 		.4byte	offData
+ 291 0175 0D       		.uleb128 0xd
+ 292 0176 F8010000 		.4byte	.LASF22
+ 293 017a F8010000 		.4byte	.LASF22
+ 294 017e 05       		.byte	0x5
+ 295 017f 8B       		.byte	0x8b
+ 296 0180 0D       		.uleb128 0xd
+ 297 0181 E5010000 		.4byte	.LASF23
+ 298 0185 E5010000 		.4byte	.LASF23
+ 299 0189 06       		.byte	0x6
+ 300 018a 5E       		.byte	0x5e
+ 301 018b 0D       		.uleb128 0xd
+ 302 018c A8010000 		.4byte	.LASF24
+ 303 0190 A8010000 		.4byte	.LASF24
+ 304 0194 06       		.byte	0x6
+ 305 0195 60       		.byte	0x60
+ 306 0196 00       		.byte	0
+ 307              		.section	.debug_abbrev,"",%progbits
+ 308              	.Ldebug_abbrev0:
+ 309 0000 01       		.uleb128 0x1
+ 310 0001 11       		.uleb128 0x11
+ 311 0002 01       		.byte	0x1
+ 312 0003 25       		.uleb128 0x25
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 7
+
+
+ 313 0004 0E       		.uleb128 0xe
+ 314 0005 13       		.uleb128 0x13
+ 315 0006 0B       		.uleb128 0xb
+ 316 0007 03       		.uleb128 0x3
+ 317 0008 0E       		.uleb128 0xe
+ 318 0009 1B       		.uleb128 0x1b
+ 319 000a 0E       		.uleb128 0xe
+ 320 000b 55       		.uleb128 0x55
+ 321 000c 17       		.uleb128 0x17
+ 322 000d 11       		.uleb128 0x11
+ 323 000e 01       		.uleb128 0x1
+ 324 000f 10       		.uleb128 0x10
+ 325 0010 17       		.uleb128 0x17
+ 326 0011 00       		.byte	0
+ 327 0012 00       		.byte	0
+ 328 0013 02       		.uleb128 0x2
+ 329 0014 24       		.uleb128 0x24
+ 330 0015 00       		.byte	0
+ 331 0016 0B       		.uleb128 0xb
+ 332 0017 0B       		.uleb128 0xb
+ 333 0018 3E       		.uleb128 0x3e
+ 334 0019 0B       		.uleb128 0xb
+ 335 001a 03       		.uleb128 0x3
+ 336 001b 0E       		.uleb128 0xe
+ 337 001c 00       		.byte	0
+ 338 001d 00       		.byte	0
+ 339 001e 03       		.uleb128 0x3
+ 340 001f 16       		.uleb128 0x16
+ 341 0020 00       		.byte	0
+ 342 0021 03       		.uleb128 0x3
+ 343 0022 0E       		.uleb128 0xe
+ 344 0023 3A       		.uleb128 0x3a
+ 345 0024 0B       		.uleb128 0xb
+ 346 0025 3B       		.uleb128 0x3b
+ 347 0026 0B       		.uleb128 0xb
+ 348 0027 49       		.uleb128 0x49
+ 349 0028 13       		.uleb128 0x13
+ 350 0029 00       		.byte	0
+ 351 002a 00       		.byte	0
+ 352 002b 04       		.uleb128 0x4
+ 353 002c 24       		.uleb128 0x24
+ 354 002d 00       		.byte	0
+ 355 002e 0B       		.uleb128 0xb
+ 356 002f 0B       		.uleb128 0xb
+ 357 0030 3E       		.uleb128 0x3e
+ 358 0031 0B       		.uleb128 0xb
+ 359 0032 03       		.uleb128 0x3
+ 360 0033 08       		.uleb128 0x8
+ 361 0034 00       		.byte	0
+ 362 0035 00       		.byte	0
+ 363 0036 05       		.uleb128 0x5
+ 364 0037 2E       		.uleb128 0x2e
+ 365 0038 01       		.byte	0x1
+ 366 0039 3F       		.uleb128 0x3f
+ 367 003a 19       		.uleb128 0x19
+ 368 003b 03       		.uleb128 0x3
+ 369 003c 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 8
+
+
+ 370 003d 3A       		.uleb128 0x3a
+ 371 003e 0B       		.uleb128 0xb
+ 372 003f 3B       		.uleb128 0x3b
+ 373 0040 0B       		.uleb128 0xb
+ 374 0041 27       		.uleb128 0x27
+ 375 0042 19       		.uleb128 0x19
+ 376 0043 11       		.uleb128 0x11
+ 377 0044 01       		.uleb128 0x1
+ 378 0045 12       		.uleb128 0x12
+ 379 0046 06       		.uleb128 0x6
+ 380 0047 40       		.uleb128 0x40
+ 381 0048 18       		.uleb128 0x18
+ 382 0049 9742     		.uleb128 0x2117
+ 383 004b 19       		.uleb128 0x19
+ 384 004c 01       		.uleb128 0x1
+ 385 004d 13       		.uleb128 0x13
+ 386 004e 00       		.byte	0
+ 387 004f 00       		.byte	0
+ 388 0050 06       		.uleb128 0x6
+ 389 0051 05       		.uleb128 0x5
+ 390 0052 00       		.byte	0
+ 391 0053 03       		.uleb128 0x3
+ 392 0054 0E       		.uleb128 0xe
+ 393 0055 3A       		.uleb128 0x3a
+ 394 0056 0B       		.uleb128 0xb
+ 395 0057 3B       		.uleb128 0x3b
+ 396 0058 0B       		.uleb128 0xb
+ 397 0059 49       		.uleb128 0x49
+ 398 005a 13       		.uleb128 0x13
+ 399 005b 02       		.uleb128 0x2
+ 400 005c 17       		.uleb128 0x17
+ 401 005d 00       		.byte	0
+ 402 005e 00       		.byte	0
+ 403 005f 07       		.uleb128 0x7
+ 404 0060 898201   		.uleb128 0x4109
+ 405 0063 01       		.byte	0x1
+ 406 0064 11       		.uleb128 0x11
+ 407 0065 01       		.uleb128 0x1
+ 408 0066 31       		.uleb128 0x31
+ 409 0067 13       		.uleb128 0x13
+ 410 0068 01       		.uleb128 0x1
+ 411 0069 13       		.uleb128 0x13
+ 412 006a 00       		.byte	0
+ 413 006b 00       		.byte	0
+ 414 006c 08       		.uleb128 0x8
+ 415 006d 8A8201   		.uleb128 0x410a
+ 416 0070 00       		.byte	0
+ 417 0071 02       		.uleb128 0x2
+ 418 0072 18       		.uleb128 0x18
+ 419 0073 9142     		.uleb128 0x2111
+ 420 0075 18       		.uleb128 0x18
+ 421 0076 00       		.byte	0
+ 422 0077 00       		.byte	0
+ 423 0078 09       		.uleb128 0x9
+ 424 0079 898201   		.uleb128 0x4109
+ 425 007c 00       		.byte	0
+ 426 007d 11       		.uleb128 0x11
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 9
+
+
+ 427 007e 01       		.uleb128 0x1
+ 428 007f 31       		.uleb128 0x31
+ 429 0080 13       		.uleb128 0x13
+ 430 0081 00       		.byte	0
+ 431 0082 00       		.byte	0
+ 432 0083 0A       		.uleb128 0xa
+ 433 0084 34       		.uleb128 0x34
+ 434 0085 00       		.byte	0
+ 435 0086 03       		.uleb128 0x3
+ 436 0087 0E       		.uleb128 0xe
+ 437 0088 3A       		.uleb128 0x3a
+ 438 0089 0B       		.uleb128 0xb
+ 439 008a 3B       		.uleb128 0x3b
+ 440 008b 05       		.uleb128 0x5
+ 441 008c 49       		.uleb128 0x49
+ 442 008d 13       		.uleb128 0x13
+ 443 008e 3F       		.uleb128 0x3f
+ 444 008f 19       		.uleb128 0x19
+ 445 0090 3C       		.uleb128 0x3c
+ 446 0091 19       		.uleb128 0x19
+ 447 0092 00       		.byte	0
+ 448 0093 00       		.byte	0
+ 449 0094 0B       		.uleb128 0xb
+ 450 0095 35       		.uleb128 0x35
+ 451 0096 00       		.byte	0
+ 452 0097 49       		.uleb128 0x49
+ 453 0098 13       		.uleb128 0x13
+ 454 0099 00       		.byte	0
+ 455 009a 00       		.byte	0
+ 456 009b 0C       		.uleb128 0xc
+ 457 009c 34       		.uleb128 0x34
+ 458 009d 00       		.byte	0
+ 459 009e 03       		.uleb128 0x3
+ 460 009f 0E       		.uleb128 0xe
+ 461 00a0 3A       		.uleb128 0x3a
+ 462 00a1 0B       		.uleb128 0xb
+ 463 00a2 3B       		.uleb128 0x3b
+ 464 00a3 0B       		.uleb128 0xb
+ 465 00a4 49       		.uleb128 0x49
+ 466 00a5 13       		.uleb128 0x13
+ 467 00a6 3F       		.uleb128 0x3f
+ 468 00a7 19       		.uleb128 0x19
+ 469 00a8 02       		.uleb128 0x2
+ 470 00a9 18       		.uleb128 0x18
+ 471 00aa 00       		.byte	0
+ 472 00ab 00       		.byte	0
+ 473 00ac 0D       		.uleb128 0xd
+ 474 00ad 2E       		.uleb128 0x2e
+ 475 00ae 00       		.byte	0
+ 476 00af 3F       		.uleb128 0x3f
+ 477 00b0 19       		.uleb128 0x19
+ 478 00b1 3C       		.uleb128 0x3c
+ 479 00b2 19       		.uleb128 0x19
+ 480 00b3 6E       		.uleb128 0x6e
+ 481 00b4 0E       		.uleb128 0xe
+ 482 00b5 03       		.uleb128 0x3
+ 483 00b6 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 10
+
+
+ 484 00b7 3A       		.uleb128 0x3a
+ 485 00b8 0B       		.uleb128 0xb
+ 486 00b9 3B       		.uleb128 0x3b
+ 487 00ba 0B       		.uleb128 0xb
+ 488 00bb 00       		.byte	0
+ 489 00bc 00       		.byte	0
+ 490 00bd 00       		.byte	0
+ 491              		.section	.debug_loc,"",%progbits
+ 492              	.Ldebug_loc0:
+ 493              	.LLST0:
+ 494 0000 00000000 		.4byte	.LVL0
+ 495 0004 0E000000 		.4byte	.LVL1
+ 496 0008 0100     		.2byte	0x1
+ 497 000a 50       		.byte	0x50
+ 498 000b 0E000000 		.4byte	.LVL1
+ 499 000f 20000000 		.4byte	.LVL5
+ 500 0013 0400     		.2byte	0x4
+ 501 0015 F3       		.byte	0xf3
+ 502 0016 01       		.uleb128 0x1
+ 503 0017 50       		.byte	0x50
+ 504 0018 9F       		.byte	0x9f
+ 505 0019 20000000 		.4byte	.LVL5
+ 506 001d 22000000 		.4byte	.LVL6
+ 507 0021 0100     		.2byte	0x1
+ 508 0023 50       		.byte	0x50
+ 509 0024 22000000 		.4byte	.LVL6
+ 510 0028 40000000 		.4byte	.LFE63
+ 511 002c 0400     		.2byte	0x4
+ 512 002e F3       		.byte	0xf3
+ 513 002f 01       		.uleb128 0x1
+ 514 0030 50       		.byte	0x50
+ 515 0031 9F       		.byte	0x9f
+ 516 0032 00000000 		.4byte	0
+ 517 0036 00000000 		.4byte	0
+ 518              		.section	.debug_aranges,"",%progbits
+ 519 0000 1C000000 		.4byte	0x1c
+ 520 0004 0200     		.2byte	0x2
+ 521 0006 00000000 		.4byte	.Ldebug_info0
+ 522 000a 04       		.byte	0x4
+ 523 000b 00       		.byte	0
+ 524 000c 0000     		.2byte	0
+ 525 000e 0000     		.2byte	0
+ 526 0010 00000000 		.4byte	.LFB63
+ 527 0014 40000000 		.4byte	.LFE63-.LFB63
+ 528 0018 00000000 		.4byte	0
+ 529 001c 00000000 		.4byte	0
+ 530              		.section	.debug_ranges,"",%progbits
+ 531              	.Ldebug_ranges0:
+ 532 0000 00000000 		.4byte	.LFB63
+ 533 0004 40000000 		.4byte	.LFE63
+ 534 0008 00000000 		.4byte	0
+ 535 000c 00000000 		.4byte	0
+ 536              		.section	.debug_line,"",%progbits
+ 537              	.Ldebug_line0:
+ 538 0000 77010000 		.section	.debug_str,"MS",%progbits,1
+ 538      02005C01 
+ 538      00000201 
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 11
+
+
+ 538      FB0E0D00 
+ 538      01010101 
+ 539              	.LASF4:
+ 540 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 540      6E74385F 
+ 540      7400
+ 541              	.LASF21:
+ 542 000a 6F666644 		.ascii	"offData\000"
+ 542      61746100 
+ 543              	.LASF5:
+ 544 0012 5F5F696E 		.ascii	"__int32_t\000"
+ 544      7433325F 
+ 544      7400
+ 545              	.LASF3:
+ 546 001c 73686F72 		.ascii	"short unsigned int\000"
+ 546      7420756E 
+ 546      7369676E 
+ 546      65642069 
+ 546      6E7400
+ 547              	.LASF26:
+ 548 002f 66756E63 		.ascii	"functions.c\000"
+ 548      74696F6E 
+ 548      732E6300 
+ 549              	.LASF13:
+ 550 003b 666C6F61 		.ascii	"float\000"
+ 550      7400
+ 551              	.LASF1:
+ 552 0041 756E7369 		.ascii	"unsigned char\000"
+ 552      676E6564 
+ 552      20636861 
+ 552      7200
+ 553              	.LASF25:
+ 554 004f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 554      43313120 
+ 554      352E342E 
+ 554      31203230 
+ 554      31363036 
+ 555 0082 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 555      20726576 
+ 555      6973696F 
+ 555      6E203233 
+ 555      37373135 
+ 556 00b5 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 556      66756E63 
+ 556      74696F6E 
+ 556      2D736563 
+ 556      74696F6E 
+ 557              	.LASF19:
+ 558 00dd 656D7074 		.ascii	"emptyData\000"
+ 558      79446174 
+ 558      6100
+ 559              	.LASF7:
+ 560 00e7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 560      20756E73 
+ 560      69676E65 
+ 560      6420696E 
+ 560      7400
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 12
+
+
+ 561              	.LASF28:
+ 562 00f9 68616E64 		.ascii	"handleByteReceived\000"
+ 562      6C654279 
+ 562      74655265 
+ 562      63656976 
+ 562      656400
+ 563              	.LASF18:
+ 564 010c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 564      52784275 
+ 564      66666572 
+ 564      00
+ 565              	.LASF14:
+ 566 0119 646F7562 		.ascii	"double\000"
+ 566      6C6500
+ 567              	.LASF10:
+ 568 0120 756E7369 		.ascii	"unsigned int\000"
+ 568      676E6564 
+ 568      20696E74 
+ 568      00
+ 569              	.LASF9:
+ 570 012d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 570      206C6F6E 
+ 570      6720756E 
+ 570      7369676E 
+ 570      65642069 
+ 571              	.LASF11:
+ 572 0144 75696E74 		.ascii	"uint8_t\000"
+ 572      385F7400 
+ 573              	.LASF12:
+ 574 014c 696E7433 		.ascii	"int32_t\000"
+ 574      325F7400 
+ 575              	.LASF17:
+ 576 0154 73697A65 		.ascii	"sizetype\000"
+ 576      74797065 
+ 576      00
+ 577              	.LASF8:
+ 578 015d 6C6F6E67 		.ascii	"long long int\000"
+ 578      206C6F6E 
+ 578      6720696E 
+ 578      7400
+ 579              	.LASF27:
+ 580 016b 433A5C55 		.ascii	"C:\\Users\\Thomas\\Documents\\GitHub\\GFV\\Journal2"
+ 580      73657273 
+ 580      5C54686F 
+ 580      6D61735C 
+ 580      446F6375 
+ 581 0198 5C6C6564 		.ascii	"\\led.cydsn\000"
+ 581      2E637964 
+ 581      736E00
+ 582              	.LASF15:
+ 583 01a3 63686172 		.ascii	"char\000"
+ 583      00
+ 584              	.LASF24:
+ 585 01a8 5350494D 		.ascii	"SPIM_1_ReadRxData\000"
+ 585      5F315F52 
+ 585      65616452 
+ 585      78446174 
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccDVOTF8.s 			page 13
+
+
+ 585      6100
+ 586              	.LASF2:
+ 587 01ba 73686F72 		.ascii	"short int\000"
+ 587      7420696E 
+ 587      7400
+ 588              	.LASF6:
+ 589 01c4 6C6F6E67 		.ascii	"long int\000"
+ 589      20696E74 
+ 589      00
+ 590              	.LASF16:
+ 591 01cd 6C6F6E67 		.ascii	"long double\000"
+ 591      20646F75 
+ 591      626C6500 
+ 592              	.LASF0:
+ 593 01d9 7369676E 		.ascii	"signed char\000"
+ 593      65642063 
+ 593      68617200 
+ 594              	.LASF23:
+ 595 01e5 5350494D 		.ascii	"SPIM_1_WriteTxData\000"
+ 595      5F315F57 
+ 595      72697465 
+ 595      54784461 
+ 595      746100
+ 596              	.LASF22:
+ 597 01f8 55415254 		.ascii	"UART_1_PutString\000"
+ 597      5F315F50 
+ 597      75745374 
+ 597      72696E67 
+ 597      00
+ 598              	.LASF29:
+ 599 0209 62797465 		.ascii	"byteReceived\000"
+ 599      52656365 
+ 599      69766564 
+ 599      00
+ 600              	.LASF20:
+ 601 0216 6F6E4461 		.ascii	"onData\000"
+ 601      746100
+ 602              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

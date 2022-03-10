@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
   28:Generated_Source\PSoC5/SPIS_1_INT.c **** /*******************************************************************************
   29:Generated_Source\PSoC5/SPIS_1_INT.c **** * Function Name: SPIS_1_TX_ISR
   30:Generated_Source\PSoC5/SPIS_1_INT.c **** *
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 2
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 2
 
 
   31:Generated_Source\PSoC5/SPIS_1_INT.c **** * Summary:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
   68:Generated_Source\PSoC5/SPIS_1_INT.c ****         /* Component interrupt service code */
   69:Generated_Source\PSoC5/SPIS_1_INT.c **** 
   70:Generated_Source\PSoC5/SPIS_1_INT.c ****         /* See if TX data buffer is not empty and there is space in TX FIFO */
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 3
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 3
 
 
   71:Generated_Source\PSoC5/SPIS_1_INT.c ****         while(SPIS_1_txBufferRead != SPIS_1_txBufferWrite)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
  125:Generated_Source\PSoC5/SPIS_1_INT.c **** *  Interrupt Service Routine for RX portion of the SPI Slave.
  126:Generated_Source\PSoC5/SPIS_1_INT.c **** *
  127:Generated_Source\PSoC5/SPIS_1_INT.c **** * Parameters:
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 4
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 4
 
 
  128:Generated_Source\PSoC5/SPIS_1_INT.c **** *  None.
@@ -220,14 +220,14 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
   63 000c 5B000000 		.4byte	.LASF16
   64 0010 0C       		.byte	0xc
   65 0011 37000000 		.4byte	.LASF17
-  66 0015 5A010000 		.4byte	.LASF18
+  66 0015 34010000 		.4byte	.LASF18
   67 0019 00000000 		.4byte	.Ldebug_ranges0+0
   68 001d 00000000 		.4byte	0
   69 0021 00000000 		.4byte	.Ldebug_line0
   70 0025 02       		.uleb128 0x2
   71 0026 01       		.byte	0x1
   72 0027 06       		.byte	0x6
-  73 0028 4E010000 		.4byte	.LASF0
+  73 0028 83010000 		.4byte	.LASF0
   74 002c 02       		.uleb128 0x2
   75 002d 01       		.byte	0x1
   76 002e 08       		.byte	0x8
@@ -235,14 +235,14 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
   78 0033 02       		.uleb128 0x2
   79 0034 02       		.byte	0x2
   80 0035 05       		.byte	0x5
-  81 0036 F9010000 		.4byte	.LASF2
+  81 0036 9B010000 		.4byte	.LASF2
   82 003a 02       		.uleb128 0x2
   83 003b 02       		.byte	0x2
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 5
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 5
 
 
   84 003c 07       		.byte	0x7
-  85 003d 3B010000 		.4byte	.LASF3
+  85 003d 70010000 		.4byte	.LASF3
   86 0041 02       		.uleb128 0x2
   87 0042 04       		.byte	0x4
   88 0043 05       		.byte	0x5
@@ -274,7 +274,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
  114 0072 02       		.uleb128 0x2
  115 0073 08       		.byte	0x8
  116 0074 04       		.byte	0x4
- 117 0075 34010000 		.4byte	.LASF10
+ 117 0075 69010000 		.4byte	.LASF10
  118 0079 02       		.uleb128 0x2
  119 007a 01       		.byte	0x1
  120 007b 08       		.byte	0x8
@@ -282,11 +282,11 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
  122 0080 02       		.uleb128 0x2
  123 0081 08       		.byte	0x8
  124 0082 04       		.byte	0x4
- 125 0083 ED010000 		.4byte	.LASF12
+ 125 0083 8F010000 		.4byte	.LASF12
  126 0087 02       		.uleb128 0x2
  127 0088 04       		.byte	0x4
  128 0089 07       		.byte	0x7
- 129 008a 03020000 		.4byte	.LASF13
+ 129 008a A5010000 		.4byte	.LASF13
  130 008e 04       		.uleb128 0x4
  131 008f 29000000 		.4byte	.LASF14
  132 0093 01       		.byte	0x1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
  138 009f 04       		.uleb128 0x4
  139 00a0 1B000000 		.4byte	.LASF15
  140 00a4 01       		.byte	0x1
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 6
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 6
 
 
  141 00a5 90       		.byte	0x90
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
  195 002e 03       		.uleb128 0x3
  196 002f 0E       		.uleb128 0xe
  197 0030 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 7
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 7
 
 
  198 0031 0B       		.uleb128 0xb
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
  242      00
  243              	.LASF15:
  244 001b 53504953 		.ascii	"SPIS_1_RX_ISR\000"
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 8
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 8
 
 
  244      5F315F52 
@@ -478,49 +478,40 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 1
  264 012b 6C6F6E67 		.ascii	"long int\000"
  264      20696E74 
  264      00
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\cc8gembW.s 			page 9
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccmKm0Kt.s 			page 9
 
 
- 265              	.LASF10:
- 266 0134 646F7562 		.ascii	"double\000"
- 266      6C6500
- 267              	.LASF3:
- 268 013b 73686F72 		.ascii	"short unsigned int\000"
- 268      7420756E 
- 268      7369676E 
- 268      65642069 
- 268      6E7400
- 269              	.LASF0:
- 270 014e 7369676E 		.ascii	"signed char\000"
- 270      65642063 
- 270      68617200 
- 271              	.LASF18:
- 272 015a 433A5C55 		.ascii	"C:\\Users\\lasse\\OneDrive\\Dokumenter\\PSoC Creato"
- 272      73657273 
- 272      5C6C6173 
- 272      73655C4F 
- 272      6E654472 
- 273 0188 725C342E 		.ascii	"r\\4.4\\CE195352_PSoC_5LP_Blinking_LED\\CE195352_PS"
- 273      345C4345 
- 273      31393533 
- 273      35325F50 
- 273      536F435F 
- 274 01b8 6F435F35 		.ascii	"oC_5LP_Blinking_LED.cydsn\\Slave_SPI02\\Design02.cy"
- 274      4C505F42 
- 274      6C696E6B 
- 274      696E675F 
- 274      4C45442E 
- 275 01e9 64736E00 		.ascii	"dsn\000"
- 276              	.LASF12:
- 277 01ed 6C6F6E67 		.ascii	"long double\000"
- 277      20646F75 
- 277      626C6500 
- 278              	.LASF2:
- 279 01f9 73686F72 		.ascii	"short int\000"
- 279      7420696E 
- 279      7400
- 280              	.LASF13:
- 281 0203 73697A65 		.ascii	"sizetype\000"
- 281      74797065 
- 281      00
- 282              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 265              	.LASF18:
+ 266 0134 433A5C55 		.ascii	"C:\\Users\\Thomas\\Documents\\GitHub\\GFV\\ISP SLAV"
+ 266      73657273 
+ 266      5C54686F 
+ 266      6D61735C 
+ 266      446F6375 
+ 267 0161 452E6379 		.ascii	"E.cydsn\000"
+ 267      64736E00 
+ 268              	.LASF10:
+ 269 0169 646F7562 		.ascii	"double\000"
+ 269      6C6500
+ 270              	.LASF3:
+ 271 0170 73686F72 		.ascii	"short unsigned int\000"
+ 271      7420756E 
+ 271      7369676E 
+ 271      65642069 
+ 271      6E7400
+ 272              	.LASF0:
+ 273 0183 7369676E 		.ascii	"signed char\000"
+ 273      65642063 
+ 273      68617200 
+ 274              	.LASF12:
+ 275 018f 6C6F6E67 		.ascii	"long double\000"
+ 275      20646F75 
+ 275      626C6500 
+ 276              	.LASF2:
+ 277 019b 73686F72 		.ascii	"short int\000"
+ 277      7420696E 
+ 277      7400
+ 278              	.LASF13:
+ 279 01a5 73697A65 		.ascii	"sizetype\000"
+ 279      74797065 
+ 279      00
+ 280              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

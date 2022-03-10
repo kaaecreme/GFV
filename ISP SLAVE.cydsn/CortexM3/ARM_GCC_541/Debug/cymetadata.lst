@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
   55 001a 01       		.byte	1
   56 001b 40       		.byte	64
   57 001c 02       		.byte	2
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 2
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 2
 
 
   58 001d 40       		.byte	64
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  112 0053 01       		.byte	1
  113 0054 1D       		.byte	29
  114 0055 01       		.byte	1
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 3
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 3
 
 
  115 0056 20       		.byte	32
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  169 008c BE       		.byte	-66
  170 008d 51       		.byte	81
  171 008e D4       		.byte	-44
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 4
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 4
 
 
  172 008f 20       		.byte	32
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  226 00c5 80       		.byte	-128
  227 00c6 91       		.byte	-111
  228 00c7 08       		.byte	8
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 5
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 5
 
 
  229 00c8 94       		.byte	-108
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  283 00fe B2       		.byte	-78
  284 00ff 04       		.byte	4
  285 0100 B4       		.byte	-76
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 6
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 6
 
 
  286 0101 08       		.byte	8
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  340 0137 01       		.byte	1
  341 0138 EA       		.byte	-22
  342 0139 C0       		.byte	-64
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 7
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 7
 
 
  343 013a EB       		.byte	-21
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  397 0170 C0       		.byte	-64
  398 0171 0D       		.byte	13
  399 0172 C2       		.byte	-62
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 8
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 8
 
 
  400 0173 01       		.byte	1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  454 01a9 03       		.byte	3
  455 01aa 00       		.byte	0
  456 01ab 00       		.byte	0
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 9
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 9
 
 
  457 01ac 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  511 000b 00       		.byte	0
  512              		.section	.cyflashprotect,"a",%progbits
  513              		.align	2
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 10
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 10
 
 
  514              		.type	cy_meta_flashprotect, %object
@@ -563,13 +563,13 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  529 000b 01       		.uleb128 0x1
  530 000c 24000000 		.4byte	.LASF17
  531 0010 0C       		.byte	0xc
- 532 0011 11020000 		.4byte	.LASF18
+ 532 0011 B3010000 		.4byte	.LASF18
  533 0015 D7000000 		.4byte	.LASF19
  534 0019 00000000 		.4byte	.Ldebug_line0
  535 001d 02       		.uleb128 0x2
  536 001e 01       		.byte	0x1
  537 001f 06       		.byte	0x6
- 538 0020 05020000 		.4byte	.LASF0
+ 538 0020 A7010000 		.4byte	.LASF0
  539 0024 03       		.uleb128 0x3
  540 0025 00000000 		.4byte	.LASF9
  541 0029 01       		.byte	0x1
@@ -582,7 +582,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  548 0036 02       		.uleb128 0x2
  549 0037 02       		.byte	0x2
  550 0038 05       		.byte	0x5
- 551 0039 F2010000 		.4byte	.LASF2
+ 551 0039 94010000 		.4byte	.LASF2
  552 003d 02       		.uleb128 0x2
  553 003e 02       		.byte	0x2
  554 003f 07       		.byte	0x7
@@ -590,7 +590,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  556 0044 02       		.uleb128 0x2
  557 0045 04       		.byte	0x4
  558 0046 05       		.byte	0x5
- 559 0047 FC010000 		.4byte	.LASF4
+ 559 0047 9E010000 		.4byte	.LASF4
  560 004b 02       		.uleb128 0x2
  561 004c 04       		.byte	0x4
  562 004d 07       		.byte	0x7
@@ -598,14 +598,14 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  564 0052 02       		.uleb128 0x2
  565 0053 08       		.byte	0x8
  566 0054 05       		.byte	0x5
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 11
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 11
 
 
- 567 0055 E4010000 		.4byte	.LASF6
+ 567 0055 86010000 		.4byte	.LASF6
  568 0059 02       		.uleb128 0x2
  569 005a 08       		.byte	0x8
  570 005b 07       		.byte	0x7
- 571 005c 99010000 		.4byte	.LASF7
+ 571 005c 3B010000 		.4byte	.LASF7
  572 0060 04       		.uleb128 0x4
  573 0061 04       		.byte	0x4
  574 0062 05       		.byte	0x5
@@ -613,9 +613,9 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  576 0067 02       		.uleb128 0x2
  577 0068 04       		.byte	0x4
  578 0069 07       		.byte	0x7
- 579 006a 8C010000 		.4byte	.LASF8
+ 579 006a 2E010000 		.4byte	.LASF8
  580 006e 03       		.uleb128 0x3
- 581 006f B0010000 		.4byte	.LASF10
+ 581 006f 52010000 		.4byte	.LASF10
  582 0073 02       		.byte	0x2
  583 0074 18       		.byte	0x18
  584 0075 24000000 		.4byte	0x24
@@ -629,11 +629,11 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  592 008a 02       		.uleb128 0x2
  593 008b 04       		.byte	0x4
  594 008c 07       		.byte	0x7
- 595 008d DB010000 		.4byte	.LASF11
+ 595 008d 7D010000 		.4byte	.LASF11
  596 0091 07       		.uleb128 0x7
  597 0092 6E000000 		.4byte	0x6e
  598 0096 08       		.uleb128 0x8
- 599 0097 7A010000 		.4byte	.LASF12
+ 599 0097 1C010000 		.4byte	.LASF12
  600 009b 03       		.byte	0x3
  601 009c 1F       		.byte	0x1f
  602 009d A7000000 		.4byte	0xa7
@@ -650,7 +650,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  613 00ba 03       		.byte	0x3
  614 00bb 00       		.byte	0
  615 00bc 08       		.uleb128 0x8
- 616 00bd 6A010000 		.4byte	.LASF13
+ 616 00bd 0C010000 		.4byte	.LASF13
  617 00c1 03       		.byte	0x3
  618 00c2 64       		.byte	0x64
  619 00c3 CD000000 		.4byte	0xcd
@@ -658,12 +658,12 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  621 00c8 03       		.byte	0x3
  622 00c9 00000000 		.4byte	cy_meta_custnvl
  623 00cd 07       		.uleb128 0x7
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 12
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 12
 
 
  624 00ce AC000000 		.4byte	0xac
  625 00d2 08       		.uleb128 0x8
- 626 00d3 CD010000 		.4byte	.LASF14
+ 626 00d3 6F010000 		.4byte	.LASF14
  627 00d7 03       		.byte	0x3
  628 00d8 72       		.byte	0x72
  629 00d9 E3000000 		.4byte	0xe3
@@ -680,7 +680,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  640 00f6 FF       		.byte	0xff
  641 00f7 00       		.byte	0
  642 00f8 08       		.uleb128 0x8
- 643 00f9 B8010000 		.4byte	.LASF15
+ 643 00f9 5A010000 		.4byte	.LASF15
  644 00fd 03       		.byte	0x3
  645 00fe 80       		.byte	0x80
  646 00ff 09010000 		.4byte	0x109
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  678 0006 0B       		.uleb128 0xb
  679 0007 03       		.uleb128 0x3
  680 0008 0E       		.uleb128 0xe
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 13
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 13
 
 
  681 0009 1B       		.uleb128 0x1b
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  735 003f 13       		.uleb128 0x13
  736 0040 2F       		.uleb128 0x2f
  737 0041 05       		.uleb128 0x5
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 14
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 14
 
 
  738 0042 00       		.byte	0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  788 0000 5F5F7569 		.ascii	"__uint8_t\000"
  788      6E74385F 
  788      7400
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 15
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 15
 
 
  789              	.LASF16:
@@ -879,89 +879,77 @@ ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 1
  800      65642069 
  800      6E7400
  801              	.LASF19:
- 802 00d7 433A5C55 		.ascii	"C:\\Users\\lasse\\OneDrive\\Dokumenter\\PSoC Creato"
+ 802 00d7 433A5C55 		.ascii	"C:\\Users\\Thomas\\Documents\\GitHub\\GFV\\ISP SLAV"
  802      73657273 
- 802      5C6C6173 
- 802      73655C4F 
- 802      6E654472 
- 803 0105 725C342E 		.ascii	"r\\4.4\\CE195352_PSoC_5LP_Blinking_LED\\CE195352_PS"
- 803      345C4345 
- 803      31393533 
- 803      35325F50 
- 803      536F435F 
- 804 0135 6F435F35 		.ascii	"oC_5LP_Blinking_LED.cydsn\\Slave_SPI02\\Design02.cy"
- 804      4C505F42 
- 804      6C696E6B 
- 804      696E675F 
- 804      4C45442E 
- 805 0166 64736E00 		.ascii	"dsn\000"
- 806              	.LASF13:
- 807 016a 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 802      5C54686F 
+ 802      6D61735C 
+ 802      446F6375 
+ 803 0104 452E6379 		.ascii	"E.cydsn\000"
+ 803      64736E00 
+ 804              	.LASF13:
+ 805 010c 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 805      6574615F 
+ 805      63757374 
+ 805      6E766C00 
+ 806              	.LASF12:
+ 807 011c 63795F6D 		.ascii	"cy_meta_configecc\000"
  807      6574615F 
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 16
+ 807      636F6E66 
+ 807      69676563 
+ 807      6300
+ 808              	.LASF8:
+ARM GAS  C:\Users\Thomas\AppData\Local\Temp\ccZ2HeML.s 			page 16
 
 
- 807      63757374 
- 807      6E766C00 
- 808              	.LASF12:
- 809 017a 63795F6D 		.ascii	"cy_meta_configecc\000"
- 809      6574615F 
- 809      636F6E66 
- 809      69676563 
- 809      6300
- 810              	.LASF8:
- 811 018c 756E7369 		.ascii	"unsigned int\000"
- 811      676E6564 
- 811      20696E74 
- 811      00
- 812              	.LASF7:
- 813 0199 6C6F6E67 		.ascii	"long long unsigned int\000"
- 813      206C6F6E 
- 813      6720756E 
- 813      7369676E 
- 813      65642069 
- 814              	.LASF10:
- 815 01b0 75696E74 		.ascii	"uint8_t\000"
- 815      385F7400 
- 816              	.LASF15:
- 817 01b8 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 809 012e 756E7369 		.ascii	"unsigned int\000"
+ 809      676E6564 
+ 809      20696E74 
+ 809      00
+ 810              	.LASF7:
+ 811 013b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 811      206C6F6E 
+ 811      6720756E 
+ 811      7369676E 
+ 811      65642069 
+ 812              	.LASF10:
+ 813 0152 75696E74 		.ascii	"uint8_t\000"
+ 813      385F7400 
+ 814              	.LASF15:
+ 815 015a 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 815      6574615F 
+ 815      666C6173 
+ 815      6870726F 
+ 815      74656374 
+ 816              	.LASF14:
+ 817 016f 63795F6D 		.ascii	"cy_meta_wonvl\000"
  817      6574615F 
- 817      666C6173 
- 817      6870726F 
- 817      74656374 
- 818              	.LASF14:
- 819 01cd 63795F6D 		.ascii	"cy_meta_wonvl\000"
- 819      6574615F 
- 819      776F6E76 
- 819      6C00
- 820              	.LASF11:
- 821 01db 73697A65 		.ascii	"sizetype\000"
- 821      74797065 
- 821      00
- 822              	.LASF6:
- 823 01e4 6C6F6E67 		.ascii	"long long int\000"
- 823      206C6F6E 
- 823      6720696E 
+ 817      776F6E76 
+ 817      6C00
+ 818              	.LASF11:
+ 819 017d 73697A65 		.ascii	"sizetype\000"
+ 819      74797065 
+ 819      00
+ 820              	.LASF6:
+ 821 0186 6C6F6E67 		.ascii	"long long int\000"
+ 821      206C6F6E 
+ 821      6720696E 
+ 821      7400
+ 822              	.LASF2:
+ 823 0194 73686F72 		.ascii	"short int\000"
+ 823      7420696E 
  823      7400
- 824              	.LASF2:
- 825 01f2 73686F72 		.ascii	"short int\000"
- 825      7420696E 
- 825      7400
- 826              	.LASF4:
- 827 01fc 6C6F6E67 		.ascii	"long int\000"
- 827      20696E74 
- 827      00
- 828              	.LASF0:
- 829 0205 7369676E 		.ascii	"signed char\000"
- 829      65642063 
- 829      68617200 
- 830              	.LASF18:
- 831 0211 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
- 831      72617465 
-ARM GAS  C:\Users\lasse\AppData\Local\Temp\ccPiQL7w.s 			page 17
-
-
- 831      645F536F 
- 831      75726365 
- 831      5C50536F 
- 832              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 824              	.LASF4:
+ 825 019e 6C6F6E67 		.ascii	"long int\000"
+ 825      20696E74 
+ 825      00
+ 826              	.LASF0:
+ 827 01a7 7369676E 		.ascii	"signed char\000"
+ 827      65642063 
+ 827      68617200 
+ 828              	.LASF18:
+ 829 01b3 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 829      72617465 
+ 829      645F536F 
+ 829      75726365 
+ 829      5C50536F 
+ 830              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
