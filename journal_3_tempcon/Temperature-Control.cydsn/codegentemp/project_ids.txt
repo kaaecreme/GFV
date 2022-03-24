@@ -1,0 +1,6 @@
+C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\Temperature-Control.cyprj|14344646-97c1-4a46-bbe2-1530806adbf0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|b6abb2fa-2455-45ee-9a45-a547fc39e2c1
+C:\Users\Thomas\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|2fb797fc-71e4-47b6-9dac-9cc2ddacb009
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|dee3c916-984a-4c67-9ad6-51bceec8fa4b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2bdda242-8e79-4f86-8a63-f5e93b7ca9a7
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|760d08d3-782a-4793-b1a4-8444fed7f6f0

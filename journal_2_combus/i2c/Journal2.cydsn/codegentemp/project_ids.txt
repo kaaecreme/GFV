@@ -1,0 +1,6 @@
+C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\Journal2.cyprj|f4f3af50-3714-440d-9faa-b964c1c0afa8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1759d3cb-46aa-4a4a-aa1c-8e9e60167948
+C:\Users\Thomas\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|30325894-e88f-4e80-99f7-3ec7f17a7978
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|a0b03a0b-fa21-4c4e-84f5-77ac440401ab
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|fe1efc4e-3083-4998-974c-4e9c861576a4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|6e9ae487-b0e9-4db4-a397-6736730386ff
