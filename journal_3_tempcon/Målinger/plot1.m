@@ -2,19 +2,19 @@ clear all; close all; clc;
 set(0,'DefaultFigureWindowStyle','docked');
 set(0, 'DefaultLineLineWidth', 1.5);
 
-
 plotandprint('30til50_P2_I1_d0.txt','P = 2, I = 1, D = 0')
+
 plotandprint('30til50_P4_I1_d0.txt','P = 4, I = 1, D = 0')
+
 plotandprint('30til50_P8_I1_d0.txt','P = 8, I = 1, D = 0')
 
-
-
 plotandprint('30til50_P2_I2_d0.txt','P = 2, I = 2, D = 0')
+
 plotandprint('30til50_P2_I4_D0.txt','P = 2, I = 4, D = 0')
 
 plotandprint('30til50_P4_I4_D0.txt','P = 4, I = 4, D = 0')
+
 plotandprint('30til50_P4_I4_D0_Integrale1000_Måling6.txt','6/s, P = 4, I = 4, D = 0')
-plotandprint('30til50_P4_I4_D0_Integrale1000_Måling_1s.txt','1/s, P = 4, I = 4, D = 0')
 
 function plotandprint(filestr,titlestr)
 points = 10;
@@ -42,13 +42,12 @@ timeplot = time(1:points:length(temp));
 disp('Approximate rise time in seconds')
 last30 = find(temp == 30);
 first50 = find(temp == 50);
-risetime = (first50(1) - last30(end))/3;
+risetime = (first50(1) - last30(end))/6;
 
 disp('Maximum overshoot recorded')
 overshoot = max(temp) - 50;
 disp('Maximum undershoot recorded')
 undershoot = min(temp(first50:end)) - 50;
-
 
 
 figure
@@ -61,7 +60,7 @@ plot(timeplot,controlplot);
 plot(timeplot,intPartplot);
 plot(timeplot,propPartplot);
 axis([0 1250 -15 110])
-[~,b] = legend( 'control', 'propPart', 'intPart', 'Location', 'NorthEast', 'Interpreter', 'none' , 'FontSize', 14);
+[~,b] = legend( 'control', 'intPart', 'propPart', 'Location', 'NorthEast', 'Interpreter', 'none' , 'FontSize', 14);
 set(findobj(b,'-property','MarkerSize'),'MarkerSize',30)
 
 figure

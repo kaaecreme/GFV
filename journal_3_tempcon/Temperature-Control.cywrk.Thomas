@@ -206,7 +206,22 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\Temperature-Control.cydsn\Temperature-Control.cydwr" />
+<name v=".\Temperature-Control.cydsn\main.c" />
+<name v=".\Temperature-Control.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Temperature-Control.cydsn\PIDControl.h" />
+<name v=".\Temperature-Control.cydsn\functions.c" />
+<name v=".\Temperature-Control.cydsn\functions.h" />
+<name v=".\Temperature-Control.cydsn\PIDControl.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1428, 578" SelectedTabbedMdiWindow="e3d02d40-906f-4088-be45-9d493cf63566"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="baebc331-3e41-42d4-a85c-df6d962dcca4" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\Temperature-Control.cydwr" Guid="325a186b-6193-4336-824f-fabd207a0071" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\main.c" Guid="e3d02d40-906f-4088-be45-9d493cf63566" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\TopDesign\TopDesign.cysch" Guid="45d61886-5198-4fa8-ab8e-47fa3754ab2b" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\PIDControl.h" Guid="5d14eece-2e09-46b7-8e9c-bf72e0190cb4" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\functions.c" Guid="83dac299-8a45-4a2f-a9fa-04dd6c2b1cb1" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\functions.h" Guid="e4bff900-e732-4486-be2d-42574990feb8" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\PIDControl.c" Guid="4987abd1-9efb-4129-9da8-19020d89c4d0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

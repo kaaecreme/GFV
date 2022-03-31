@@ -205,6 +205,8 @@
 <name v=".\main.c" />
 <name v=".\functions.c" />
 <name v=".\functions.h" />
+<name v=".\TopDesign\TopDesign.cysch" />
+<name v=".\Journal2.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -212,7 +214,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1405, 557" SelectedTabbedMdiWindow="a4f4fdeb-c9b7-4957-a2df-c1e7187d9356"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="baebc331-3e41-42d4-a85c-df6d962dcca4" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\main.c" Guid="6425cdb2-004c-44a4-b648-d4d9406bf80d" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\functions.c" Guid="a4f4fdeb-c9b7-4957-a2df-c1e7187d9356" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\functions.h" Guid="fd981fb6-81ee-4be2-a682-71cd111bbf68" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1405, 557" SelectedTabbedMdiWindow="6425cdb2-004c-44a4-b648-d4d9406bf80d"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="baebc331-3e41-42d4-a85c-df6d962dcca4" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\main.c" Guid="6425cdb2-004c-44a4-b648-d4d9406bf80d" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\functions.c" Guid="a4f4fdeb-c9b7-4957-a2df-c1e7187d9356" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\functions.h" Guid="fd981fb6-81ee-4be2-a682-71cd111bbf68" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\TopDesign\TopDesign.cysch" Guid="7c999863-5b03-4e6f-a152-204f2db8f843" /><DocumentWindow Key="C:\Users\Thomas\Documents\GitHub\GFV\journal_2_combus\i2c\Journal2.cydsn\Journal2.cydwr" Guid="034f6f75-8d0f-4fc9-a827-cfc0d9c1ad6b" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
