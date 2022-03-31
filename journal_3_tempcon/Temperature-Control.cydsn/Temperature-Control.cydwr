@@ -256,10 +256,12 @@
       <Data key="8585b7a4-d821-4ace-9a2a-fe7309c1e17f" value="SCL" />
       <Data key="22863ebe-a37b-476f-b252-6e49a8c00b12" value="SDA_1" />
       <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx_1" />
-      <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="Tx_1" />
+      <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="Tx" />
+      <Data key="adcec36a-2c66-4a78-8793-f2f71ffab2a2" value="Button" />
+      <Data key="d09ee25f-c3c1-4fff-b84f-9a9e5d74bcd7" value="controlSignal" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="Pin_PWM" />
       <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="Tx_1" />
-      <Data key="ed498c04-c9fa-4c8c-833a-b8507ce02dd7" value="Rx_1" />
+      <Data key="ed498c04-c9fa-4c8c-833a-b8507ce02dd7" value="Rx" />
       <Data key="ff91a7c5-3ed7-49f7-95fa-d6ebd2d8c0fd" value="Pin_LED" />
     </Group>
   </Group>
@@ -3375,6 +3377,16 @@
     <Group key="77715107-f8d5-47e5-a629-0fb83101ac6b">
       <Group key="0">
         <Data key="Port Format" value="12,7" />
+      </Group>
+    </Group>
+    <Group key="adcec36a-2c66-4a78-8793-f2f71ffab2a2">
+      <Group key="0">
+        <Data key="Port Format" value="2,2" />
+      </Group>
+    </Group>
+    <Group key="d09ee25f-c3c1-4fff-b84f-9a9e5d74bcd7">
+      <Group key="0">
+        <Data key="Port Format" value="2,0" />
       </Group>
     </Group>
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">

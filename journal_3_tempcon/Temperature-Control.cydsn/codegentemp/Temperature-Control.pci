@@ -1,5 +1,5 @@
 # Temperature-Control
-# 2022-03-24 21:54:16Z
+# 2022-03-25 12:24:19Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -11,3 +11,5 @@ set_io "Tx(0)" iocell 12 7
 set_io "Rx(0)" iocell 12 6
 set_io "SDA(0)" iocell 12 5
 set_io "SCL(0)" iocell 12 4
+set_io "Button(0)" iocell 2 2
+set_io "controlSignal(0)" iocell 2 0
