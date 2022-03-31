@@ -8,10 +8,13 @@ plotandprint('30til50_P4_I1_d0.txt','P = 4, I = 1, D = 0')
 plotandprint('30til50_P8_I1_d0.txt','P = 8, I = 1, D = 0')
 
 
+
 plotandprint('30til50_P2_I2_d0.txt','P = 2, I = 2, D = 0')
 plotandprint('30til50_P2_I4_D0.txt','P = 2, I = 4, D = 0')
 
 plotandprint('30til50_P4_I4_D0.txt','P = 4, I = 4, D = 0')
+plotandprint('30til50_P4_I4_D0_Integrale1000_Måling6.txt','6/s, P = 4, I = 4, D = 0')
+plotandprint('30til50_P4_I4_D0_Integrale1000_Måling_1s.txt','1/s, P = 4, I = 4, D = 0')
 
 function plotandprint(filestr,titlestr)
 points = 10;
@@ -24,7 +27,7 @@ control = A(:,4);
 propPart = A(:,8);
 intPart = A(:,9);
 derivPart = A(:,10);
-time = linspace(0,1/3*length(temp),length(temp));
+time = linspace(0,1/6*length(temp),length(temp));
 
 setPointplot = setPoint(1:points:(length(temp)))
 tempplot = temp(1:points:length(temp));
@@ -57,7 +60,7 @@ ylabel('Control signal [% duty cycle]', 'FontSize', 14);
 plot(timeplot,controlplot);
 plot(timeplot,intPartplot);
 plot(timeplot,propPartplot);
-axis([0 1250 -15 90])
+axis([0 1250 -15 110])
 [~,b] = legend( 'control', 'propPart', 'intPart', 'Location', 'NorthEast', 'Interpreter', 'none' , 'FontSize', 14);
 set(findobj(b,'-property','MarkerSize'),'MarkerSize',30)
 

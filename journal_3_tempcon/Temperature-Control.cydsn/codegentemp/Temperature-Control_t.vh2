@@ -1,5 +1,5 @@
--- Project:   C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\Temperature-Control.cyprj
--- Generated: 03/25/2022 13:24:23
+-- Project:   C:\Users\Bruger\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\Temperature-Control.cyprj
+-- Generated: 03/31/2022 09:52:18
 -- PSoC Creator  4.4
 
 ENTITY \Temperature-Control\ IS

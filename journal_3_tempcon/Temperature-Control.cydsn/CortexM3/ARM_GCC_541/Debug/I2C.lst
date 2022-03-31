@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
   26:I2C.c         **** 
   27:I2C.c         ****         
   28:I2C.c         ****     //Konverter fra 2's complement til float
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 2
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 2
 
 
   29:I2C.c         ****     temperature = convertMeasurement(byte1, byte2); 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
   60 001e 0446     		mov	r4, r0
   61              	.LVL8:
   62 0020 0FE0     		b	.L3
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 3
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 3
 
 
   63              	.LVL9:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  104              		.type	readAndReturn, %function
  105              	readAndReturn:
  106              	.LFB63:
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 4
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 4
 
 
    4:I2C.c         ****     uint8 errorMSG, byte1, byte2;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  152 002a 2946     		mov	r1, r5
  153 002c 2046     		mov	r0, r4
  154 002e FFF7FEFF 		bl	convertMeasurement
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 5
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 5
 
 
  155              	.LVL28:
@@ -285,26 +285,26 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  187 000b 01       		.uleb128 0x1
  188 000c 5A000000 		.4byte	.LASF30
  189 0010 0C       		.byte	0xc
- 190 0011 86010000 		.4byte	.LASF31
- 191 0015 1A010000 		.4byte	.LASF32
+ 190 0011 27010000 		.4byte	.LASF31
+ 191 0015 D1010000 		.4byte	.LASF32
  192 0019 00000000 		.4byte	.Ldebug_ranges0+0
  193 001d 00000000 		.4byte	0
  194 0021 00000000 		.4byte	.Ldebug_line0
  195 0025 02       		.uleb128 0x2
  196 0026 01       		.byte	0x1
  197 0027 06       		.byte	0x6
- 198 0028 30020000 		.4byte	.LASF0
+ 198 0028 22020000 		.4byte	.LASF0
  199 002c 02       		.uleb128 0x2
  200 002d 01       		.byte	0x1
  201 002e 08       		.byte	0x8
  202 002f 4C000000 		.4byte	.LASF1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 6
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 6
 
 
  203 0033 02       		.uleb128 0x2
  204 0034 02       		.byte	0x2
  205 0035 05       		.byte	0x5
- 206 0036 E8010000 		.4byte	.LASF2
+ 206 0036 89010000 		.4byte	.LASF2
  207 003a 02       		.uleb128 0x2
  208 003b 02       		.byte	0x2
  209 003c 07       		.byte	0x7
@@ -317,7 +317,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  216 004c 02       		.uleb128 0x2
  217 004d 04       		.byte	0x4
  218 004e 05       		.byte	0x5
- 219 004f 1B020000 		.4byte	.LASF4
+ 219 004f BC010000 		.4byte	.LASF4
  220 0053 02       		.uleb128 0x2
  221 0054 04       		.byte	0x4
  222 0055 07       		.byte	0x7
@@ -325,11 +325,11 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  224 005a 02       		.uleb128 0x2
  225 005b 08       		.byte	0x8
  226 005c 05       		.byte	0x5
- 227 005d B4010000 		.4byte	.LASF6
+ 227 005d 55010000 		.4byte	.LASF6
  228 0061 02       		.uleb128 0x2
  229 0062 08       		.byte	0x8
  230 0063 07       		.byte	0x7
- 231 0064 8C010000 		.4byte	.LASF7
+ 231 0064 2D010000 		.4byte	.LASF7
  232 0068 04       		.uleb128 0x4
  233 0069 04       		.byte	0x4
  234 006a 05       		.byte	0x5
@@ -337,14 +337,14 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  236 006f 02       		.uleb128 0x2
  237 0070 04       		.byte	0x4
  238 0071 07       		.byte	0x7
- 239 0072 79010000 		.4byte	.LASF8
+ 239 0072 1A010000 		.4byte	.LASF8
  240 0076 03       		.uleb128 0x3
- 241 0077 A3010000 		.4byte	.LASF10
+ 241 0077 44010000 		.4byte	.LASF10
  242 007b 03       		.byte	0x3
  243 007c 2C       		.byte	0x2c
  244 007d 41000000 		.4byte	0x41
  245 0081 05       		.uleb128 0x5
- 246 0082 F2010000 		.4byte	.LASF11
+ 246 0082 93010000 		.4byte	.LASF11
  247 0086 04       		.byte	0x4
  248 0087 9201     		.2byte	0x192
  249 0089 2C000000 		.4byte	0x2c
@@ -358,21 +358,21 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  257 0097 13010000 		.4byte	.LASF13
  258 009b 02       		.uleb128 0x2
  259 009c 01       		.byte	0x1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 7
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 7
 
 
  260 009d 08       		.byte	0x8
- 261 009e D7010000 		.4byte	.LASF14
+ 261 009e 78010000 		.4byte	.LASF14
  262 00a2 02       		.uleb128 0x2
  263 00a3 08       		.byte	0x8
  264 00a4 04       		.byte	0x4
- 265 00a5 24020000 		.4byte	.LASF15
+ 265 00a5 C5010000 		.4byte	.LASF15
  266 00a9 02       		.uleb128 0x2
  267 00aa 04       		.byte	0x4
  268 00ab 07       		.byte	0x7
- 269 00ac AB010000 		.4byte	.LASF16
+ 269 00ac 4C010000 		.4byte	.LASF16
  270 00b0 06       		.uleb128 0x6
- 271 00b1 4D020000 		.4byte	.LASF22
+ 271 00b1 3F020000 		.4byte	.LASF22
  272 00b5 01       		.byte	0x1
  273 00b6 23       		.byte	0x23
  274 00b7 8D000000 		.4byte	0x8d
@@ -394,13 +394,13 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  290 00df 81000000 		.4byte	0x81
  291 00e3 21000000 		.4byte	.LLST1
  292 00e7 08       		.uleb128 0x8
- 293 00e8 DC010000 		.4byte	.LASF19
+ 293 00e8 7D010000 		.4byte	.LASF19
  294 00ec 01       		.byte	0x1
  295 00ed 26       		.byte	0x26
  296 00ee 81000000 		.4byte	0x81
  297 00f2 42000000 		.4byte	.LLST2
  298 00f6 08       		.uleb128 0x8
- 299 00f7 E2010000 		.4byte	.LASF20
+ 299 00f7 83010000 		.4byte	.LASF20
  300 00fb 01       		.byte	0x1
  301 00fc 26       		.byte	0x26
  302 00fd 81000000 		.4byte	0x81
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  314 011b 81000000 		.4byte	0x81
  315 011f 99000000 		.4byte	.LLST5
  316 0123 08       		.uleb128 0x8
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 8
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 8
 
 
  317 0124 40000000 		.4byte	.LASF21
@@ -438,7 +438,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  331 0144 00       		.byte	0
  332 0145 00       		.byte	0
  333 0146 0C       		.uleb128 0xc
- 334 0147 F8010000 		.4byte	.LASF23
+ 334 0147 99010000 		.4byte	.LASF23
  335 014b 01       		.byte	0x1
  336 014c 03       		.byte	0x3
  337 014d 8D000000 		.4byte	0x8d
@@ -454,7 +454,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  347 0166 81000000 		.4byte	0x81
  348 016a 01010000 		.4byte	.LLST7
  349 016e 08       		.uleb128 0x8
- 350 016f 60020000 		.4byte	.LASF25
+ 350 016f 52020000 		.4byte	.LASF25
  351 0173 01       		.byte	0x1
  352 0174 05       		.byte	0x5
  353 0175 81000000 		.4byte	0x81
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  371 01a2 8D000000 		.4byte	0x8d
  372 01a6 01       		.uleb128 0x1
  373 01a7 50       		.byte	0x50
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 9
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 9
 
 
  374 01a8 0E       		.uleb128 0xe
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  428 0217 74       		.byte	0x74
  429 0218 00       		.sleb128 0
  430 0219 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 10
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 10
 
 
  431 021a 01       		.uleb128 0x1
@@ -556,8 +556,8 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  443 022d 11       		.uleb128 0x11
  444 022e 76000000 		.4byte	0x76
  445 0232 12       		.uleb128 0x12
- 446 0233 3C020000 		.4byte	.LASF26
- 447 0237 3C020000 		.4byte	.LASF26
+ 446 0233 2E020000 		.4byte	.LASF26
+ 447 0237 2E020000 		.4byte	.LASF26
  448 023b 05       		.byte	0x5
  449 023c 8B       		.byte	0x8b
  450 023d 12       		.uleb128 0x12
@@ -566,13 +566,13 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  453 0246 06       		.byte	0x6
  454 0247 B1       		.byte	0xb1
  455 0248 12       		.uleb128 0x12
- 456 0249 C2010000 		.4byte	.LASF28
- 457 024d C2010000 		.4byte	.LASF28
+ 456 0249 63010000 		.4byte	.LASF28
+ 457 024d 63010000 		.4byte	.LASF28
  458 0251 06       		.byte	0x6
  459 0252 B7       		.byte	0xb7
  460 0253 12       		.uleb128 0x12
- 461 0254 06020000 		.4byte	.LASF29
- 462 0258 06020000 		.4byte	.LASF29
+ 461 0254 A7010000 		.4byte	.LASF29
+ 462 0258 A7010000 		.4byte	.LASF29
  463 025c 06       		.byte	0x6
  464 025d B5       		.byte	0xb5
  465 025e 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  485 0011 00       		.byte	0
  486 0012 00       		.byte	0
  487 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 11
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 11
 
 
  488 0014 24       		.uleb128 0x24
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  542 004a 3A       		.uleb128 0x3a
  543 004b 0B       		.uleb128 0xb
  544 004c 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 12
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 12
 
 
  545 004d 0B       		.uleb128 0xb
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  599 0084 3B       		.uleb128 0x3b
  600 0085 0B       		.uleb128 0xb
  601 0086 49       		.uleb128 0x49
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 13
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 13
 
 
  602 0087 13       		.uleb128 0x13
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  656 00c3 0E       		.uleb128 0xe
  657 00c4 3A       		.uleb128 0x3a
  658 00c5 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 14
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 14
 
 
  659 00c6 3B       		.uleb128 0x3b
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  713 0100 00       		.byte	0
  714 0101 3F       		.uleb128 0x3f
  715 0102 19       		.uleb128 0x19
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 15
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 15
 
 
  716 0103 3C       		.uleb128 0x3c
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  770              	.LLST3:
  771 0059 06000000 		.4byte	.LVL2
  772 005d 15000000 		.4byte	.LVL6-1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 16
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 16
 
 
  773 0061 0100     		.2byte	0x1
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  827 00ed 54       		.byte	0x54
  828 00ee 46000000 		.4byte	.LVL16
  829 00f2 4C000000 		.4byte	.LFE64
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 17
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 17
 
 
  830 00f6 0100     		.2byte	0x1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  884 0006 00000000 		.4byte	.Ldebug_info0
  885 000a 04       		.byte	0x4
  886 000b 00       		.byte	0
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 18
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 18
 
 
  887 000c 0000     		.2byte	0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  920              	.LASF30:
  921 005a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  921      43313120 
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 19
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 19
 
 
  921      352E342E 
@@ -1114,109 +1114,108 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 1
  932              	.LASF13:
  933 0113 646F7562 		.ascii	"double\000"
  933      6C6500
- 934              	.LASF32:
- 935 011a 433A5C55 		.ascii	"C:\\Users\\jakob\\Nextcloud3\\semester2\\DSD\\GitHu"
- 935      73657273 
- 935      5C6A616B 
- 935      6F625C4E 
- 935      65787463 
- 936 0147 625C4746 		.ascii	"b\\GFV\\journal_3_tempcon\\Temperature-Control.cyds"
- 936      565C6A6F 
- 936      75726E61 
- 936      6C5F335F 
- 936      74656D70 
- 937 0177 6E00     		.ascii	"n\000"
- 938              	.LASF8:
- 939 0179 756E7369 		.ascii	"unsigned int\000"
- 939      676E6564 
- 939      20696E74 
- 939      00
- 940              	.LASF31:
- 941 0186 4932432E 		.ascii	"I2C.c\000"
- 941      6300
- 942              	.LASF7:
- 943 018c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 943      206C6F6E 
- 943      6720756E 
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 20
+ 934              	.LASF8:
+ 935 011a 756E7369 		.ascii	"unsigned int\000"
+ 935      676E6564 
+ 935      20696E74 
+ 935      00
+ 936              	.LASF31:
+ 937 0127 4932432E 		.ascii	"I2C.c\000"
+ 937      6300
+ 938              	.LASF7:
+ 939 012d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 939      206C6F6E 
+ 939      6720756E 
+ 939      7369676E 
+ 939      65642069 
+ 940              	.LASF10:
+ 941 0144 696E7433 		.ascii	"int32_t\000"
+ 941      325F7400 
+ 942              	.LASF16:
+ 943 014c 73697A65 		.ascii	"sizetype\000"
+ 943      74797065 
+ 943      00
+ 944              	.LASF6:
+ 945 0155 6C6F6E67 		.ascii	"long long int\000"
+ 945      206C6F6E 
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 20
 
 
- 943      7369676E 
- 943      65642069 
- 944              	.LASF10:
- 945 01a3 696E7433 		.ascii	"int32_t\000"
- 945      325F7400 
- 946              	.LASF16:
- 947 01ab 73697A65 		.ascii	"sizetype\000"
- 947      74797065 
- 947      00
- 948              	.LASF6:
- 949 01b4 6C6F6E67 		.ascii	"long long int\000"
- 949      206C6F6E 
- 949      6720696E 
- 949      7400
- 950              	.LASF28:
- 951 01c2 4932435F 		.ascii	"I2C_1_MasterReadByte\000"
- 951      315F4D61 
- 951      73746572 
- 951      52656164 
- 951      42797465 
- 952              	.LASF14:
- 953 01d7 63686172 		.ascii	"char\000"
- 953      00
- 954              	.LASF19:
- 955 01dc 74656D70 		.ascii	"temp1\000"
- 955      3100
- 956              	.LASF20:
- 957 01e2 74656D70 		.ascii	"temp2\000"
- 957      3200
- 958              	.LASF2:
- 959 01e8 73686F72 		.ascii	"short int\000"
- 959      7420696E 
- 959      7400
- 960              	.LASF11:
- 961 01f2 75696E74 		.ascii	"uint8\000"
- 961      3800
- 962              	.LASF23:
- 963 01f8 72656164 		.ascii	"readAndReturn\000"
- 963      416E6452 
- 963      65747572 
- 963      6E00
- 964              	.LASF29:
- 965 0206 4932435F 		.ascii	"I2C_1_MasterSendStop\000"
- 965      315F4D61 
- 965      73746572 
- 965      53656E64 
- 965      53746F70 
- 966              	.LASF4:
- 967 021b 6C6F6E67 		.ascii	"long int\000"
- 967      20696E74 
- 967      00
- 968              	.LASF15:
- 969 0224 6C6F6E67 		.ascii	"long double\000"
- 969      20646F75 
- 969      626C6500 
- 970              	.LASF0:
- 971 0230 7369676E 		.ascii	"signed char\000"
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccKBfkAb.s 			page 21
+ 945      6720696E 
+ 945      7400
+ 946              	.LASF28:
+ 947 0163 4932435F 		.ascii	"I2C_1_MasterReadByte\000"
+ 947      315F4D61 
+ 947      73746572 
+ 947      52656164 
+ 947      42797465 
+ 948              	.LASF14:
+ 949 0178 63686172 		.ascii	"char\000"
+ 949      00
+ 950              	.LASF19:
+ 951 017d 74656D70 		.ascii	"temp1\000"
+ 951      3100
+ 952              	.LASF20:
+ 953 0183 74656D70 		.ascii	"temp2\000"
+ 953      3200
+ 954              	.LASF2:
+ 955 0189 73686F72 		.ascii	"short int\000"
+ 955      7420696E 
+ 955      7400
+ 956              	.LASF11:
+ 957 0193 75696E74 		.ascii	"uint8\000"
+ 957      3800
+ 958              	.LASF23:
+ 959 0199 72656164 		.ascii	"readAndReturn\000"
+ 959      416E6452 
+ 959      65747572 
+ 959      6E00
+ 960              	.LASF29:
+ 961 01a7 4932435F 		.ascii	"I2C_1_MasterSendStop\000"
+ 961      315F4D61 
+ 961      73746572 
+ 961      53656E64 
+ 961      53746F70 
+ 962              	.LASF4:
+ 963 01bc 6C6F6E67 		.ascii	"long int\000"
+ 963      20696E74 
+ 963      00
+ 964              	.LASF15:
+ 965 01c5 6C6F6E67 		.ascii	"long double\000"
+ 965      20646F75 
+ 965      626C6500 
+ 966              	.LASF32:
+ 967 01d1 433A5C55 		.ascii	"C:\\Users\\Bruger\\Documents\\GitHub\\GFV\\journal_"
+ 967      73657273 
+ 967      5C427275 
+ 967      6765725C 
+ 967      446F6375 
+ 968 01fe 335F7465 		.ascii	"3_tempcon\\Temperature-Control.cydsn\000"
+ 968      6D70636F 
+ 968      6E5C5465 
+ 968      6D706572 
+ 968      61747572 
+ 969              	.LASF0:
+ 970 0222 7369676E 		.ascii	"signed char\000"
+ 970      65642063 
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\cclT0usa.s 			page 21
 
 
- 971      65642063 
- 971      68617200 
- 972              	.LASF26:
- 973 023c 55415254 		.ascii	"UART_1_PutString\000"
- 973      5F315F50 
- 973      75745374 
- 973      72696E67 
- 973      00
- 974              	.LASF22:
- 975 024d 636F6E76 		.ascii	"convertMeasurement\000"
- 975      6572744D 
- 975      65617375 
- 975      72656D65 
- 975      6E7400
- 976              	.LASF25:
- 977 0260 6572726F 		.ascii	"errorMSG\000"
- 977      724D5347 
- 977      00
- 978              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 970      68617200 
+ 971              	.LASF26:
+ 972 022e 55415254 		.ascii	"UART_1_PutString\000"
+ 972      5F315F50 
+ 972      75745374 
+ 972      72696E67 
+ 972      00
+ 973              	.LASF22:
+ 974 023f 636F6E76 		.ascii	"convertMeasurement\000"
+ 974      6572744D 
+ 974      65617375 
+ 974      72656D65 
+ 974      6E7400
+ 975              	.LASF25:
+ 976 0252 6572726F 		.ascii	"errorMSG\000"
+ 976      724D5347 
+ 976      00
+ 977              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

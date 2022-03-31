@@ -1,6 +1,6 @@
-C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\Temperature-Control.cyprj|a7202828-bd1e-4593-b057-55a6da238fd8
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|94fcaf5f-439f-431b-bd50-a3559942bc20
-C:\Users\jakob\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|e97b4ee1-b63c-48b7-8ebc-09b73d5a94f7
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8ec9bf0a-b555-4175-9887-b38f9bf9f0e8
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|70cd7adb-5e10-4de6-92cc-9d1f42168715
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a0f37c13-fbe7-4759-bc45-2dd20e80ab0a
+C:\Users\Bruger\Documents\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\Temperature-Control.cyprj|e3ea6f08-73f7-4a14-8e82-ce1e0270c680
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1e226edf-50b6-48ee-841e-47d04a747010
+C:\Users\Bruger\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|d171d856-6d53-4417-a7b8-922f1e686b1d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|baba5040-6a94-4d5d-ad64-a505aff26fa6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|185d85ac-f59d-4575-a7d0-bd9526932204
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|40c27669-4f7a-4e89-99e6-fd7b865d2930

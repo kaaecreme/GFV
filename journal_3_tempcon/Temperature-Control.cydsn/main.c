@@ -20,7 +20,7 @@ void handleByteReceived(uint8_t byteReceived);
 static char outputBuffer[256];
 float setPoint = 30;
 
-#define SAMPLES_PER_SECOND 3
+#define SAMPLES_PER_SECOND 1
 static uint16_t sampleWaitTimeInMilliseconds = 1000 / SAMPLES_PER_SECOND;
 
 int main(void)
@@ -40,8 +40,8 @@ int main(void)
     float Kp = 4.0f;
     float Ki = 4.0f/30.0f;
     float Kd = 0.0f;
-    float integralMax = 3000;
-    float integralMin = -3000;
+    float integralMax = 1000;
+    float integralMin = -1000;
     float temp = 0;
     float controlSignal = 0;
     

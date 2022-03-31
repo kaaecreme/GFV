@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
   30              		@ args = 8, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 2
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 2
 
 
   33              	.LVL0:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
   77              		@ frame_needed = 0, uses_anonymous_args = 0
   78              		@ link register save eliminated.
   79              	.LVL3:
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 3
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 3
 
 
   36:PIDControl.c  ****     setPoint = _setPoint;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
   43:PIDControl.c  ****     float derivative = 0;
   44:PIDControl.c  ****     float currentError = 0;
   45:PIDControl.c  ****     
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 4
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 4
 
 
   46:PIDControl.c  ****     // calculate current error
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
   59:PIDControl.c  ****     // calculate derivative part
   60:PIDControl.c  ****     derivative = (currentError - previousError) / dt;
  168              		.loc 1 60 0 is_stmt 1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 5
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 5
 
 
  169 0048 154C     		ldr	r4, .L16
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  214              		.loc 1 69 0
  215 0098 03B0     		add	sp, sp, #12
  216              		.cfi_def_cfa_offset 36
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 6
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 6
 
 
  217              		@ sp needed
@@ -358,21 +358,21 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  271 0004 0400     		.2byte	0x4
  272 0006 00000000 		.4byte	.Ldebug_abbrev0
  273 000a 04       		.byte	0x4
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 7
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 7
 
 
  274 000b 01       		.uleb128 0x1
- 275 000c 52000000 		.4byte	.LASF18
+ 275 000c A3000000 		.4byte	.LASF18
  276 0010 0C       		.byte	0xc
- 277 0011 85010000 		.4byte	.LASF19
- 278 0015 92010000 		.4byte	.LASF20
+ 277 0011 D6010000 		.4byte	.LASF19
+ 278 0015 52000000 		.4byte	.LASF20
  279 0019 00000000 		.4byte	.Ldebug_ranges0+0
  280 001d 00000000 		.4byte	0
  281 0021 00000000 		.4byte	.Ldebug_line0
  282 0025 02       		.uleb128 0x2
  283 0026 04       		.byte	0x4
  284 0027 04       		.byte	0x4
- 285 0028 7F010000 		.4byte	.LASF21
+ 285 0028 D0010000 		.4byte	.LASF21
  286 002c 03       		.uleb128 0x3
  287 002d 28000000 		.4byte	.LASF2
  288 0031 01       		.byte	0x1
@@ -404,7 +404,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  314 0066 01       		.uleb128 0x1
  315 0067 52       		.byte	0x52
  316 0068 05       		.uleb128 0x5
- 317 0069 F6000000 		.4byte	.LASF0
+ 317 0069 47010000 		.4byte	.LASF0
  318 006d 01       		.byte	0x1
  319 006e 18       		.byte	0x18
  320 006f 25000000 		.4byte	0x25
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  328 0086 06       		.uleb128 0x6
  329 0087 5F647400 		.ascii	"_dt\000"
  330 008b 01       		.byte	0x1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 8
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 8
 
 
  331 008c 18       		.byte	0x18
@@ -435,7 +435,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  342 00a6 9C       		.byte	0x9c
  343 00a7 B9000000 		.4byte	0xb9
  344 00ab 07       		.uleb128 0x7
- 345 00ac E0000000 		.4byte	.LASF4
+ 345 00ac 31010000 		.4byte	.LASF4
  346 00b0 01       		.byte	0x1
  347 00b1 22       		.byte	0x22
  348 00b2 25000000 		.4byte	0x25
@@ -443,7 +443,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  350 00b7 50       		.byte	0x50
  351 00b8 00       		.byte	0
  352 00b9 08       		.uleb128 0x8
- 353 00ba 3B010000 		.4byte	.LASF22
+ 353 00ba 8C010000 		.4byte	.LASF22
  354 00be 01       		.byte	0x1
  355 00bf 27       		.byte	0x27
  356 00c0 25000000 		.4byte	0x25
@@ -453,32 +453,32 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  360 00cd 9C       		.byte	0x9c
  361 00ce 4B010000 		.4byte	0x14b
  362 00d2 05       		.uleb128 0x5
- 363 00d3 F1010000 		.4byte	.LASF5
+ 363 00d3 E3010000 		.4byte	.LASF5
  364 00d7 01       		.byte	0x1
  365 00d8 27       		.byte	0x27
  366 00d9 25000000 		.4byte	0x25
  367 00dd 62000000 		.4byte	.LLST3
  368 00e1 05       		.uleb128 0x5
- 369 00e2 2A010000 		.4byte	.LASF6
+ 369 00e2 7B010000 		.4byte	.LASF6
  370 00e6 01       		.byte	0x1
  371 00e7 27       		.byte	0x27
  372 00e8 4B010000 		.4byte	0x14b
  373 00ec 90000000 		.4byte	.LLST4
  374 00f0 05       		.uleb128 0x5
- 375 00f1 1D010000 		.4byte	.LASF7
+ 375 00f1 6E010000 		.4byte	.LASF7
  376 00f5 01       		.byte	0x1
  377 00f6 27       		.byte	0x27
  378 00f7 4B010000 		.4byte	0x14b
  379 00fb BC000000 		.4byte	.LLST5
  380 00ff 05       		.uleb128 0x5
- 381 0100 67010000 		.4byte	.LASF8
+ 381 0100 B8010000 		.4byte	.LASF8
  382 0104 01       		.byte	0x1
  383 0105 27       		.byte	0x27
  384 0106 4B010000 		.4byte	0x14b
  385 010a E8000000 		.4byte	.LLST6
  386 010e 09       		.uleb128 0x9
  387 010f 0D000000 		.4byte	.LASF9
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 9
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 9
 
 
  388 0113 01       		.byte	0x1
@@ -486,7 +486,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  390 0115 25000000 		.4byte	0x25
  391 0119 14010000 		.4byte	.LLST7
  392 011d 09       		.uleb128 0x9
- 393 011e 03010000 		.4byte	.LASF10
+ 393 011e 54010000 		.4byte	.LASF10
  394 0122 01       		.byte	0x1
  395 0123 2A       		.byte	0x2a
  396 0124 25000000 		.4byte	0x25
@@ -498,7 +498,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  402 0133 25000000 		.4byte	0x25
  403 0137 74010000 		.4byte	.LLST9
  404 013b 09       		.uleb128 0x9
- 405 013c 10010000 		.4byte	.LASF12
+ 405 013c 61010000 		.4byte	.LASF12
  406 0140 01       		.byte	0x1
  407 0141 2C       		.byte	0x2c
  408 0142 25000000 		.4byte	0x25
@@ -538,12 +538,12 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  442 0187 25000000 		.4byte	0x25
  443 018b 05       		.uleb128 0x5
  444 018c 03       		.byte	0x3
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 10
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 10
 
 
  445 018d 14000000 		.4byte	dt
  446 0191 0C       		.uleb128 0xc
- 447 0192 5B010000 		.4byte	.LASF13
+ 447 0192 AC010000 		.4byte	.LASF13
  448 0196 01       		.byte	0x1
  449 0197 12       		.byte	0x12
  450 0198 25000000 		.4byte	0x25
@@ -551,7 +551,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  452 019d 03       		.byte	0x3
  453 019e 0C000000 		.4byte	integralMax
  454 01a2 0C       		.uleb128 0xc
- 455 01a3 EA000000 		.4byte	.LASF14
+ 455 01a3 3B010000 		.4byte	.LASF14
  456 01a7 01       		.byte	0x1
  457 01a8 13       		.byte	0x13
  458 01a9 25000000 		.4byte	0x25
@@ -559,7 +559,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  460 01ae 03       		.byte	0x3
  461 01af 10000000 		.4byte	integralMin
  462 01b3 0C       		.uleb128 0xc
- 463 01b4 76010000 		.4byte	.LASF15
+ 463 01b4 C7010000 		.4byte	.LASF15
  464 01b8 01       		.byte	0x1
  465 01b9 14       		.byte	0x14
  466 01ba 25000000 		.4byte	0x25
@@ -575,7 +575,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  476 01d0 03       		.byte	0x3
  477 01d1 1C000000 		.4byte	integral
  478 01d5 0C       		.uleb128 0xc
- 479 01d6 4D010000 		.4byte	.LASF17
+ 479 01d6 9E010000 		.4byte	.LASF17
  480 01da 01       		.byte	0x1
  481 01db 16       		.byte	0x16
  482 01dc 25000000 		.4byte	0x25
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  499 000a 0E       		.uleb128 0xe
  500 000b 55       		.uleb128 0x55
  501 000c 17       		.uleb128 0x17
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 11
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 11
 
 
  502 000d 11       		.uleb128 0x11
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  556 0044 18       		.uleb128 0x18
  557 0045 00       		.byte	0
  558 0046 00       		.byte	0
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 12
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 12
 
 
  559 0047 05       		.uleb128 0x5
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  613 007d 3B       		.uleb128 0x3b
  614 007e 0B       		.uleb128 0xb
  615 007f 27       		.uleb128 0x27
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 13
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 13
 
 
  616 0080 19       		.uleb128 0x19
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  670 00b7 0C       		.uleb128 0xc
  671 00b8 34       		.uleb128 0x34
  672 00b9 00       		.byte	0
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 14
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 14
 
 
  673 00ba 03       		.uleb128 0x3
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  727 0062 00000000 		.4byte	.LVL4
  728 0066 12000000 		.4byte	.LVL7
  729 006a 0100     		.2byte	0x1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 15
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 15
 
 
  730 006c 50       		.byte	0x50
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  784 00ec 15000000 		.4byte	.LVL8-1
  785 00f0 0100     		.2byte	0x1
  786 00f2 53       		.byte	0x53
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 16
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 16
 
 
  787 00f3 15000000 		.4byte	.LVL8-1
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  841 0180 00000000 		.4byte	0
  842 0184 5A000000 		.4byte	.LVL16
  843 0188 5E000000 		.4byte	.LVL17
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 17
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 17
 
 
  844 018c 0100     		.2byte	0x1
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  888 001f 696E7465 		.ascii	"integral\000"
  888      6772616C 
  888      00
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 18
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 18
 
 
  889              	.LASF2:
@@ -1032,106 +1032,105 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 1
  892      6F6C5F63 
  892      68616E67 
  892      65536574 
- 893              	.LASF18:
- 894 0052 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 894      43313120 
- 894      352E342E 
- 894      31203230 
- 894      31363036 
- 895 0085 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 895      20726576 
- 895      6973696F 
- 895      6E203233 
- 895      37373135 
- 896 00b8 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 896      66756E63 
- 896      74696F6E 
- 896      2D736563 
- 896      74696F6E 
- 897              	.LASF4:
- 898 00e0 5F736574 		.ascii	"_setPoint\000"
- 898      506F696E 
- 898      7400
- 899              	.LASF14:
- 900 00ea 696E7465 		.ascii	"integralMin\000"
- 900      6772616C 
- 900      4D696E00 
- 901              	.LASF0:
- 902 00f6 5F696E74 		.ascii	"_integralMax\000"
- 902      65677261 
- 902      6C4D6178 
- 902      00
- 903              	.LASF10:
- 904 0103 70726F70 		.ascii	"proportional\000"
- 904      6F727469 
- 904      6F6E616C 
- 904      00
- 905              	.LASF12:
- 906 0110 63757272 		.ascii	"currentError\000"
- 906      656E7445 
- 906      72726F72 
- 906      00
- 907              	.LASF7:
- 908 011d 696E7465 		.ascii	"integralPart\000"
- 908      6772616C 
- 908      50617274 
- 908      00
- 909              	.LASF6:
- 910 012a 70726F70 		.ascii	"proportionalPart\000"
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccWYi2Dq.s 			page 19
+ 893              	.LASF20:
+ 894 0052 433A5C55 		.ascii	"C:\\Users\\Bruger\\Documents\\GitHub\\GFV\\journal_"
+ 894      73657273 
+ 894      5C427275 
+ 894      6765725C 
+ 894      446F6375 
+ 895 007f 335F7465 		.ascii	"3_tempcon\\Temperature-Control.cydsn\000"
+ 895      6D70636F 
+ 895      6E5C5465 
+ 895      6D706572 
+ 895      61747572 
+ 896              	.LASF18:
+ 897 00a3 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 897      43313120 
+ 897      352E342E 
+ 897      31203230 
+ 897      31363036 
+ 898 00d6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 898      20726576 
+ 898      6973696F 
+ 898      6E203233 
+ 898      37373135 
+ 899 0109 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 899      66756E63 
+ 899      74696F6E 
+ 899      2D736563 
+ 899      74696F6E 
+ 900              	.LASF4:
+ 901 0131 5F736574 		.ascii	"_setPoint\000"
+ 901      506F696E 
+ 901      7400
+ 902              	.LASF14:
+ 903 013b 696E7465 		.ascii	"integralMin\000"
+ 903      6772616C 
+ 903      4D696E00 
+ 904              	.LASF0:
+ 905 0147 5F696E74 		.ascii	"_integralMax\000"
+ 905      65677261 
+ 905      6C4D6178 
+ 905      00
+ 906              	.LASF10:
+ 907 0154 70726F70 		.ascii	"proportional\000"
+ 907      6F727469 
+ 907      6F6E616C 
+ 907      00
+ 908              	.LASF12:
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccbKPyb3.s 			page 19
 
 
- 910      6F727469 
- 910      6F6E616C 
- 910      50617274 
- 910      00
- 911              	.LASF22:
- 912 013b 50494443 		.ascii	"PIDControl_doStep\000"
- 912      6F6E7472 
- 912      6F6C5F64 
- 912      6F537465 
- 912      7000
- 913              	.LASF17:
- 914 014d 70726576 		.ascii	"previousError\000"
- 914      696F7573 
- 914      4572726F 
- 914      7200
- 915              	.LASF13:
- 916 015b 696E7465 		.ascii	"integralMax\000"
- 916      6772616C 
- 916      4D617800 
- 917              	.LASF8:
- 918 0167 64657269 		.ascii	"derivativePart\000"
- 918      76617469 
- 918      76655061 
- 918      727400
- 919              	.LASF15:
- 920 0176 73657450 		.ascii	"setPoint\000"
- 920      6F696E74 
- 920      00
- 921              	.LASF21:
- 922 017f 666C6F61 		.ascii	"float\000"
- 922      7400
- 923              	.LASF19:
- 924 0185 50494443 		.ascii	"PIDControl.c\000"
- 924      6F6E7472 
- 924      6F6C2E63 
- 924      00
- 925              	.LASF20:
- 926 0192 433A5C55 		.ascii	"C:\\Users\\jakob\\Nextcloud3\\semester2\\DSD\\GitHu"
- 926      73657273 
- 926      5C6A616B 
- 926      6F625C4E 
- 926      65787463 
- 927 01bf 625C4746 		.ascii	"b\\GFV\\journal_3_tempcon\\Temperature-Control.cyds"
- 927      565C6A6F 
- 927      75726E61 
- 927      6C5F335F 
- 927      74656D70 
- 928 01ef 6E00     		.ascii	"n\000"
- 929              	.LASF5:
- 930 01f1 73797374 		.ascii	"systemOutput\000"
- 930      656D4F75 
- 930      74707574 
- 930      00
- 931              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 909 0161 63757272 		.ascii	"currentError\000"
+ 909      656E7445 
+ 909      72726F72 
+ 909      00
+ 910              	.LASF7:
+ 911 016e 696E7465 		.ascii	"integralPart\000"
+ 911      6772616C 
+ 911      50617274 
+ 911      00
+ 912              	.LASF6:
+ 913 017b 70726F70 		.ascii	"proportionalPart\000"
+ 913      6F727469 
+ 913      6F6E616C 
+ 913      50617274 
+ 913      00
+ 914              	.LASF22:
+ 915 018c 50494443 		.ascii	"PIDControl_doStep\000"
+ 915      6F6E7472 
+ 915      6F6C5F64 
+ 915      6F537465 
+ 915      7000
+ 916              	.LASF17:
+ 917 019e 70726576 		.ascii	"previousError\000"
+ 917      696F7573 
+ 917      4572726F 
+ 917      7200
+ 918              	.LASF13:
+ 919 01ac 696E7465 		.ascii	"integralMax\000"
+ 919      6772616C 
+ 919      4D617800 
+ 920              	.LASF8:
+ 921 01b8 64657269 		.ascii	"derivativePart\000"
+ 921      76617469 
+ 921      76655061 
+ 921      727400
+ 922              	.LASF15:
+ 923 01c7 73657450 		.ascii	"setPoint\000"
+ 923      6F696E74 
+ 923      00
+ 924              	.LASF21:
+ 925 01d0 666C6F61 		.ascii	"float\000"
+ 925      7400
+ 926              	.LASF19:
+ 927 01d6 50494443 		.ascii	"PIDControl.c\000"
+ 927      6F6E7472 
+ 927      6F6C2E63 
+ 927      00
+ 928              	.LASF5:
+ 929 01e3 73797374 		.ascii	"systemOutput\000"
+ 929      656D4F75 
+ 929      74707574 
+ 929      00
+ 930              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

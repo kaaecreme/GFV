@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
   29:Generated_Source\PSoC5/cyfitter_cfg.c **** 
   30:Generated_Source\PSoC5/cyfitter_cfg.c **** #if defined(__GNUC__) || defined(__ARMCC_VERSION)
   31:Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED 
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 2
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 2
 
 
   32:Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED_ATTR __attribute__ ((packed))
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
   86:Generated_Source\PSoC5/cyfitter_cfg.c **** 	(void)memcpy(dest, src, n);
   87:Generated_Source\PSoC5/cyfitter_cfg.c **** }
   88:Generated_Source\PSoC5/cyfitter_cfg.c **** CY_CFG_UNUSED
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 3
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 3
 
 
   89:Generated_Source\PSoC5/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
   41              		.thumb
   42              		.thumb_func
   43              		.type	cfg_write_bytes32, %function
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 4
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 4
 
 
   44              	cfg_write_bytes32:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  181:Generated_Source\PSoC5/cyfitter_cfg.c **** *  This function is used for setting up the chip configuration areas that
  182:Generated_Source\PSoC5/cyfitter_cfg.c **** *  contain relatively sparse data.
  183:Generated_Source\PSoC5/cyfitter_cfg.c **** *
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 5
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 5
 
 
  184:Generated_Source\PSoC5/cyfitter_cfg.c **** * Parameters:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
   80              		.loc 1 203 0
   81 0014 01EB4205 		add	r5, r1, r2, lsl #1
   82 0018 11F81240 		ldrb	r4, [r1, r2, lsl #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 6
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 6
 
 
   83 001c 6D78     		ldrb	r5, [r5, #1]	@ zero_extendqisi2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  214:Generated_Source\PSoC5/cyfitter_cfg.c **** * Summary:
  215:Generated_Source\PSoC5/cyfitter_cfg.c **** *  Performs the initialization of all of the clocks in the device based on the
  216:Generated_Source\PSoC5/cyfitter_cfg.c **** *  settings in the Clock tab of the DWR.  This includes enabling the requested
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 7
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 7
 
 
  217:Generated_Source\PSoC5/cyfitter_cfg.c **** *  clocks and setting the necessary dividers to produce the desired frequency. 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  271:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_PM_ACT_CFG2), ((CY_GET_XTND_REG8((void CYFAR *)CYREG_PM_ACT_
  272:Generated_Source\PSoC5/cyfitter_cfg.c **** }
  273:Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 8
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 8
 
 
  274:Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  152 0020 6E580040 		.word	1073764462
  153 0024 76580040 		.word	1073764470
  154              		.cfi_endproc
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 9
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 9
 
 
  155              	.LFE6:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  204              		.loc 1 235 0
  205 0008 1823     		movs	r3, #24
  206 000a 264A     		ldr	r2, .L20+4
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 10
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 10
 
 
  207 000c 1370     		strb	r3, [r2]
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  250 004c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  251 004e 03F00103 		and	r3, r3, #1
  252 0052 43EA4404 		orr	r4, r3, r4, lsl #1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 11
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 11
 
 
  253              	.LVL19:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  295 008c 0222     		movs	r2, #2
  296 008e 033B     		subs	r3, r3, #3
  297 0090 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 12
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 12
 
 
  271:Generated_Source\PSoC5/cyfitter_cfg.c **** }
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  349              		.type	SetAnalogRoutingPumps, %function
  350              	SetAnalogRoutingPumps:
  351              	.LFB7:
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 13
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 13
 
 
  300:Generated_Source\PSoC5/cyfitter_cfg.c **** }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  374              		.align	2
  375              		.global	cyfitter_cfg
  376              		.thumb
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 14
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 14
 
 
  377              		.thumb_func
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  400 0006 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  401 0008 43F00403 		orr	r3, r3, #4
  402 000c 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 15
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 15
 
 
  403              	.LVL29:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  414 0016 1919     		adds	r1, r3, r4
  415 0018 4A00     		lsls	r2, r1, #1
  416 001a 1146     		mov	r1, r2
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 16
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 16
 
 
  417 001c 2A44     		add	r2, r2, r5
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  458 004c E4B2     		uxtb	r4, r4
  459              	.LVL41:
  460              	.L30:
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 17
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 17
 
 
  409:Generated_Source\PSoC5/cyfitter_cfg.c **** 		{
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  432:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT1_DM0), (const void CYFAR *)(BS_IOPINS0_1_VAL), 8u);
  498              		.loc 1 432 0
  499 0092 0822     		movs	r2, #8
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 18
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 18
 
 
  500 0094 1649     		ldr	r1, .L33+28
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  537              	.LVL49:
  538 00d2 38BD     		pop	{r3, r4, r5, pc}
  539              	.L34:
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 19
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 19
 
 
  540              		.align	2
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  594 004c 8000     		.short	128
  595 004e 00180140 		.4byte	1073813504
  596 0052 B8030048 		.4byte	1207960504
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 20
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 20
 
 
  597 0056 8000     		.short	128
@@ -1154,10 +1154,10 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  607 0006 00000000 		.4byte	.Ldebug_abbrev0
  608 000a 04       		.byte	0x4
  609 000b 01       		.uleb128 0x1
- 610 000c CA010000 		.4byte	.LASF52
+ 610 000c 1B020000 		.4byte	.LASF52
  611 0010 0C       		.byte	0xc
- 612 0011 16030000 		.4byte	.LASF53
- 613 0015 9C020000 		.4byte	.LASF54
+ 612 0011 08030000 		.4byte	.LASF53
+ 613 0015 B9000000 		.4byte	.LASF54
  614 0019 00000000 		.4byte	.Ldebug_ranges0+0
  615 001d 00000000 		.4byte	0
  616 0021 00000000 		.4byte	.Ldebug_line0
@@ -1173,7 +1173,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  626 0037 04       		.uleb128 0x4
  627 0038 04       		.byte	0x4
  628 0039 07       		.byte	0x7
- 629 003a F3000000 		.4byte	.LASF0
+ 629 003a 44010000 		.4byte	.LASF0
  630 003e 04       		.uleb128 0x4
  631 003f 08       		.byte	0x8
  632 0040 05       		.byte	0x5
@@ -1181,7 +1181,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  634 0045 04       		.uleb128 0x4
  635 0046 08       		.byte	0x8
  636 0047 04       		.byte	0x4
- 637 0048 51010000 		.4byte	.LASF2
+ 637 0048 A2010000 		.4byte	.LASF2
  638 004c 04       		.uleb128 0x4
  639 004d 01       		.byte	0x1
  640 004e 06       		.byte	0x6
@@ -1189,16 +1189,16 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  642 0053 04       		.uleb128 0x4
  643 0054 01       		.byte	0x1
  644 0055 08       		.byte	0x8
- 645 0056 B2010000 		.4byte	.LASF4
+ 645 0056 03020000 		.4byte	.LASF4
  646 005a 04       		.uleb128 0x4
  647 005b 02       		.byte	0x2
  648 005c 05       		.byte	0x5
- 649 005d C0010000 		.4byte	.LASF5
+ 649 005d 11020000 		.4byte	.LASF5
  650 0061 04       		.uleb128 0x4
  651 0062 02       		.byte	0x2
  652 0063 07       		.byte	0x7
- 653 0064 35010000 		.4byte	.LASF6
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 21
+ 653 0064 86010000 		.4byte	.LASF6
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 21
 
 
  654 0068 04       		.uleb128 0x4
@@ -1208,7 +1208,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  658 006f 04       		.uleb128 0x4
  659 0070 04       		.byte	0x4
  660 0071 07       		.byte	0x7
- 661 0072 09010000 		.4byte	.LASF8
+ 661 0072 5A010000 		.4byte	.LASF8
  662 0076 04       		.uleb128 0x4
  663 0077 08       		.byte	0x8
  664 0078 07       		.byte	0x7
@@ -1216,15 +1216,15 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  666 007d 04       		.uleb128 0x4
  667 007e 04       		.byte	0x4
  668 007f 07       		.byte	0x7
- 669 0080 48010000 		.4byte	.LASF10
+ 669 0080 99010000 		.4byte	.LASF10
  670 0084 05       		.uleb128 0x5
  671 0085 04       		.byte	0x4
  672 0086 04       		.uleb128 0x4
  673 0087 01       		.byte	0x1
  674 0088 08       		.byte	0x8
- 675 0089 73020000 		.4byte	.LASF11
+ 675 0089 C4020000 		.4byte	.LASF11
  676 008d 06       		.uleb128 0x6
- 677 008e C6000000 		.4byte	.LASF13
+ 677 008e 17010000 		.4byte	.LASF13
  678 0092 03       		.byte	0x3
  679 0093 9201     		.2byte	0x192
  680 0095 53000000 		.4byte	0x53
@@ -1234,31 +1234,31 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  684 009f 9301     		.2byte	0x193
  685 00a1 61000000 		.4byte	0x61
  686 00a5 06       		.uleb128 0x6
- 687 00a6 DD000000 		.4byte	.LASF15
+ 687 00a6 2E010000 		.4byte	.LASF15
  688 00aa 03       		.byte	0x3
  689 00ab 9401     		.2byte	0x194
  690 00ad 6F000000 		.4byte	0x6f
  691 00b1 04       		.uleb128 0x4
  692 00b2 04       		.byte	0x4
  693 00b3 04       		.byte	0x4
- 694 00b4 91010000 		.4byte	.LASF16
+ 694 00b4 E2010000 		.4byte	.LASF16
  695 00b8 04       		.uleb128 0x4
  696 00b9 08       		.byte	0x8
  697 00ba 04       		.byte	0x4
- 698 00bb CC000000 		.4byte	.LASF17
+ 698 00bb 1D010000 		.4byte	.LASF17
  699 00bf 06       		.uleb128 0x6
- 700 00c0 AD010000 		.4byte	.LASF18
+ 700 00c0 FE010000 		.4byte	.LASF18
  701 00c4 03       		.byte	0x3
  702 00c5 3C02     		.2byte	0x23c
  703 00c7 CB000000 		.4byte	0xcb
  704 00cb 07       		.uleb128 0x7
  705 00cc 8D000000 		.4byte	0x8d
  706 00d0 06       		.uleb128 0x6
- 707 00d1 B9000000 		.4byte	.LASF19
+ 707 00d1 0A010000 		.4byte	.LASF19
  708 00d5 03       		.byte	0x3
  709 00d6 3D02     		.2byte	0x23d
  710 00d8 DC000000 		.4byte	0xdc
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 22
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 22
 
 
  711 00dc 07       		.uleb128 0x7
@@ -1269,20 +1269,20 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  716 00e4 98       		.byte	0x98
  717 00e5 02010000 		.4byte	0x102
  718 00e9 09       		.uleb128 0x9
- 719 00ea 95020000 		.4byte	.LASF20
+ 719 00ea E6020000 		.4byte	.LASF20
  720 00ee 01       		.byte	0x1
  721 00ef 9A       		.byte	0x9a
  722 00f0 8D000000 		.4byte	0x8d
  723 00f4 00       		.byte	0
  724 00f5 09       		.uleb128 0x9
- 725 00f6 ED000000 		.4byte	.LASF21
+ 725 00f6 3E010000 		.4byte	.LASF21
  726 00fa 01       		.byte	0x1
  727 00fb 9B       		.byte	0x9b
  728 00fc 8D000000 		.4byte	0x8d
  729 0100 01       		.byte	0x1
  730 0101 00       		.byte	0
  731 0102 03       		.uleb128 0x3
- 732 0103 60020000 		.4byte	.LASF22
+ 732 0103 B1020000 		.4byte	.LASF22
  733 0107 01       		.byte	0x1
  734 0108 9C       		.byte	0x9c
  735 0109 E1000000 		.4byte	0xe1
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  765 014b C0       		.byte	0xc0
  766 014c A2010000 		.4byte	0x1a2
  767 0150 01       		.uleb128 0x1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 23
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 23
 
 
  768 0151 50       		.byte	0x50
@@ -1378,17 +1378,17 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  822 01c9 9C       		.byte	0x9c
  823 01ca DF010000 		.4byte	0x1df
  824 01ce 13       		.uleb128 0x13
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 24
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 24
 
 
- 825 01cf 5D010000 		.4byte	.LASF30
+ 825 01cf AE010000 		.4byte	.LASF30
  826 01d3 01       		.byte	0x1
  827 01d4 2801     		.2byte	0x128
  828 01d6 8D000000 		.4byte	0x8d
  829 01da 6F000000 		.4byte	.LLST4
  830 01de 00       		.byte	0
  831 01df 0C       		.uleb128 0xc
- 832 01e0 D3000000 		.4byte	.LASF31
+ 832 01e0 24010000 		.4byte	.LASF31
  833 01e4 01       		.byte	0x1
  834 01e5 4D       		.byte	0x4d
  835 01e6 00000000 		.4byte	.LFB0
@@ -1438,20 +1438,20 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  879 0232 E3       		.byte	0xe3
  880 0233 00000000 		.4byte	.LFB5
  881 0237 C8000000 		.4byte	.LFE5-.LFB5
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 25
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 25
 
 
  882 023b 01       		.uleb128 0x1
  883 023c 9C       		.byte	0x9c
  884 023d 84020000 		.4byte	0x284
  885 0241 0F       		.uleb128 0xf
- 886 0242 1B010000 		.4byte	.LASF33
+ 886 0242 6C010000 		.4byte	.LASF33
  887 0246 01       		.byte	0x1
  888 0247 E5       		.byte	0xe5
  889 0248 A5000000 		.4byte	0xa5
  890 024c CF000000 		.4byte	.LLST7
  891 0250 0F       		.uleb128 0xf
- 892 0251 58020000 		.4byte	.LASF34
+ 892 0251 A9020000 		.4byte	.LASF34
  893 0255 01       		.byte	0x1
  894 0256 E6       		.byte	0xe6
  895 0257 8D000000 		.4byte	0x8d
@@ -1478,7 +1478,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  916 0282 00       		.byte	0
  917 0283 00       		.byte	0
  918 0284 0C       		.uleb128 0xc
- 919 0285 0A030000 		.4byte	.LASF35
+ 919 0285 FC020000 		.4byte	.LASF35
  920 0289 01       		.byte	0x1
  921 028a 54       		.byte	0x54
  922 028b 00000000 		.4byte	.LFB1
@@ -1487,7 +1487,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  925 0294 9C       		.byte	0x9c
  926 0295 E4020000 		.4byte	0x2e4
  927 0299 18       		.uleb128 0x18
- 928 029a 8C010000 		.4byte	.LASF36
+ 928 029a DD010000 		.4byte	.LASF36
  929 029e 01       		.byte	0x1
  930 029f 54       		.byte	0x54
  931 02a0 84000000 		.4byte	0x84
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  936 02ae 54       		.byte	0x54
  937 02af E4020000 		.4byte	0x2e4
  938 02b3 39010000 		.4byte	.LLST10
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 26
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 26
 
 
  939 02b7 14       		.uleb128 0x14
@@ -1538,7 +1538,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  973 02e6 EA020000 		.4byte	0x2ea
  974 02ea 19       		.uleb128 0x19
  975 02eb 1A       		.uleb128 0x1a
- 976 02ec 7F020000 		.4byte	.LASF39
+ 976 02ec D0020000 		.4byte	.LASF39
  977 02f0 01       		.byte	0x1
  978 02f1 4001     		.2byte	0x140
  979 02f3 00000000 		.4byte	.LFB7
@@ -1547,25 +1547,25 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  982 02fc 9C       		.byte	0x9c
  983 02fd 1E030000 		.4byte	0x31e
  984 0301 1B       		.uleb128 0x1b
- 985 0302 FB020000 		.4byte	.LASF37
+ 985 0302 ED020000 		.4byte	.LASF37
  986 0306 01       		.byte	0x1
  987 0307 4001     		.2byte	0x140
  988 0309 8D000000 		.4byte	0x8d
  989 030d 01       		.uleb128 0x1
  990 030e 50       		.byte	0x50
  991 030f 1C       		.uleb128 0x1c
- 992 0310 E4000000 		.4byte	.LASF38
+ 992 0310 35010000 		.4byte	.LASF38
  993 0314 01       		.byte	0x1
  994 0315 4201     		.2byte	0x142
  995 0317 8D000000 		.4byte	0x8d
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 27
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 27
 
 
  996 031b 01       		.uleb128 0x1
  997 031c 53       		.byte	0x53
  998 031d 00       		.byte	0
  999 031e 1A       		.uleb128 0x1a
- 1000 031f 54030000 		.4byte	.LASF40
+ 1000 031f 46030000 		.4byte	.LASF40
  1001 0323 01       		.byte	0x1
  1002 0324 6201     		.2byte	0x162
  1003 0326 00000000 		.4byte	.LFB8
@@ -1583,20 +1583,20 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1015 0344 6E01     		.2byte	0x16e
  1016 0346 65030000 		.4byte	0x365
  1017 034a 1F       		.uleb128 0x1f
- 1018 034b 3C030000 		.4byte	.LASF41
+ 1018 034b 2E030000 		.4byte	.LASF41
  1019 034f 01       		.byte	0x1
  1020 0350 6F01     		.2byte	0x16f
  1021 0352 84000000 		.4byte	0x84
  1022 0356 00       		.byte	0
  1023 0357 1F       		.uleb128 0x1f
- 1024 0358 30010000 		.4byte	.LASF42
+ 1024 0358 81010000 		.4byte	.LASF42
  1025 035c 01       		.byte	0x1
  1026 035d 7001     		.2byte	0x170
  1027 035f 99000000 		.4byte	0x99
  1028 0363 04       		.byte	0x4
  1029 0364 00       		.byte	0
  1030 0365 06       		.uleb128 0x6
- 1031 0366 6F010000 		.4byte	.LASF43
+ 1031 0366 C0010000 		.4byte	.LASF43
  1032 036a 01       		.byte	0x1
  1033 036b 7101     		.2byte	0x171
  1034 036d 41030000 		.4byte	0x341
@@ -1606,7 +1606,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1038 0374 7401     		.2byte	0x174
  1039 0376 A2030000 		.4byte	0x3a2
  1040 037a 1F       		.uleb128 0x1f
- 1041 037b 8C010000 		.4byte	.LASF36
+ 1041 037b DD010000 		.4byte	.LASF36
  1042 037f 01       		.byte	0x1
  1043 0380 7501     		.2byte	0x175
  1044 0382 84000000 		.4byte	0x84
@@ -1618,17 +1618,17 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1050 038f E4020000 		.4byte	0x2e4
  1051 0393 04       		.byte	0x4
  1052 0394 1F       		.uleb128 0x1f
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 28
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 28
 
 
- 1053 0395 30010000 		.4byte	.LASF42
+ 1053 0395 81010000 		.4byte	.LASF42
  1054 0399 01       		.byte	0x1
  1055 039a 7701     		.2byte	0x177
  1056 039c 99000000 		.4byte	0x99
  1057 03a0 08       		.byte	0x8
  1058 03a1 00       		.byte	0
  1059 03a2 06       		.uleb128 0x6
- 1060 03a3 23010000 		.4byte	.LASF44
+ 1060 03a3 74010000 		.4byte	.LASF44
  1061 03a7 01       		.byte	0x1
  1062 03a8 7801     		.2byte	0x178
  1063 03aa 71030000 		.4byte	0x371
@@ -1642,7 +1642,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1071 03be 11       		.uleb128 0x11
  1072 03bf 65030000 		.4byte	0x365
  1073 03c3 1C       		.uleb128 0x1c
- 1074 03c4 7C010000 		.4byte	.LASF45
+ 1074 03c4 CD010000 		.4byte	.LASF45
  1075 03c8 01       		.byte	0x1
  1076 03c9 7A01     		.2byte	0x17a
  1077 03cb D5030000 		.4byte	0x3d5
@@ -1661,7 +1661,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1090 03ea 11       		.uleb128 0x11
  1091 03eb A2030000 		.4byte	0x3a2
  1092 03ef 1C       		.uleb128 0x1c
- 1093 03f0 44030000 		.4byte	.LASF46
+ 1093 03f0 36030000 		.4byte	.LASF46
  1094 03f4 01       		.byte	0x1
  1095 03f5 8901     		.2byte	0x189
  1096 03f7 01040000 		.4byte	0x401
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1107 0410 7B010000 		.4byte	.LLST12
  1108 0414 1D       		.uleb128 0x1d
  1109 0415 12000000 		.4byte	.LBB4
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 29
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 29
 
 
  1110 0419 16000000 		.4byte	.LBE4-.LBB4
@@ -1734,22 +1734,22 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1160 0476 04       		.byte	0x4
  1161 0477 EA030000 		.4byte	0x3ea
  1162 047b 13       		.uleb128 0x13
- 1163 047c A5010000 		.4byte	.LASF47
+ 1163 047c F6010000 		.4byte	.LASF47
  1164 0480 01       		.byte	0x1
  1165 0481 9C01     		.2byte	0x19c
  1166 0483 84000000 		.4byte	0x84
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 30
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 30
 
 
  1167 0487 1F020000 		.4byte	.LLST15
  1168 048b 13       		.uleb128 0x13
- 1169 048c 78020000 		.4byte	.LASF48
+ 1169 048c C9020000 		.4byte	.LASF48
  1170 0490 01       		.byte	0x1
  1171 0491 9D01     		.2byte	0x19d
  1172 0493 E4020000 		.4byte	0x2e4
  1173 0497 32020000 		.4byte	.LLST16
  1174 049b 13       		.uleb128 0x13
- 1175 049c 00010000 		.4byte	.LASF49
+ 1175 049c 51010000 		.4byte	.LASF49
  1176 04a0 01       		.byte	0x1
  1177 04a1 9E01     		.2byte	0x19e
  1178 04a3 99000000 		.4byte	0x99
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1221 04e4 64000048 		.4byte	0x48000064
  1222 04e8 00       		.byte	0
  1223 04e9 00       		.byte	0
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 31
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 31
 
 
  1224 04ea 17       		.uleb128 0x17
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1278 054a 16       		.uleb128 0x16
  1279 054b 01       		.uleb128 0x1
  1280 054c 51       		.byte	0x51
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 32
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 32
 
 
  1281 054d 05       		.uleb128 0x5
@@ -1899,16 +1899,16 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1316 0588 00       		.byte	0
  1317 0589 00       		.byte	0
  1318 058a 25       		.uleb128 0x25
- 1319 058b 03030000 		.4byte	.LASF50
- 1320 058f 03030000 		.4byte	.LASF50
+ 1319 058b F5020000 		.4byte	.LASF50
+ 1320 058f F5020000 		.4byte	.LASF50
  1321 0593 26       		.uleb128 0x26
- 1322 0594 97010000 		.4byte	.LASF56
- 1323 0598 97010000 		.4byte	.LASF56
+ 1322 0594 E8010000 		.4byte	.LASF56
+ 1323 0598 E8010000 		.4byte	.LASF56
  1324 059c 04       		.byte	0x4
  1325 059d 79       		.byte	0x79
  1326 059e 25       		.uleb128 0x25
- 1327 059f BF000000 		.4byte	.LASF51
- 1328 05a3 BF000000 		.4byte	.LASF51
+ 1327 059f 10010000 		.4byte	.LASF51
+ 1328 05a3 10010000 		.4byte	.LASF51
  1329 05a7 00       		.byte	0
  1330              		.section	.debug_abbrev,"",%progbits
  1331              	.Ldebug_abbrev0:
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1335 0003 25       		.uleb128 0x25
  1336 0004 0E       		.uleb128 0xe
  1337 0005 13       		.uleb128 0x13
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 33
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 33
 
 
  1338 0006 0B       		.uleb128 0xb
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1392 003c 00       		.byte	0
  1393 003d 06       		.uleb128 0x6
  1394 003e 16       		.uleb128 0x16
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 34
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 34
 
 
  1395 003f 00       		.byte	0
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1449 0075 0B       		.uleb128 0xb
  1450 0076 27       		.uleb128 0x27
  1451 0077 19       		.uleb128 0x19
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 35
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 35
 
 
  1452 0078 8701     		.uleb128 0x87
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1506 00b1 00       		.byte	0
  1507 00b2 03       		.uleb128 0x3
  1508 00b3 08       		.uleb128 0x8
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 36
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 36
 
 
  1509 00b4 3A       		.uleb128 0x3a
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1563 00ea 0E       		.uleb128 0xe
  1564 00eb 3A       		.uleb128 0x3a
  1565 00ec 0B       		.uleb128 0xb
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 37
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 37
 
 
  1566 00ed 3B       		.uleb128 0x3b
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1620 0126 00       		.byte	0
  1621 0127 16       		.uleb128 0x16
  1622 0128 8A8201   		.uleb128 0x410a
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 38
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 38
 
 
  1623 012b 00       		.byte	0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1677 0164 06       		.uleb128 0x6
  1678 0165 40       		.uleb128 0x40
  1679 0166 18       		.uleb128 0x18
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 39
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 39
 
 
  1680 0167 9742     		.uleb128 0x2117
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1734 019e 3B       		.uleb128 0x3b
  1735 019f 05       		.uleb128 0x5
  1736 01a0 01       		.uleb128 0x1
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 40
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 40
 
 
  1737 01a1 13       		.uleb128 0x13
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1791 01d7 03       		.uleb128 0x3
  1792 01d8 08       		.uleb128 0x8
  1793 01d9 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 41
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 41
 
 
  1794 01da 0B       		.uleb128 0xb
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1848 0008 0200     		.2byte	0x2
  1849 000a 30       		.byte	0x30
  1850 000b 9F       		.byte	0x9f
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 42
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 42
 
 
  1851 000c 08000000 		.4byte	.LVL3
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1905 009a 9F       		.byte	0x9f
  1906 009b 00000000 		.4byte	0
  1907 009f 00000000 		.4byte	0
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 43
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 43
 
 
  1908              	.LLST6:
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  1962 012d F3       		.byte	0xf3
  1963 012e 01       		.uleb128 0x1
  1964 012f 50       		.byte	0x50
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 44
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 44
 
 
  1965 0130 9F       		.byte	0x9f
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  2019 01b7 00000000 		.4byte	0
  2020              	.LLST13:
  2021 01bb 12000000 		.4byte	.LVL30
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 45
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 45
 
 
  2022 01bf 2A000000 		.4byte	.LVL32
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  2076 022e 00000000 		.4byte	0
  2077              	.LLST16:
  2078 0232 44000000 		.4byte	.LVL37
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 46
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 46
 
 
  2079 0236 49000000 		.4byte	.LVL39-1
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  2133 0028 00000000 		.4byte	.LFB0
  2134 002c 0C000000 		.4byte	.LFE0-.LFB0
  2135 0030 00000000 		.4byte	.LFB5
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 47
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 47
 
 
  2136 0034 C8000000 		.4byte	.LFE5-.LFB5
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  2177      726F7200 
  2178              	.LASF25:
  2179 0031 64617461 		.ascii	"data_table\000"
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 48
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 48
 
 
  2179      5F746162 
@@ -2866,205 +2866,204 @@ ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 1
  2197 00b0 6C6F6E67 		.ascii	"long int\000"
  2197      20696E74 
  2197      00
- 2198              	.LASF19:
- 2199 00b9 72656731 		.ascii	"reg16\000"
- 2199      3600
- 2200              	.LASF51:
- 2201 00bf 6D656D63 		.ascii	"memcpy\000"
- 2201      707900
- 2202              	.LASF13:
- 2203 00c6 75696E74 		.ascii	"uint8\000"
- 2203      3800
- 2204              	.LASF17:
- 2205 00cc 646F7562 		.ascii	"double\000"
- 2205      6C6500
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 49
+ 2198              	.LASF54:
+ 2199 00b9 433A5C55 		.ascii	"C:\\Users\\Bruger\\Documents\\GitHub\\GFV\\journal_"
+ 2199      73657273 
+ 2199      5C427275 
+ 2199      6765725C 
+ 2199      446F6375 
+ 2200 00e6 335F7465 		.ascii	"3_tempcon\\Temperature-Control.cydsn\000"
+ 2200      6D70636F 
+ 2200      6E5C5465 
+ 2200      6D706572 
+ 2200      61747572 
+ 2201              	.LASF19:
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 49
 
 
- 2206              	.LASF31:
- 2207 00d3 43594D45 		.ascii	"CYMEMZERO\000"
- 2207      4D5A4552 
- 2207      4F00
- 2208              	.LASF15:
- 2209 00dd 75696E74 		.ascii	"uint32\000"
- 2209      333200
- 2210              	.LASF38:
- 2211 00e4 72656756 		.ascii	"regValue\000"
- 2211      616C7565 
- 2211      00
- 2212              	.LASF21:
- 2213 00ed 76616C75 		.ascii	"value\000"
- 2213      6500
- 2214              	.LASF0:
- 2215 00f3 756E7369 		.ascii	"unsigned int\000"
- 2215      676E6564 
- 2215      20696E74 
- 2215      00
- 2216              	.LASF49:
- 2217 0100 6E756D42 		.ascii	"numBytes\000"
- 2217      79746573 
- 2217      00
- 2218              	.LASF8:
- 2219 0109 6C6F6E67 		.ascii	"long unsigned int\000"
- 2219      20756E73 
- 2219      69676E65 
- 2219      6420696E 
- 2219      7400
- 2220              	.LASF33:
- 2221 011b 74696D65 		.ascii	"timeout\000"
- 2221      6F757400 
- 2222              	.LASF44:
- 2223 0123 6366675F 		.ascii	"cfg_memcpy_t\000"
- 2223      6D656D63 
- 2223      70795F74 
- 2223      00
- 2224              	.LASF42:
- 2225 0130 73697A65 		.ascii	"size\000"
- 2225      00
- 2226              	.LASF6:
- 2227 0135 73686F72 		.ascii	"short unsigned int\000"
- 2227      7420756E 
- 2227      7369676E 
- 2227      65642069 
- 2227      6E7400
- 2228              	.LASF10:
- 2229 0148 73697A65 		.ascii	"sizetype\000"
- 2229      74797065 
- 2229      00
- 2230              	.LASF2:
- 2231 0151 6C6F6E67 		.ascii	"long double\000"
- 2231      20646F75 
- 2231      626C6500 
- 2232              	.LASF30:
- 2233 015d 62675F78 		.ascii	"bg_xover_inl_trim\000"
- 2233      6F766572 
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 50
+ 2202 010a 72656731 		.ascii	"reg16\000"
+ 2202      3600
+ 2203              	.LASF51:
+ 2204 0110 6D656D63 		.ascii	"memcpy\000"
+ 2204      707900
+ 2205              	.LASF13:
+ 2206 0117 75696E74 		.ascii	"uint8\000"
+ 2206      3800
+ 2207              	.LASF17:
+ 2208 011d 646F7562 		.ascii	"double\000"
+ 2208      6C6500
+ 2209              	.LASF31:
+ 2210 0124 43594D45 		.ascii	"CYMEMZERO\000"
+ 2210      4D5A4552 
+ 2210      4F00
+ 2211              	.LASF15:
+ 2212 012e 75696E74 		.ascii	"uint32\000"
+ 2212      333200
+ 2213              	.LASF38:
+ 2214 0135 72656756 		.ascii	"regValue\000"
+ 2214      616C7565 
+ 2214      00
+ 2215              	.LASF21:
+ 2216 013e 76616C75 		.ascii	"value\000"
+ 2216      6500
+ 2217              	.LASF0:
+ 2218 0144 756E7369 		.ascii	"unsigned int\000"
+ 2218      676E6564 
+ 2218      20696E74 
+ 2218      00
+ 2219              	.LASF49:
+ 2220 0151 6E756D42 		.ascii	"numBytes\000"
+ 2220      79746573 
+ 2220      00
+ 2221              	.LASF8:
+ 2222 015a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2222      20756E73 
+ 2222      69676E65 
+ 2222      6420696E 
+ 2222      7400
+ 2223              	.LASF33:
+ 2224 016c 74696D65 		.ascii	"timeout\000"
+ 2224      6F757400 
+ 2225              	.LASF44:
+ 2226 0174 6366675F 		.ascii	"cfg_memcpy_t\000"
+ 2226      6D656D63 
+ 2226      70795F74 
+ 2226      00
+ 2227              	.LASF42:
+ 2228 0181 73697A65 		.ascii	"size\000"
+ 2228      00
+ 2229              	.LASF6:
+ 2230 0186 73686F72 		.ascii	"short unsigned int\000"
+ 2230      7420756E 
+ 2230      7369676E 
+ 2230      65642069 
+ 2230      6E7400
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 50
 
 
- 2233      5F696E6C 
- 2233      5F747269 
- 2233      6D00
- 2234              	.LASF43:
- 2235 016f 6366675F 		.ascii	"cfg_memset_t\000"
- 2235      6D656D73 
- 2235      65745F74 
- 2235      00
- 2236              	.LASF45:
- 2237 017c 6366675F 		.ascii	"cfg_memset_list\000"
- 2237      6D656D73 
- 2237      65745F6C 
- 2237      69737400 
- 2238              	.LASF36:
- 2239 018c 64657374 		.ascii	"dest\000"
- 2239      00
- 2240              	.LASF16:
- 2241 0191 666C6F61 		.ascii	"float\000"
- 2241      7400
- 2242              	.LASF56:
- 2243 0197 43794465 		.ascii	"CyDelayCycles\000"
- 2243      6C617943 
- 2243      79636C65 
- 2243      7300
- 2244              	.LASF47:
- 2245 01a5 64657374 		.ascii	"destPtr\000"
- 2245      50747200 
- 2246              	.LASF18:
- 2247 01ad 72656738 		.ascii	"reg8\000"
- 2247      00
- 2248              	.LASF4:
- 2249 01b2 756E7369 		.ascii	"unsigned char\000"
- 2249      676E6564 
- 2249      20636861 
- 2249      7200
- 2250              	.LASF5:
- 2251 01c0 73686F72 		.ascii	"short int\000"
- 2251      7420696E 
- 2251      7400
- 2252              	.LASF52:
- 2253 01ca 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 2253      43313120 
- 2253      352E342E 
- 2253      31203230 
- 2253      31363036 
- 2254 01fd 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 2254      20726576 
- 2254      6973696F 
- 2254      6E203233 
- 2254      37373135 
- 2255 0230 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 2255      66756E63 
- 2255      74696F6E 
- 2255      2D736563 
- 2255      74696F6E 
- 2256              	.LASF34:
- 2257 0258 706C6C4C 		.ascii	"pllLock\000"
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 51
+ 2231              	.LASF10:
+ 2232 0199 73697A65 		.ascii	"sizetype\000"
+ 2232      74797065 
+ 2232      00
+ 2233              	.LASF2:
+ 2234 01a2 6C6F6E67 		.ascii	"long double\000"
+ 2234      20646F75 
+ 2234      626C6500 
+ 2235              	.LASF30:
+ 2236 01ae 62675F78 		.ascii	"bg_xover_inl_trim\000"
+ 2236      6F766572 
+ 2236      5F696E6C 
+ 2236      5F747269 
+ 2236      6D00
+ 2237              	.LASF43:
+ 2238 01c0 6366675F 		.ascii	"cfg_memset_t\000"
+ 2238      6D656D73 
+ 2238      65745F74 
+ 2238      00
+ 2239              	.LASF45:
+ 2240 01cd 6366675F 		.ascii	"cfg_memset_list\000"
+ 2240      6D656D73 
+ 2240      65745F6C 
+ 2240      69737400 
+ 2241              	.LASF36:
+ 2242 01dd 64657374 		.ascii	"dest\000"
+ 2242      00
+ 2243              	.LASF16:
+ 2244 01e2 666C6F61 		.ascii	"float\000"
+ 2244      7400
+ 2245              	.LASF56:
+ 2246 01e8 43794465 		.ascii	"CyDelayCycles\000"
+ 2246      6C617943 
+ 2246      79636C65 
+ 2246      7300
+ 2247              	.LASF47:
+ 2248 01f6 64657374 		.ascii	"destPtr\000"
+ 2248      50747200 
+ 2249              	.LASF18:
+ 2250 01fe 72656738 		.ascii	"reg8\000"
+ 2250      00
+ 2251              	.LASF4:
+ 2252 0203 756E7369 		.ascii	"unsigned char\000"
+ 2252      676E6564 
+ 2252      20636861 
+ 2252      7200
+ 2253              	.LASF5:
+ 2254 0211 73686F72 		.ascii	"short int\000"
+ 2254      7420696E 
+ 2254      7400
+ 2255              	.LASF52:
+ 2256 021b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2256      43313120 
+ 2256      352E342E 
+ 2256      31203230 
+ 2256      31363036 
+ 2257 024e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 51
 
 
- 2257      6F636B00 
- 2258              	.LASF22:
- 2259 0260 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
- 2259      66675F61 
- 2259      64647276 
- 2259      616C7565 
- 2259      5F7400
- 2260              	.LASF11:
- 2261 0273 63686172 		.ascii	"char\000"
- 2261      00
- 2262              	.LASF48:
- 2263 0278 73726350 		.ascii	"srcPtr\000"
- 2263      747200
- 2264              	.LASF39:
- 2265 027f 53657441 		.ascii	"SetAnalogRoutingPumps\000"
- 2265      6E616C6F 
- 2265      67526F75 
- 2265      74696E67 
- 2265      50756D70 
- 2266              	.LASF20:
- 2267 0295 6F666673 		.ascii	"offset\000"
- 2267      657400
- 2268              	.LASF54:
- 2269 029c 433A5C55 		.ascii	"C:\\Users\\jakob\\Nextcloud3\\semester2\\DSD\\GitHu"
- 2269      73657273 
- 2269      5C6A616B 
- 2269      6F625C4E 
- 2269      65787463 
- 2270 02c9 625C4746 		.ascii	"b\\GFV\\journal_3_tempcon\\Temperature-Control.cyds"
- 2270      565C6A6F 
- 2270      75726E61 
- 2270      6C5F335F 
- 2270      74656D70 
- 2271 02f9 6E00     		.ascii	"n\000"
- 2272              	.LASF37:
- 2273 02fb 656E6162 		.ascii	"enabled\000"
- 2273      6C656400 
- 2274              	.LASF50:
- 2275 0303 6D656D73 		.ascii	"memset\000"
- 2275      657400
- 2276              	.LASF35:
- 2277 030a 4359434F 		.ascii	"CYCONFIGCPY\000"
- 2277      4E464947 
- 2277      43505900 
- 2278              	.LASF53:
- 2279 0316 47656E65 		.ascii	"Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
- 2279      72617465 
- 2279      645F536F 
- 2279      75726365 
- 2279      5C50536F 
- 2280              	.LASF41:
- 2281 033c 61646472 		.ascii	"address\000"
- 2281      65737300 
- 2282              	.LASF46:
- 2283 0344 6366675F 		.ascii	"cfg_memcpy_list\000"
- 2283      6D656D63 
- 2283      70795F6C 
-ARM GAS  C:\Users\jakob\AppData\Local\Temp\ccMeB3jp.s 			page 52
+ 2257      20726576 
+ 2257      6973696F 
+ 2257      6E203233 
+ 2257      37373135 
+ 2258 0281 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2258      66756E63 
+ 2258      74696F6E 
+ 2258      2D736563 
+ 2258      74696F6E 
+ 2259              	.LASF34:
+ 2260 02a9 706C6C4C 		.ascii	"pllLock\000"
+ 2260      6F636B00 
+ 2261              	.LASF22:
+ 2262 02b1 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
+ 2262      66675F61 
+ 2262      64647276 
+ 2262      616C7565 
+ 2262      5F7400
+ 2263              	.LASF11:
+ 2264 02c4 63686172 		.ascii	"char\000"
+ 2264      00
+ 2265              	.LASF48:
+ 2266 02c9 73726350 		.ascii	"srcPtr\000"
+ 2266      747200
+ 2267              	.LASF39:
+ 2268 02d0 53657441 		.ascii	"SetAnalogRoutingPumps\000"
+ 2268      6E616C6F 
+ 2268      67526F75 
+ 2268      74696E67 
+ 2268      50756D70 
+ 2269              	.LASF20:
+ 2270 02e6 6F666673 		.ascii	"offset\000"
+ 2270      657400
+ 2271              	.LASF37:
+ 2272 02ed 656E6162 		.ascii	"enabled\000"
+ 2272      6C656400 
+ 2273              	.LASF50:
+ 2274 02f5 6D656D73 		.ascii	"memset\000"
+ 2274      657400
+ 2275              	.LASF35:
+ 2276 02fc 4359434F 		.ascii	"CYCONFIGCPY\000"
+ 2276      4E464947 
+ 2276      43505900 
+ 2277              	.LASF53:
+ 2278 0308 47656E65 		.ascii	"Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
+ 2278      72617465 
+ 2278      645F536F 
+ 2278      75726365 
+ 2278      5C50536F 
+ 2279              	.LASF41:
+ 2280 032e 61646472 		.ascii	"address\000"
+ 2280      65737300 
+ 2281              	.LASF46:
+ 2282 0336 6366675F 		.ascii	"cfg_memcpy_list\000"
+ 2282      6D656D63 
+ 2282      70795F6C 
+ 2282      69737400 
+ARM GAS  C:\Users\Bruger\AppData\Local\Temp\ccRDsgMk.s 			page 52
 
 
- 2283      69737400 
- 2284              	.LASF40:
- 2285 0354 63796669 		.ascii	"cyfitter_cfg\000"
- 2285      74746572 
- 2285      5F636667 
- 2285      00
- 2286              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 2283              	.LASF40:
+ 2284 0346 63796669 		.ascii	"cyfitter_cfg\000"
+ 2284      74746572 
+ 2284      5F636667 
+ 2284      00
+ 2285              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
