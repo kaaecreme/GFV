@@ -221,12 +221,8 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\Temperature-Control.cydsn\PIDControl.c" />
-<name v=".\Temperature-Control.cydsn\I2C.c" />
-<name v=".\Temperature-Control.cydsn\I2C.h" />
-<name v=".\Temperature-Control.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\Temperature-Control.cydsn\Temperature-Control.cydwr" />
 <name v=".\Temperature-Control.cydsn\main.c" />
+<name v=".\Temperature-Control.cydsn\PIDControl.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -234,7 +230,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1324, 711" SelectedTabbedMdiWindow="7334abd6-ba9d-462c-a017-57df9729816d"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="2df851d6-84f8-44ae-9520-8df899d6da21" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\PIDControl.c" Guid="83d8f123-a468-4919-ac48-cb212347f774" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\I2C.c" Guid="7334abd6-ba9d-462c-a017-57df9729816d" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\I2C.h" Guid="e61b9d41-fa41-4e78-ba60-4694d87ef70f" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\TopDesign\TopDesign.cysch" Guid="94f4d81c-d7bd-42dd-b0a9-073e71f5bd7a" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\Temperature-Control.cydwr" Guid="6486ac70-5ee5-4486-9ecd-1e5a25e69bdb" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\DSD\GitHub\GFV\journal_3_tempcon\Temperature-Control.cydsn\main.c" Guid="ecc7f695-330a-48e0-a7ee-4d7deae2ec5a" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1324, 711" SelectedTabbedMdiWindow="37c3d94c-716a-4dc9-83a0-2ae8de4a184a"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="2df851d6-84f8-44ae-9520-8df899d6da21" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\GFV\Github\journal_3_tempcon\Temperature-Control.cydsn\main.c" Guid="37c3d94c-716a-4dc9-83a0-2ae8de4a184a" /><DocumentWindow Key="C:\Users\jakob\Nextcloud3\semester2\GFV\Github\journal_3_tempcon\Temperature-Control.cydsn\PIDControl.c" Guid="c9af1f63-2313-46c5-bd87-b2a6f52fc82c" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
