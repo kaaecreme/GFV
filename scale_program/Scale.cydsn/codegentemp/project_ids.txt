@@ -1,0 +1,6 @@
+C:\Users\Bruger\Desktop\lab\Scale.cydsn\Scale.cyprj|5bf55be2-c9d4-4c60-ab14-af080ced0a61
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1ebc600e-12b7-46b6-aeb4-765b16d791fb
+C:\Users\Bruger\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|e0b2b102-f591-486d-8052-acfa6f8a8415
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d8b0ab5e-d240-4eb7-b597-f2cc59fa602d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|a1ac9628-7636-4cc0-9614-add99f9acfda
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|2f97c5cd-5346-4df2-89a6-eb85305749c7
